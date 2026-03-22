@@ -1,0 +1,977 @@
+{
+  "10-01": [
+    {
+      "type": "person",
+      "title": "Jimmy Carter",
+      "year": 1924,
+      "description": "39th U.S. President who brokered the Camp David Accords and later won the Nobel Peace Prize for his humanitarian work.",
+      "wikipediaSlug": "Jimmy_Carter",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "person",
+      "title": "Julie Andrews",
+      "year": 1935,
+      "description": "British actress and singer who won the Oscar for Mary Poppins and became an icon through The Sound of Music.",
+      "wikipediaSlug": "Julie_Andrews",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "person",
+      "title": "Brie Larson",
+      "year": 1989,
+      "description": "American actress who won the Oscar for Room and became the Marvel Cinematic Universe's Captain Marvel.",
+      "wikipediaSlug": "Brie_Larson",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "event",
+      "title": "Disneyland Opens in California",
+      "year": 1971,
+      "description": "Walt Disney World opened in Orlando, Florida, realizing Walt Disney's grander vision of a resort city built around a theme park.",
+      "wikipediaSlug": "Walt_Disney_World",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "event",
+      "title": "China Celebrates National Day",
+      "year": 1949,
+      "description": "Mao Zedong proclaimed the founding of the People's Republic of China in Tiananmen Square, establishing Communist rule.",
+      "wikipediaSlug": "National_Day_of_the_People%27s_Republic_of_China",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "music",
+      "title": "\"The Sound of Music\" — Julie Andrews",
+      "year": 1965,
+      "description": "Julie Andrews's joyful title song from the beloved Rodgers and Hammerstein musical film became one of the most recognizable melodies in history.",
+      "wikipediaSlug": "The_Sound_of_Music_(film)",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "movie",
+      "title": "Room",
+      "year": 2015,
+      "description": "Brie Larson won the Academy Award for her devastating performance as a mother raising her son in a tiny room where they are held captive.",
+      "wikipediaSlug": "Room_(2015_film)",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    }
+  ],
+  "10-02": [
+    {
+      "type": "person",
+      "title": "Mahatma Gandhi",
+      "year": 1869,
+      "description": "The father of the Indian independence movement who pioneered the philosophy of nonviolent civil disobedience that inspired the world.",
+      "wikipediaSlug": "Mahatma_Gandhi",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "person",
+      "title": "Groucho Marx",
+      "year": 1890,
+      "description": "American comedian, actor, and wit who led the Marx Brothers with rapid-fire wordplay and an irreverent style that defined modern comedy.",
+      "wikipediaSlug": "Groucho_Marx",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "person",
+      "title": "Sting",
+      "year": 1951,
+      "description": "British musician, frontman of The Police, and solo artist whose eclectic songwriting spans rock, jazz, and classical.",
+      "wikipediaSlug": "Sting_(musician)",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "event",
+      "title": "International Day of Non-Violence",
+      "year": 2007,
+      "description": "The UN established October 2 as the International Day of Non-Violence, marking Gandhi's birthday to promote his philosophy worldwide.",
+      "wikipediaSlug": "International_Day_of_Non-Violence",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "event",
+      "title": "Thurgood Marshall Sworn In as Supreme Court Justice",
+      "year": 1967,
+      "description": "Thurgood Marshall became the first African American Justice of the U.S. Supreme Court, a milestone in American legal history.",
+      "wikipediaSlug": "Thurgood_Marshall",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "music",
+      "title": "\"Every Breath You Take\" — The Police",
+      "year": 1983,
+      "description": "Sting's deceptively romantic-sounding ode to obsessive surveillance became the biggest hit of 1983 and one of the most misunderstood songs ever.",
+      "wikipediaSlug": "Every_Breath_You_Take",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "movie",
+      "title": "Gandhi",
+      "year": 1982,
+      "description": "Richard Attenborough's sweeping biopic starring Ben Kingsley as Mahatma Gandhi won eight Oscars including Best Picture.",
+      "wikipediaSlug": "Gandhi_(film)",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    }
+  ],
+  "10-03": [
+    {
+      "type": "person",
+      "title": "Gwen Stefani",
+      "year": 1969,
+      "description": "American singer-songwriter and fashion icon who fronted No Doubt and launched a successful solo career with 'Hollaback Girl.'",
+      "wikipediaSlug": "Gwen_Stefani",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "person",
+      "title": "Neve Campbell",
+      "year": 1973,
+      "description": "Canadian actress who became a scream queen as Sydney Prescott in the Scream franchise and starred in Party of Five.",
+      "wikipediaSlug": "Neve_Campbell",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "person",
+      "title": "Chubby Checker",
+      "year": 1941,
+      "description": "American rock and roll singer whose recording of 'The Twist' launched a worldwide dance craze that is still performed today.",
+      "wikipediaSlug": "Chubby_Checker",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "event",
+      "title": "German Reunification",
+      "year": 1990,
+      "description": "East and West Germany were officially reunified as the Federal Republic of Germany, ending four decades of Cold War division.",
+      "wikipediaSlug": "German_reunification",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "event",
+      "title": "O.J. Simpson Acquitted",
+      "year": 1995,
+      "description": "The not-guilty verdict in O.J. Simpson's murder trial brought the nation to a standstill and exposed deep racial divisions in America.",
+      "wikipediaSlug": "O._J._Simpson_murder_case",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "music",
+      "title": "\"Hollaback Girl\" — Gwen Stefani",
+      "year": 2005,
+      "description": "Gwen Stefani's abrasive, cheerleader-inspired pop single became the first digital download to sell one million copies in the U.S.",
+      "wikipediaSlug": "Hollaback_Girl",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "movie",
+      "title": "Scream",
+      "year": 1996,
+      "description": "Wes Craven's meta horror film that both satirized and revived the slasher genre, launching one of horror's most beloved franchises.",
+      "wikipediaSlug": "Scream_(1996_film)",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    }
+  ],
+  "10-04": [
+    {
+      "type": "person",
+      "title": "Susan Sarandon",
+      "year": 1946,
+      "description": "American actress and activist who won the Oscar for Dead Man Walking and starred in Thelma and Louise.",
+      "wikipediaSlug": "Susan_Sarandon",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "person",
+      "title": "Alicia Silverstone",
+      "year": 1976,
+      "description": "American actress who became the defining teen icon of the 1990s through Clueless and Aerosmith music videos.",
+      "wikipediaSlug": "Alicia_Silverstone",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "person",
+      "title": "Buster Keaton",
+      "year": 1895,
+      "description": "American silent film comedian and director celebrated for deadpan performances and breathtaking physical comedy in The General.",
+      "wikipediaSlug": "Buster_Keaton",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "event",
+      "title": "Sputnik Launched — Space Age Begins",
+      "year": 1957,
+      "description": "The Soviet Union launched Sputnik, Earth's first artificial satellite, triggering the Space Race and a new era of human civilization.",
+      "wikipediaSlug": "Sputnik_1",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "event",
+      "title": "SpaceShipOne Wins Ansari X Prize",
+      "year": 2004,
+      "description": "SpaceShipOne made its second spaceflight in five days to claim the $10 million Ansari X Prize, marking the dawn of private spaceflight.",
+      "wikipediaSlug": "SpaceShipOne",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "music",
+      "title": "\"Crazy\" — Aerosmith",
+      "year": 1994,
+      "description": "Aerosmith's power ballad featuring Alicia Silverstone in the music video became one of the band's biggest hits of the 1990s.",
+      "wikipediaSlug": "Crazy_(Aerosmith_song)",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "movie",
+      "title": "Clueless",
+      "year": 1995,
+      "description": "Amy Heckerling's sharp adaptation of Jane Austen's Emma, set in Beverly Hills high school, made Alicia Silverstone a generation's icon.",
+      "wikipediaSlug": "Clueless_(film)",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    }
+  ],
+  "10-05": [
+    {
+      "type": "person",
+      "title": "Kate Winslet",
+      "year": 1975,
+      "description": "British actress who won the Oscar for The Reader and became a global icon playing Rose in Titanic.",
+      "wikipediaSlug": "Kate_Winslet",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "person",
+      "title": "Bob Geldof",
+      "year": 1951,
+      "description": "Irish singer-songwriter who fronted the Boomtown Rats and organized Live Aid, the historic 1985 benefit concert that raised millions for famine relief.",
+      "wikipediaSlug": "Bob_Geldof",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "person",
+      "title": "Neil deGrasse Tyson",
+      "year": 1958,
+      "description": "American astrophysicist and science communicator who made the cosmos accessible to millions through Cosmos: A Spacetime Odyssey.",
+      "wikipediaSlug": "Neil_deGrasse_Tyson",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "event",
+      "title": "Steve Jobs Dies",
+      "year": 2011,
+      "description": "Apple co-founder Steve Jobs died at 56 from pancreatic cancer, prompting an outpouring of grief from around the world.",
+      "wikipediaSlug": "Death_of_Steve_Jobs",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "event",
+      "title": "The Beatles Sign With EMI",
+      "year": 1962,
+      "description": "The Beatles released their debut single 'Love Me Do' on EMI's Parlophone label, beginning the most successful recording career in history.",
+      "wikipediaSlug": "Love_Me_Do",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "music",
+      "title": "\"I Don't Want to Miss a Thing\" — Aerosmith",
+      "year": 1998,
+      "description": "Written for the Armageddon soundtrack, this soaring Aerosmith ballad became the band's only No. 1 single in the U.S.",
+      "wikipediaSlug": "I_Don%27t_Want_to_Miss_a_Thing",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "movie",
+      "title": "Titanic",
+      "year": 1997,
+      "description": "James Cameron's sweeping romance aboard the doomed ocean liner starred Leonardo DiCaprio and Kate Winslet and became the highest-grossing film of its time.",
+      "wikipediaSlug": "Titanic_(1997_film)",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    }
+  ],
+  "10-06": [
+    {
+      "type": "person",
+      "title": "Hafez al-Assad",
+      "year": 1930,
+      "description": "Syrian president who ruled for three decades with an iron fist and transformed Syria into a Ba'athist one-party state.",
+      "wikipediaSlug": "Hafez_al-Assad",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "person",
+      "title": "Elisabeth Shue",
+      "year": 1963,
+      "description": "American actress nominated for the Oscar for Leaving Las Vegas who also starred in Back to the Future II and III.",
+      "wikipediaSlug": "Elisabeth_Shue",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "person",
+      "title": "Ioan Gruffudd",
+      "year": 1973,
+      "description": "Welsh actor known for playing Horatio Hornblower on TV and Reed Richards in the Fantastic Four films.",
+      "wikipediaSlug": "Ioan_Gruffudd",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "event",
+      "title": "The Jazz Singer — First Sound Film",
+      "year": 1927,
+      "description": "The Jazz Singer premiered, becoming the first feature-length film with synchronized dialogue and marking the end of the silent film era.",
+      "wikipediaSlug": "The_Jazz_Singer_(1927_film)",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "event",
+      "title": "Yom Kippur War Begins",
+      "year": 1973,
+      "description": "Egypt and Syria launched a surprise attack on Israel on the holiest day of the Jewish calendar, triggering the 1973 Arab-Israeli War.",
+      "wikipediaSlug": "Yom_Kippur_War",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "music",
+      "title": "\"Superstition\" — Stevie Wonder",
+      "year": 1972,
+      "description": "Stevie Wonder's funky, clavinet-driven masterpiece was written for Jeff Beck but became one of Wonder's most beloved recordings.",
+      "wikipediaSlug": "Superstition_(song)",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "movie",
+      "title": "The Departed",
+      "year": 2006,
+      "description": "Martin Scorsese's layered crime thriller about police infiltrating the mob and vice versa finally won him the Academy Award for Best Director.",
+      "wikipediaSlug": "The_Departed",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    }
+  ],
+  "10-07": [
+    {
+      "type": "person",
+      "title": "Thom Yorke",
+      "year": 1968,
+      "description": "British musician and lead vocalist of Radiohead whose experimental approach to rock music has influenced a generation of artists.",
+      "wikipediaSlug": "Thom_Yorke",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "person",
+      "title": "Yo-Yo Ma",
+      "year": 1955,
+      "description": "French-American cellist of Chinese heritage who is widely regarded as the greatest living classical musician.",
+      "wikipediaSlug": "Yo-Yo_Ma",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "person",
+      "title": "Simon Cowell",
+      "year": 1959,
+      "description": "British TV personality and music executive who built a reality TV empire through American Idol, X Factor, and Britain's Got Talent.",
+      "wikipediaSlug": "Simon_Cowell",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "event",
+      "title": "U.S. Invades Afghanistan",
+      "year": 2001,
+      "description": "The United States launched Operation Enduring Freedom, beginning its military campaign in Afghanistan in response to the September 11 attacks.",
+      "wikipediaSlug": "United_States_invasion_of_Afghanistan",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "event",
+      "title": "Vladimir Putin Becomes Prime Minister",
+      "year": 1999,
+      "description": "Boris Yeltsin appointed Vladimir Putin as Prime Minister of Russia, beginning Putin's two-decade dominance of Russian politics.",
+      "wikipediaSlug": "Vladimir_Putin",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "music",
+      "title": "OK Computer — Radiohead",
+      "year": 1997,
+      "description": "Radiohead's landmark album, blending paranoid lyrics with sweeping orchestral rock, is frequently cited as the greatest album of the 1990s.",
+      "wikipediaSlug": "OK_Computer",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "movie",
+      "title": "You've Got Mail",
+      "year": 1998,
+      "description": "Nora Ephron's internet-age romantic comedy starring Tom Hanks and Meg Ryan captured the early magic of online connection.",
+      "wikipediaSlug": "You%27ve_Got_Mail",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    }
+  ],
+  "10-08": [
+    {
+      "type": "person",
+      "title": "Chevy Chase",
+      "year": 1943,
+      "description": "American comedian and original Saturday Night Live cast member known for his pratfalls and the National Lampoon's Vacation films.",
+      "wikipediaSlug": "Chevy_Chase",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "person",
+      "title": "Matt Damon",
+      "year": 1970,
+      "description": "American actor and screenwriter who won the Oscar for Good Will Hunting and became an action star through the Bourne franchise.",
+      "wikipediaSlug": "Matt_Damon",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "person",
+      "title": "Bruno Mars",
+      "year": 1985,
+      "description": "Hawaiian-American pop and R&B artist renowned for his retro musical style and electrifying live performances.",
+      "wikipediaSlug": "Bruno_Mars",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "event",
+      "title": "Great Chicago Fire Begins",
+      "year": 1871,
+      "description": "A fire broke out near the O'Leary barn in Chicago and burned for two days, destroying 3.3 square miles of the city.",
+      "wikipediaSlug": "Great_Chicago_Fire",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "event",
+      "title": "Dow Jones Drops 22% — Black Monday",
+      "year": 1987,
+      "description": "Stock markets around the world crashed on Black Monday with the Dow Jones losing 22.6% of its value in a single day.",
+      "wikipediaSlug": "Black_Monday_(1987)",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "music",
+      "title": "\"Uptown Funk\" — Mark Ronson ft. Bruno Mars",
+      "year": 2014,
+      "description": "This retro funk banger spent a record-tying 14 weeks at No. 1 on the Billboard Hot 100 and became one of the best-selling singles ever.",
+      "wikipediaSlug": "Uptown_Funk",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "movie",
+      "title": "Good Will Hunting",
+      "year": 1997,
+      "description": "Matt Damon and Ben Affleck's Oscar-winning screenplay about a mathematical genius from South Boston launched two of Hollywood's biggest careers.",
+      "wikipediaSlug": "Good_Will_Hunting",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    }
+  ],
+  "10-09": [
+    {
+      "type": "person",
+      "title": "John Lennon",
+      "year": 1940,
+      "description": "Founding member of The Beatles whose songwriting partnership with Paul McCartney produced the most celebrated body of work in rock history.",
+      "wikipediaSlug": "John_Lennon",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "person",
+      "title": "Che Guevara Dies",
+      "year": 1967,
+      "description": "Argentine Marxist revolutionary Ernesto 'Che' Guevara was executed in Bolivia, becoming an enduring symbol of rebellion and counterculture.",
+      "wikipediaSlug": "Che_Guevara",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "person",
+      "title": "Sharon Osbourne",
+      "year": 1952,
+      "description": "British TV personality and music manager who guided Ozzy Osbourne's career and became a beloved panelist on The Talk and The X Factor.",
+      "wikipediaSlug": "Sharon_Osbourne",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "event",
+      "title": "East Germany Founded",
+      "year": 1949,
+      "description": "The German Democratic Republic was proclaimed in East Berlin, completing the division of Germany into two separate states.",
+      "wikipediaSlug": "East_Germany",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "event",
+      "title": "Leif Erikson Day",
+      "year": 1000,
+      "description": "Commemorating the Norse explorer Leif Erikson who reached North America around 1000 AD — nearly 500 years before Columbus.",
+      "wikipediaSlug": "Leif_Erikson",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "music",
+      "title": "\"Imagine\" — John Lennon",
+      "year": 1971,
+      "description": "John Lennon's ethereal hymn to peace and unity became one of the most covered and recognized songs in the history of popular music.",
+      "wikipediaSlug": "Imagine_(John_Lennon_song)",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "movie",
+      "title": "Nowhere Boy",
+      "year": 2009,
+      "description": "Sam Taylor-Johnson's biopic dramatized John Lennon's teenage years in Liverpool before the formation of The Beatles.",
+      "wikipediaSlug": "Nowhere_Boy",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    }
+  ],
+  "10-10": [
+    {
+      "type": "person",
+      "title": "Giuseppe Verdi",
+      "year": 1813,
+      "description": "Italian opera composer whose works — including Rigoletto, La Traviata, and Aida — are the bedrock of the operatic repertoire.",
+      "wikipediaSlug": "Giuseppe_Verdi",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "person",
+      "title": "David Lee Roth",
+      "year": 1954,
+      "description": "American rock singer and frontman of Van Halen who defined glam metal showmanship with unmatched stage energy.",
+      "wikipediaSlug": "David_Lee_Roth",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "person",
+      "title": "Dale Earnhardt Jr.",
+      "year": 1974,
+      "description": "American NASCAR driver and son of legend Dale Earnhardt Sr. who became NASCAR's most popular driver for 15 consecutive years.",
+      "wikipediaSlug": "Dale_Earnhardt_Jr.",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "event",
+      "title": "Spiro Agnew Resigns as Vice President",
+      "year": 1973,
+      "description": "Vice President Spiro Agnew resigned and pleaded no contest to tax evasion charges, the second VP ever to resign from office.",
+      "wikipediaSlug": "Spiro_Agnew",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "event",
+      "title": "World Mental Health Day",
+      "year": 1992,
+      "description": "The World Federation for Mental Health established October 10 as World Mental Health Day to raise awareness of mental health issues globally.",
+      "wikipediaSlug": "World_Mental_Health_Day",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "music",
+      "title": "\"Jump\" — Van Halen",
+      "year": 1984,
+      "description": "Van Halen's unlikely synthesizer-driven No. 1 hit opened their landmark 1984 album and became one of the decade's defining rock songs.",
+      "wikipediaSlug": "Jump_(Van_Halen_song)",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "movie",
+      "title": "10 Things I Hate About You",
+      "year": 1999,
+      "description": "This modern adaptation of Shakespeare's The Taming of the Shrew starring Julia Stiles and Heath Ledger became the definitive 1990s teen rom-com.",
+      "wikipediaSlug": "10_Things_I_Hate_About_You",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    }
+  ],
+  "10-11": [
+    {
+      "type": "person",
+      "title": "Eleanor Roosevelt",
+      "year": 1884,
+      "description": "American diplomat and humanitarian who transformed the role of First Lady and became a driving force behind the Universal Declaration of Human Rights.",
+      "wikipediaSlug": "Eleanor_Roosevelt",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "person",
+      "title": "Luke Perry",
+      "year": 1966,
+      "description": "American actor who became a teen idol as Dylan McKay on Beverly Hills 90210 before earning critical acclaim in Once Upon a Time in Hollywood.",
+      "wikipediaSlug": "Luke_Perry",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "person",
+      "title": "Joan Cusack",
+      "year": 1962,
+      "description": "American actress and twice Oscar-nominated comedian known for Working Girl and her recurring role in the Toy Story franchise.",
+      "wikipediaSlug": "Joan_Cusack",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "event",
+      "title": "Vatican II Opens",
+      "year": 1962,
+      "description": "Pope John XXIII opened the Second Vatican Council, the most significant Catholic Church reform in centuries, modernizing liturgy and theology.",
+      "wikipediaSlug": "Second_Vatican_Council",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "event",
+      "title": "Saturday Night Live Premieres",
+      "year": 1975,
+      "description": "NBC's Saturday Night Live debuted with George Carlin as host, launching the most influential late-night comedy show in television history.",
+      "wikipediaSlug": "Saturday_Night_Live",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "music",
+      "title": "\"Mrs. Robinson\" — Simon and Garfunkel",
+      "year": 1968,
+      "description": "Written for The Graduate's soundtrack, Simon and Garfunkel's wry character study became one of the 1960s' most celebrated songs.",
+      "wikipediaSlug": "Mrs._Robinson",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "movie",
+      "title": "Once Upon a Time in Hollywood",
+      "year": 2019,
+      "description": "Quentin Tarantino's nostalgic love letter to 1969 Hollywood starred Leonardo DiCaprio, Brad Pitt, and a brief, luminous Luke Perry.",
+      "wikipediaSlug": "Once_Upon_a_Time_in_Hollywood",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    }
+  ],
+  "10-12": [
+    {
+      "type": "person",
+      "title": "Luciano Pavarotti",
+      "year": 1935,
+      "description": "Italian operatic tenor widely regarded as the greatest of the 20th century, who brought opera to stadiums and sold over 100 million records.",
+      "wikipediaSlug": "Luciano_Pavarotti",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "person",
+      "title": "Hugh Jackman",
+      "year": 1968,
+      "description": "Australian actor who defined Wolverine for an entire generation across nine Marvel films while also earning Tony and Grammy nominations.",
+      "wikipediaSlug": "Hugh_Jackman",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "person",
+      "title": "Aleister Crowley",
+      "year": 1875,
+      "description": "British occultist and founder of Thelema whose provocative persona as 'The Great Beast' made him one of the most controversial figures of the 20th century.",
+      "wikipediaSlug": "Aleister_Crowley",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "event",
+      "title": "Columbus Reaches the Americas",
+      "year": 1492,
+      "description": "Christopher Columbus made landfall on an island in the Bahamas, beginning the European encounter with the Americas.",
+      "wikipediaSlug": "Voyages_of_Christopher_Columbus",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "event",
+      "title": "USS Cole Bombing",
+      "year": 2000,
+      "description": "Al-Qaeda terrorists attacked the U.S. Navy destroyer USS Cole in Yemen's Aden harbor, killing 17 American sailors.",
+      "wikipediaSlug": "USS_Cole_bombing",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "music",
+      "title": "\"Nessun Dorma\" — Luciano Pavarotti",
+      "year": 1990,
+      "description": "Pavarotti's electrifying performance of Puccini's aria at the 1990 World Cup became the most famous classical performance of modern times.",
+      "wikipediaSlug": "Nessun_dorma",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "movie",
+      "title": "X2: X-Men United",
+      "year": 2003,
+      "description": "The acclaimed sequel featuring Hugh Jackman's Wolverine at his most ferocious is considered one of the best superhero films ever made.",
+      "wikipediaSlug": "X2_(film)",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    }
+  ],
+  "10-13": [
+    {
+      "type": "person",
+      "title": "Margaret Thatcher",
+      "year": 1925,
+      "description": "Britain's first female Prime Minister, the Iron Lady whose free-market policies reshaped British society through the 1980s.",
+      "wikipediaSlug": "Margaret_Thatcher",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "person",
+      "title": "Paul Simon",
+      "year": 1941,
+      "description": "American singer-songwriter who with Art Garfunkel created folk-rock landmarks like The Sound of Silence before his solo triumph Graceland.",
+      "wikipediaSlug": "Paul_Simon",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "person",
+      "title": "Sacha Baron Cohen",
+      "year": 1971,
+      "description": "British comedian who created boundary-pushing characters Borat, Ali G, and Bruno to expose prejudice through outrageous provocations.",
+      "wikipediaSlug": "Sacha_Baron_Cohen",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "event",
+      "title": "Chilean Miners Rescued",
+      "year": 2010,
+      "description": "All 33 miners trapped underground for 69 days in the Copiapó mining disaster were rescued to worldwide jubilation.",
+      "wikipediaSlug": "2010_Copiap%C3%B3_mining_accident",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "event",
+      "title": "King Bhumibol Adulyadej Dies",
+      "year": 2016,
+      "description": "Thailand's King Bhumibol Adulyadej died after 70 years on the throne — the longest reign of any monarch in the world.",
+      "wikipediaSlug": "Bhumibol_Adulyadej",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "music",
+      "title": "Graceland — Paul Simon",
+      "year": 1986,
+      "description": "Paul Simon's groundbreaking album blending American rock with South African township music won the Grammy for Album of the Year.",
+      "wikipediaSlug": "Graceland_(album)",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "movie",
+      "title": "The 33",
+      "year": 2015,
+      "description": "Antonio Banderas led the cast in this dramatization of the miraculous 2010 Chilean mining rescue that captivated the world.",
+      "wikipediaSlug": "The_33_(film)",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    }
+  ],
+  "10-14": [
+    {
+      "type": "person",
+      "title": "Dwight D. Eisenhower",
+      "year": 1890,
+      "description": "Supreme Commander of Allied Forces in WWII and 34th U.S. President who oversaw the D-Day invasion and the postwar economic boom.",
+      "wikipediaSlug": "Dwight_D._Eisenhower",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "person",
+      "title": "Usher",
+      "year": 1978,
+      "description": "American R&B superstar who defined the early 2000s with the diamond-certified album Confessions and his electrifying dance moves.",
+      "wikipediaSlug": "Usher_(musician)",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "person",
+      "title": "Roger Moore",
+      "year": 1927,
+      "description": "British actor who played James Bond seven times and brought a lighter, more comedic touch to the role than any other 007.",
+      "wikipediaSlug": "Roger_Moore",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "event",
+      "title": "Chuck Yeager Breaks the Sound Barrier",
+      "year": 1947,
+      "description": "Test pilot Chuck Yeager became the first person to fly faster than the speed of sound in the Bell X-1 aircraft over California.",
+      "wikipediaSlug": "Chuck_Yeager",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "event",
+      "title": "Martin Luther King Jr. Wins Nobel Peace Prize",
+      "year": 1964,
+      "description": "Dr. Martin Luther King Jr. was awarded the Nobel Peace Prize at age 35, becoming the youngest person to receive the honor at the time.",
+      "wikipediaSlug": "Martin_Luther_King_Jr.",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "music",
+      "title": "Confessions — Usher",
+      "year": 2004,
+      "description": "Usher's fourth studio album became one of the best-selling albums of the 2000s with four No. 1 singles including 'Yeah!' and 'Burn.'",
+      "wikipediaSlug": "Confessions_(Usher_album)",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "movie",
+      "title": "The Right Stuff",
+      "year": 1983,
+      "description": "Philip Kaufman's epic film about the early days of the U.S. space program opens with Chuck Yeager's historic supersonic flight.",
+      "wikipediaSlug": "The_Right_Stuff_(film)",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    }
+  ],
+  "10-15": [
+    {
+      "type": "person",
+      "title": "Friedrich Nietzsche",
+      "year": 1844,
+      "description": "German philosopher who declared 'God is dead' and whose concepts of the will to power and eternal recurrence profoundly shaped modern thought.",
+      "wikipediaSlug": "Friedrich_Nietzsche",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "person",
+      "title": "Emeril Lagasse",
+      "year": 1959,
+      "description": "American celebrity chef and restaurateur who made cooking entertaining TV with his energetic 'Bam!' catchphrase.",
+      "wikipediaSlug": "Emeril_Lagasse",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "person",
+      "title": "Tanya Tucker",
+      "year": 1958,
+      "description": "American country music singer who scored her first hit at age 13 with 'Delta Dawn' and became a country institution.",
+      "wikipediaSlug": "Tanya_Tucker",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "event",
+      "title": "Mata Hari Executed",
+      "year": 1917,
+      "description": "Dutch exotic dancer and alleged double agent Mata Hari was executed by firing squad in France, becoming history's most famous spy.",
+      "wikipediaSlug": "Mata_Hari",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "event",
+      "title": "Global Anti-War Demonstration",
+      "year": 1969,
+      "description": "The Vietnam Moratorium, the largest single-day anti-war demonstration in U.S. history, drew millions of protesters across America.",
+      "wikipediaSlug": "Vietnam_Moratorium_Committee",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "music",
+      "title": "\"Space Oddity\" — David Bowie",
+      "year": 1969,
+      "description": "Released days before the Apollo 11 moon landing, Bowie's tale of Major Tom drifting alone in space became his first major hit.",
+      "wikipediaSlug": "Space_Oddity",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "movie",
+      "title": "Apocalypse Now",
+      "year": 1979,
+      "description": "Francis Ford Coppola's hallucinatory journey up the Mekong Delta is widely regarded as the definitive film about the Vietnam War.",
+      "wikipediaSlug": "Apocalypse_Now",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    }
+  ]
+}
