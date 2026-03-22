@@ -1,0 +1,2017 @@
+{
+  "08-01": [
+    {
+      "type": "person",
+      "title": "Jerry Garcia",
+      "year": 1942,
+      "description": "Co-founder and lead guitarist of the Grateful Dead, whose improvisational genius made him the spiritual heart of the psychedelic rock movement.",
+      "wikipediaSlug": "Jerry_Garcia",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "person",
+      "title": "Tim Berners-Lee",
+      "year": 1955,
+      "description": "British computer scientist who invented the World Wide Web in 1989, fundamentally transforming how humanity shares information.",
+      "wikipediaSlug": "Tim_Berners-Lee",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "person",
+      "title": "Herman Melville",
+      "year": 1819,
+      "description": "American novelist whose seafaring epic Moby-Dick, largely ignored at publication, became one of the greatest novels in the English language.",
+      "wikipediaSlug": "Herman_Melville",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "event",
+      "title": "MTV Launches",
+      "year": 1981,
+      "description": "Music Television debuted at midnight with 'Video Killed the Radio Star,' launching a visual revolution that transformed pop culture forever.",
+      "wikipediaSlug": "MTV",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "event",
+      "title": "Concert for Bangladesh",
+      "year": 1971,
+      "description": "George Harrison organized rock music's first major benefit concert at Madison Square Garden, raising funds for famine-stricken Bangladesh.",
+      "wikipediaSlug": "The_Concert_for_Bangladesh",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "music",
+      "title": "\"Hello Nasty\" — Beastie Boys",
+      "year": 1998,
+      "description": "The Beastie Boys' fifth studio album debuted at number one in multiple countries, cementing their status as hip-hop legends with a career-defining record.",
+      "wikipediaSlug": "Hello_Nasty",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "movie",
+      "title": "Guardians of the Galaxy",
+      "year": 2014,
+      "description": "Marvel's irreverent space opera introduced a band of cosmic misfits and grossed over $773 million, proving superhero films could thrive on pure wit and heart.",
+      "wikipediaSlug": "Guardians_of_the_Galaxy_(film)",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    }
+  ],
+  "08-02": [
+    {
+      "type": "person",
+      "title": "James Baldwin",
+      "year": 1924,
+      "description": "Towering American novelist and essayist whose searing works on race, identity, and love — including Go Tell It on the Mountain — shaped the civil rights era.",
+      "wikipediaSlug": "James_Baldwin",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "person",
+      "title": "Frédéric Bartholdi",
+      "year": 1834,
+      "description": "French sculptor who designed the Statue of Liberty, gifting the world an enduring symbol of freedom that has welcomed millions of immigrants to America.",
+      "wikipediaSlug": "Frédéric_Auguste_Bartholdi",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "person",
+      "title": "Isabel Allende",
+      "year": 1942,
+      "description": "Chilean-American novelist whose magical realist masterpiece The House of the Spirits blended family saga with political turbulence to global acclaim.",
+      "wikipediaSlug": "Isabel_Allende",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "event",
+      "title": "Declaration of Independence Signed",
+      "year": 1776,
+      "description": "Members of the Continental Congress formally signed the Declaration of Independence, transforming a revolutionary ideal into a binding commitment to liberty.",
+      "wikipediaSlug": "United_States_Declaration_of_Independence",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "event",
+      "title": "Iraq Invades Kuwait",
+      "year": 1990,
+      "description": "Saddam Hussein's forces crossed into Kuwait in a predawn invasion, triggering an international crisis that led to the Gulf War.",
+      "wikipediaSlug": "Invasion_of_Kuwait",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "music",
+      "title": "\"Shout\" — Tears for Fears",
+      "year": 1985,
+      "description": "Tears for Fears reached the top of the US charts with this anthemic new wave classic, its insistent refrain becoming a defining cry of the 1980s.",
+      "wikipediaSlug": "Shout_(Tears_for_Fears_song)",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "movie",
+      "title": "The Dark Knight Rises",
+      "year": 2012,
+      "description": "Christopher Nolan concluded his Batman trilogy with an epic tale of sacrifice and resurrection that grossed over a billion dollars worldwide.",
+      "wikipediaSlug": "The_Dark_Knight_Rises",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    }
+  ],
+  "08-03": [
+    {
+      "type": "person",
+      "title": "Martha Stewart",
+      "year": 1941,
+      "description": "American businesswoman and media personality who built a lifestyle empire, transforming cooking and home design into a billion-dollar brand.",
+      "wikipediaSlug": "Martha_Stewart",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "person",
+      "title": "Martin Sheen",
+      "year": 1940,
+      "description": "Versatile American actor whose career highlight was the harrowing performance in Apocalypse Now, later revered as TV's President Bartlet on The West Wing.",
+      "wikipediaSlug": "Martin_Sheen",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "person",
+      "title": "Tony Bennett",
+      "year": 1926,
+      "description": "Legendary American singer whose velvety baritone and lifelong devotion to the Great American Songbook made him one of the most beloved vocalists in history.",
+      "wikipediaSlug": "Tony_Bennett",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "event",
+      "title": "Columbus Sets Sail",
+      "year": 1492,
+      "description": "Christopher Columbus departed Palos de la Frontera, Spain, embarking on the voyage that would bring the Old and New Worlds into permanent contact.",
+      "wikipediaSlug": "Christopher_Columbus",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "event",
+      "title": "NBA Founded",
+      "year": 1949,
+      "description": "The Basketball Association of America merged with the National Basketball League to form the NBA, creating the premier professional basketball league in the world.",
+      "wikipediaSlug": "History_of_the_NBA",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "music",
+      "title": "\"Macarena\" — Los del Río",
+      "year": 1996,
+      "description": "The Latin pop hit 'Macarena' hit number one on the US pop charts, sparking a global dance craze that became one of the most recognized songs of the decade.",
+      "wikipediaSlug": "Macarena_(song)",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "movie",
+      "title": "The Spy Who Loved Me",
+      "year": 1977,
+      "description": "Roger Moore's third outing as James Bond, featuring the iconic Lotus Esprit submarine car and villain Jaws, became one of the most beloved 007 adventures.",
+      "wikipediaSlug": "The_Spy_Who_Loved_Me_(film)",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    }
+  ],
+  "08-04": [
+    {
+      "type": "person",
+      "title": "Louis Armstrong",
+      "year": 1901,
+      "description": "Jazz trumpeter and vocalist from New Orleans whose exuberant improvisation and gravelly voice made him one of the most influential musicians in American history.",
+      "wikipediaSlug": "Louis_Armstrong",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "person",
+      "title": "Barack Obama",
+      "year": 1961,
+      "description": "44th President of the United States and the first African American to hold the office, whose election in 2008 represented a historic turning point in American politics.",
+      "wikipediaSlug": "Barack_Obama",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "person",
+      "title": "Percy Bysshe Shelley",
+      "year": 1792,
+      "description": "Visionary Romantic poet whose radical works — including Ozymandias and Prometheus Unbound — challenged authority and celebrated the human spirit.",
+      "wikipediaSlug": "Percy_Bysshe_Shelley",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "event",
+      "title": "Anne Frank Captured",
+      "year": 1944,
+      "description": "The Gestapo discovered the secret annex in Amsterdam where Anne Frank and seven others had hidden for over two years, ending one of history's most poignant stories of survival.",
+      "wikipediaSlug": "Anne_Frank",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "event",
+      "title": "Britain Enters WWI",
+      "year": 1914,
+      "description": "Following Germany's invasion of neutral Belgium, the United Kingdom declared war and the British Empire was drawn into the most devastating conflict the world had yet seen.",
+      "wikipediaSlug": "United_Kingdom_in_World_War_I",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "music",
+      "title": "\"What's Going On\" — Marvin Gaye",
+      "year": 1971,
+      "description": "Marvin Gaye's socially conscious masterpiece challenged Motown's pop formula with a lush, jazz-inflected soul suite about war, poverty, and the need for love.",
+      "wikipediaSlug": "What%27s_Going_On_(album)",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "movie",
+      "title": "The Dark Knight",
+      "year": 2008,
+      "description": "Christopher Nolan's operatic superhero film featuring Heath Ledger's indelible Joker shattered box office records and redefined what comic-book cinema could achieve.",
+      "wikipediaSlug": "The_Dark_Knight_(film)",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    }
+  ],
+  "08-05": [
+    {
+      "type": "person",
+      "title": "Marilyn Monroe",
+      "year": 1926,
+      "description": "Luminous Hollywood actress and cultural icon whose magnetic screen presence in films like Some Like It Hot made her the definitive star of the 1950s.",
+      "wikipediaSlug": "Marilyn_Monroe",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "person",
+      "title": "Neil Armstrong",
+      "year": 1930,
+      "description": "American astronaut who became the first human to walk on the Moon on July 20, 1969, speaking the immortal words 'one small step for man.'",
+      "wikipediaSlug": "Neil_Armstrong",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "person",
+      "title": "Guy de Maupassant",
+      "year": 1850,
+      "description": "French master of the short story whose precisely observed tales of Norman peasants and Parisian society set the standard for the modern short fiction form.",
+      "wikipediaSlug": "Guy_de_Maupassant",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "event",
+      "title": "First Transatlantic Telegraph Cable",
+      "year": 1858,
+      "description": "The first telegraph message was transmitted through the Atlantic Cable, connecting Europe and North America and shrinking the world in an instant.",
+      "wikipediaSlug": "Transatlantic_telegraph_cable",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "event",
+      "title": "American Bandstand Premieres",
+      "year": 1957,
+      "description": "Dick Clark's American Bandstand debuted on national television, becoming the longest-running variety show in TV history and launching countless music careers.",
+      "wikipediaSlug": "American_Bandstand",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "music",
+      "title": "\"Born in the USA\" — Bruce Springsteen",
+      "year": 1984,
+      "description": "Springsteen launched the massive Born in the USA tour from New Jersey, as his anthem of working-class disillusionment paradoxically became the summer's biggest patriotic anthem.",
+      "wikipediaSlug": "Born_in_the_U.S.A.",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "movie",
+      "title": "The Usual Suspects",
+      "year": 1995,
+      "description": "Bryan Singer's labyrinthine crime thriller with its iconic twist ending won Oscars for Kevin Spacey and writer Christopher McQuarrie, becoming an instant classic.",
+      "wikipediaSlug": "The_Usual_Suspects",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    }
+  ],
+  "08-06": [
+    {
+      "type": "person",
+      "title": "Andy Warhol",
+      "year": 1928,
+      "description": "Pop art's supreme provocateur whose Campbell's Soup cans and celebrity silkscreens blurred the line between commercial culture and high art.",
+      "wikipediaSlug": "Andy_Warhol",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "person",
+      "title": "Alexander Fleming",
+      "year": 1881,
+      "description": "Scottish bacteriologist who discovered penicillin in 1928 after noticing mold killing bacteria in a petri dish, saving hundreds of millions of lives.",
+      "wikipediaSlug": "Alexander_Fleming",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "person",
+      "title": "Lucille Ball",
+      "year": 1911,
+      "description": "American comedy legend whose I Love Lucy revolutionized television, making her the first woman to run a major Hollywood studio and a trailblazer for women in entertainment.",
+      "wikipediaSlug": "Lucille_Ball",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "event",
+      "title": "Atomic Bomb Dropped on Hiroshima",
+      "year": 1945,
+      "description": "The United States dropped the first atomic bomb ever used in warfare on Hiroshima, Japan, instantly killing over 70,000 people and ushering in the nuclear age.",
+      "wikipediaSlug": "Atomic_bombings_of_Hiroshima_and_Nagasaki",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "event",
+      "title": "Jamaica Independence",
+      "year": 1962,
+      "description": "Jamaica became an independent nation after 300 years of British rule, celebrating with the vibrant spirit that would spread its music and culture across the world.",
+      "wikipediaSlug": "Jamaica",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "music",
+      "title": "\"Help!\" — The Beatles",
+      "year": 1965,
+      "description": "The Beatles released their fifth album Help! in the UK, featuring the timeless ballad 'Yesterday' and earning the first rock Album of the Year Grammy nomination.",
+      "wikipediaSlug": "Help!_(album)",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "movie",
+      "title": "Pink Floyd The Wall",
+      "year": 1982,
+      "description": "Alan Parker's surreal, animated film adaptation of Pink Floyd's landmark concept album took rock cinema to a dark and visionary new extreme.",
+      "wikipediaSlug": "Pink_Floyd_%E2%80%93_The_Wall_(film)",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    }
+  ],
+  "08-07": [
+    {
+      "type": "person",
+      "title": "Mata Hari",
+      "year": 1876,
+      "description": "Dutch exotic dancer and courtesan executed as a German spy during WWI, whose name became a byword for the seductive female intelligence operative.",
+      "wikipediaSlug": "Mata_Hari",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "person",
+      "title": "Charlize Theron",
+      "year": 1975,
+      "description": "South African actress who won the Academy Award for her transformative performance in Monster, renowned for her fierce range across action and dramatic roles.",
+      "wikipediaSlug": "Charlize_Theron",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "person",
+      "title": "Abebe Bikila",
+      "year": 1932,
+      "description": "Ethiopian long-distance runner who became the first African Olympic marathon champion in Rome 1960, running the entire course barefoot.",
+      "wikipediaSlug": "Abebe_Bikila",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "event",
+      "title": "Philippe Petit's High-Wire Walk",
+      "year": 1974,
+      "description": "French aerialist Philippe Petit walked a tightrope between the Twin Towers of the World Trade Center, 1,350 feet above New York City, in the artistic crime of the century.",
+      "wikipediaSlug": "Philippe_Petit",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "event",
+      "title": "Guadalcanal Landing",
+      "year": 1942,
+      "description": "US Marines launched the first major Allied offensive in the Pacific by landing on Guadalcanal, beginning a brutal six-month campaign to wrest the island from Japan.",
+      "wikipediaSlug": "Guadalcanal_campaign",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "music",
+      "title": "\"Purple Rain\" — Prince",
+      "year": 1984,
+      "description": "Prince's epic title track from his semi-autobiographical film became one of the greatest guitar ballads ever recorded, cementing him as the defining artist of the decade.",
+      "wikipediaSlug": "Purple_Rain_(song)",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "movie",
+      "title": "Mary Poppins",
+      "year": 1964,
+      "description": "Walt Disney's magical blend of live action and animation starring Julie Andrews as the world's most enchanting nanny won five Academy Awards including Best Actress.",
+      "wikipediaSlug": "Mary_Poppins_(film)",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    }
+  ],
+  "08-08": [
+    {
+      "type": "person",
+      "title": "Roger Federer",
+      "year": 1981,
+      "description": "Swiss tennis maestro widely regarded as one of the greatest players in history, winning 20 Grand Slam titles with an effortlessly elegant style.",
+      "wikipediaSlug": "Roger_Federer",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "person",
+      "title": "Dustin Hoffman",
+      "year": 1937,
+      "description": "Method actor whose transformative performances in The Graduate, Midnight Cowboy, and Rain Man redefined American screen acting over five decades.",
+      "wikipediaSlug": "Dustin_Hoffman",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "person",
+      "title": "Nigel Mansell",
+      "year": 1953,
+      "description": "British Formula One world champion whose aggressive driving style and fierce rivalry with Ayrton Senna made him one of the most thrilling drivers of the 1980s and 90s.",
+      "wikipediaSlug": "Nigel_Mansell",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "event",
+      "title": "Nixon Announces Resignation",
+      "year": 1974,
+      "description": "Facing near-certain impeachment over Watergate, Richard Nixon announced his resignation as US President — the first and only president to resign from the office.",
+      "wikipediaSlug": "Richard_Nixon",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "event",
+      "title": "ASEAN Founded",
+      "year": 1967,
+      "description": "Indonesia, Malaysia, the Philippines, Singapore, and Thailand formed the Association of Southeast Asian Nations, creating a powerful regional bloc of over 600 million people.",
+      "wikipediaSlug": "ASEAN",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "music",
+      "title": "\"Abbey Road\" album cover photographed",
+      "year": 1969,
+      "description": "Photographer Iain Macmillan captured the Beatles crossing a zebra crossing on Abbey Road, creating the most iconic album cover in rock history in just ten minutes.",
+      "wikipediaSlug": "Abbey_Road",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "movie",
+      "title": "The Beijing Olympics Opening Ceremony",
+      "year": 2008,
+      "description": "China opened the 2008 Summer Olympics with a breathtaking ceremony involving 15,000 performers, showcasing its history and announcing its arrival as a global superpower.",
+      "wikipediaSlug": "2008_Summer_Olympics_opening_ceremony",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    }
+  ],
+  "08-09": [
+    {
+      "type": "person",
+      "title": "Whitney Houston",
+      "year": 1963,
+      "description": "American singer with a vocal instrument of extraordinary power and range whose recordings of 'I Will Always Love You' and 'Greatest Love of All' became timeless classics.",
+      "wikipediaSlug": "Whitney_Houston",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "person",
+      "title": "Gillian Anderson",
+      "year": 1968,
+      "description": "American-British actress who gained worldwide fame as FBI Special Agent Dana Scully in The X-Files and later stunned audiences as Margaret Thatcher in The Crown.",
+      "wikipediaSlug": "Gillian_Anderson",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "person",
+      "title": "Amedeo Avogadro",
+      "year": 1776,
+      "description": "Italian physicist whose Avogadro's law revolutionized chemistry by establishing the relationship between gas volumes and the number of molecules they contain.",
+      "wikipediaSlug": "Amedeo_Avogadro",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "event",
+      "title": "Atomic Bomb Dropped on Nagasaki",
+      "year": 1945,
+      "description": "The United States dropped a second atomic bomb, 'Fat Man,' on the Japanese city of Nagasaki, killing 40,000 people instantly and hastening Japan's surrender.",
+      "wikipediaSlug": "Atomic_bombings_of_Hiroshima_and_Nagasaki",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "event",
+      "title": "Nixon Resigns (Gerald Ford Becomes President)",
+      "year": 1974,
+      "description": "Gerald Ford was sworn in as the 38th President of the United States, the only person to serve as both Vice President and President without being elected to either office.",
+      "wikipediaSlug": "Gerald_Ford",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "music",
+      "title": "\"I Will Always Love You\" — Whitney Houston",
+      "year": 1992,
+      "description": "Whitney Houston's seismic reworking of Dolly Parton's song for The Bodyguard soundtrack became one of the best-selling singles of all time.",
+      "wikipediaSlug": "I_Will_Always_Love_You_(Whitney_Houston_song)",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "movie",
+      "title": "The Bodyguard",
+      "year": 1992,
+      "description": "Kevin Costner and Whitney Houston's romantic thriller became one of the most commercially successful films of 1992, powered by Houston's legendary vocal performance.",
+      "wikipediaSlug": "The_Bodyguard_(1992_film)",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    }
+  ],
+  "08-10": [
+    {
+      "type": "person",
+      "title": "Herbert Hoover",
+      "year": 1874,
+      "description": "31st President of the United States whose presidency was overshadowed by the Great Depression, though he had earlier distinguished himself as a brilliant humanitarian administrator.",
+      "wikipediaSlug": "Herbert_Hoover",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "person",
+      "title": "Antonio Banderas",
+      "year": 1960,
+      "description": "Spanish actor and director who became an international star through his collaborations with Pedro Almodóvar before captivating Hollywood in films like The Mask of Zorro.",
+      "wikipediaSlug": "Antonio_Banderas",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "person",
+      "title": "Leo Fender",
+      "year": 1909,
+      "description": "American inventor and entrepreneur who created the Telecaster and Stratocaster electric guitars, instruments that became the backbone of rock and roll.",
+      "wikipediaSlug": "Leo_Fender",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "event",
+      "title": "Smithsonian Institution Founded",
+      "year": 1846,
+      "description": "The United States Congress established the Smithsonian Institution, which grew into the world's largest museum and research complex with 19 museums.",
+      "wikipediaSlug": "Smithsonian_Institution",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "event",
+      "title": "Electric Guitar Patented",
+      "year": 1937,
+      "description": "The US Patent Office granted patent no. 2,089,171 for the electric guitar, officially recognizing the instrument that would soon power rock and roll into existence.",
+      "wikipediaSlug": "Electric_guitar",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "music",
+      "title": "\"Whole Lotta Love\" — Led Zeppelin",
+      "year": 1969,
+      "description": "Led Zeppelin released their explosive second album featuring this volcanic riff-driven classic that redefined hard rock and became one of the most sampled songs in history.",
+      "wikipediaSlug": "Whole_Lotta_Love",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "movie",
+      "title": "The Wizard of Oz",
+      "year": 1939,
+      "description": "Victor Fleming's Technicolor fantasy starring Judy Garland as Dorothy became one of the most beloved films ever made, introducing 'Somewhere Over the Rainbow' to the world.",
+      "wikipediaSlug": "The_Wizard_of_Oz_(1939_film)",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    }
+  ],
+  "08-11": [
+    {
+      "type": "person",
+      "title": "Steve Wozniak",
+      "year": 1950,
+      "description": "Brilliant American engineer who co-founded Apple Computer with Steve Jobs, designing the Apple I and Apple II computers that launched the personal computer revolution.",
+      "wikipediaSlug": "Steve_Wozniak",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "person",
+      "title": "Viola Davis",
+      "year": 1965,
+      "description": "Award-winning actress who achieved the rare EGOT distinction and won an Oscar for Fences, celebrated for bringing fierce emotional truth to every role she inhabits.",
+      "wikipediaSlug": "Viola_Davis",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "person",
+      "title": "Chris Hemsworth",
+      "year": 1983,
+      "description": "Australian actor who brought thunder and charisma to Marvel's Thor, becoming one of the most bankable action stars of his generation.",
+      "wikipediaSlug": "Chris_Hemsworth",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "event",
+      "title": "Hedy Lamarr Patents Frequency-Hopping",
+      "year": 1942,
+      "description": "Actress Hedy Lamarr and composer George Antheil patented a frequency-hopping spread spectrum system that decades later became the foundation for Wi-Fi and Bluetooth.",
+      "wikipediaSlug": "Hedy_Lamarr",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "event",
+      "title": "West Side Story World Premiere",
+      "year": 1957,
+      "description": "Leonard Bernstein and Stephen Sondheim's groundbreaking musical West Side Story had its world premiere in Washington D.C., revolutionizing the American stage musical.",
+      "wikipediaSlug": "West_Side_Story",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "music",
+      "title": "\"Lollapalooza\" Festival Debuts",
+      "year": 1991,
+      "description": "Perry Farrell's Lollapalooza launched its inaugural traveling festival, crystallizing alternative rock's commercial breakthrough and defining a generation of music culture.",
+      "wikipediaSlug": "Lollapalooza",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "movie",
+      "title": "Planet of the Apes",
+      "year": 1968,
+      "description": "Franklin J. Schaffner's landmark science fiction film starring Charlton Heston delivered one of cinema's most iconic twist endings and launched a beloved franchise.",
+      "wikipediaSlug": "Planet_of_the_Apes_(1968_film)",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    }
+  ],
+  "08-12": [
+    {
+      "type": "person",
+      "title": "Alfred Hitchcock",
+      "year": 1899,
+      "description": "The Master of Suspense whose psychological thrillers Psycho, Rear Window, and Vertigo redefined cinema and cemented his place as one of the most influential filmmakers in history.",
+      "wikipediaSlug": "Alfred_Hitchcock",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "person",
+      "title": "Mark Knopfler",
+      "year": 1949,
+      "description": "Scottish-English guitarist and singer-songwriter whose fingerpicking style with Dire Straits produced the landmark album Brothers in Arms and the iconic riff of 'Sultans of Swing.'",
+      "wikipediaSlug": "Mark_Knopfler",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "person",
+      "title": "Joe Shuster",
+      "year": 1914,
+      "description": "Canadian-American comic book artist who co-created Superman with Jerry Siegel in 1933, laying the foundation for the entire superhero genre.",
+      "wikipediaSlug": "Joe_Shuster",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "event",
+      "title": "Thomas Edison Invents the Phonograph",
+      "year": 1877,
+      "description": "Thomas Edison announced his invention of the phonograph, the first device capable of recording and replaying sound, transforming how humanity would experience music.",
+      "wikipediaSlug": "Phonograph",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "event",
+      "title": "Japan Airlines Flight 123 Crash",
+      "year": 1985,
+      "description": "A Boeing 747 crashed into Mount Osutaka in Japan killing 520 of 524 passengers, making it the deadliest single-aircraft accident in aviation history.",
+      "wikipediaSlug": "Japan_Air_Lines_Flight_123",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "music",
+      "title": "\"Sultans of Swing\" — Dire Straits",
+      "year": 1978,
+      "description": "Dire Straits released their eponymous debut album featuring this understated guitar classic about jazz musicians playing for no one, launching one of rock's most distinctive careers.",
+      "wikipediaSlug": "Dire_Straits_(album)",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "movie",
+      "title": "Psycho",
+      "year": 1960,
+      "description": "Alfred Hitchcock's shocking masterpiece about a roadside motel and its disturbed proprietor redefined horror and changed Hollywood storytelling forever.",
+      "wikipediaSlug": "Psycho_(1960_film)",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    }
+  ],
+  "08-13": [
+    {
+      "type": "person",
+      "title": "Fidel Castro",
+      "year": 1926,
+      "description": "Cuban revolutionary leader who overthrew the Batista dictatorship in 1959 and governed the island as the Western Hemisphere's only communist state for nearly five decades.",
+      "wikipediaSlug": "Fidel_Castro",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "person",
+      "title": "Annie Oakley",
+      "year": 1860,
+      "description": "American sharpshooter and exhibition star whose extraordinary marksmanship in Buffalo Bill's Wild West show made her one of the first female superstars in American entertainment.",
+      "wikipediaSlug": "Annie_Oakley",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "person",
+      "title": "Bert Lahr",
+      "year": 1895,
+      "description": "American actor immortalized as the Cowardly Lion in The Wizard of Oz, whose blend of physical comedy and genuine pathos created one of cinema's most enduring characters.",
+      "wikipediaSlug": "Bert_Lahr",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "event",
+      "title": "Berlin Wall Construction Begins",
+      "year": 1961,
+      "description": "East Germany began sealing the border between East and West Berlin with barbed wire, building the wall that would stand as the Cold War's most potent symbol for 28 years.",
+      "wikipediaSlug": "Berlin_Wall",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "event",
+      "title": "Fall of Tenochtitlan",
+      "year": 1521,
+      "description": "Spanish conquistador Hernán Cortés captured Tenochtitlan after a 93-day siege, ending the Aztec Empire and marking the beginning of Spanish colonial rule in Mexico.",
+      "wikipediaSlug": "Fall_of_Tenochtitlan",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "music",
+      "title": "\"Thriller\" — Michael Jackson",
+      "year": 1982,
+      "description": "Michael Jackson's Thriller album was in its final recording stages, destined to become the best-selling album of all time at over 66 million copies sold worldwide.",
+      "wikipediaSlug": "Thriller_(Michael_Jackson_album)",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "movie",
+      "title": "The Wizard of Oz Hollywood Premiere",
+      "year": 1939,
+      "description": "Judy Garland's iconic fantasy film had its Hollywood premiere, and the song 'Somewhere Over the Rainbow' would win the Academy Award for Best Original Song.",
+      "wikipediaSlug": "The_Wizard_of_Oz_(1939_film)",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    }
+  ],
+  "08-14": [
+    {
+      "type": "person",
+      "title": "Magic Johnson",
+      "year": 1959,
+      "description": "Transformative NBA point guard whose dazzling no-look passes and five championship rings with the Los Angeles Lakers made him one of the most electrifying players in basketball history.",
+      "wikipediaSlug": "Magic_Johnson",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "person",
+      "title": "Steve Martin",
+      "year": 1945,
+      "description": "American comedian, actor, playwright, and author who pioneered absurdist stand-up comedy in the 1970s before transitioning to beloved film roles in Roxanne and LA Story.",
+      "wikipediaSlug": "Steve_Martin",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "person",
+      "title": "Gary Larson",
+      "year": 1950,
+      "description": "American cartoonist whose single-panel comic strip The Far Side ran from 1980 to 1995, becoming one of the most beloved and offbeat comic strips in American history.",
+      "wikipediaSlug": "Gary_Larson",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "event",
+      "title": "Social Security Act Signed",
+      "year": 1935,
+      "description": "President Franklin D. Roosevelt signed the Social Security Act into law, establishing the landmark government pension program that transformed American social policy.",
+      "wikipediaSlug": "Social_Security_Act",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "event",
+      "title": "Japan Surrenders in WWII",
+      "year": 1945,
+      "description": "Emperor Hirohito announced Japan's unconditional surrender in a radio broadcast, ending World War II in the Pacific and six years of global conflict.",
+      "wikipediaSlug": "Victory_over_Japan_Day",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "music",
+      "title": "\"One\" — U2",
+      "year": 1992,
+      "description": "U2 released Achtung Baby featuring this deeply moving meditation on love and division, widely considered one of the greatest songs the band ever recorded.",
+      "wikipediaSlug": "One_(U2_song)",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "movie",
+      "title": "The 40-Year-Old Virgin",
+      "year": 2005,
+      "description": "Judd Apatow's comedy debut launched Steve Carell as a major film star and sparked a decade of R-rated comedies combining raunchy humor with genuine heart.",
+      "wikipediaSlug": "The_40-Year-Old_Virgin",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    }
+  ],
+  "08-15": [
+    {
+      "type": "person",
+      "title": "Napoleon Bonaparte",
+      "year": 1769,
+      "description": "French military genius and emperor whose campaigns reshaped Europe, whose legal code still governs much of the Western world, and whose ambition ended in famous exile.",
+      "wikipediaSlug": "Napoleon",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "person",
+      "title": "Julia Child",
+      "year": 1912,
+      "description": "American cooking teacher and author whose PBS series The French Chef introduced French cuisine to everyday Americans and revolutionized the way television food programming was made.",
+      "wikipediaSlug": "Julia_Child",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "person",
+      "title": "Madonna",
+      "year": 1958,
+      "description": "The Queen of Pop whose boundary-pushing music, provocative imagery, and relentless reinvention made her one of the best-selling music artists in history with over 300 million records sold.",
+      "wikipediaSlug": "Madonna",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "event",
+      "title": "Woodstock Music Festival Begins",
+      "year": 1969,
+      "description": "Over half a million people gathered on Max Yasgur's farm in upstate New York for three days of peace and music that defined a generation and became a cultural legend.",
+      "wikipediaSlug": "Woodstock",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "event",
+      "title": "India Gains Independence",
+      "year": 1947,
+      "description": "India achieved independence from nearly 200 years of British rule as Jawaharlal Nehru delivered his famous 'Tryst with Destiny' speech at midnight in New Delhi.",
+      "wikipediaSlug": "Indian_independence_movement",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "music",
+      "title": "\"Like a Virgin\" — Madonna",
+      "year": 1984,
+      "description": "Madonna's controversial title track from her second album topped the US Billboard Hot 100, launched a global superstar, and set the provocative tone for her entire career.",
+      "wikipediaSlug": "Like_a_Virgin_(song)",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "movie",
+      "title": "The Princess Bride",
+      "year": 1987,
+      "description": "Rob Reiner's fairy tale adventure combining romance, comedy, and swashbuckling derring-do became a cult classic whose dialogue is endlessly quoted by fans decades later.",
+      "wikipediaSlug": "The_Princess_Bride_(film)",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    }
+  ],
+  "08-16": [
+    {
+      "type": "person",
+      "title": "James Cameron",
+      "year": 1954,
+      "description": "Canadian filmmaker whose visionary blockbusters Titanic and Avatar became the two highest-grossing films of all time, while his technical innovations transformed cinema itself.",
+      "wikipediaSlug": "James_Cameron",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "person",
+      "title": "T.E. Lawrence",
+      "year": 1888,
+      "description": "British officer known as Lawrence of Arabia whose leadership of the Arab Revolt in WWI made him a legend, later immortalized in David Lean's 1962 epic film.",
+      "wikipediaSlug": "T._E._Lawrence",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "person",
+      "title": "Menachem Begin",
+      "year": 1913,
+      "description": "Israeli statesman and former underground leader who shared the 1978 Nobel Peace Prize with Anwar Sadat after signing the historic Egypt–Israel peace treaty.",
+      "wikipediaSlug": "Menachem_Begin",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "event",
+      "title": "Elvis Presley Dies",
+      "year": 1977,
+      "description": "The King of Rock and Roll was found dead at his Graceland estate at age 42, triggering global mourning and cementing his immortal status in popular culture.",
+      "wikipediaSlug": "Elvis_Presley",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "event",
+      "title": "Klondike Gold Rush Begins",
+      "year": 1896,
+      "description": "Gold was discovered in the Klondike region of Canada's Yukon, triggering a frenzied stampede of prospectors and permanently transforming the Canadian northwest.",
+      "wikipediaSlug": "Klondike_Gold_Rush",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "music",
+      "title": "\"Hound Dog\" / \"Don't Be Cruel\" — Elvis Presley",
+      "year": 1956,
+      "description": "Elvis Presley's double-sided single hit number one and stayed there for eleven weeks, the best-performing single in chart history at that time.",
+      "wikipediaSlug": "Hound_Dog/Don%27t_Be_Cruel",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "movie",
+      "title": "Jailhouse Rock",
+      "year": 1957,
+      "description": "Elvis Presley's third film featured his most electrifying on-screen performance and the landmark title-song sequence that showed rock and roll could be pure cinema.",
+      "wikipediaSlug": "Jailhouse_Rock_(film)",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    }
+  ],
+  "08-17": [
+    {
+      "type": "person",
+      "title": "Robert De Niro",
+      "year": 1943,
+      "description": "Method acting legend whose collaborations with Martin Scorsese — Taxi Driver, Raging Bull, Goodfellas — produced some of the most searing performances in American cinema.",
+      "wikipediaSlug": "Robert_De_Niro",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "person",
+      "title": "Davy Crockett",
+      "year": 1786,
+      "description": "Frontiersman, folk hero, and Tennessee congressman whose larger-than-life persona as the 'King of the Wild Frontier' made him one of the first American folk legends.",
+      "wikipediaSlug": "Davy_Crockett",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "person",
+      "title": "Mae West",
+      "year": 1893,
+      "description": "American actress, playwright, and comedian whose bold sexuality and sharp wit challenged censors and made her one of Hollywood's most iconic and subversive stars.",
+      "wikipediaSlug": "Mae_West",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "event",
+      "title": "First Commercial Steamboat Voyage",
+      "year": 1807,
+      "description": "Robert Fulton's North River Steamboat made its inaugural commercial journey from New York City to Albany, inaugurating the age of steam-powered river transportation.",
+      "wikipediaSlug": "North_River_Steamboat",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "event",
+      "title": "Michael Phelps Wins Eight Gold Medals",
+      "year": 2008,
+      "description": "Michael Phelps claimed his eighth gold medal at the Beijing Olympics, becoming the first athlete in history to win eight medals at a single Games.",
+      "wikipediaSlug": "Michael_Phelps",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "music",
+      "title": "\"Appetite for Destruction\" — Guns N' Roses",
+      "year": 1987,
+      "description": "Guns N' Roses released their explosive debut album on this date, and though it took over a year to catch fire, it eventually became the best-selling debut album in US history.",
+      "wikipediaSlug": "Appetite_for_Destruction",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "movie",
+      "title": "Raging Bull",
+      "year": 1980,
+      "description": "Martin Scorsese's uncompromising black-and-white portrait of boxer Jake LaMotta, with Robert De Niro's staggering performance, is frequently cited as the greatest film of the 1980s.",
+      "wikipediaSlug": "Raging_Bull",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    }
+  ],
+  "08-18": [
+    {
+      "type": "person",
+      "title": "Robert Redford",
+      "year": 1936,
+      "description": "American actor, director, and environmentalist whose natural charisma lit up Butch Cassidy and the Sundance Kid and All the President's Men before he founded the Sundance Film Festival.",
+      "wikipediaSlug": "Robert_Redford",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "person",
+      "title": "Patrick Swayze",
+      "year": 1952,
+      "description": "American actor and dancer whose performances in Dirty Dancing and Ghost made him one of the defining romantic stars of the 1980s and early 1990s.",
+      "wikipediaSlug": "Patrick_Swayze",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "person",
+      "title": "Roman Polanski",
+      "year": 1933,
+      "description": "French-Polish filmmaker whose masterworks Rosemary's Baby, Chinatown, and The Pianist established him as one of cinema's most technically brilliant and controversial directors.",
+      "wikipediaSlug": "Roman_Polanski",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "event",
+      "title": "Women's Suffrage Amendment Ratified",
+      "year": 1920,
+      "description": "Tennessee became the 36th state to ratify the 19th Amendment, giving American women the right to vote after a 72-year suffrage campaign.",
+      "wikipediaSlug": "Nineteenth_Amendment_to_the_United_States_Constitution",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "event",
+      "title": "Beatles Play First Concert in Hamburg",
+      "year": 1960,
+      "description": "The Beatles gave their first performance as a group at the Indra Club in Hamburg, Germany, beginning a grueling apprenticeship that forged them into the greatest band in history.",
+      "wikipediaSlug": "The_Beatles_in_Hamburg",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "music",
+      "title": "\"(I've Had) The Time of My Life\" — Bill Medley & Jennifer Warnes",
+      "year": 1987,
+      "description": "This Oscar-winning duet from the Dirty Dancing soundtrack became one of the most beloved songs of the decade, perfectly capturing the film's romantic electricity.",
+      "wikipediaSlug": "(I've_Had)_The_Time_of_My_Life",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "movie",
+      "title": "Dirty Dancing",
+      "year": 1987,
+      "description": "This romantic drama starring Patrick Swayze and Jennifer Grey became a cultural phenomenon, grossing $214 million worldwide on a budget of just $6 million.",
+      "wikipediaSlug": "Dirty_Dancing",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    }
+  ],
+  "08-19": [
+    {
+      "type": "person",
+      "title": "Bill Clinton",
+      "year": 1946,
+      "description": "42nd President of the United States whose two terms saw economic prosperity and global engagement, though his presidency was also marked by the Monica Lewinsky scandal.",
+      "wikipediaSlug": "Bill_Clinton",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "person",
+      "title": "Gene Roddenberry",
+      "year": 1921,
+      "description": "American screenwriter and producer who created Star Trek in 1966, crafting a vision of a hopeful, diverse, post-scarcity future that has inspired generations of scientists and dreamers.",
+      "wikipediaSlug": "Gene_Roddenberry",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "person",
+      "title": "Ogden Nash",
+      "year": 1902,
+      "description": "American poet famous for his playfully subversive light verse filled with elaborate puns and impossible rhymes that made him one of America's best-loved humorous writers.",
+      "wikipediaSlug": "Ogden_Nash",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "event",
+      "title": "Google IPO",
+      "year": 2004,
+      "description": "Google Inc. raised $1.66 billion in its initial public offering, conducted via a novel Dutch auction, marking the beginning of one of the most valuable companies in history.",
+      "wikipediaSlug": "Google",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "event",
+      "title": "Soviet Coup Against Gorbachev",
+      "year": 1991,
+      "description": "Communist hardliners placed Soviet leader Mikhail Gorbachev under house arrest in an attempted coup, an action that ultimately accelerated the Soviet Union's collapse.",
+      "wikipediaSlug": "1991_Soviet_coup_d%27état_attempt",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "music",
+      "title": "\"Woodstock\" — Crosby, Stills, Nash & Young",
+      "year": 1970,
+      "description": "Written by Joni Mitchell and performed by CSNY, this anthemic rock song mythologized the August 1969 festival and became the definitive musical monument to the hippie era.",
+      "wikipediaSlug": "Woodstock_(Joni_Mitchell_song)",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "movie",
+      "title": "Apocalypse Now",
+      "year": 1979,
+      "description": "Francis Ford Coppola's hallucinatory Vietnam War epic, adapted from Heart of Darkness, swept the Cannes Palme d'Or and stands as one of the most ambitious films ever made.",
+      "wikipediaSlug": "Apocalypse_Now",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    }
+  ],
+  "08-20": [
+    {
+      "type": "person",
+      "title": "Robert Plant",
+      "year": 1948,
+      "description": "English singer and lyricist whose banshee wail and mystical poetry as Led Zeppelin's frontman defined hard rock and remains the benchmark for all rock vocalists.",
+      "wikipediaSlug": "Robert_Plant",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "person",
+      "title": "Orville Wright",
+      "year": 1871,
+      "description": "American inventor who, along with his brother Wilbur, achieved the first powered, sustained, and controlled airplane flight at Kitty Hawk on December 17, 1903.",
+      "wikipediaSlug": "Orville_Wright",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "person",
+      "title": "Wilt Chamberlain",
+      "year": 1936,
+      "description": "NBA legend who scored a record 100 points in a single game and holds numerous basketball records that have never been approached, the most dominant scorer in league history.",
+      "wikipediaSlug": "Wilt_Chamberlain",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "event",
+      "title": "Churchill's 'Never Was So Much Owed' Speech",
+      "year": 1940,
+      "description": "Winston Churchill delivered his famous tribute to the RAF pilots of the Battle of Britain: 'Never in the field of human conflict was so much owed by so many to so few.'",
+      "wikipediaSlug": "The_Few",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "event",
+      "title": "NASA Launches Viking 1",
+      "year": 1975,
+      "description": "NASA launched Viking 1 toward Mars; it successfully landed in July 1976 and became the first spacecraft to operate on the Martian surface, transmitting groundbreaking images.",
+      "wikipediaSlug": "Viking_1",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "music",
+      "title": "\"Led Zeppelin IV\" — Led Zeppelin",
+      "year": 1971,
+      "description": "Led Zeppelin's untitled fourth album featuring 'Stairway to Heaven' is one of the best-selling albums of all time, the definitive statement of hard rock's mystical ambitions.",
+      "wikipediaSlug": "Led_Zeppelin_IV",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "movie",
+      "title": "Almost Famous",
+      "year": 2000,
+      "description": "Cameron Crowe's autobiographical coming-of-age film about a teenage rock journalist on tour in the 1970s is a tender love letter to music and the people who live for it.",
+      "wikipediaSlug": "Almost_Famous",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    }
+  ],
+  "08-21": [
+    {
+      "type": "person",
+      "title": "Usain Bolt",
+      "year": 1986,
+      "description": "Jamaican sprinter widely regarded as the greatest of all time, who won eight Olympic gold medals and set world records in the 100m, 200m, and 4x100m relay.",
+      "wikipediaSlug": "Usain_Bolt",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "person",
+      "title": "Kenny Rogers",
+      "year": 1938,
+      "description": "American country and pop legend whose storytelling classics 'The Gambler' and 'Lucille' made him one of the best-selling music artists of all time with over 120 million records sold.",
+      "wikipediaSlug": "Kenny_Rogers",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "person",
+      "title": "Kim Cattrall",
+      "year": 1956,
+      "description": "British-Canadian actress whose bold portrayal of Samantha Jones on Sex and the City redefined how television depicted female sexuality and became a global cultural icon.",
+      "wikipediaSlug": "Kim_Cattrall",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "event",
+      "title": "Mona Lisa Stolen from the Louvre",
+      "year": 1911,
+      "description": "Leonardo da Vinci's Mona Lisa was stolen from the Louvre by an Italian handyman; the ensuing media sensation helped transform it into the most famous painting on earth.",
+      "wikipediaSlug": "Theft_of_the_Mona_Lisa",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "event",
+      "title": "Hawaii Becomes 50th US State",
+      "year": 1959,
+      "description": "Hawaii was admitted to the Union as the 50th state, the last to join, completing America's current map and making its striking flag the final version.",
+      "wikipediaSlug": "Hawaii",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "music",
+      "title": "\"The Gambler\" — Kenny Rogers",
+      "year": 1978,
+      "description": "Kenny Rogers' masterful storytelling ballad about a chance encounter on a train became one of the defining country hits of the era and won the Grammy for Best Male Country Vocal.",
+      "wikipediaSlug": "The_Gambler_(song)",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "movie",
+      "title": "Grease",
+      "year": 1978,
+      "description": "The nostalgic musical starring John Travolta and Olivia Newton-John became one of the highest-grossing musical films of all time, its soundtrack dominating radio for a year.",
+      "wikipediaSlug": "Grease_(film)",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    }
+  ],
+  "08-22": [
+    {
+      "type": "person",
+      "title": "Claude Debussy",
+      "year": 1862,
+      "description": "French composer whose impressionistic works — Clair de Lune, La Mer, and Prélude à l'après-midi d'un faune — dissolved the rigid boundaries of classical harmony.",
+      "wikipediaSlug": "Claude_Debussy",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "person",
+      "title": "Ray Bradbury",
+      "year": 1920,
+      "description": "American science fiction author whose Fahrenheit 451 and The Martian Chronicles blended wonder and warning in prose of such lyrical beauty it transcended genre.",
+      "wikipediaSlug": "Ray_Bradbury",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "person",
+      "title": "Dorothy Parker",
+      "year": 1893,
+      "description": "American poet, writer, and critic famed for her devastating wit as a founding member of the Algonquin Round Table, whose biting verse exposed the hollowness of New York society.",
+      "wikipediaSlug": "Dorothy_Parker",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "event",
+      "title": "Battle of Bosworth Field",
+      "year": 1485,
+      "description": "Henry Tudor defeated and killed Richard III in the Wars of the Roses' final battle, establishing the Tudor dynasty and inspiring Shakespeare's most performed history play.",
+      "wikipediaSlug": "Battle_of_Bosworth_Field",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "event",
+      "title": "Mona Lisa Stolen (Reported)",
+      "year": 1911,
+      "description": "The theft of the Mona Lisa from the Louvre was officially reported on this date, and the painting's two-year absence only amplified its mystique and global fame.",
+      "wikipediaSlug": "Theft_of_the_Mona_Lisa",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "music",
+      "title": "\"Blinding Lights\" — The Weeknd",
+      "year": 2020,
+      "description": "The Weeknd's synth-pop masterpiece spent a record 57 weeks in the Billboard Hot 100 Top 10, becoming one of the longest-charting songs in the history of the chart.",
+      "wikipediaSlug": "Blinding_Lights",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "movie",
+      "title": "Fahrenheit 451",
+      "year": 1966,
+      "description": "François Truffaut's striking adaptation of Ray Bradbury's dystopian novel imagines a world where books are burned, and one fireman dares to question what is lost.",
+      "wikipediaSlug": "Fahrenheit_451_(film)",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    }
+  ],
+  "08-23": [
+    {
+      "type": "person",
+      "title": "Gene Kelly",
+      "year": 1912,
+      "description": "American dancer, actor, and choreographer whose athletic grace and infectious joy in Singin' in the Rain and An American in Paris redefined what a movie musical could be.",
+      "wikipediaSlug": "Gene_Kelly",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "person",
+      "title": "River Phoenix",
+      "year": 1970,
+      "description": "American actor of extraordinary promise whose naturalistic performances in Stand by Me and My Own Private Idaho marked him as one of his generation's greatest talents before his death at 23.",
+      "wikipediaSlug": "River_Phoenix",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "person",
+      "title": "Louis XVI",
+      "year": 1754,
+      "description": "The last King of France before the Revolution, whose inability to manage the country's financial crisis led to his execution by guillotine and the birth of French republicanism.",
+      "wikipediaSlug": "Louis_XVI",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "event",
+      "title": "Stockholm Syndrome Coined",
+      "year": 1973,
+      "description": "A Stockholm bank robbery turned hostage crisis saw captives develop sympathetic bonds with their captors, leading psychiatrist Nils Bejerot to coin the term 'Stockholm syndrome.'",
+      "wikipediaSlug": "Stockholm_syndrome",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "event",
+      "title": "Louvre Museum Opens",
+      "year": 1793,
+      "description": "The Louvre opened its doors to the public as a museum during the French Revolution, beginning its transformation into the world's most visited art museum.",
+      "wikipediaSlug": "Louvre",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "music",
+      "title": "\"Singin' in the Rain\" — Gene Kelly",
+      "year": 1952,
+      "description": "Gene Kelly's joyful dance through a downpour in this scene from the beloved MGM musical created one of cinema's most iconic and purely joyous moments.",
+      "wikipediaSlug": "Singin%27_in_the_Rain_(song)",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "movie",
+      "title": "The Wizard of Oz US Premiere",
+      "year": 1939,
+      "description": "MGM's Technicolor fantasy went on general release across America, winning hearts and becoming the most watched film in television history across the following decades.",
+      "wikipediaSlug": "The_Wizard_of_Oz_(1939_film)",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    }
+  ],
+  "08-24": [
+    {
+      "type": "person",
+      "title": "Jorge Luis Borges",
+      "year": 1899,
+      "description": "Argentine writer whose labyrinthine short stories and poems — Ficciones, The Aleph — explored infinity, mirrors, and the nature of reality, profoundly influencing postmodern literature.",
+      "wikipediaSlug": "Jorge_Luis_Borges",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "person",
+      "title": "Dave Chappelle",
+      "year": 1973,
+      "description": "American stand-up comedian and actor whose Chappelle's Show became one of the most popular sketch comedy programs in television history before his famous mid-series departure.",
+      "wikipediaSlug": "Dave_Chappelle",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "person",
+      "title": "Rupert Grint",
+      "year": 1988,
+      "description": "British actor beloved worldwide for his portrayal of Ron Weasley in all eight Harry Potter films, bringing warmth and comic timing to the magical series' loyal best friend.",
+      "wikipediaSlug": "Rupert_Grint",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "event",
+      "title": "Eruption of Mount Vesuvius",
+      "year": 79,
+      "description": "Mount Vesuvius erupted in a catastrophic explosion that buried the Roman city of Pompeii under ash and pumice, preserving a vivid snapshot of ancient Roman life for millennia.",
+      "wikipediaSlug": "Eruption_of_Mount_Vesuvius_in_79_AD",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "event",
+      "title": "Pluto Reclassified as Dwarf Planet",
+      "year": 2006,
+      "description": "The International Astronomical Union voted to strip Pluto of its planet status, reducing the solar system's official planet count to eight and sparking a scientific debate that continues today.",
+      "wikipediaSlug": "Pluto",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "music",
+      "title": "\"Appetite for Destruction\" goes No. 1 — Guns N' Roses",
+      "year": 1988,
+      "description": "Over a year after its release, Guns N' Roses' debut finally reached the top of the Billboard 200, becoming the best-selling debut album in American chart history.",
+      "wikipediaSlug": "Appetite_for_Destruction",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "movie",
+      "title": "Pompeii (documentary context)",
+      "year": 2014,
+      "description": "Paul W.S. Anderson's action epic dramatized the cataclysmic eruption of Vesuvius that destroyed Pompeii in 79 AD, bringing one of history's most famous disasters to cinematic life.",
+      "wikipediaSlug": "Pompeii_(2014_film)",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    }
+  ],
+  "08-25": [
+    {
+      "type": "person",
+      "title": "Leonard Bernstein",
+      "year": 1918,
+      "description": "American conductor, composer, and pianist who bridged classical and popular music, creating West Side Story while also becoming the charismatic music director of the New York Philharmonic.",
+      "wikipediaSlug": "Leonard_Bernstein",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "person",
+      "title": "Sean Connery",
+      "year": 1930,
+      "description": "Scottish actor who created the template for James Bond with his suave charisma and physical menace, before winning an Oscar for The Untouchables and becoming a legend of world cinema.",
+      "wikipediaSlug": "Sean_Connery",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "person",
+      "title": "Tim Burton",
+      "year": 1958,
+      "description": "American director whose darkly whimsical visual style — Beetlejuice, Edward Scissorhands, Batman — created a uniquely gothic corner of Hollywood storytelling.",
+      "wikipediaSlug": "Tim_Burton",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "event",
+      "title": "Paris Liberated",
+      "year": 1944,
+      "description": "The Free French 2nd Armored Division entered Paris and liberated the city from four years of Nazi German occupation, triggering ecstatic street celebrations.",
+      "wikipediaSlug": "Liberation_of_Paris",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "event",
+      "title": "Voyager 1 Enters Interstellar Space",
+      "year": 2012,
+      "description": "NASA's Voyager 1 became the first man-made object to leave the solar system and enter interstellar space, 35 years after its launch in 1977.",
+      "wikipediaSlug": "Voyager_1",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "music",
+      "title": "\"West Side Story\" Original Cast Recording",
+      "year": 1957,
+      "description": "Leonard Bernstein and Stephen Sondheim's revolutionary Broadway musical opened, and its cast recording captured one of the most urgent and emotionally overwhelming scores in theater history.",
+      "wikipediaSlug": "West_Side_Story_(1957_musical)",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "movie",
+      "title": "The Wizard of Oz (Grauman's Premiere)",
+      "year": 1939,
+      "description": "The Wizard of Oz had its public theatrical premiere at Grauman's Chinese Theatre in Hollywood, launching one of the most beloved motion pictures in cinema history.",
+      "wikipediaSlug": "The_Wizard_of_Oz_(1939_film)",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    }
+  ],
+  "08-26": [
+    {
+      "type": "person",
+      "title": "Mother Teresa",
+      "year": 1910,
+      "description": "Albanian-Indian Catholic nun who founded the Missionaries of Charity in Kolkata and spent decades caring for the poorest of the poor, winning the Nobel Peace Prize in 1979.",
+      "wikipediaSlug": "Mother_Teresa",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "person",
+      "title": "Thurgood Marshall",
+      "year": 1908,
+      "description": "American lawyer who argued Brown v. Board of Education before becoming the first African American Supreme Court Justice, shaping civil rights law for generations.",
+      "wikipediaSlug": "Thurgood_Marshall",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "person",
+      "title": "Geraldine Ferraro",
+      "year": 1935,
+      "description": "American politician who became the first woman nominated for Vice President by a major US party when Walter Mondale chose her as his running mate in 1984.",
+      "wikipediaSlug": "Geraldine_Ferraro",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "event",
+      "title": "Krakatoa Eruption",
+      "year": 1883,
+      "description": "The Krakatoa volcano in Indonesia unleashed one of the loudest explosions in recorded history, heard 3,000 miles away, killing 36,000 people and cooling global temperatures for years.",
+      "wikipediaSlug": "1883_eruption_of_Krakatoa",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "event",
+      "title": "Women's Suffrage Amendment Effective",
+      "year": 1920,
+      "description": "The 19th Amendment officially took effect, granting American women the constitutional right to vote — the culmination of over 70 years of determined activism.",
+      "wikipediaSlug": "Nineteenth_Amendment_to_the_United_States_Constitution",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "music",
+      "title": "\"Fast Car\" — Tracy Chapman",
+      "year": 1988,
+      "description": "Tracy Chapman's intimate folk-soul debut album, featuring this plaintive story of escape from poverty, became one of the year's biggest hits and a landmark of singer-songwriter storytelling.",
+      "wikipediaSlug": "Fast_Car",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "movie",
+      "title": "Ben-Hur",
+      "year": 1959,
+      "description": "William Wyler's epic starring Charlton Heston won a record 11 Academy Awards including Best Picture, a record that stood for nearly four decades.",
+      "wikipediaSlug": "Ben-Hur_(1959_film)",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    }
+  ],
+  "08-27": [
+    {
+      "type": "person",
+      "title": "Lyndon B. Johnson",
+      "year": 1908,
+      "description": "36th President of the United States who signed the landmark Civil Rights Act and Voting Rights Act before his presidency was consumed by the escalating Vietnam War.",
+      "wikipediaSlug": "Lyndon_B._Johnson",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "person",
+      "title": "Georg Wilhelm Friedrich Hegel",
+      "year": 1770,
+      "description": "German philosopher whose Phenomenology of Spirit and dialectical method of reasoning profoundly influenced Karl Marx, existentialism, and the entire course of Western philosophy.",
+      "wikipediaSlug": "Georg_Wilhelm_Friedrich_Hegel",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "person",
+      "title": "Donald Bradman",
+      "year": 1908,
+      "description": "Australian cricketer universally regarded as the greatest batsman of all time, whose career Test average of 99.94 is statistically the most dominant achievement in any major sport.",
+      "wikipediaSlug": "Don_Bradman",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "event",
+      "title": "Anglo-Zanzibar War",
+      "year": 1896,
+      "description": "The shortest war in recorded history lasted between 38 and 45 minutes as British naval forces swiftly bombarded the Zanzibar palace into submission.",
+      "wikipediaSlug": "Anglo-Zanzibar_War",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "event",
+      "title": "Krakatoa's Loudest Explosion",
+      "year": 1883,
+      "description": "The final catastrophic eruption of Krakatoa sent a pressure wave around the earth four times, the sound heard across 8% of Earth's surface — the loudest noise in modern history.",
+      "wikipediaSlug": "1883_eruption_of_Krakatoa",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "music",
+      "title": "\"Mary Poppins\" Soundtrack",
+      "year": 1964,
+      "description": "The soundtrack to Walt Disney's beloved film, featuring Sherman Brothers songs like 'Supercalifragilisticexpialidocious' and 'A Spoonful of Sugar,' became one of Disney's best-selling albums.",
+      "wikipediaSlug": "Mary_Poppins_(film)",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "movie",
+      "title": "Mary Poppins World Premiere",
+      "year": 1964,
+      "description": "Walt Disney's magical film had its world premiere in Los Angeles, going on to win five Academy Awards and become one of the most cherished family films in cinema history.",
+      "wikipediaSlug": "Mary_Poppins_(film)",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    }
+  ],
+  "08-28": [
+    {
+      "type": "person",
+      "title": "Johann Wolfgang von Goethe",
+      "year": 1749,
+      "description": "German poet, playwright, and polymath whose Faust and The Sorrows of Young Werther made him the supreme figure of German literature and a towering presence in world culture.",
+      "wikipediaSlug": "Johann_Wolfgang_von_Goethe",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "person",
+      "title": "Shania Twain",
+      "year": 1965,
+      "description": "Canadian country-pop superstar whose album Come On Over remains the best-selling album by a female solo artist in history, with over 40 million copies sold worldwide.",
+      "wikipediaSlug": "Shania_Twain",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "person",
+      "title": "Jack Black",
+      "year": 1969,
+      "description": "American actor and musician whose comedic energy propelled School of Rock and his Tenacious D partnership into cult classics, beloved for his volcanic commitment to every role.",
+      "wikipediaSlug": "Jack_Black",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "event",
+      "title": "Martin Luther King Jr.'s 'I Have a Dream' Speech",
+      "year": 1963,
+      "description": "Martin Luther King Jr. delivered his visionary address to 250,000 people at the March on Washington, painting the most eloquent picture of racial equality in American oratorical history.",
+      "wikipediaSlug": "I_Have_a_Dream",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "event",
+      "title": "Ford Produces Millionth Model T",
+      "year": 1916,
+      "description": "The Ford Motor Company rolled out its one-millionth Model T, marking the triumph of the assembly line and the democratization of the automobile for ordinary Americans.",
+      "wikipediaSlug": "Ford_Model_T",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "music",
+      "title": "\"Come On Over\" — Shania Twain",
+      "year": 1997,
+      "description": "Shania Twain's crossover juggernaut produced a string of worldwide hits including 'Man! I Feel Like a Woman!' and became the best-selling country album and best-selling album by a female artist ever.",
+      "wikipediaSlug": "Come_On_Over",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "movie",
+      "title": "School of Rock",
+      "year": 2003,
+      "description": "Richard Linklater's feel-good comedy starring Jack Black as a fake substitute teacher who forms a rock band with his students became a beloved and endlessly rewatchable classic.",
+      "wikipediaSlug": "School_of_Rock",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    }
+  ],
+  "08-29": [
+    {
+      "type": "person",
+      "title": "Michael Jackson",
+      "year": 1958,
+      "description": "The King of Pop whose Thriller remains the best-selling album of all time, and whose moonwalk, elaborate music videos, and virtuosic dancing redefined the possibilities of pop stardom.",
+      "wikipediaSlug": "Michael_Jackson",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "person",
+      "title": "Ingrid Bergman",
+      "year": 1915,
+      "description": "Swedish actress of luminous beauty and extraordinary range who starred in Casablanca, won three Academy Awards, and remains one of the most celebrated performers in cinema history.",
+      "wikipediaSlug": "Ingrid_Bergman",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "person",
+      "title": "Charlie Parker",
+      "year": 1920,
+      "description": "Alto saxophonist nicknamed 'Bird' whose revolutionary bebop improvisations on '52nd Street Theme' and 'Ko-Ko' raised jazz to an art form of breathtaking intellectual complexity.",
+      "wikipediaSlug": "Charlie_Parker",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "event",
+      "title": "Hurricane Katrina Strikes",
+      "year": 2005,
+      "description": "Hurricane Katrina made landfall near New Orleans as a Category 3 storm, and subsequent levee failures flooded 80% of the city in one of the costliest natural disasters in US history.",
+      "wikipediaSlug": "Hurricane_Katrina",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "event",
+      "title": "First Nuclear Test by the Soviets",
+      "year": 1949,
+      "description": "The Soviet Union successfully detonated its first nuclear device, ending America's atomic monopoly and launching the Cold War arms race that would define the second half of the 20th century.",
+      "wikipediaSlug": "Soviet_atomic_bomb_project",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "music",
+      "title": "\"Thriller\" — Michael Jackson",
+      "year": 1982,
+      "description": "Michael Jackson's sixth solo album debuted on November 30, 1982, and its title track, with John Landis's groundbreaking 14-minute music video, transformed the medium of music video forever.",
+      "wikipediaSlug": "Thriller_(Michael_Jackson_album)",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "movie",
+      "title": "Casablanca",
+      "year": 1942,
+      "description": "Michael Curtiz's wartime romance starring Humphrey Bogart and Ingrid Bergman is universally regarded as one of the greatest films ever made, its dialogue an inexhaustible source of quotation.",
+      "wikipediaSlug": "Casablanca_(film)",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    }
+  ],
+  "08-30": [
+    {
+      "type": "person",
+      "title": "Warren Buffett",
+      "year": 1930,
+      "description": "American investment legend and CEO of Berkshire Hathaway whose value investing philosophy turned him into one of the wealthiest and most admired business figures in history.",
+      "wikipediaSlug": "Warren_Buffett",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "person",
+      "title": "Mary Shelley",
+      "year": 1797,
+      "description": "English author who wrote Frankenstein at age 18, creating the template for both the science fiction novel and the modern horror story in one extraordinary act of imagination.",
+      "wikipediaSlug": "Mary_Shelley",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "person",
+      "title": "Ted Williams",
+      "year": 1918,
+      "description": "Boston Red Sox left fielder known as 'The Splendid Splinter' who batted .406 in 1941 — the last player to hit over .400 — and is widely regarded as the greatest pure hitter in baseball history.",
+      "wikipediaSlug": "Ted_Williams",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "event",
+      "title": "Mary Poppins US Release",
+      "year": 1964,
+      "description": "Walt Disney's musical fantasy starring Julie Andrews and Dick Van Dyke opened across the United States, winning five Academy Awards and becoming one of the highest-grossing films of the year.",
+      "wikipediaSlug": "Mary_Poppins_(film)",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "event",
+      "title": "Houston Founded",
+      "year": 1836,
+      "description": "Brothers Augustus and John Kirby Allen founded Houston, Texas, which grew from a frontier town into the fourth-largest city in America and the center of the US oil industry.",
+      "wikipediaSlug": "Houston",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "music",
+      "title": "\"Frankenstein\" — Edgar Winter Group",
+      "year": 1973,
+      "description": "Edgar Winter's virtuosic instrumental hit, named by its creator in honor of its monstrous assembly of tape edits, became one of rock's most celebrated extended jams.",
+      "wikipediaSlug": "Frankenstein_(Edgar_Winter_Group_song)",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "movie",
+      "title": "Frankenstein",
+      "year": 1931,
+      "description": "James Whale's Universal horror classic starring Boris Karloff established the iconic image of Frankenstein's monster and launched the golden age of Hollywood monster movies.",
+      "wikipediaSlug": "Frankenstein_(1931_film)",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    }
+  ],
+  "08-31": [
+    {
+      "type": "person",
+      "title": "Richard Gere",
+      "year": 1949,
+      "description": "American actor whose effortless charisma in An Officer and a Gentleman, Pretty Woman, and Chicago made him one of Hollywood's most enduring leading men.",
+      "wikipediaSlug": "Richard_Gere",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "person",
+      "title": "Van Morrison",
+      "year": 1945,
+      "description": "Northern Irish singer-songwriter whose soul-drenched Astral Weeks and Moondance albums fused R&B, jazz, and Celtic mysticism into some of the most emotionally profound music ever recorded.",
+      "wikipediaSlug": "Van_Morrison",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "person",
+      "title": "Hermann von Helmholtz",
+      "year": 1821,
+      "description": "German physicist and physician who made foundational contributions to thermodynamics, electrodynamics, and the physiology of perception, one of the 19th century's great scientific minds.",
+      "wikipediaSlug": "Hermann_von_Helmholtz",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "event",
+      "title": "Princess Diana Dies",
+      "year": 1997,
+      "description": "Diana, Princess of Wales, died in a car crash in a Paris tunnel, triggering an unprecedented global outpouring of grief that exposed deep tensions within the British royal family.",
+      "wikipediaSlug": "Death_of_Diana,_Princess_of_Wales",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "event",
+      "title": "German Reunification Treaty Signed",
+      "year": 1990,
+      "description": "Representatives from East and West Germany signed the Unification Treaty, laying out the legal framework for reunification that became effective on October 3, 1990.",
+      "wikipediaSlug": "German_reunification",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "music",
+      "title": "\"Moondance\" — Van Morrison",
+      "year": 1970,
+      "description": "Van Morrison's joyful jazz-inflected masterpiece became one of the most perfectly constructed pop songs of its era, the title track of an album that ranks among the greatest ever made.",
+      "wikipediaSlug": "Moondance_(album)",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "movie",
+      "title": "The Scream (painting recovered)",
+      "year": 2006,
+      "description": "Edvard Munch's iconic Expressionist painting The Scream, stolen two years earlier from the Munch Museum in Oslo, was recovered in a police raid on August 31, 2006.",
+      "wikipediaSlug": "The_Scream",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    }
+  ]
+}
