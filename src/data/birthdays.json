@@ -1,0 +1,166 @@
+{
+  "07-20": [
+    {
+      "type": "person",
+      "title": "Sir Edmund Hillary",
+      "year": 1919,
+      "description": "New Zealand mountaineer and explorer — first confirmed climber to summit Mount Everest",
+      "wikipediaSlug": "Edmund_Hillary",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "person",
+      "title": "Gregor Mendel",
+      "year": 1822,
+      "description": "Augustinian friar and father of modern genetics",
+      "wikipediaSlug": "Gregor_Mendel",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "person",
+      "title": "Carlos Santana",
+      "year": 1947,
+      "description": "Mexican-American guitarist and rock legend known for supernatural fretwork",
+      "wikipediaSlug": "Carlos_Santana",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "person",
+      "title": "Gisele Bündchen",
+      "year": 1980,
+      "description": "Brazilian supermodel — one of the highest-paid models in history",
+      "wikipediaSlug": "Gisele_B%C3%BCndchen",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "person",
+      "title": "Natalie Wood",
+      "year": 1938,
+      "description": "Hollywood icon known for West Side Story and Rebel Without a Cause",
+      "wikipediaSlug": "Natalie_Wood",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "event",
+      "title": "Moon Landing — Apollo 11",
+      "year": 1969,
+      "description": "Neil Armstrong and Buzz Aldrin become the first humans to walk on the Moon",
+      "wikipediaSlug": "Apollo_11",
+      "spotifyTrackId": null,
+      "youtubeId": "hZNmMnFNBtk"
+    },
+    {
+      "type": "event",
+      "title": "Viking 1 Lands on Mars",
+      "year": 1976,
+      "description": "NASA's Viking 1 becomes the first spacecraft to successfully land on Mars and send back photos",
+      "wikipediaSlug": "Viking_1",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "event",
+      "title": "20 July Plot — Assassination Attempt on Hitler",
+      "year": 1944,
+      "description": "Claus von Stauffenberg's bomb plot to assassinate Adolf Hitler at the Wolf's Lair fails",
+      "wikipediaSlug": "20_July_plot",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "event",
+      "title": "Bruce Lee Dies",
+      "year": 1973,
+      "description": "Martial arts legend and cultural icon Bruce Lee dies in Hong Kong at age 32",
+      "wikipediaSlug": "Bruce_Lee",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "event",
+      "title": "Constantinople Conquered by Ottoman Turks",
+      "year": 1402,
+      "description": "Ottoman Sultan Bayezid I is defeated and captured at the Battle of Ankara by Timur",
+      "wikipediaSlug": "Battle_of_Ankara",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "music",
+      "title": "Smooth — Santana ft. Rob Thomas",
+      "year": 1999,
+      "description": "Born-on-this-day Carlos Santana's massive hit spends 12 weeks at #1 on the Billboard Hot 100",
+      "wikipediaSlug": "Smooth_(song)",
+      "spotifyTrackId": "3yFBInaOBRsGm9fQBBARgQ",
+      "youtubeId": null
+    },
+    {
+      "type": "music",
+      "title": "Space Oddity — David Bowie",
+      "year": 1969,
+      "description": "Released to coincide with the Apollo 11 Moon landing — Major Tom becomes a cultural icon",
+      "wikipediaSlug": "Space_Oddity",
+      "spotifyTrackId": "72Z17vmmeQKAg8bptWvpVG",
+      "youtubeId": null
+    },
+    {
+      "type": "music",
+      "title": "Black Hole Sun — Soundgarden",
+      "year": 1994,
+      "description": "Grunge anthem from the album Superunknown peaks on the Billboard charts this week in history",
+      "wikipediaSlug": "Black_Hole_Sun",
+      "spotifyTrackId": "3mbBRMkIOTMEJMjsSTJK48",
+      "youtubeId": null
+    },
+    {
+      "type": "movie",
+      "title": "The Dark Knight",
+      "year": 2008,
+      "description": "Christopher Nolan's Batman masterpiece premieres — Heath Ledger's Joker becomes legendary",
+      "wikipediaSlug": "The_Dark_Knight",
+      "spotifyTrackId": null,
+      "youtubeId": "EXeTwQWrcwY"
+    },
+    {
+      "type": "movie",
+      "title": "Dunkirk",
+      "year": 2017,
+      "description": "Christopher Nolan's visceral WWII epic about the Dunkirk evacuation premieres in theaters",
+      "wikipediaSlug": "Dunkirk_(2017_film)",
+      "spotifyTrackId": null,
+      "youtubeId": "F-eMt3SrfFU"
+    },
+    {
+      "type": "event",
+      "title": "First Special Olympics",
+      "year": 1968,
+      "description": "The first International Special Olympics Summer Games are held at Soldier Field in Chicago",
+      "wikipediaSlug": "Special_Olympics",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "person",
+      "title": "Cormac McCarthy",
+      "year": 1933,
+      "description": "Pulitzer Prize-winning American novelist — author of Blood Meridian, No Country for Old Men, and The Road",
+      "wikipediaSlug": "Cormac_McCarthy",
+      "spotifyTrackId": null,
+      "youtubeId": null
+    },
+    {
+      "type": "movie",
+      "title": "Valkyrie",
+      "year": 2008,
+      "description": "Tom Cruise stars as Claus von Stauffenberg in the dramatization of the 20 July plot against Hitler",
+      "wikipediaSlug": "Valkyrie_(film)",
+      "spotifyTrackId": null,
+      "youtubeId": "TjPnKvG3gCk"
+    }
+  ]
+}

@@ -1,0 +1,916 @@
+---
+import birthdayData from '../data/birthdays.json';
+const allDates = Object.keys(birthdayData);
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href={`${import.meta.env.BASE_URL}favicon.svg`} />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="description" content="Enter your birthday and discover the famous events, people, music, and movies that share your date in history." />
+    <title>Nornlore — What History Shares Your Birthday?</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Lora:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet" />
+    <style>
+      /* ============ RESET & BASE ============ */
+      *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+      :root {
+        --bg: #0d0d0f;
+        --card-bg: #1a1a22;
+        --gold: #c9a84c;
+        --gold-dim: #8a7233;
+        --text: #e8e4dc;
+        --text-muted: #9a9689;
+        --font-heading: 'Cinzel', serif;
+        --font-body: 'Lora', serif;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        font-family: var(--font-body);
+        background: var(--bg);
+        color: var(--text);
+        min-height: 100vh;
+        overflow-x: hidden;
+        position: relative;
+      }
+
+      /* Noise texture overlay */
+      body::before {
+        content: '';
+        position: fixed;
+        inset: 0;
+        opacity: 0.035;
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+        background-size: 256px 256px;
+        pointer-events: none;
+        z-index: 9999;
+      }
+
+      /* ============ LANDING ============ */
+      #landing {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+        padding: 2rem;
+        text-align: center;
+        animation: fadeIn 0.8s ease;
+      }
+
+      .logo-rune {
+        font-family: var(--font-heading);
+        font-size: 1rem;
+        letter-spacing: 0.4em;
+        text-transform: uppercase;
+        color: var(--gold);
+        margin-bottom: 0.5rem;
+        opacity: 0.7;
+      }
+
+      .landing-title {
+        font-family: var(--font-heading);
+        font-size: clamp(2.2rem, 6vw, 4rem);
+        font-weight: 700;
+        color: var(--text);
+        margin-bottom: 0.5rem;
+        line-height: 1.15;
+      }
+
+      .landing-subtitle {
+        font-family: var(--font-body);
+        font-size: clamp(1rem, 2.5vw, 1.25rem);
+        color: var(--text-muted);
+        margin-bottom: 2.5rem;
+        font-style: italic;
+        max-width: 420px;
+      }
+
+      .date-form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1.25rem;
+      }
+
+      .date-inputs {
+        display: flex;
+        gap: 0.75rem;
+        align-items: center;
+      }
+
+      .date-inputs select {
+        font-family: var(--font-body);
+        font-size: 1.1rem;
+        padding: 0.75rem 1.25rem;
+        background: var(--card-bg);
+        color: var(--text);
+        border: 1px solid var(--gold-dim);
+        border-radius: 6px;
+        cursor: pointer;
+        appearance: none;
+        -webkit-appearance: none;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23c9a84c' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");
+        background-repeat: no-repeat;
+        background-position: right 0.75rem center;
+        padding-right: 2.5rem;
+        transition: border-color 0.2s;
+      }
+
+      .date-inputs select:focus {
+        outline: none;
+        border-color: var(--gold);
+        box-shadow: 0 0 0 2px rgba(201, 168, 76, 0.15);
+      }
+
+      .date-separator {
+        font-family: var(--font-heading);
+        font-size: 1.5rem;
+        color: var(--gold-dim);
+      }
+
+      .reveal-btn {
+        font-family: var(--font-heading);
+        font-size: 1.1rem;
+        font-weight: 600;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        padding: 1rem 3rem;
+        background: transparent;
+        color: var(--gold);
+        border: 2px solid var(--gold);
+        border-radius: 4px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .reveal-btn::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: var(--gold);
+        opacity: 0;
+        transition: opacity 0.3s;
+        z-index: -1;
+      }
+
+      .reveal-btn:hover {
+        color: var(--bg);
+      }
+
+      .reveal-btn:hover::before {
+        opacity: 1;
+      }
+
+      .reveal-btn:disabled {
+        opacity: 0.4;
+        cursor: not-allowed;
+      }
+
+      .reveal-btn:disabled:hover {
+        color: var(--gold);
+      }
+
+      .reveal-btn:disabled:hover::before {
+        opacity: 0;
+      }
+
+      /* ============ APP (CARDS VIEW) ============ */
+      #app {
+        display: none;
+        flex-direction: column;
+        min-height: 100vh;
+      }
+
+      #app.active {
+        display: flex;
+      }
+
+      #landing.hidden {
+        display: none;
+      }
+
+      /* Header bar */
+      .app-header {
+        padding: 1rem 1.5rem;
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
+        border-bottom: 1px solid rgba(201, 168, 76, 0.15);
+      }
+
+      .header-top {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      .back-btn {
+        font-family: var(--font-body);
+        font-size: 0.9rem;
+        color: var(--gold);
+        background: none;
+        border: none;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        gap: 0.4rem;
+        padding: 0.25rem 0;
+        transition: opacity 0.2s;
+      }
+
+      .back-btn:hover {
+        opacity: 0.7;
+      }
+
+      .header-date {
+        font-family: var(--font-heading);
+        font-size: 1.1rem;
+        color: var(--text);
+        letter-spacing: 0.05em;
+      }
+
+      .header-actions {
+        display: flex;
+        gap: 0.5rem;
+      }
+
+      .share-btn {
+        font-family: var(--font-body);
+        font-size: 0.8rem;
+        color: var(--gold);
+        background: none;
+        border: 1px solid var(--gold-dim);
+        border-radius: 4px;
+        padding: 0.35rem 0.75rem;
+        cursor: pointer;
+        transition: all 0.2s;
+      }
+
+      .share-btn:hover {
+        background: rgba(201, 168, 76, 0.1);
+      }
+
+      .share-btn.copied {
+        border-color: var(--gold);
+        background: rgba(201, 168, 76, 0.15);
+      }
+
+      /* Filter bar */
+      .filter-bar {
+        display: flex;
+        gap: 0.5rem;
+        overflow-x: auto;
+        padding: 0 1.5rem 0.75rem;
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+      }
+
+      .filter-bar::-webkit-scrollbar { display: none; }
+
+      .filter-pill {
+        font-family: var(--font-body);
+        font-size: 0.8rem;
+        padding: 0.4rem 1rem;
+        border: 1px solid var(--gold-dim);
+        border-radius: 100px;
+        background: transparent;
+        color: var(--text-muted);
+        cursor: pointer;
+        white-space: nowrap;
+        transition: all 0.2s;
+        flex-shrink: 0;
+      }
+
+      .filter-pill:hover {
+        border-color: var(--gold);
+        color: var(--text);
+      }
+
+      .filter-pill.active {
+        border-color: var(--gold);
+        color: var(--gold);
+        background: rgba(201, 168, 76, 0.1);
+      }
+
+      /* Card counter */
+      .card-counter {
+        text-align: center;
+        padding: 0.5rem;
+        font-family: var(--font-body);
+        font-size: 0.85rem;
+        color: var(--text-muted);
+      }
+
+      /* ============ CARD DECK ============ */
+      .card-deck {
+        flex: 1;
+        display: flex;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        gap: 1.5rem;
+        padding: 0.5rem 1.5rem 2rem;
+        scroll-padding: 1.5rem;
+      }
+
+      .card {
+        flex: 0 0 min(85vw, 480px);
+        scroll-snap-align: center;
+        background: var(--card-bg);
+        border: 1px solid rgba(201, 168, 76, 0.25);
+        border-radius: 12px;
+        padding: 1.5rem;
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        transition: box-shadow 0.3s;
+        opacity: 0;
+        transform: translateY(20px);
+        animation: cardIn 0.5s ease forwards;
+      }
+
+      .card:hover {
+        box-shadow: inset 0 0 30px rgba(201, 168, 76, 0.04), 0 4px 24px rgba(0, 0, 0, 0.3);
+      }
+
+      /* Staggered card entrance */
+      .card:nth-child(1) { animation-delay: 0s; }
+      .card:nth-child(2) { animation-delay: 0.07s; }
+      .card:nth-child(3) { animation-delay: 0.14s; }
+      .card:nth-child(4) { animation-delay: 0.21s; }
+      .card:nth-child(5) { animation-delay: 0.28s; }
+      .card:nth-child(6) { animation-delay: 0.35s; }
+      .card:nth-child(7) { animation-delay: 0.42s; }
+      .card:nth-child(8) { animation-delay: 0.49s; }
+      .card:nth-child(9) { animation-delay: 0.56s; }
+      .card:nth-child(10) { animation-delay: 0.63s; }
+      .card:nth-child(n+11) { animation-delay: 0.7s; }
+
+      .card-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.35rem;
+        font-family: var(--font-heading);
+        font-size: 0.65rem;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        padding: 0.3rem 0.7rem;
+        border-radius: 4px;
+        width: fit-content;
+      }
+
+      .card-badge.person  { background: rgba(100, 160, 255, 0.12); color: #6ea8ff; border: 1px solid rgba(100, 160, 255, 0.25); }
+      .card-badge.event   { background: rgba(255, 120, 80, 0.12);  color: #ff8a60; border: 1px solid rgba(255, 120, 80, 0.25); }
+      .card-badge.music   { background: rgba(80, 220, 140, 0.12);  color: #5edb8e; border: 1px solid rgba(80, 220, 140, 0.25); }
+      .card-badge.movie   { background: rgba(220, 100, 220, 0.12); color: #d87ad8; border: 1px solid rgba(220, 100, 220, 0.25); }
+
+      .card-badge-icon {
+        font-size: 0.8rem;
+      }
+
+      .card-image {
+        width: 100%;
+        height: 200px;
+        border-radius: 8px;
+        overflow: hidden;
+        background: rgba(255,255,255,0.03);
+      }
+
+      .card-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .card-image.placeholder {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 3rem;
+        opacity: 0.15;
+      }
+
+      .card-embed {
+        width: 100%;
+        border-radius: 8px;
+        overflow: hidden;
+      }
+
+      .card-embed iframe {
+        width: 100%;
+        border: none;
+        border-radius: 8px;
+      }
+
+      .card-year {
+        font-family: var(--font-heading);
+        font-size: 2rem;
+        color: var(--gold);
+        line-height: 1;
+      }
+
+      .card-title {
+        font-family: var(--font-heading);
+        font-size: 1.3rem;
+        font-weight: 600;
+        color: var(--text);
+        line-height: 1.3;
+      }
+
+      .card-desc {
+        font-family: var(--font-body);
+        font-size: 0.95rem;
+        color: var(--text-muted);
+        line-height: 1.6;
+      }
+
+      .card-wiki-extract {
+        font-family: var(--font-body);
+        font-size: 0.85rem;
+        color: var(--text-muted);
+        line-height: 1.6;
+        font-style: italic;
+        border-left: 2px solid var(--gold-dim);
+        padding-left: 0.75rem;
+        margin-top: 0.25rem;
+      }
+
+      .card-link {
+        font-family: var(--font-body);
+        font-size: 0.8rem;
+        color: var(--gold);
+        text-decoration: none;
+        transition: opacity 0.2s;
+        margin-top: auto;
+      }
+
+      .card-link:hover { opacity: 0.7; }
+
+      /* ============ NO DATA ============ */
+      .no-data {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        flex: 1;
+        padding: 3rem;
+        text-align: center;
+        gap: 1rem;
+      }
+
+      .no-data-icon {
+        font-size: 3rem;
+        opacity: 0.3;
+      }
+
+      .no-data-text {
+        font-family: var(--font-heading);
+        font-size: 1.2rem;
+        color: var(--text-muted);
+      }
+
+      .no-data-sub {
+        font-family: var(--font-body);
+        font-size: 0.9rem;
+        color: var(--text-muted);
+        opacity: 0.6;
+      }
+
+      /* ============ MOBILE VERTICAL ============ */
+      @media (max-width: 640px) {
+        .card-deck {
+          flex-direction: column;
+          overflow-x: hidden;
+          overflow-y: auto;
+          scroll-snap-type: y mandatory;
+          padding: 0.5rem 1rem 2rem;
+          gap: 1rem;
+        }
+
+        .card {
+          flex: 0 0 auto;
+          scroll-snap-align: start;
+          width: 100%;
+        }
+      }
+
+      /* ============ ANIMATIONS ============ */
+      @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(10px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+
+      @keyframes cardIn {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+
+      /* Toast notification */
+      .toast {
+        position: fixed;
+        bottom: 2rem;
+        left: 50%;
+        transform: translateX(-50%) translateY(100px);
+        background: var(--card-bg);
+        border: 1px solid var(--gold);
+        color: var(--gold);
+        font-family: var(--font-body);
+        font-size: 0.85rem;
+        padding: 0.75rem 1.5rem;
+        border-radius: 8px;
+        z-index: 10000;
+        transition: transform 0.3s ease;
+        pointer-events: none;
+      }
+
+      .toast.show {
+        transform: translateX(-50%) translateY(0);
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Landing Screen -->
+    <div id="landing">
+      <div class="logo-rune">The Threads of Fate</div>
+      <h1 class="landing-title">Nornlore</h1>
+      <p class="landing-subtitle">Discover the history woven into your birthday</p>
+      <form class="date-form" id="dateForm">
+        <div class="date-inputs">
+          <select id="monthSelect" aria-label="Month">
+            <option value="" disabled selected>Month</option>
+            <option value="01">January</option>
+            <option value="02">February</option>
+            <option value="03">March</option>
+            <option value="04">April</option>
+            <option value="05">May</option>
+            <option value="06">June</option>
+            <option value="07">July</option>
+            <option value="08">August</option>
+            <option value="09">September</option>
+            <option value="10">October</option>
+            <option value="11">November</option>
+            <option value="12">December</option>
+          </select>
+          <span class="date-separator">/</span>
+          <select id="daySelect" aria-label="Day">
+            <option value="" disabled selected>Day</option>
+          </select>
+        </div>
+        <button type="submit" class="reveal-btn" id="revealBtn" disabled>Reveal Your Fate</button>
+      </form>
+    </div>
+
+    <!-- App (Cards View) -->
+    <div id="app">
+      <header class="app-header">
+        <div class="header-top">
+          <button class="back-btn" id="backBtn">&#8592; New Date</button>
+          <span class="header-date" id="headerDate"></span>
+          <div class="header-actions">
+            <button class="share-btn" id="shareBtn">Share</button>
+          </div>
+        </div>
+      </header>
+      <div class="filter-bar" id="filterBar">
+        <button class="filter-pill active" data-filter="all">All</button>
+        <button class="filter-pill" data-filter="person">People</button>
+        <button class="filter-pill" data-filter="event">Events</button>
+        <button class="filter-pill" data-filter="music">Music</button>
+        <button class="filter-pill" data-filter="movie">Movies</button>
+      </div>
+      <div class="card-counter" id="cardCounter"></div>
+      <div class="card-deck" id="cardDeck"></div>
+      <div class="no-data" id="noData" style="display:none;">
+        <div class="no-data-icon">&#x16A8;</div>
+        <div class="no-data-text">No records found for this date</div>
+        <div class="no-data-sub">The Norns have not yet woven tales for this day. Contribute data to fill the void.</div>
+      </div>
+    </div>
+
+    <!-- Toast -->
+    <div class="toast" id="toast"></div>
+
+    <!-- Inline birthday data for client JS -->
+    <script is:inline define:vars={{ birthdayData, basePath: import.meta.env.BASE_URL }}>
+      window.__BIRTHDAY_DATA__ = birthdayData;
+      window.__BASE_PATH__ = basePath;
+    </script>
+
+    <script is:inline>
+      (function () {
+        const data = window.__BIRTHDAY_DATA__;
+        const basePath = window.__BASE_PATH__ || '/';
+
+        // DOM refs
+        const landing = document.getElementById('landing');
+        const app = document.getElementById('app');
+        const dateForm = document.getElementById('dateForm');
+        const monthSelect = document.getElementById('monthSelect');
+        const daySelect = document.getElementById('daySelect');
+        const revealBtn = document.getElementById('revealBtn');
+        const backBtn = document.getElementById('backBtn');
+        const shareBtn = document.getElementById('shareBtn');
+        const headerDate = document.getElementById('headerDate');
+        const filterBar = document.getElementById('filterBar');
+        const cardDeck = document.getElementById('cardDeck');
+        const cardCounter = document.getElementById('cardCounter');
+        const noData = document.getElementById('noData');
+        const toast = document.getElementById('toast');
+
+        const monthNames = [
+          'January','February','March','April','May','June',
+          'July','August','September','October','November','December'
+        ];
+
+        const typeIcons = {
+          person: '\u{1F464}',
+          event: '\u{1F30D}',
+          music: '\u{1F3B5}',
+          movie: '\u{1F3AC}'
+        };
+
+        let currentFilter = 'all';
+        let allFacts = [];
+        let currentDateKey = '';
+
+        // Populate day dropdown (1-31)
+        function populateDays() {
+          daySelect.innerHTML = '<option value="" disabled selected>Day</option>';
+          for (let d = 1; d <= 31; d++) {
+            const val = String(d).padStart(2, '0');
+            const opt = document.createElement('option');
+            opt.value = val;
+            opt.textContent = d;
+            daySelect.appendChild(opt);
+          }
+        }
+        populateDays();
+
+        // Enable reveal button when both selected
+        function checkReady() {
+          revealBtn.disabled = !(monthSelect.value && daySelect.value);
+        }
+        monthSelect.addEventListener('change', checkReady);
+        daySelect.addEventListener('change', checkReady);
+
+        // Submit
+        dateForm.addEventListener('submit', function (e) {
+          e.preventDefault();
+          const key = monthSelect.value + '-' + daySelect.value;
+          navigateToDate(key);
+        });
+
+        // Back button
+        backBtn.addEventListener('click', function () {
+          landing.classList.remove('hidden');
+          app.classList.remove('active');
+          const url = new URL(window.location);
+          url.searchParams.delete('date');
+          history.pushState(null, '', url);
+        });
+
+        // Share button
+        shareBtn.addEventListener('click', function () {
+          const url = window.location.origin + basePath + '?date=' + currentDateKey;
+          navigator.clipboard.writeText(url).then(function () {
+            showToast('Link copied to clipboard!');
+            shareBtn.classList.add('copied');
+            shareBtn.textContent = 'Copied!';
+            setTimeout(function () {
+              shareBtn.classList.remove('copied');
+              shareBtn.textContent = 'Share';
+            }, 2000);
+          }).catch(function () {
+            showToast('Could not copy link');
+          });
+        });
+
+        // Filters
+        filterBar.addEventListener('click', function (e) {
+          const pill = e.target.closest('.filter-pill');
+          if (!pill) return;
+          filterBar.querySelectorAll('.filter-pill').forEach(function (p) { p.classList.remove('active'); });
+          pill.classList.add('active');
+          currentFilter = pill.dataset.filter;
+          renderCards();
+        });
+
+        // Navigate to date
+        function navigateToDate(key) {
+          currentDateKey = key;
+          const facts = data[key] || [];
+          allFacts = shuffle(facts.slice());
+          currentFilter = 'all';
+          filterBar.querySelectorAll('.filter-pill').forEach(function (p) {
+            p.classList.toggle('active', p.dataset.filter === 'all');
+          });
+
+          // Update header
+          const parts = key.split('-');
+          const mIdx = parseInt(parts[0], 10) - 1;
+          headerDate.textContent = monthNames[mIdx] + ' ' + parseInt(parts[1], 10);
+
+          // Prefill selects
+          monthSelect.value = parts[0];
+          populateDays();
+          daySelect.value = parts[1];
+
+          // Show app
+          landing.classList.add('hidden');
+          app.classList.add('active');
+
+          // Update URL
+          const url = new URL(window.location);
+          url.searchParams.set('date', key);
+          history.pushState(null, '', url);
+
+          renderCards();
+        }
+
+        // Render cards
+        function renderCards() {
+          var filtered = currentFilter === 'all'
+            ? allFacts
+            : allFacts.filter(function (f) { return f.type === currentFilter; });
+
+          cardDeck.innerHTML = '';
+
+          if (filtered.length === 0) {
+            noData.style.display = 'flex';
+            cardCounter.textContent = '';
+            return;
+          }
+
+          noData.style.display = 'none';
+          cardCounter.textContent = filtered.length + ' card' + (filtered.length === 1 ? '' : 's');
+
+          filtered.forEach(function (fact, i) {
+            var card = document.createElement('div');
+            card.className = 'card';
+            card.style.animationDelay = (i * 0.07) + 's';
+
+            var html = '';
+
+            // Badge
+            html += '<div class="card-badge ' + fact.type + '">';
+            html += '<span class="card-badge-icon">' + (typeIcons[fact.type] || '') + '</span>';
+            html += fact.type.charAt(0).toUpperCase() + fact.type.slice(1);
+            html += '</div>';
+
+            // Year
+            html += '<div class="card-year">' + fact.year + '</div>';
+
+            // Title
+            html += '<div class="card-title">' + escapeHtml(fact.title) + '</div>';
+
+            // Description
+            html += '<div class="card-desc">' + escapeHtml(fact.description) + '</div>';
+
+            // Media: Wikipedia image for person/event
+            if ((fact.type === 'person' || fact.type === 'event') && fact.wikipediaSlug) {
+              var imgId = 'wiki-img-' + i;
+              var extractId = 'wiki-extract-' + i;
+              html += '<div class="card-image placeholder" id="' + imgId + '">&#x16A8;</div>';
+              html += '<div class="card-wiki-extract" id="' + extractId + '" style="display:none;"></div>';
+              // Will fetch after appending
+            }
+
+            // Media: Spotify embed for music
+            if (fact.type === 'music' && fact.spotifyTrackId) {
+              html += '<div class="card-embed">';
+              html += '<iframe src="https://open.spotify.com/embed/track/' + fact.spotifyTrackId + '?theme=0" height="152" allow="encrypted-media" loading="lazy"></iframe>';
+              html += '</div>';
+            }
+
+            // Media: YouTube embed for movie
+            if ((fact.type === 'movie' || fact.type === 'event') && fact.youtubeId) {
+              html += '<div class="card-embed">';
+              html += '<iframe src="https://www.youtube-nocookie.com/embed/' + fact.youtubeId + '" height="220" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>';
+              html += '</div>';
+            }
+
+            // Wiki link
+            if (fact.wikipediaSlug) {
+              html += '<a class="card-link" href="https://en.wikipedia.org/wiki/' + fact.wikipediaSlug + '" target="_blank" rel="noopener">Read more on Wikipedia &#8594;</a>';
+            }
+
+            card.innerHTML = html;
+            cardDeck.appendChild(card);
+
+            // Fetch Wikipedia data
+            if ((fact.type === 'person' || fact.type === 'event') && fact.wikipediaSlug) {
+              fetchWikiData(fact.wikipediaSlug, imgId, extractId);
+            }
+          });
+
+          // Update counter on scroll
+          updateScrollCounter(filtered.length);
+        }
+
+        // Fetch Wikipedia summary
+        function fetchWikiData(slug, imgId, extractId) {
+          fetch('https://en.wikipedia.org/api/rest_v1/page/summary/' + slug)
+            .then(function (r) { return r.json(); })
+            .then(function (d) {
+              var imgEl = document.getElementById(imgId);
+              var extractEl = document.getElementById(extractId);
+              if (d.thumbnail && d.thumbnail.source && imgEl) {
+                imgEl.classList.remove('placeholder');
+                imgEl.innerHTML = '<img src="' + d.thumbnail.source + '" alt="' + escapeHtml(d.title || '') + '" loading="lazy" />';
+              }
+              if (d.extract && extractEl) {
+                extractEl.style.display = 'block';
+                // Truncate to ~150 chars
+                var text = d.extract;
+                if (text.length > 180) text = text.substring(0, 177) + '...';
+                extractEl.textContent = text;
+              }
+            })
+            .catch(function () { /* graceful fail */ });
+        }
+
+        // Scroll-based card counter
+        function updateScrollCounter(total) {
+          if (total <= 1) {
+            cardCounter.textContent = total + ' card';
+            return;
+          }
+
+          function onScroll() {
+            var isMobile = window.innerWidth <= 640;
+            var scrollPos = isMobile ? cardDeck.scrollTop : cardDeck.scrollLeft;
+            var cards = cardDeck.querySelectorAll('.card');
+            if (!cards.length) return;
+
+            var firstCard = cards[0];
+            var cardSize = isMobile ? firstCard.offsetHeight : firstCard.offsetWidth;
+            var gap = isMobile ? 16 : 24;
+            var idx = Math.round(scrollPos / (cardSize + gap));
+            idx = Math.max(0, Math.min(idx, total - 1));
+            cardCounter.textContent = (idx + 1) + ' / ' + total;
+          }
+
+          cardDeck.removeEventListener('scroll', onScroll);
+          cardDeck.addEventListener('scroll', onScroll, { passive: true });
+          // Initial
+          cardCounter.textContent = '1 / ' + total;
+        }
+
+        // Shuffle
+        function shuffle(arr) {
+          for (var i = arr.length - 1; i > 0; i--) {
+            var j = Math.floor(Math.random() * (i + 1));
+            var tmp = arr[i];
+            arr[i] = arr[j];
+            arr[j] = tmp;
+          }
+          return arr;
+        }
+
+        // Escape HTML
+        function escapeHtml(str) {
+          var div = document.createElement('div');
+          div.textContent = str;
+          return div.innerHTML;
+        }
+
+        // Toast
+        function showToast(msg) {
+          toast.textContent = msg;
+          toast.classList.add('show');
+          setTimeout(function () { toast.classList.remove('show'); }, 2500);
+        }
+
+        // Handle URL params on load
+        var params = new URLSearchParams(window.location.search);
+        var dateParam = params.get('date');
+        if (dateParam && /^\d{2}-\d{2}$/.test(dateParam)) {
+          navigateToDate(dateParam);
+        }
+
+        // Handle back/forward
+        window.addEventListener('popstate', function () {
+          var p = new URLSearchParams(window.location.search);
+          var d = p.get('date');
+          if (d && /^\d{2}-\d{2}$/.test(d)) {
+            navigateToDate(d);
+          } else {
+            landing.classList.remove('hidden');
+            app.classList.remove('active');
+          }
+        });
+      })();
+    </script>
+  </body>
+</html>
