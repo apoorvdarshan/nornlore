@@ -72,6 +72,26 @@ function NpSelect({ value, onChange, placeholder, options }: {
   );
 }
 
+// Cache for Wikipedia extracts to avoid refetching
+const wikiExtractCache: Record<string, string> = {};
+
+function useWikiExtract(slug: string | null): string {
+  const [extract, setExtract] = useState<string>("");
+  useEffect(() => {
+    if (!slug) return;
+    if (wikiExtractCache[slug]) { setExtract(wikiExtractCache[slug]); return; }
+    fetch(`https://en.wikipedia.org/api/rest_v1/page/summary/${slug}`)
+      .then((r) => r.json())
+      .then((d) => {
+        const text = d.extract || "";
+        wikiExtractCache[slug] = text;
+        setExtract(text);
+      })
+      .catch(() => {});
+  }, [slug]);
+  return extract;
+}
+
 function WikiPhoto({ slug, title, floatRight }: { slug: string; title: string; floatRight?: boolean }) {
   const [src, setSrc] = useState<string | null>(null);
   const [isGif, setIsGif] = useState(false);
@@ -98,6 +118,40 @@ function WikiPhoto({ slug, title, floatRight }: { slug: string; title: string; f
     <div className={`photo-box ${isGif ? "photo-moving" : ""} ${floatRight ? "float-right" : ""}`}>
       <img src={src} alt={title} loading="lazy" />
       {!isGif && <div className="photo-caption">{title}</div>}
+    </div>
+  );
+}
+
+function StoryText({ fact }: { fact: Fact }) {
+  const wikiText = useWikiExtract(fact.wikipediaSlug);
+  const desc = fact.description;
+  // Use wiki extract if it's longer and different from description
+  const extra = wikiText && !wikiText.startsWith(desc.slice(0, 40))
+    ? ` ${wikiText}`
+    : wikiText.length > desc.length ? ` ${wikiText.slice(desc.length)}` : "";
+  return <>{desc}{extra}</>;
+}
+
+function HeroArticleText({ fact }: { fact: Fact }) {
+  const wikiText = useWikiExtract(fact.wikipediaSlug);
+  const desc = fact.description;
+  const extra = wikiText && !wikiText.startsWith(desc.slice(0, 40))
+    ? ` ${wikiText}`
+    : wikiText.length > desc.length ? ` ${wikiText.slice(desc.length)}` : "";
+  const fullText = desc + extra;
+  return (
+    <div className="article-text">
+      <p>
+        <span className="drop-cap-letter">{fullText.charAt(0)}</span>
+        {fullText.slice(1)}
+      </p>
+      {fact.wikipediaSlug && (
+        <p style={{ marginTop: "8px", fontStyle: "italic", fontSize: "0.75rem", color: "var(--faded)" }}>
+          <a href={`https://en.wikipedia.org/wiki/${fact.wikipediaSlug}`} target="_blank" rel="noopener noreferrer" style={{ color: "var(--accent)", textDecoration: "none" }}>
+            Full report continues on page 4 →
+          </a>
+        </p>
+      )}
     </div>
   );
 }
@@ -272,20 +326,7 @@ export default function Home() {
                           {(hero.type === "person" || hero.type === "event") && hero.wikipediaSlug && (
                             <WikiPhoto slug={hero.wikipediaSlug} title={hero.title} />
                           )}
-                          <div className="article-text">
-                            <p>
-                              <span className="drop-cap-letter">{hero.description.charAt(0)}</span>
-                              {hero.description.slice(1)}
-                              {hero.description.length < 200 && " The full account of these remarkable circumstances, as pieced together by our most diligent correspondents, reveals a tapestry of events that would astound even the most seasoned chronicler of historical curiosities. Witnesses described scenes of such extraordinary import that the very fabric of the age was altered irrevocably."}
-                            </p>
-                            {hero.wikipediaSlug && (
-                              <p style={{ marginTop: "8px", fontStyle: "italic", fontSize: "0.75rem", color: "var(--faded)" }}>
-                                <a href={`https://en.wikipedia.org/wiki/${hero.wikipediaSlug}`} target="_blank" rel="noopener noreferrer" style={{ color: "var(--accent)", textDecoration: "none" }}>
-                                  Full report continues on page 4 →
-                                </a>
-                              </p>
-                            )}
-                          </div>
+                          <HeroArticleText fact={hero} />
                         </div>
                       )}
                       {sidebar.length > 0 && (
@@ -298,7 +339,7 @@ export default function Home() {
                               {(fact.type === "person" || fact.type === "event") && fact.wikipediaSlug && (
                                 <WikiPhoto slug={fact.wikipediaSlug} title={fact.title} />
                               )}
-                              <p className="col-text">{fact.description}</p>
+                              <p className="col-text"><StoryText fact={fact} /></p>
                             </div>
                           ))}
                         </div>
@@ -311,7 +352,7 @@ export default function Home() {
                         <div className="mid-banner-text">
                           <div className="hero-kicker">{TYPE_LABELS[midBanner.type]} · {midBanner.year}</div>
                           <h2 className="mid-banner-headline">{midBanner.title.toUpperCase()}</h2>
-                          <p className="col-text">{midBanner.description}</p>
+                          <p className="col-text"><StoryText fact={midBanner} /></p>
                         </div>
                         {(midBanner.type === "person" || midBanner.type === "event") && midBanner.wikipediaSlug && (
                           <div className="mid-banner-img">
@@ -332,7 +373,7 @@ export default function Home() {
                             {(fact.type === "person" || fact.type === "event") && fact.wikipediaSlug && (
                               <WikiPhoto slug={fact.wikipediaSlug} title={fact.title} floatRight={i !== 1} />
                             )}
-                            <p className="col-text">{fact.description}</p>
+                            <p className="col-text"><StoryText fact={fact} /></p>
                           </div>
                         ))}
                       </div>
@@ -349,7 +390,7 @@ export default function Home() {
                             {(fact.type === "person" || fact.type === "event") && fact.wikipediaSlug && (
                               <WikiPhoto slug={fact.wikipediaSlug} title={fact.title} floatRight={i === 1} />
                             )}
-                            <p className="col-text">{fact.description}</p>
+                            <p className="col-text"><StoryText fact={fact} /></p>
                           </div>
                         ))}
                       </div>
@@ -366,7 +407,7 @@ export default function Home() {
                             {(fact.type === "person" || fact.type === "event") && fact.wikipediaSlug && (
                               <WikiPhoto slug={fact.wikipediaSlug} title={fact.title} floatRight={i % 2 === 0} />
                             )}
-                            <p className="col-text">{fact.description}</p>
+                            <p className="col-text"><StoryText fact={fact} /></p>
                           </div>
                         ))}
                       </div>
