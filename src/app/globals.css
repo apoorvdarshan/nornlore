@@ -501,8 +501,6 @@ body::after {
 
 .card-image {
   width: 100%;
-  max-height: 280px;
-  overflow: hidden;
   border-top: 1px solid var(--parch-deep);
   border-bottom: 1px solid var(--parch-deep);
 }
