@@ -212,6 +212,7 @@ body {
   column-gap: 20px;
   column-rule: 1px solid rgba(58,26,0,0.2);
   padding: 14px 0;
+  column-fill: auto;
 }
 
 .masonry-item {
@@ -331,6 +332,15 @@ body {
   width: 100%;
   margin: 8px 0;
   display: block;
+  max-height: 180px;
+  overflow: hidden;
+}
+
+.masonry-item .photo-box img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  object-position: top center;
 }
 
 
