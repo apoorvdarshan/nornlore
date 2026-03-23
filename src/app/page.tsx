@@ -97,7 +97,7 @@ function WikiPhoto({ slug, title }: { slug: string; title: string }) {
   return (
     <div className={`photo-box ${isGif ? "photo-moving" : ""}`}>
       <img src={src} alt={title} loading="lazy" />
-      <div className="photo-caption">{title}</div>
+      {!isGif && <div className="photo-caption">{title}</div>}
     </div>
   );
 }
