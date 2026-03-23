@@ -667,12 +667,12 @@ body {
 }
 
 .cta-headline {
-  font-family: 'Playfair Display', serif;
+  font-family: 'IM Fell English', serif;
   font-size: clamp(2.2rem, 6vw, 3.5rem);
-  font-weight: 900;
+  font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: -2px;
-  line-height: 0.95;
+  letter-spacing: 2px;
+  line-height: 1.05;
   margin-bottom: 20px;
   color: var(--ink);
 }
