@@ -28,8 +28,6 @@ const TYPE_LABELS: Record<string, string> = {
   movie: "Moving Pictures",
 };
 
-const ORNAMENTS = ["/quill-ornament.png", "/owl-ornament.png", "/wand-ornament.png"];
-
 function shuffle<T>(arr: T[]): T[] {
   const a = [...arr];
   for (let i = a.length - 1; i > 0; i--) {
@@ -39,39 +37,32 @@ function shuffle<T>(arr: T[]): T[] {
   return a;
 }
 
-function NpSelect({
-  value, onChange, placeholder, options,
-}: {
-  value: string; onChange: (val: string) => void; placeholder: string;
+function NpSelect({ value, onChange, placeholder, options }: {
+  value: string; onChange: (v: string) => void; placeholder: string;
   options: { value: string; label: string }[];
 }) {
   const [open, setOpen] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
-
   useEffect(() => {
-    const handler = (e: MouseEvent) => {
-      if (ref.current && !ref.current.contains(e.target as Node)) setOpen(false);
-    };
-    document.addEventListener("mousedown", handler);
-    return () => document.removeEventListener("mousedown", handler);
+    const h = (e: MouseEvent) => { if (ref.current && !ref.current.contains(e.target as Node)) setOpen(false); };
+    document.addEventListener("mousedown", h);
+    return () => document.removeEventListener("mousedown", h);
   }, []);
-
-  const selectedLabel = options.find((o) => o.value === value)?.label || placeholder;
-
+  const label = options.find((o) => o.value === value)?.label || placeholder;
   return (
     <div className={`np-select ${open ? "open" : ""}`} ref={ref}>
-      <button type="button" className="np-select-trigger" onClick={() => setOpen(!open)} aria-label={placeholder}>
-        <span className={value ? "" : "placeholder"}>{selectedLabel}</span>
+      <button type="button" className="np-select-trigger" onClick={() => setOpen(!open)}>
+        <span className={value ? "" : "placeholder"}>{label}</span>
         <svg width="10" height="10" viewBox="0 0 16 16" fill="none" className="np-select-arrow">
           <path d="M3 6 L8 11 L13 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
         </svg>
       </button>
       <AnimatePresence>
         {open && (
-          <motion.div className="np-select-dropdown" initial={{ opacity: 0, y: -4, scaleY: 0.95 }} animate={{ opacity: 1, y: 0, scaleY: 1 }} exit={{ opacity: 0, y: -4, scaleY: 0.95 }} transition={{ duration: 0.12 }}>
-            {options.map((opt) => (
-              <button key={opt.value} type="button" className={`np-select-option ${opt.value === value ? "selected" : ""}`} onClick={() => { onChange(opt.value); setOpen(false); }}>
-                {opt.label}
+          <motion.div className="np-select-dropdown" initial={{ opacity: 0, y: -4 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -4 }} transition={{ duration: 0.12 }}>
+            {options.map((o) => (
+              <button key={o.value} type="button" className={`np-select-option ${o.value === value ? "selected" : ""}`} onClick={() => { onChange(o.value); setOpen(false); }}>
+                {o.label}
               </button>
             ))}
           </motion.div>
@@ -81,88 +72,22 @@ function NpSelect({
   );
 }
 
-function WikiImage({ slug, title, cover }: { slug: string; title: string; cover?: boolean }) {
+function WikiPhoto({ slug, title }: { slug: string; title: string }) {
   const [src, setSrc] = useState<string | null>(null);
-
   useEffect(() => {
-    const width = cover ? 800 : 400;
     fetch(`https://en.wikipedia.org/api/rest_v1/page/summary/${slug}`)
       .then((r) => r.json())
       .then((d) => {
-        if (d.originalimage?.source && cover) {
-          setSrc(d.originalimage.source);
-        } else if (d.thumbnail?.source) {
-          setSrc(d.thumbnail.source.replace(/\/\d+px-/, `/${width}px-`));
-        }
+        if (d.thumbnail?.source) setSrc(d.thumbnail.source.replace(/\/\d+px-/, `/500px-`));
       })
       .catch(() => {});
-  }, [slug, cover]);
-
+  }, [slug]);
   if (!src) return null;
-
   return (
-    <div className="article-image">
+    <div className="photo-box">
       <img src={src} alt={title} loading="lazy" />
-      <div className="article-image-caption">{title}</div>
+      <div className="photo-caption">{title}</div>
     </div>
-  );
-}
-
-function LeadStory({ fact }: { fact: Fact }) {
-  const hasImage = (fact.type === "person" || fact.type === "event") && fact.wikipediaSlug;
-
-  const fillerText = fact.description.length < 200
-    ? " The full account of these remarkable circumstances, as pieced together by our most diligent correspondents, reveals a tapestry of events that would astound even the most seasoned chronicler. Witnesses to these proceedings have described scenes of such import that the very fabric of the age was altered irrevocably. Our reporters continue to investigate."
-    : "";
-
-  return (
-    <motion.article className="lead-story" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5, delay: 0.1 }}>
-      <div className="lead-kicker">
-        <span className="exclusive-badge">Exclusive</span>
-        {TYPE_LABELS[fact.type]} · {fact.year}
-      </div>
-      <h2 className="lead-headline">{fact.title}</h2>
-      <div className="lead-subhead">A chronicle of events most extraordinary, as recorded by the enchanted quills of the Nornlore press corps</div>
-
-      <div className={`lead-body ${hasImage ? "" : "no-image"}`}>
-        {hasImage && (
-          <div className="lead-image-col">
-            <WikiImage slug={fact.wikipediaSlug!} title={fact.title} cover />
-          </div>
-        )}
-        <div className="lead-text-col">
-          <p className="lead-desc">
-            <span className="drop-cap">{fact.description.charAt(0)}</span>
-            {fact.description.slice(1)}{fillerText}
-          </p>
-          {fact.wikipediaSlug && (
-            <a className="article-read-more" href={`https://en.wikipedia.org/wiki/${fact.wikipediaSlug}`} target="_blank" rel="noopener noreferrer">
-              Full Report p.4 →
-            </a>
-          )}
-        </div>
-      </div>
-    </motion.article>
-  );
-}
-
-function ColumnStory({ fact, index }: { fact: Fact; index: number }) {
-  const hasImage = (fact.type === "person" || fact.type === "event") && fact.wikipediaSlug;
-  const isFeatured = index < 2;
-
-  return (
-    <motion.article className={`col-story ${isFeatured ? "featured" : ""}`} initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.35, delay: 0.04 + index * 0.03 }}>
-      <div className="col-kicker">{TYPE_LABELS[fact.type]}</div>
-      <h3 className="col-headline">{fact.title}</h3>
-      <div className="col-year">{fact.year}</div>
-      {hasImage && <WikiImage slug={fact.wikipediaSlug!} title={fact.title} />}
-      <p className="col-desc">{fact.description}</p>
-      {fact.wikipediaSlug && (
-        <a className="article-read-more" href={`https://en.wikipedia.org/wiki/${fact.wikipediaSlug}`} target="_blank" rel="noopener noreferrer">
-          p.{index + 2} →
-        </a>
-      )}
-    </motion.article>
   );
 }
 
@@ -176,36 +101,24 @@ export default function Home() {
   const [toastMsg, setToastMsg] = useState("");
 
   useEffect(() => {
-    const params = new URLSearchParams(window.location.search);
-    const d = params.get("date");
+    const p = new URLSearchParams(window.location.search);
+    const d = p.get("date");
     if (d && /^\d{2}-\d{2}$/.test(d)) {
-      setMonth(d.split("-")[0]);
-      setDay(d.split("-")[1]);
-      navigateToDate(d);
+      setMonth(d.split("-")[0]); setDay(d.split("-")[1]); navigateToDate(d);
     }
   }, []);
 
   const navigateToDate = useCallback((key: string) => {
-    setDateKey(key);
-    setFacts(shuffle(data[key] || []));
-    setFilter("all");
-    setView("cards");
-    const url = new URL(window.location.href);
-    url.searchParams.set("date", key);
-    history.pushState(null, "", url);
+    setDateKey(key); setFacts(shuffle(data[key] || [])); setFilter("all"); setView("cards");
+    const url = new URL(window.location.href); url.searchParams.set("date", key); history.pushState(null, "", url);
   }, []);
 
   const goBack = useCallback(() => {
     setView("landing");
-    const url = new URL(window.location.href);
-    url.searchParams.delete("date");
-    history.pushState(null, "", url);
+    const url = new URL(window.location.href); url.searchParams.delete("date"); history.pushState(null, "", url);
   }, []);
 
-  const filtered = useMemo(
-    () => (filter === "all" ? facts : facts.filter((f) => f.type === filter)),
-    [facts, filter]
-  );
+  const filtered = useMemo(() => filter === "all" ? facts : facts.filter((f) => f.type === filter), [facts, filter]);
 
   const headerDateStr = useMemo(() => {
     if (!dateKey) return "";
@@ -213,163 +126,264 @@ export default function Home() {
     return `${MONTHS[parseInt(m, 10) - 1]} ${parseInt(d, 10)}`;
   }, [dateKey]);
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (month && day) navigateToDate(`${month}-${day}`);
-  };
+  const handleSubmit = (e: React.FormEvent) => { e.preventDefault(); if (month && day) navigateToDate(`${month}-${day}`); };
 
   const handleShare = () => {
-    const url = `${window.location.origin}${window.location.pathname}?date=${dateKey}`;
-    navigator.clipboard.writeText(url).then(() => showToast("Link copied!"));
+    navigator.clipboard.writeText(`${window.location.origin}${window.location.pathname}?date=${dateKey}`).then(() => showToast("Link copied!"));
   };
 
-  const showToast = (msg: string) => {
-    setToastMsg(msg);
-    setTimeout(() => setToastMsg(""), 2500);
-  };
+  const showToast = (msg: string) => { setToastMsg(msg); setTimeout(() => setToastMsg(""), 2500); };
 
   useEffect(() => {
-    const handler = () => {
-      const p = new URLSearchParams(window.location.search);
-      const d = p.get("date");
-      if (d && /^\d{2}-\d{2}$/.test(d)) navigateToDate(d);
-      else setView("landing");
-    };
-    window.addEventListener("popstate", handler);
-    return () => window.removeEventListener("popstate", handler);
+    const h = () => { const p = new URLSearchParams(window.location.search); const d = p.get("date");
+      if (d && /^\d{2}-\d{2}$/.test(d)) navigateToDate(d); else setView("landing"); };
+    window.addEventListener("popstate", h); return () => window.removeEventListener("popstate", h);
   }, [navigateToDate]);
 
   const filters = [
-    { key: "all", label: "All" },
-    { key: "person", label: "Births" },
-    { key: "event", label: "World Affairs" },
-    { key: "music", label: "Music" },
-    { key: "movie", label: "Pictures" },
+    { key: "all", label: "All" }, { key: "person", label: "Births" },
+    { key: "event", label: "World Affairs" }, { key: "music", label: "Music" }, { key: "movie", label: "Pictures" },
   ];
 
-  const leadStory = filtered[0];
-  const columnStories = filtered.slice(1);
+  // Split stories for layout
+  const hero = filtered[0];
+  const secondRow = filtered.slice(1, 4); // 3 column stories
+  const thirdRow = filtered.slice(4, 6);  // wide + sidebar
+  const restRows = filtered.slice(6);     // bottom stories
+
+  const today = new Date();
+  const dateStr = today.toLocaleDateString("en-GB", { weekday: "long", day: "numeric", month: "long", year: "numeric" }).toUpperCase();
 
   return (
     <>
       <AnimatePresence mode="wait">
         {view === "landing" ? (
-          <motion.div key="landing" className="landing" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.4 }}>
-            <div className="newspaper-page">
-              <motion.div className="rule-heavy" initial={{ scaleX: 0 }} animate={{ scaleX: 1 }} transition={{ delay: 0.05, duration: 0.4 }} style={{ transformOrigin: "center" }} />
-
-              <motion.div className="masthead-corner-row" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.1, duration: 0.3 }}>
-                <div className="masthead-corner">bewitch · beguile<br />conjure · enchant</div>
-                <div className="masthead-corner" style={{ textAlign: "right" }}>spellbind · divine<br />foretell · charm</div>
-              </motion.div>
-
-              <motion.div className="masthead-tagline" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.15, duration: 0.3 }}>
-                ★ The Wizard World&apos;s Most Beguiling Broadsheet ★
-              </motion.div>
-
-              <motion.div className="masthead-ornaments" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.2, duration: 0.4 }}>
-                <img src="/owl-ornament.png" className="masthead-ornament-img" alt="" aria-hidden="true" />
-                <div>
-                  <div className="masthead-banner"><img src="/newspaper-header.png" alt="" aria-hidden="true" /></div>
-                  <h1 className="masthead-title">Nornlore</h1>
-                  <div className="masthead-subtitle">The Enchanted Chronicle</div>
+          <motion.div key="landing" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.4 }}>
+            <div className="paper">
+              <div className="masthead">
+                <div className="masthead-top">
+                  <span>EST. SINCE TIME IMMEMORIAL</span>
+                  <span>ENCHANTED EDITION · FLOO NETWORK CERTIFIED</span>
                 </div>
-                <img src="/wand-ornament.png" className="masthead-ornament-img" alt="" aria-hidden="true" />
-              </motion.div>
+                <div className="masthead-logo">Nornlore</div>
+                <div className="masthead-tagline">The Wizarding World&apos;s Chronicle of Historical Record</div>
+                <hr className="masthead-rule" />
+                <div className="edition-bar">
+                  <span>VOL. MMXXVI · ENCHANTED BROADSHEET</span>
+                  <span>⚡ 366 DATES · 2,594 TALES ⚡</span>
+                  <span>FIVE KNUTS — {dateStr}</span>
+                </div>
+              </div>
 
-              <motion.div className="rule-double-inv" initial={{ scaleX: 0 }} animate={{ scaleX: 1 }} transition={{ delay: 0.3, duration: 0.4 }} style={{ transformOrigin: "center" }} />
+              <div className="ticker-banner">
+                <span className="ticker-text">
+                  ✦ DISCOVER what famous events share your birthday ✦ Notable births, world affairs, musical enchantments & moving pictures ✦ Enter your date below to read the chronicle ✦ Over 2,594 historical tales verified by the Department of Historical Sorcery ✦
+                </span>
+              </div>
 
-              <motion.div className="masthead-info-bar" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.35, duration: 0.3 }}>
-                <span>Est. Since Time Immemorial</span><span>★</span>
-                <span>Price: 5 Knuts</span><span>★</span>
-                <span>Editor: Barnabas Cuffe</span><span>★</span>
-                <span>Enchanted Edition</span>
-              </motion.div>
+              <div className="newspaper-body">
+                <div className="landing-cta">
+                  <h2 className="cta-headline">WHAT HISTORY SHARES YOUR BIRTHDAY?</h2>
+                  <p className="cta-subtitle">
+                    Enter your date of birth below to reveal the extraordinary events,
+                    legendary figures, and enchanted tales woven into your day.
+                  </p>
+                  <form className="date-form" onSubmit={handleSubmit}>
+                    <div className="date-inputs">
+                      <NpSelect value={month} onChange={setMonth} placeholder="Month" options={MONTHS.map((m, i) => ({ value: String(i + 1).padStart(2, "0"), label: m }))} />
+                      <span className="date-separator">·</span>
+                      <NpSelect value={day} onChange={setDay} placeholder="Day" options={Array.from({ length: 31 }, (_, i) => ({ value: String(i + 1).padStart(2, "0"), label: String(i + 1) }))} />
+                    </div>
+                    <motion.button type="submit" className="reveal-btn" disabled={!month || !day} whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
+                      Read the Chronicle
+                    </motion.button>
+                  </form>
+                </div>
 
-              <motion.div className="rule-thin" initial={{ scaleX: 0 }} animate={{ scaleX: 1 }} transition={{ delay: 0.4, duration: 0.3 }} style={{ transformOrigin: "center" }} />
-
-              <motion.div className="landing-cta" initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.5, duration: 0.5 }}>
-                <h2 className="cta-headline">What History Shares Your Birthday?</h2>
-                <p className="cta-subtitle">Enter your date of birth to reveal the extraordinary events, legendary figures, and enchanted tales woven into your day.</p>
-                <form className="date-form" onSubmit={handleSubmit}>
-                  <div className="date-inputs">
-                    <NpSelect value={month} onChange={setMonth} placeholder="Month" options={MONTHS.map((m, i) => ({ value: String(i + 1).padStart(2, "0"), label: m }))} />
-                    <span className="date-separator">·</span>
-                    <NpSelect value={day} onChange={setDay} placeholder="Day" options={Array.from({ length: 31 }, (_, i) => ({ value: String(i + 1).padStart(2, "0"), label: String(i + 1) }))} />
+                <div style={{ borderTop: "2px solid var(--rule)", borderBottom: "1px solid var(--rule)", padding: "6px 0", marginTop: "8px" }}>
+                  <div className="landing-bottom">
+                    <span>Births</span><span>✦</span><span>Events</span><span>✦</span>
+                    <span>Music</span><span>✦</span><span>Pictures</span><span>✦</span>
+                    <span>366 Dates</span><span>✦</span><span>2,594 Tales</span>
                   </div>
-                  <motion.button type="submit" className="reveal-btn" disabled={!month || !day} whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
-                    Read the Chronicle
-                  </motion.button>
-                </form>
-              </motion.div>
+                </div>
 
-              <div className="scroll-divider"><img src="/scroll-divider.png" alt="" aria-hidden="true" /></div>
+                {/* Ad box */}
+                <div style={{ marginTop: "14px" }}>
+                  <div className="ad-box">
+                    <div className="ad-title">Nornlore</div>
+                    <div className="ad-icon">🦉</div>
+                    <div className="ad-body">
+                      <em>&quot;Every Date Has a Story&quot;</em><br /><br />
+                      Discover famous people born on your day.<br />
+                      World events that shaped history.<br />
+                      Music & films released on your birthday.<br /><br />
+                      <strong>All tales verified by enchanted quills.</strong><br />
+                      The Department of Historical Sorcery approves.
+                    </div>
+                  </div>
+                </div>
+              </div>
 
-              <motion.div className="rule-double" initial={{ scaleX: 0 }} animate={{ scaleX: 1 }} transition={{ delay: 0.7, duration: 0.3 }} style={{ transformOrigin: "center" }} />
-
-              <motion.div className="landing-bottom-bar" initial={{ opacity: 0 }} animate={{ opacity: 0.7 }} transition={{ delay: 0.8, duration: 0.4 }}>
-                <span>Births</span><span>★</span><span>Events</span><span>★</span>
-                <span>Music</span><span>★</span><span>Pictures</span><span>★</span>
-                <span>366 Dates</span><span>★</span><span>2,594 Tales</span>
-              </motion.div>
+              <div className="paper-footer">
+                Nornlore is published on enchanted parchment · Owl subscriptions welcome · Back issues by Floo request only<br />
+                © Since Time Immemorial · All tales verified by the Department of Historical Sorcery
+              </div>
             </div>
           </motion.div>
         ) : (
-          <motion.div key="app" className="app-view" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.3 }}>
-            <div className="newspaper-page">
-              <motion.div initial={{ opacity: 0, y: -8 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.3 }}>
-                <div className="rule-heavy" />
-                <div className="paper-masthead-row">
-                  <button className="back-btn" onClick={goBack}>← Back</button>
-                  <div className="paper-masthead-center">
-                    <div className="masthead-tagline-sm">The Enchanted Chronicle</div>
-                    <div className="masthead-title-sm">Nornlore</div>
-                  </div>
-                  <button className="share-btn" onClick={handleShare}>Share</button>
+          <motion.div key="app" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.3 }}>
+            <div className="paper">
+              {/* Masthead */}
+              <div className="masthead">
+                <div className="masthead-top">
+                  <span style={{ cursor: "pointer" }} onClick={goBack}>← BACK TO FRONT PAGE</span>
+                  <span style={{ cursor: "pointer" }} onClick={handleShare}>SHARE THIS EDITION</span>
                 </div>
-                <div className="rule-double-inv" />
-                <div className="masthead-info-bar">
-                  <span>{headerDateStr}</span><span>★</span>
-                  <span>Enchanted Edition</span><span>★</span>
-                  <span>{filtered.length} {filtered.length === 1 ? "tale" : "tales"}</span>
+                <div className="masthead-logo">Nornlore</div>
+                <div className="masthead-tagline">The Enchanted Chronicle</div>
+                <hr className="masthead-rule" />
+                <div className="edition-bar">
+                  <span>{headerDateStr.toUpperCase()} EDITION</span>
+                  <span>⚡ ENCHANTED BROADSHEET ⚡</span>
+                  <span>{filtered.length} {filtered.length === 1 ? "TALE" : "TALES"} RECORDED</span>
                 </div>
-                <div className="rule-thin" />
-              </motion.div>
+              </div>
 
-              <motion.div className="filter-bar" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.08, duration: 0.25 }}>
+              {/* Filter as ticker-style bar */}
+              <div className="filter-bar">
                 {filters.map((f) => (
                   <button key={f.key} className={`filter-pill ${filter === f.key ? "active" : ""}`} onClick={() => setFilter(f.key)}>
                     {f.label}
                   </button>
                 ))}
-              </motion.div>
+              </div>
 
-              {filtered.length > 0 ? (
-                <div key={filter}>
-                  {leadStory && <LeadStory fact={leadStory} />}
-                  {columnStories.length > 0 && (
-                    <div className="section-rule"><span className="section-rule-text">More Chronicles</span></div>
-                  )}
-                  {columnStories.length > 0 && (
-                    <div className="columns-grid">
-                      {columnStories.map((fact, i) => (
-                        <ColumnStory key={`${fact.title}-${fact.year}-${i}`} fact={fact} index={i} />
-                      ))}
-                    </div>
-                  )}
-                </div>
-              ) : (
-                <div className="no-data"><div className="no-data-text">The presses have no record for this date.<br /><em>Perhaps the archives have been bewitched.</em></div></div>
-              )}
+              <div className="newspaper-body">
+                {filtered.length === 0 ? (
+                  <div className="no-data">The presses have no record for this date.<br /><em>Perhaps the archives have been bewitched.</em></div>
+                ) : (
+                  <>
+                    {/* HERO STORY */}
+                    {hero && (
+                      <div className="hero">
+                        <div>
+                          <div className="hero-kicker">⚡ {TYPE_LABELS[hero.type]} · {hero.year}</div>
+                          <h1 className="hero-headline">{hero.title.toUpperCase()}</h1>
+                          <div className="byline">By the Nornlore Press Corps &nbsp;|&nbsp; Verified by the Dept. of Historical Sorcery</div>
+                          <div className="article-text">
+                            <p>
+                              <span className="drop-cap-letter">{hero.description.charAt(0)}</span>
+                              {hero.description.slice(1)}
+                              {hero.description.length < 200 && " The full account of these remarkable circumstances, as pieced together by our most diligent correspondents, reveals a tapestry of events that would astound even the most seasoned chronicler of historical curiosities. Witnesses described scenes of such extraordinary import that the very fabric of the age was altered irrevocably."}
+                            </p>
+                            {hero.wikipediaSlug && (
+                              <p style={{ marginTop: "8px", fontStyle: "italic", fontSize: "0.75rem", color: "var(--faded)" }}>
+                                <a href={`https://en.wikipedia.org/wiki/${hero.wikipediaSlug}`} target="_blank" rel="noopener noreferrer" style={{ color: "var(--accent)", textDecoration: "none" }}>
+                                  Full report continues on page 4 →
+                                </a>
+                              </p>
+                            )}
+                          </div>
+                        </div>
+                        {(hero.type === "person" || hero.type === "event") && hero.wikipediaSlug && (
+                          <div>
+                            <WikiPhoto slug={hero.wikipediaSlug} title={hero.title} />
+                          </div>
+                        )}
+                      </div>
+                    )}
+
+                    {/* THREE COLUMN STORIES */}
+                    {secondRow.length > 0 && (
+                      <div className="columns-row">
+                        {secondRow.map((fact, i) => (
+                          <div className="col-story" key={`sec-${i}`}>
+                            <div className="hero-kicker">{TYPE_LABELS[fact.type]}</div>
+                            <h2 className="col-headline">{fact.title}</h2>
+                            <div className="byline">{fact.year}</div>
+                            {(fact.type === "person" || fact.type === "event") && fact.wikipediaSlug && (
+                              <div className="photo-box float-right">
+                                <WikiPhoto slug={fact.wikipediaSlug} title={fact.title} />
+                              </div>
+                            )}
+                            <p className="col-text">{fact.description}</p>
+                          </div>
+                        ))}
+                      </div>
+                    )}
+
+                    {/* WIDE STORY + AD */}
+                    {thirdRow.length > 0 && (
+                      <div className="wide-row">
+                        <div>
+                          <div className="hero-kicker">{TYPE_LABELS[thirdRow[0].type]} · {thirdRow[0].year}</div>
+                          <h2 className="col-headline" style={{ fontSize: "1.2rem", marginBottom: "8px" }}>{thirdRow[0].title.toUpperCase()}</h2>
+                          <div className="byline">By the Nornlore Press Corps</div>
+                          <p className="col-text" style={{ columnCount: 2, columnGap: "16px", columnRule: "1px solid rgba(58,26,0,0.2)" }}>
+                            {thirdRow[0].description}
+                            {thirdRow[0].description.length < 180 && " Further details emerged as our correspondents continued their investigation into the deeper ramifications of these events, consulting with experts across multiple fields of study."}
+                          </p>
+                        </div>
+                        {thirdRow[1] ? (
+                          <div className="ad-box">
+                            <div className="ad-title" style={{ fontSize: "1.1rem" }}>{thirdRow[1].title}</div>
+                            <div className="ad-icon">📜</div>
+                            <div className="ad-body">
+                              <em>{TYPE_LABELS[thirdRow[1].type]} · {thirdRow[1].year}</em><br /><br />
+                              {thirdRow[1].description}
+                              {thirdRow[1].wikipediaSlug && (
+                                <>
+                                  <br /><br />
+                                  <a href={`https://en.wikipedia.org/wiki/${thirdRow[1].wikipediaSlug}`} target="_blank" rel="noopener noreferrer" style={{ color: "var(--accent)", textDecoration: "none", fontSize: "0.7rem" }}>
+                                    Read more →
+                                  </a>
+                                </>
+                              )}
+                            </div>
+                          </div>
+                        ) : (
+                          <div className="ad-box">
+                            <div className="ad-title">Nornlore</div>
+                            <div className="ad-icon">🦉</div>
+                            <div className="ad-body"><em>&quot;Every Date Has a Story&quot;</em><br /><br />Discover what history shares your birthday.</div>
+                          </div>
+                        )}
+                      </div>
+                    )}
+
+                    {/* BOTTOM STORIES */}
+                    {restRows.length > 0 && (
+                      <div className="bottom-row">
+                        <div className="bottom-col">
+                          <div className="section-label">More Chronicles</div>
+                          {restRows.filter((_, i) => i % 2 === 0).map((fact, i) => (
+                            <div key={`bl-${i}`} style={{ marginBottom: "12px" }}>
+                              <div className="hero-kicker">{TYPE_LABELS[fact.type]} · {fact.year}</div>
+                              <h3 className="col-headline">{fact.title}</h3>
+                              <p className="col-text">{fact.description}</p>
+                            </div>
+                          ))}
+                        </div>
+                        <div className="bottom-col">
+                          <div className="section-label">Continued</div>
+                          {restRows.filter((_, i) => i % 2 === 1).map((fact, i) => (
+                            <div key={`br-${i}`} style={{ marginBottom: "12px" }}>
+                              <div className="hero-kicker">{TYPE_LABELS[fact.type]} · {fact.year}</div>
+                              <h3 className="col-headline">{fact.title}</h3>
+                              <p className="col-text">{fact.description}</p>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    )}
+                  </>
+                )}
+              </div>
 
               <div className="paper-footer">
-                <div className="rule-double" />
-                <div className="paper-footer-bar">
-                  <span>Potions 3</span><span>★</span><span>Spells 5</span><span>★</span>
-                  <span>Hocus-Pocus 7</span><span>★</span><span>Ministry Affairs 11</span><span>★</span><span>Games 7</span>
-                </div>
-                <div className="rule-thin" />
-                <div className="paper-footer-text">Nornlore — All tales verified by the Dept. of Historical Sorcery — &quot;Nobody Wastes the Daily Prophet&quot;</div>
+                Nornlore is published on enchanted parchment · Owl subscriptions welcome<br />
+                All tales verified by the Department of Historical Sorcery · &quot;Nobody Wastes the Daily Prophet&quot;
               </div>
             </div>
           </motion.div>

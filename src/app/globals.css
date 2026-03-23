@@ -1,299 +1,399 @@
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
 :root {
-  --parch: #d8ccac;
-  --parch-lt: #e2d6ba;
-  --parch-dk: #c4b896;
-  --ink: #0e0a04;
-  --ink-mid: #241c0c;
-  --ink-lt: #4a3c1e;
-  --ink-faint: #6e5e38;
-  --ink-ghost: #9a8a60;
-  --red: #6e1212;
-  --font-black: "UnifrakturMaguntia", cursive;
-  --font-head: "Playfair Display", serif;
-  --font-head-sc: "Playfair Display SC", serif;
-  --font-body: "EB Garamond", serif;
-  --font-display: "Cinzel Decorative", serif;
+  --ink: #1a0a00;
+  --parchment: #f2e8c9;
+  --parchment-dark: #e6d9a8;
+  --accent: #7a2b00;
+  --rule: #3a1a00;
+  --faded: #6b5030;
 }
 
-html { scroll-behavior: smooth; }
+* { margin: 0; padding: 0; box-sizing: border-box; }
 
 body {
-  font-family: var(--font-body);
-  background: var(--parch);
+  background: #2a1a0a;
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+  font-family: 'IM Fell DW Pica', Georgia, serif;
+  min-height: 100vh;
   color: var(--ink);
-  min-height: 100vh;
-  overflow-x: hidden;
-  -webkit-font-smoothing: auto;
-  font-size: 14.5px;
-  line-height: 1.4;
 }
 
-/* ============ NEWSPAPER PAGE ============ */
-.newspaper-page {
-  max-width: 100%;
-  margin: 0;
-  background: var(--parch);
-  background-image: url("/paper-texture.png");
-  background-size: cover;
-  background-blend-mode: multiply;
-  min-height: 100vh;
-  padding: 6px 2vw 16px;
+/* ============ THE PAPER ============ */
+.paper {
+  background: var(--parchment);
+  max-width: 960px;
+  width: 100%;
   position: relative;
+  box-shadow: 0 0 60px rgba(0,0,0,0.8), inset 0 0 80px rgba(180,140,60,0.15);
+  background-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E");
 }
 
-/* Vignette */
-.newspaper-page::before {
-  content: "";
+.paper::before {
+  content: '';
   position: absolute;
   inset: 0;
-  background: radial-gradient(ellipse at center, transparent 50%, rgba(20, 15, 5, 0.12) 100%);
+  background: radial-gradient(ellipse at 20% 10%, rgba(200,170,80,0.12) 0%, transparent 60%),
+              radial-gradient(ellipse at 80% 90%, rgba(180,140,60,0.1) 0%, transparent 50%);
   pointer-events: none;
-  z-index: 1;
-}
-
-/* Grain */
-.newspaper-page::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  opacity: 0.03;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-  background-size: 200px 200px;
-  pointer-events: none;
-  z-index: 2;
-  mix-blend-mode: multiply;
-}
-
-.newspaper-page > * {
-  position: relative;
-  z-index: 3;
-}
-
-/* ============ RULES ============ */
-.rule-heavy {
-  border: none;
-  height: 5px;
-  background: var(--ink);
-  margin: 0;
-}
-
-.rule-double {
-  height: 5px;
-  border: none;
-  border-top: 2.5px solid var(--ink);
-  border-bottom: 1px solid var(--ink);
-  margin: 0;
-}
-
-.rule-double-inv {
-  height: 5px;
-  border: none;
-  border-top: 1px solid var(--ink);
-  border-bottom: 2.5px solid var(--ink);
-  margin: 0;
-}
-
-.rule-thin {
-  height: 0;
-  border: none;
-  border-top: 0.5px solid var(--ink-faint);
-  margin: 2px 0;
 }
 
 /* ============ MASTHEAD ============ */
-.masthead-corner-row {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  padding: 1px 0;
+.masthead {
+  text-align: center;
+  padding: 18px 24px 10px;
+  border-bottom: 4px double var(--rule);
+  position: relative;
 }
 
-.masthead-corner {
-  font-family: var(--font-body);
-  font-size: 0.55rem;
+.masthead-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.72rem;
+  color: var(--faded);
+  font-family: 'IM Fell English', serif;
   font-style: italic;
-  color: var(--ink-faint);
-  max-width: 130px;
-  line-height: 1.2;
+  margin-bottom: 6px;
+}
+
+.masthead-logo {
+  font-family: 'UnifrakturMaguntia', cursive;
+  font-size: clamp(2.8rem, 7vw, 5.2rem);
+  color: var(--ink);
+  line-height: 1;
+  letter-spacing: 1px;
+  text-shadow: 2px 2px 0 rgba(120,60,0,0.25);
 }
 
 .masthead-tagline {
-  font-family: var(--font-head-sc);
-  font-size: 0.4rem;
-  letter-spacing: 0.4em;
-  text-align: center;
-  color: var(--ink-lt);
-  text-transform: uppercase;
-  padding: 0;
-}
-
-.masthead-ornaments {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 12px;
-  margin: -4px 0;
-}
-
-.masthead-ornament-img {
-  width: 50px;
-  height: 50px;
-  object-fit: contain;
-  opacity: 0.5;
-  filter: sepia(0.6) contrast(1.5) brightness(0.7);
-  mix-blend-mode: multiply;
-}
-
-.masthead-banner {
-  width: 100%;
-  max-height: 60px;
-  overflow: hidden;
-  display: flex;
-  justify-content: center;
-  margin: -2px 0 0;
-  opacity: 0.45;
-  mix-blend-mode: multiply;
-}
-
-.masthead-banner img {
-  width: 100%;
-  max-width: 500px;
-  height: auto;
-  object-fit: contain;
-  filter: sepia(0.6) contrast(1.5) brightness(0.75);
-}
-
-.masthead-title {
-  font-family: var(--font-black);
-  font-size: clamp(3.5rem, 12vw, 7rem);
-  font-weight: 400;
-  text-align: center;
-  line-height: 0.8;
-  color: var(--ink);
-  letter-spacing: 0.03em;
-  padding: 0;
-  text-shadow: 1px 2px 0 rgba(0,0,0,0.06);
-}
-
-.masthead-subtitle {
-  font-family: var(--font-head-sc);
-  font-size: 0.48rem;
-  letter-spacing: 0.3em;
-  text-align: center;
-  text-transform: uppercase;
-  color: var(--ink-lt);
-  margin-top: -3px;
-}
-
-.masthead-info-bar {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 0.5rem;
-  font-family: var(--font-head-sc);
-  font-size: 0.38rem;
-  letter-spacing: 0.12em;
-  color: var(--ink-faint);
-  text-transform: uppercase;
-  padding: 1px 0;
-  flex-wrap: wrap;
-}
-
-/* ============ LANDING ============ */
-.landing .newspaper-page {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  min-height: 100vh;
-  padding: 10px 4vw;
-}
-
-.landing-cta {
-  text-align: center;
-  padding: 1.2rem 0 0.8rem;
-  position: relative;
-  z-index: 10;
-}
-
-.cta-headline {
-  font-family: var(--font-head);
-  font-size: clamp(1.3rem, 4vw, 2rem);
-  font-weight: 900;
+  font-family: 'IM Fell English', serif;
   font-style: italic;
+  font-size: 0.85rem;
+  color: var(--accent);
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin-top: 4px;
+}
+
+.masthead-rule {
+  border: none;
+  border-top: 1px solid var(--rule);
+  margin: 8px 0 4px;
+}
+
+.edition-bar {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.68rem;
+  color: var(--faded);
+  font-family: 'IM Fell English', serif;
+  padding: 4px 0;
+  border-top: 1px solid var(--rule);
+  border-bottom: 2px solid var(--rule);
+  margin-top: 4px;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+/* ============ TICKER ============ */
+.ticker-banner {
+  background: var(--ink);
+  color: var(--parchment);
+  text-align: center;
+  padding: 5px 12px;
+  font-family: 'IM Fell English', serif;
+  font-size: 0.78rem;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  overflow: hidden;
+  position: relative;
+}
+
+.ticker-text {
+  display: inline-block;
+  white-space: nowrap;
+  animation: ticker 32s linear infinite;
+}
+
+@keyframes ticker {
+  0%   { transform: translateX(100vw); }
+  100% { transform: translateX(-100%); }
+}
+
+/* ============ BODY ============ */
+.newspaper-body {
+  padding: 0 24px 24px;
+}
+
+/* ============ HERO STORY ============ */
+.hero {
+  border-bottom: 2px solid var(--rule);
+  padding: 16px 0 14px;
+  display: grid;
+  grid-template-columns: 1fr 240px;
+  gap: 20px;
+  align-items: start;
+}
+
+.hero-kicker {
+  font-family: 'IM Fell English', serif;
+  font-style: italic;
+  font-size: 0.72rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 4px;
+}
+
+.hero-headline {
+  font-family: 'IM Fell English', serif;
+  font-size: clamp(1.6rem, 3.5vw, 2.4rem);
   line-height: 1.1;
   color: var(--ink);
-  margin-bottom: 0.5rem;
+  margin-bottom: 8px;
 }
 
-.cta-subtitle {
-  font-family: var(--font-body);
-  font-size: 0.9rem;
-  color: var(--ink-lt);
-  max-width: 400px;
-  margin: 0 auto 1rem;
+.byline {
+  font-size: 0.72rem;
+  color: var(--faded);
+  font-style: italic;
+  margin-bottom: 8px;
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+  padding: 3px 0;
+  font-family: 'IM Fell English', serif;
+}
+
+.article-text {
+  font-size: 0.88rem;
+  line-height: 1.65;
+  color: var(--ink);
+  text-align: justify;
+  hyphens: auto;
+  column-count: 2;
+  column-gap: 18px;
+  column-rule: 1px solid rgba(58,26,0,0.25);
+}
+
+.article-text p + p {
+  margin-top: 8px;
+}
+
+/* Drop cap */
+.drop-cap-letter {
+  font-family: 'UnifrakturMaguntia', cursive;
+  font-size: 3.8rem;
+  float: left;
+  line-height: 0.72;
+  padding-right: 6px;
+  padding-top: 4px;
+  color: var(--accent);
+}
+
+/* ============ PHOTO BOX ============ */
+.photo-box {
+  border: 2px solid var(--rule);
+  background: var(--parchment-dark);
+  position: relative;
+  overflow: hidden;
+}
+
+.photo-box img {
+  width: 100%;
+  display: block;
+  filter: sepia(0.35) contrast(1.15) brightness(0.85);
+  transition: filter 0.3s;
+}
+
+.photo-box img:hover {
+  filter: sepia(0.15) contrast(1.05) brightness(0.92);
+}
+
+.photo-caption {
+  background: rgba(10,5,0,0.85);
+  color: var(--parchment-dark);
+  font-style: italic;
+  font-size: 0.65rem;
+  padding: 5px 8px;
+  text-align: center;
+  font-family: 'IM Fell English', serif;
+}
+
+/* ============ COLUMNS ROW ============ */
+.columns-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+  border-bottom: 2px solid var(--rule);
+  padding: 14px 0;
+}
+
+.col-story {
+  padding: 0 14px;
+  border-right: 1px solid rgba(58,26,0,0.3);
+}
+
+.col-story:first-child { padding-left: 0; }
+.col-story:last-child  { border-right: none; padding-right: 0; }
+
+.col-headline {
+  font-family: 'IM Fell English', serif;
+  font-size: 1.05rem;
+  line-height: 1.2;
+  margin-bottom: 6px;
+  color: var(--ink);
+}
+
+.col-text {
+  font-size: 0.8rem;
+  line-height: 1.6;
+  color: var(--ink);
+  text-align: justify;
+  hyphens: auto;
+}
+
+/* Column story image */
+.col-story .photo-box {
+  margin: 6px 0;
+}
+
+.col-story .photo-box.float-right {
+  float: right;
+  width: 45%;
+  margin: 0 0 6px 10px;
+  shape-outside: margin-box;
+}
+
+/* ============ WIDE STORY ROW ============ */
+.wide-row {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 16px;
+  padding: 14px 0;
+  border-bottom: 2px solid var(--rule);
+  align-items: start;
+}
+
+/* ============ AD BOX ============ */
+.ad-box {
+  border: 3px double var(--rule);
+  padding: 12px;
+  text-align: center;
+  background: var(--parchment-dark);
+  position: relative;
+}
+
+.ad-box::before {
+  content: '✦ Advertisement ✦';
+  position: absolute;
+  top: -9px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--parchment-dark);
+  padding: 0 6px;
+  font-size: 0.62rem;
+  color: var(--faded);
+  letter-spacing: 1px;
+  white-space: nowrap;
+}
+
+.ad-title {
+  font-family: 'UnifrakturMaguntia', cursive;
+  font-size: 1.4rem;
+  color: var(--accent);
+}
+
+.ad-body {
+  font-size: 0.75rem;
+  font-style: italic;
+  margin-top: 4px;
+  color: var(--faded);
   line-height: 1.5;
 }
 
-.date-form {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.7rem;
-  position: relative;
-  z-index: 50;
+.ad-icon {
+  font-size: 2rem;
+  display: inline-block;
+  margin: 6px 0;
+  animation: owlbob 2s ease-in-out infinite;
 }
 
-.date-inputs {
-  display: flex;
-  gap: 0.5rem;
-  align-items: center;
+@keyframes owlbob {
+  0%, 100% { transform: translateY(0) rotate(-3deg); }
+  50%      { transform: translateY(-6px) rotate(3deg); }
 }
 
-.date-separator {
-  font-family: var(--font-head);
-  font-size: 1.2rem;
-  color: var(--ink-faint);
+/* ============ BOTTOM ROW ============ */
+.bottom-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  padding-top: 14px;
 }
 
-/* ============ SELECT ============ */
+.bottom-col {
+  padding: 0 16px;
+  border-right: 1px solid rgba(58,26,0,0.3);
+}
+
+.bottom-col:last-child { border-right: none; padding-right: 0; }
+.bottom-col:first-child { padding-left: 0; }
+
+.section-label {
+  font-family: 'IM Fell English', serif;
+  font-size: 0.7rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--accent);
+  border-top: 2px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+  padding: 3px 0;
+  margin-bottom: 8px;
+}
+
+/* ============ FOOTER ============ */
+.paper-footer {
+  text-align: center;
+  padding: 8px 0 0;
+  border-top: 3px double var(--rule);
+  margin: 12px 24px 0;
+  font-size: 0.65rem;
+  color: var(--faded);
+  font-style: italic;
+  letter-spacing: 1px;
+  padding-bottom: 14px;
+}
+
+/* ============ CUSTOM SELECT ============ */
 .np-select { position: relative; user-select: none; }
 .np-select.open { z-index: 100; }
 
 .np-select-trigger {
-  font-family: var(--font-body);
-  font-size: 0.95rem;
-  padding: 0.35rem 1.6rem 0.35rem 0.5rem;
-  background: var(--parch-lt);
+  font-family: 'IM Fell DW Pica', serif;
+  font-size: 1rem;
+  padding: 0.4rem 1.8rem 0.4rem 0.6rem;
+  background: var(--parchment);
   color: var(--ink);
-  border: 1.5px solid var(--ink-mid);
+  border: 1.5px solid var(--rule);
   cursor: pointer;
   display: flex;
   align-items: center;
   position: relative;
   transition: all 0.2s;
-  min-width: 95px;
+  min-width: 100px;
   text-align: left;
   white-space: nowrap;
 }
-
-.np-select-trigger .placeholder { color: var(--ink-faint); }
-.np-select-trigger:hover { background: var(--parch); }
+.np-select-trigger .placeholder { color: var(--faded); }
+.np-select-trigger:hover { background: var(--parchment-dark); }
 .np-select.open .np-select-trigger { border-color: var(--ink); }
 
 .np-select-arrow {
-  position: absolute;
-  right: 0.4rem;
-  top: 50%;
+  position: absolute; right: 0.5rem; top: 50%;
   transform: translateY(-50%);
-  color: var(--ink-lt);
+  color: var(--faded);
   transition: transform 0.2s;
 }
 .np-select.open .np-select-arrow { transform: translateY(-50%) rotate(180deg); }
@@ -302,560 +402,181 @@ body {
   position: absolute;
   top: calc(100% + 2px);
   left: -1px; right: -1px;
-  background: var(--parch-lt);
-  border: 1.5px solid var(--ink-mid);
+  background: var(--parchment);
+  border: 1.5px solid var(--rule);
   z-index: 200;
-  max-height: 200px;
+  max-height: 220px;
   overflow-y: auto;
   transform-origin: top center;
-  box-shadow: 2px 3px 0 rgba(14, 10, 4, 0.12);
+  box-shadow: 2px 3px 0 rgba(26, 10, 0, 0.15);
 }
-
 .np-select-dropdown::-webkit-scrollbar { width: 4px; }
-.np-select-dropdown::-webkit-scrollbar-track { background: var(--parch-dk); }
-.np-select-dropdown::-webkit-scrollbar-thumb { background: var(--ink-faint); }
+.np-select-dropdown::-webkit-scrollbar-track { background: var(--parchment-dark); }
+.np-select-dropdown::-webkit-scrollbar-thumb { background: var(--faded); }
 
 .np-select-option {
-  font-family: var(--font-body);
-  font-size: 0.85rem;
-  padding: 0.25rem 0.5rem 0.25rem 1rem;
-  background: none;
-  border: none;
-  border-bottom: 0.5px solid rgba(180, 160, 120, 0.3);
-  color: var(--ink-mid);
-  cursor: pointer;
-  width: 100%;
+  font-family: 'IM Fell DW Pica', serif;
+  font-size: 0.9rem;
+  padding: 0.3rem 0.5rem 0.3rem 1rem;
+  background: none; border: none;
+  border-bottom: 0.5px solid rgba(58,26,0,0.15);
+  color: var(--ink);
+  cursor: pointer; width: 100%;
   text-align: left;
   transition: background 0.1s;
-  display: block;
-  position: relative;
+  display: block; position: relative;
 }
 .np-select-option:last-child { border-bottom: none; }
-.np-select-option:hover { background: var(--parch-dk); color: var(--ink); }
-.np-select-option.selected { font-weight: 700; color: var(--ink); }
+.np-select-option:hover { background: var(--parchment-dark); }
+.np-select-option.selected { font-weight: 700; }
 .np-select-option.selected::before {
-  content: "▸";
-  position: absolute;
-  left: 0.25rem;
-  font-size: 0.7rem;
+  content: "▸"; position: absolute; left: 0.25rem; font-size: 0.7rem;
+}
+
+/* ============ LANDING CTA ============ */
+.landing-cta {
+  text-align: center;
+  padding: 24px 0 16px;
+  position: relative;
+  z-index: 10;
+}
+
+.cta-headline {
+  font-family: 'IM Fell English', serif;
+  font-size: clamp(1.4rem, 4vw, 2rem);
+  line-height: 1.15;
+  color: var(--ink);
+  margin-bottom: 8px;
+}
+
+.cta-subtitle {
+  font-family: 'IM Fell DW Pica', serif;
+  font-size: 0.92rem;
+  color: var(--faded);
+  max-width: 420px;
+  margin: 0 auto 16px;
+  line-height: 1.55;
+  font-style: italic;
+}
+
+.date-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.date-inputs {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.date-separator {
+  font-size: 1.2rem;
+  color: var(--faded);
 }
 
 .reveal-btn {
-  font-family: var(--font-head-sc);
-  font-size: 0.6rem;
-  font-weight: 700;
-  letter-spacing: 0.2em;
+  font-family: 'IM Fell English', serif;
+  font-size: 0.75rem;
+  letter-spacing: 3px;
   text-transform: uppercase;
-  padding: 0.55rem 1.8rem;
+  padding: 8px 24px;
   background: var(--ink);
-  color: var(--parch);
+  color: var(--parchment);
   border: none;
   cursor: pointer;
   transition: all 0.2s;
 }
-.reveal-btn:hover:not(:disabled) { background: var(--red); }
+.reveal-btn:hover:not(:disabled) { background: var(--accent); }
 .reveal-btn:disabled { opacity: 0.3; cursor: not-allowed; }
 
-.landing-bottom-bar {
+/* Landing bottom */
+.landing-bottom {
   display: flex;
   justify-content: center;
-  gap: 0.6rem;
-  padding: 0.4rem 0 0;
-  font-family: var(--font-head-sc);
-  font-size: 0.38rem;
-  letter-spacing: 0.18em;
+  gap: 8px;
+  font-family: 'IM Fell English', serif;
+  font-size: 0.65rem;
+  color: var(--faded);
+  letter-spacing: 2px;
   text-transform: uppercase;
-  color: var(--ink-ghost);
   flex-wrap: wrap;
-  position: relative;
-  z-index: 1;
+  padding: 6px 0;
 }
 
-/* Scroll divider image */
-.scroll-divider {
-  display: flex;
-  justify-content: center;
-  margin: 2px 0;
-  opacity: 0.35;
-  mix-blend-mode: multiply;
-}
-
-.scroll-divider img {
-  width: 100%;
-  max-width: 400px;
-  height: 30px;
-  object-fit: contain;
-  filter: sepia(0.5) contrast(1.4) brightness(0.7);
-}
-
-/* ============ APP VIEW ============ */
-.app-view { min-height: 100vh; }
-.app-view .newspaper-page { padding: 6px 2vw 16px; }
-
-/* Results masthead */
-.paper-masthead-row {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 1px 0;
-}
-.paper-masthead-center { text-align: center; }
-
-.masthead-tagline-sm {
-  font-family: var(--font-head-sc);
-  font-size: 0.32rem;
-  letter-spacing: 0.3em;
-  text-transform: uppercase;
-  color: var(--ink-faint);
-}
-
-.masthead-title-sm {
-  font-family: var(--font-black);
-  font-size: 1.6rem;
-  line-height: 0.85;
-  color: var(--ink);
-}
-
-.back-btn, .share-btn {
-  font-family: var(--font-head-sc);
-  font-size: 0.42rem;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--ink-lt);
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 0.15rem 0;
-  transition: color 0.2s;
-}
-.back-btn:hover, .share-btn:hover { color: var(--ink); }
-.share-btn {
-  border: 1px solid var(--ink-faint);
-  padding: 0.15rem 0.4rem;
-}
-.share-btn:hover { background: var(--ink); color: var(--parch); border-color: var(--ink); }
-
-/* Filter nav */
+/* ============ FILTER BAR ============ */
 .filter-bar {
   display: flex;
   gap: 0;
   justify-content: center;
   flex-wrap: wrap;
-  background: var(--parch-dk);
-  border-top: 2px solid var(--ink);
-  border-bottom: 2px solid var(--ink);
-  margin: 2px 0 3px;
+  background: var(--ink);
+  padding: 0;
 }
 
 .filter-pill {
-  font-family: var(--font-head-sc);
-  font-size: 0.4rem;
-  letter-spacing: 0.06em;
+  font-family: 'IM Fell English', serif;
+  font-size: 0.72rem;
+  letter-spacing: 2px;
   text-transform: uppercase;
-  padding: 0.25rem 0.55rem;
+  padding: 5px 12px;
   border: none;
-  border-right: 0.5px solid var(--ink-ghost);
+  border-right: 1px solid rgba(242,232,201,0.2);
   background: transparent;
-  color: var(--ink-lt);
+  color: var(--parchment-dark);
   cursor: pointer;
-  transition: all 0.1s;
+  transition: all 0.12s;
   white-space: nowrap;
-  font-weight: 700;
 }
 .filter-pill:last-child { border-right: none; }
-.filter-pill:hover { background: var(--parch-lt); }
-.filter-pill.active { color: var(--parch); background: var(--ink); }
+.filter-pill:hover { background: rgba(242,232,201,0.1); }
+.filter-pill.active { background: var(--accent); color: var(--parchment); }
 
-/* ============ LEAD STORY — MASSIVE ============ */
-.lead-story {
-  padding: 4px 0 8px;
-  border-bottom: 3px double var(--ink);
-  position: relative;
-}
-
-.lead-kicker {
-  font-family: var(--font-head-sc);
-  font-size: 0.42rem;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  color: var(--ink-faint);
-  margin-bottom: 0;
-}
-
-.exclusive-badge {
-  display: inline-block;
-  font-family: var(--font-head-sc);
-  font-size: 0.38rem;
-  font-weight: 700;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--parch);
-  background: var(--ink);
-  padding: 1px 5px;
-  margin-right: 5px;
-  vertical-align: middle;
-}
-
-.lead-headline {
-  font-family: var(--font-head);
-  font-size: clamp(2.5rem, 7vw, 5rem);
-  font-weight: 900;
-  line-height: 0.9;
-  color: var(--ink);
-  letter-spacing: -0.02em;
-  margin-bottom: 2px;
-  text-transform: uppercase;
-}
-
-.lead-subhead {
-  font-family: var(--font-head);
-  font-size: 0.8rem;
-  font-style: italic;
-  color: var(--ink-lt);
-  margin-bottom: 3px;
-  line-height: 1.25;
-  border-bottom: 0.5px solid var(--ink-ghost);
-  padding-bottom: 3px;
-}
-
-/* Lead body — image floats inside multi-column text */
-.lead-body {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 0;
-}
-
-.lead-image-col {
-  padding-right: 12px;
-  border-right: 0.5px solid var(--ink-ghost);
-}
-
-.lead-image-col .article-image {
-  width: 100%;
-  margin-bottom: 4px;
-}
-
-.lead-image-col .article-image img {
-  width: 100%;
-  min-height: 200px;
-  object-fit: cover;
-  object-position: top center;
-}
-
-.lead-text-col {
-  padding-left: 12px;
-  column-count: 2;
-  column-gap: 12px;
-  column-rule: 0.5px solid var(--ink-ghost);
-}
-
-.lead-desc {
-  font-family: var(--font-body);
-  font-size: 0.88rem;
-  line-height: 1.45;
-  color: var(--ink-mid);
-  text-align: justify;
-  hyphens: auto;
-}
-
-.drop-cap {
-  float: left;
-  font-family: var(--font-display);
-  font-size: 3.5rem;
-  line-height: 0.7;
-  font-weight: 900;
-  color: var(--ink);
-  padding: 2px 5px 0 0;
-}
-
-.article-read-more {
-  font-family: var(--font-head-sc);
-  font-size: 0.38rem;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--ink-faint);
-  text-decoration: none;
-  display: inline-block;
-  margin-top: 3px;
-  transition: color 0.2s;
-}
-.article-read-more:hover { color: var(--red); }
-
-/* Lead — no image fallback */
-.lead-body.no-image {
-  display: block;
-  column-count: 3;
-  column-gap: 14px;
-  column-rule: 0.5px solid var(--ink-ghost);
-}
-
-/* ============ ARTICLE IMAGE ============ */
-.article-image {
-  overflow: hidden;
-  border: 1.5px solid var(--ink-lt);
-  position: relative;
-  background: var(--parch-dk);
-}
-
-.article-image img {
-  width: 100%;
-  display: block;
-  object-fit: contain;
-  filter: sepia(0.35) contrast(1.2) brightness(0.82) saturate(0.65);
-  transition: filter 0.3s;
-  background: var(--parch-dk);
-}
-
-.article-image img:hover {
-  filter: sepia(0.15) contrast(1.1) brightness(0.9);
-}
-
-.article-image-caption {
-  font-family: var(--font-head-sc);
-  font-size: 0.35rem;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  text-align: center;
-  padding: 1px 3px;
-  color: var(--ink-faint);
-  border-top: 0.5px solid var(--ink-ghost);
-  background: var(--parch);
-}
-
-/* ============ SECTION DIVIDER ============ */
-.section-rule {
-  text-align: center;
-  position: relative;
-  margin: 6px 0;
-  height: 5px;
-  border-top: 1.5px solid var(--ink);
-  border-bottom: 0.5px solid var(--ink-faint);
-}
-
-.section-rule-text {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background: var(--parch);
-  padding: 0 6px;
-  font-family: var(--font-head-sc);
-  font-size: 0.38rem;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: var(--ink-faint);
-  white-space: nowrap;
-}
-
-/* ============ COLUMNS GRID ============ */
-.columns-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 0;
-}
-
-.col-story {
-  padding: 5px 8px;
-  border-right: 0.5px solid var(--ink-ghost);
-  border-bottom: 0.5px solid var(--ink-ghost);
-  position: relative;
-}
-
-.col-story:nth-child(3n) { border-right: none; }
-
-.col-kicker {
-  font-family: var(--font-head-sc);
-  font-size: 0.35rem;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  color: var(--ink-faint);
-  margin-bottom: 0;
-}
-
-.col-headline {
-  font-family: var(--font-head);
-  font-size: 1.05rem;
-  font-weight: 900;
-  line-height: 1.05;
-  color: var(--ink);
-  margin-bottom: 0;
-  text-transform: uppercase;
-}
-
-/* Big headline for featured secondary stories */
-.col-story.featured .col-headline {
-  font-size: 1.4rem;
-}
-
-.col-year {
-  font-family: var(--font-head-sc);
-  font-size: 0.35rem;
-  letter-spacing: 0.1em;
-  color: var(--ink-faint);
-  margin-bottom: 3px;
-  display: inline-block;
-}
-
-/* Images float inside column text */
-.col-story .article-image {
-  float: right;
-  width: 48%;
-  max-width: 160px;
-  margin: 0 0 3px 6px;
-  shape-outside: margin-box;
-}
-
-.col-story .article-image img {
-  width: 100%;
-  object-fit: cover;
-  max-height: 160px;
-}
-
-/* First column story gets bigger image */
-.col-story:first-child .article-image {
-  float: none;
-  width: 100%;
-  max-width: none;
-  margin: 3px 0;
-}
-
-.col-story:first-child .article-image img {
-  max-height: 200px;
-  object-fit: cover;
-  object-position: top;
-}
-
-.col-desc {
-  font-family: var(--font-body);
-  font-size: 0.8rem;
-  line-height: 1.4;
-  color: var(--ink-lt);
-  text-align: justify;
-  hyphens: auto;
-}
-
-/* Decorative ornament between stories */
-.col-ornament {
-  display: block;
-  width: 24px;
-  height: 24px;
-  margin: 2px auto;
-  opacity: 0.3;
-  filter: sepia(0.5) contrast(1.5) brightness(0.7);
-  mix-blend-mode: multiply;
-}
-
-/* ============ SIDEBAR (vertical text) ============ */
-.sidebar-vertical {
-  writing-mode: vertical-rl;
-  text-orientation: mixed;
-  font-family: var(--font-head);
-  font-size: 1.2rem;
-  font-weight: 900;
-  text-transform: uppercase;
-  color: var(--ink);
-  letter-spacing: 0.08em;
-  position: absolute;
-  right: -2px;
-  top: 0;
-  bottom: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-left: 1.5px solid var(--ink);
-  padding: 0 3px;
-  background: var(--parch-dk);
-}
-
-/* ============ NO DATA ============ */
-.no-data {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 2rem 1rem;
-  text-align: center;
-}
-
-.no-data-text {
-  font-family: var(--font-body);
-  font-size: 0.95rem;
-  font-style: italic;
-  color: var(--ink-lt);
-  line-height: 1.5;
-}
-
-/* ============ FOOTER ============ */
-.paper-footer { margin-top: 6px; }
-
-.paper-footer-bar {
-  display: flex;
-  justify-content: center;
-  gap: 0.4rem;
-  font-family: var(--font-head-sc);
-  font-size: 0.35rem;
-  letter-spacing: 0.1em;
-  color: var(--ink-ghost);
-  text-transform: uppercase;
-  flex-wrap: wrap;
-  padding: 2px 0;
-}
-
-.paper-footer-text {
-  font-family: var(--font-body);
-  font-size: 0.6rem;
-  font-style: italic;
-  text-align: center;
-  color: var(--ink-ghost);
-  padding: 1px 0 3px;
-}
-
-/* Toast */
+/* ============ TOAST ============ */
 .toast {
   position: fixed;
   bottom: 1.5rem;
   left: 50%;
   transform: translateX(-50%) translateY(80px);
   background: var(--ink);
-  color: var(--parch);
-  font-family: var(--font-head-sc);
-  font-size: 0.5rem;
-  letter-spacing: 0.1em;
-  padding: 0.4rem 0.8rem;
+  color: var(--parchment);
+  font-family: 'IM Fell English', serif;
+  font-size: 0.7rem;
+  letter-spacing: 2px;
+  padding: 6px 16px;
   z-index: 10000;
   transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
   pointer-events: none;
 }
 .toast.show { transform: translateX(-50%) translateY(0); }
 
-/* ============ RESPONSIVE ============ */
-@media (max-width: 900px) {
-  .columns-grid { grid-template-columns: repeat(2, 1fr); }
-  .col-story:nth-child(3n) { border-right: 0.5px solid var(--ink-ghost); }
-  .col-story:nth-child(2n) { border-right: none; }
-
-  .lead-body { grid-template-columns: 1fr; }
-  .lead-image-col { border-right: none; padding-right: 0; margin-bottom: 4px; }
-  .lead-text-col { padding-left: 0; }
+/* ============ NO DATA ============ */
+.no-data {
+  padding: 40px 20px;
+  text-align: center;
+  font-style: italic;
+  color: var(--faded);
+  font-size: 1rem;
 }
 
-@media (max-width: 640px) {
-  .newspaper-page { padding: 4px 8px 12px; }
-  .landing .newspaper-page { padding: 8px 10px; }
-  .masthead-title { font-size: clamp(2.5rem, 13vw, 4rem); }
-  .masthead-corner-row { display: none; }
-  .masthead-ornaments { display: none; }
-  .cta-headline { font-size: 1.2rem; }
-  .np-select-trigger { font-size: 0.85rem; min-width: 80px; }
-  .reveal-btn { font-size: 0.55rem; padding: 0.45rem 1.2rem; }
-  .lead-headline { font-size: 1.6rem; }
-  .lead-text-col { column-count: 1; }
-  .drop-cap { font-size: 2.5rem; }
-  .columns-grid { grid-template-columns: 1fr; }
-  .col-story { border-right: none !important; padding: 5px 2px; }
-  .col-headline { font-size: 0.95rem; }
-  .filter-pill { font-size: 0.35rem; padding: 0.2rem 0.4rem; }
-  .masthead-title-sm { font-size: 1.2rem; }
-  .col-story .article-image { float: none; width: 100%; max-width: none; margin: 3px 0; }
-  .col-story:first-child .article-image img { max-height: 180px; }
-  .lead-image-col .article-image img { min-height: 150px; }
+/* ============ RESPONSIVE ============ */
+@media (max-width: 700px) {
+  body { padding: 0; }
+  .paper { box-shadow: none; }
+  .masthead { padding: 12px 14px 8px; }
+  .masthead-top { flex-direction: column; gap: 2px; text-align: center; }
+  .newspaper-body { padding: 0 14px 14px; }
+  .hero { grid-template-columns: 1fr; }
+  .hero .photo-box { max-width: 280px; }
+  .article-text { column-count: 1; }
+  .columns-row { grid-template-columns: 1fr; }
+  .col-story { border-right: none; padding: 8px 0; border-bottom: 1px solid rgba(58,26,0,0.2); }
+  .col-story:last-child { border-bottom: none; }
+  .wide-row { grid-template-columns: 1fr; }
+  .bottom-row { grid-template-columns: 1fr; }
+  .bottom-col { border-right: none; padding: 8px 0; }
+  .edition-bar { flex-direction: column; text-align: center; }
+  .col-story .photo-box.float-right { float: none; width: 100%; margin: 6px 0; }
 }
