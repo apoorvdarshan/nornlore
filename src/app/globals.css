@@ -216,6 +216,8 @@ body {
 .landing-cta {
   text-align: center;
   padding: 1.5rem 0 1rem;
+  position: relative;
+  z-index: 10;
 }
 
 .cta-headline {
@@ -242,6 +244,8 @@ body {
   flex-direction: column;
   align-items: center;
   gap: 0.8rem;
+  position: relative;
+  z-index: 50;
 }
 
 .date-inputs {
@@ -371,6 +375,8 @@ body {
   text-transform: uppercase;
   color: var(--ink-ghost);
   flex-wrap: wrap;
+  position: relative;
+  z-index: 1;
 }
 
 /* ============ APP (RESULTS) VIEW ============ */
