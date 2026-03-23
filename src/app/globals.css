@@ -393,31 +393,30 @@ body::after {
 .card-deck {
   flex: 1;
   display: flex;
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  -webkit-overflow-scrolling: touch;
-  gap: 1.5rem;
-  padding: 1rem 2rem 2rem;
-  scroll-padding: 2rem;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1rem 1.5rem 2rem;
+  max-width: 800px;
+  margin: 0 auto;
+  width: 100%;
 }
 
 .card {
-  flex: 0 0 min(72vw, 320px);
-  scroll-snap-align: center;
+  display: flex;
+  flex-direction: row;
   background: var(--parch);
   border: 2px solid var(--ink-mid);
   border-radius: 0;
   overflow: hidden;
-  display: flex;
-  flex-direction: column;
   position: relative;
-  box-shadow: 4px 4px 0 var(--parch-deep);
+  box-shadow: 3px 3px 0 var(--parch-deep);
   transition: transform 0.3s, box-shadow 0.3s;
+  min-height: 0;
 }
 
 .card:hover {
   transform: translate(-2px, -2px);
-  box-shadow: 6px 6px 0 var(--parch-deep), 0 0 20px var(--blood-glow);
+  box-shadow: 5px 5px 0 var(--parch-deep), 0 0 15px var(--blood-glow);
 }
 
 /* Doodle corner marks on cards */
@@ -425,30 +424,40 @@ body::after {
 .card::after {
   content: "✦";
   position: absolute;
-  font-size: 0.6rem;
+  font-size: 0.5rem;
   color: var(--blood);
-  opacity: 0.4;
+  opacity: 0.3;
+  z-index: 2;
 }
-.card::before { top: 6px; left: 8px; }
-.card::after { bottom: 6px; right: 8px; content: "✧"; }
+.card::before { top: 4px; right: 6px; }
+.card::after { bottom: 4px; left: 6px; content: "✧"; }
 
-/* Card accent — ink blot style */
+/* Card accent — left edge stripe */
 .card-accent {
-  height: 4px;
-  width: 100%;
+  width: 4px;
+  min-height: 100%;
+  flex-shrink: 0;
 }
 
-.card-accent.person { background: linear-gradient(90deg, var(--indigo) 30%, transparent); }
-.card-accent.event { background: linear-gradient(90deg, var(--blood) 30%, transparent); }
-.card-accent.music { background: linear-gradient(90deg, var(--moss) 30%, transparent); }
-.card-accent.movie { background: linear-gradient(90deg, var(--teal) 30%, transparent); }
+.card-accent.person { background: var(--indigo); }
+.card-accent.event { background: var(--blood); }
+.card-accent.music { background: var(--moss); }
+.card-accent.movie { background: var(--teal); }
 
 .card-body {
-  padding: 1.25rem 1.5rem 1.5rem;
+  padding: 1rem 1.25rem;
   display: flex;
   flex-direction: column;
-  gap: 0.65rem;
+  gap: 0.4rem;
   flex: 1;
+  min-width: 0;
+  overflow: hidden;
+}
+
+.card-top-row {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
 }
 
 .card-badge {
@@ -479,14 +488,14 @@ body::after {
 
 .card-year {
   font-family: var(--font-display);
-  font-size: 2.2rem;
+  font-size: 1.1rem;
   color: var(--blood);
   line-height: 1;
 }
 
 .card-title {
   font-family: var(--font-heading);
-  font-size: 1.15rem;
+  font-size: 0.95rem;
   font-weight: 700;
   color: var(--ink);
   line-height: 1.3;
@@ -494,22 +503,27 @@ body::after {
 
 .card-desc {
   font-family: var(--font-body);
-  font-size: 0.88rem;
+  font-size: 0.8rem;
   color: var(--ink-light);
-  line-height: 1.65;
+  line-height: 1.55;
 }
 
 .card-image {
-  width: 100%;
-  border-top: 1px solid var(--parch-deep);
-  border-bottom: 1px solid var(--parch-deep);
+  width: 120px;
+  min-width: 120px;
+  overflow: hidden;
+  background: var(--parch-dark);
+  border-left: 1px solid var(--parch-deep);
+  order: 2;
+  align-self: stretch;
 }
 
 .card-image img {
   width: 100%;
-  height: auto;
+  height: 100%;
+  object-fit: cover;
   display: block;
-  filter: sepia(0.2) contrast(1.05);
+  filter: sepia(0.15) contrast(1.05);
   transition: filter 0.4s, transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
@@ -519,45 +533,31 @@ body::after {
 }
 
 .card-image.placeholder {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--parch-deep);
-  font-size: 2rem;
+  display: none;
 }
 
-.card-embed { width: 100%; overflow: hidden; }
-.card-embed iframe { width: 100%; border: none; display: block; }
+.card-embed { display: none; }
 
 .card-wiki-extract {
-  font-family: var(--font-body);
-  font-size: 0.8rem;
-  color: var(--ink-faint);
-  line-height: 1.6;
-  font-style: italic;
-  border-left: 3px solid var(--blood);
-  padding-left: 0.7rem;
-  margin: 0.5rem 1.5rem;
+  display: none;
 }
 
 .card-link {
   font-family: var(--font-heading);
-  font-size: 0.6rem;
-  letter-spacing: 0.12em;
+  font-size: 0.55rem;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--blood);
   text-decoration: none;
   transition: color 0.2s;
   margin-top: auto;
-  padding-top: 0.75rem;
-  border-top: 1px dashed var(--parch-deep);
+  padding-top: 0.3rem;
 }
 
 .card-link:hover { color: var(--ink); }
 
 .card-footer {
-  padding-top: 0;
-  flex: 1;
+  display: none;
 }
 
 .card-wiki-extract {
@@ -608,14 +608,13 @@ body::after {
   .date-inputs select { font-size: 0.9rem; padding: 0.55rem 1.8rem 0.55rem 0.7rem; }
   .reveal-btn { font-size: 0.75rem; padding: 0.75rem 1.8rem; }
   .card-deck {
-    flex-direction: column;
-    overflow-x: hidden;
-    overflow-y: auto;
-    scroll-snap-type: y mandatory;
     padding: 0.75rem 0.75rem 2rem;
-    gap: 1rem;
+    gap: 0.75rem;
   }
-  .card { flex: 0 0 auto; scroll-snap-align: start; width: 100%; }
+  .card-image { width: 90px; min-width: 90px; }
+  .card-body { padding: 0.75rem 1rem; }
+  .card-year { font-size: 1.2rem; }
+  .card-title { font-size: 0.85rem; }
   .filter-bar { padding: 0.6rem 0.75rem; gap: 0.25rem; }
   .filter-pill { font-size: 0.55rem; padding: 0.35rem 0.7rem; }
   .app-header { padding: 0.7rem 0.75rem; }
