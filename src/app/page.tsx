@@ -81,7 +81,6 @@ function NpSelect({ value, onChange, placeholder, options }: {
   );
 }
 
-// Cache for Wikipedia extracts
 const wikiExtractCache: Record<string, string> = {};
 
 function useWikiExtract(slug: string | null): string {
@@ -108,7 +107,6 @@ function useWikiExtract(slug: string | null): string {
 function WikiPhoto({ slug, title }: { slug: string; title: string }) {
   const [src, setSrc] = useState<string | null>(null);
   const [isGif, setIsGif] = useState(false);
-
   useEffect(() => {
     const gifPath = `/gifs/${slug}.gif`;
     const img = new Image();
@@ -123,7 +121,6 @@ function WikiPhoto({ slug, title }: { slug: string; title: string }) {
     };
     img.src = gifPath;
   }, [slug]);
-
   if (!src) return null;
   return (
     <div className={`photo-box ${isGif ? "photo-moving" : ""}`}>
@@ -133,130 +130,44 @@ function WikiPhoto({ slug, title }: { slug: string; title: string }) {
   );
 }
 
-function truncateAtSentence(text: string, maxLen: number): string {
+function truncate(text: string, maxLen: number): string {
   if (text.length <= maxLen) return text;
   const cut = text.slice(0, maxLen);
   const lastPeriod = cut.lastIndexOf(". ");
   return lastPeriod > maxLen * 0.4 ? cut.slice(0, lastPeriod + 1) : cut.slice(0, cut.lastIndexOf(" ")) + "...";
 }
 
-function ProphetArticle({ fact }: { fact: Fact }) {
+/* ── Article text with wiki extract ── */
+function ArticleText({ fact, maxLen }: { fact: Fact; maxLen: number }) {
   const wikiText = useWikiExtract(fact.wikipediaSlug);
   const desc = fact.description;
   const extra = wikiText && !wikiText.startsWith(desc.slice(0, 40))
     ? ` ${wikiText}`
     : wikiText.length > desc.length ? ` ${wikiText.slice(desc.length)}` : "";
-  const fullText = truncateAtSentence(desc + extra, 800);
-
+  const fullText = truncate(desc + extra, maxLen);
   return (
-    <div className="prophet-story">
+    <>
+      <span className="drop-cap">{fullText.charAt(0)}</span>
+      {fullText.slice(1)}
       {fact.wikipediaSlug && (
-        <WikiPhoto slug={fact.wikipediaSlug} title={fact.title} />
+        <span className="read-more">
+          {" "}<a href={`https://en.wikipedia.org/wiki/${fact.wikipediaSlug}`} target="_blank" rel="noopener noreferrer">
+            Full Report →
+          </a>
+        </span>
       )}
-      <div className="prophet-text">
-        <p>
-          <span className="drop-cap">{fullText.charAt(0)}</span>
-          {fullText.slice(1)}
-        </p>
-        {fact.wikipediaSlug && (
-          <p className="prophet-continued">
-            <a href={`https://en.wikipedia.org/wiki/${fact.wikipediaSlug}`} target="_blank" rel="noopener noreferrer">
-              Full report continues on page 4 →
-            </a>
-          </p>
-        )}
-      </div>
-    </div>
+    </>
   );
 }
 
-function ProphetFiller({ fact, facts, currentIndex }: { fact: Fact; facts: Fact[]; currentIndex: number }) {
-  const seed = fact.title;
-  const adIdx = stableIndex(seed, MAGICAL_ADS.length);
-  const ad2Idx = stableIndex(seed + "2", MAGICAL_ADS.length);
-  const noticeIdx = stableIndex(seed, NOTICES.length);
-  const notice2Idx = stableIndex(seed + "x", NOTICES.length);
-  const weatherIdx = stableIndex(seed, WEATHER.length);
-  const mini1 = stableIndex(seed, MINI_HEADLINES.length);
-  const mini2 = stableIndex(seed + "b", MINI_HEADLINES.length);
-  const mini3 = stableIndex(seed + "c", MINI_HEADLINES.length);
-  const mini4 = stableIndex(seed + "d", MINI_HEADLINES.length);
-  const mini5 = stableIndex(seed + "e", MINI_HEADLINES.length);
-
-  // Teaser for next story
-  const nextIdx = (currentIndex + 1) % facts.length;
-  const nextFact = facts[nextIdx];
-  const prevIdx = (currentIndex - 1 + facts.length) % facts.length;
-  const prevFact = facts[prevIdx];
-
-  return (
-    <>
-      {/* TOP STRIP — mini stories */}
-      <div className="prophet-top-strip">
-        <div className="mini-story">
-          <div className="mini-headline">{MINI_HEADLINES[mini1]}</div>
-          <div className="mini-text">{NOTICES[noticeIdx]}</div>
-        </div>
-        <div className="mini-story">
-          <div className="mini-headline">{MINI_HEADLINES[mini2]}</div>
-          <div className="mini-text">{WEATHER[weatherIdx]}</div>
-        </div>
-        <div className="mini-story mini-story-last">
-          <div className="mini-headline">{MINI_HEADLINES[mini3]}</div>
-          <div className="mini-text">Full Report Pg. {stableIndex(seed, 12) + 2}</div>
-        </div>
-      </div>
-
-      {/* SIDEBAR */}
-      <div className="prophet-sidebar">
-        <div className="sidebar-section">
-          <div className="sidebar-label">ALSO IN THIS EDITION</div>
-          <div className="sidebar-teaser">
-            <h3>{nextFact.title.toUpperCase()}</h3>
-            <div className="sidebar-teaser-type">{TYPE_LABELS[nextFact.type]} · {nextFact.year}</div>
-            <p>{truncateAtSentence(nextFact.description, 120)}</p>
-          </div>
-          {facts.length > 2 && (
-            <div className="sidebar-teaser">
-              <h3>{prevFact.title}</h3>
-              <div className="sidebar-teaser-type">{TYPE_LABELS[prevFact.type]} · {prevFact.year}</div>
-              <p>{truncateAtSentence(prevFact.description, 80)}</p>
-            </div>
-          )}
-        </div>
-        <div className="sidebar-divider" />
-        <div className="sidebar-fillers">
-          <div className="sidebar-mini-hl">{MINI_HEADLINES[mini4]}</div>
-          <div className="sidebar-mini-hl">{MINI_HEADLINES[mini5]}</div>
-        </div>
-        <div className="prophet-ad-box">
-          <div className="ad-label">ADVERTISEMENT</div>
-          {MAGICAL_ADS[adIdx]}
-        </div>
-      </div>
-
-      {/* BOTTOM ROW */}
-      <div className="prophet-bottom-left">
-        <div className="prophet-notices-box">
-          <div className="notices-label">WEATHER OUTLOOK</div>
-          <p>{WEATHER[weatherIdx]}</p>
-          <div className="notices-label" style={{ marginTop: "8px" }}>NOTICES &amp; CLASSIFIEDS</div>
-          <p>{NOTICES[noticeIdx]}</p>
-          <p>{NOTICES[notice2Idx]}</p>
-        </div>
-      </div>
-      <div className="prophet-bottom-right">
-        <div className="prophet-ad-box">
-          <div className="ad-label">ADVERTISEMENT</div>
-          {MAGICAL_ADS[ad2Idx]}
-        </div>
-        <div className="prophet-ad-box" style={{ marginTop: "8px" }}>
-          <div className="ad-label">ADVERTISEMENT</div>
-          {MAGICAL_ADS[(ad2Idx + 3) % MAGICAL_ADS.length]}
-        </div>
-      </div>
-    </>
-  );
+/* ── Small article text (no drop cap) ── */
+function SmallText({ fact, maxLen }: { fact: Fact; maxLen: number }) {
+  const wikiText = useWikiExtract(fact.wikipediaSlug);
+  const desc = fact.description;
+  const extra = wikiText && !wikiText.startsWith(desc.slice(0, 40))
+    ? ` ${wikiText}`
+    : wikiText.length > desc.length ? ` ${wikiText.slice(desc.length)}` : "";
+  return <>{truncate(desc + extra, maxLen)}</>;
 }
 
 export default function Home() {
@@ -265,9 +176,7 @@ export default function Home() {
   const [day, setDay] = useState("");
   const [dateKey, setDateKey] = useState("");
   const [facts, setFacts] = useState<Fact[]>([]);
-  const [currentIndex, setCurrentIndex] = useState(0);
   const [toastMsg, setToastMsg] = useState("");
-  const directionRef = useRef(1);
 
   useEffect(() => {
     const p = new URLSearchParams(window.location.search);
@@ -280,7 +189,6 @@ export default function Home() {
   const navigateToDate = useCallback((key: string) => {
     setDateKey(key);
     setFacts(shuffle(data[key] || []));
-    setCurrentIndex(0);
     setView("prophet");
     const url = new URL(window.location.href);
     url.searchParams.set("date", key);
@@ -293,31 +201,6 @@ export default function Home() {
     url.searchParams.delete("date");
     history.pushState(null, "", url);
   }, []);
-
-  const goNext = useCallback(() => {
-    if (currentIndex < facts.length - 1) {
-      directionRef.current = 1;
-      setCurrentIndex((i) => i + 1);
-    }
-  }, [currentIndex, facts.length]);
-
-  const goPrev = useCallback(() => {
-    if (currentIndex > 0) {
-      directionRef.current = -1;
-      setCurrentIndex((i) => i - 1);
-    }
-  }, [currentIndex]);
-
-  // Keyboard navigation
-  useEffect(() => {
-    if (view !== "prophet") return;
-    const handler = (e: KeyboardEvent) => {
-      if (e.key === "ArrowRight") goNext();
-      if (e.key === "ArrowLeft") goPrev();
-    };
-    window.addEventListener("keydown", handler);
-    return () => window.removeEventListener("keydown", handler);
-  }, [view, goNext, goPrev]);
 
   useEffect(() => {
     const h = () => {
@@ -345,22 +228,28 @@ export default function Home() {
   const today = new Date();
   const dateStr = today.toLocaleDateString("en-GB", { weekday: "long", day: "numeric", month: "long", year: "numeric" }).toUpperCase();
 
-  const currentFact = facts[currentIndex];
+  // Split facts into hero + rest
+  const hero = facts[0];
+  const secondary = facts.slice(1, 3); // 2nd and 3rd events
+  const remaining = facts.slice(3); // rest
 
-  // Ticker content — deterministic per date
-  const tickerStr = useMemo(() => {
-    const items: string[] = [];
-    for (let i = 0; i < TICKER_ITEMS.length; i++) {
-      items.push(TICKER_ITEMS[i]);
-    }
-    return items.join("  ·  ");
-  }, []);
-
-  // Swipe handling
-  const handleDragEnd = useCallback((_: unknown, info: { offset: { x: number } }) => {
-    if (info.offset.x > 80) goPrev();
-    else if (info.offset.x < -80) goNext();
-  }, [goNext, goPrev]);
+  // Stable filler indices from dateKey
+  const s = dateKey || "default";
+  const ad1 = stableIndex(s + "a1", MAGICAL_ADS.length);
+  const ad2 = stableIndex(s + "a2", MAGICAL_ADS.length);
+  const ad3 = stableIndex(s + "a3", MAGICAL_ADS.length);
+  const n1 = stableIndex(s + "n1", NOTICES.length);
+  const n2 = stableIndex(s + "n2", NOTICES.length);
+  const n3 = stableIndex(s + "n3", NOTICES.length);
+  const w1 = stableIndex(s + "w1", WEATHER.length);
+  const m1 = stableIndex(s + "m1", MINI_HEADLINES.length);
+  const m2 = stableIndex(s + "m2", MINI_HEADLINES.length);
+  const m3 = stableIndex(s + "m3", MINI_HEADLINES.length);
+  const m4 = stableIndex(s + "m4", MINI_HEADLINES.length);
+  const m5 = stableIndex(s + "m5", MINI_HEADLINES.length);
+  const m6 = stableIndex(s + "m6", MINI_HEADLINES.length);
+  const m7 = stableIndex(s + "m7", MINI_HEADLINES.length);
+  const m8 = stableIndex(s + "m8", MINI_HEADLINES.length);
 
   return (
     <>
@@ -382,13 +271,11 @@ export default function Home() {
                   <span>FIVE KNUTS — {dateStr}</span>
                 </div>
               </div>
-
               <div className="ticker-banner">
                 <span className="ticker-text">
-                  ✦ DISCOVER what famous events share your birthday ✦ Notable births, world affairs, musical enchantments & moving pictures ✦ Enter your date below to read the chronicle ✦ Over 2,594 historical tales verified by the Department of Historical Sorcery ✦
+                  ✦ DISCOVER what famous events share your birthday ✦ Notable births, world affairs, musical enchantments &amp; moving pictures ✦ Enter your date below to read the chronicle ✦ Over 2,594 historical tales verified by the Department of Historical Sorcery ✦
                 </span>
               </div>
-
               <div className="newspaper-body">
                 <div className="landing-cta">
                   <h2 className="cta-headline">WHAT HISTORY SHARES YOUR BIRTHDAY?</h2>
@@ -407,7 +294,6 @@ export default function Home() {
                     </motion.button>
                   </form>
                 </div>
-
                 <div style={{ borderTop: "2px solid var(--rule)", borderBottom: "1px solid var(--rule)", padding: "6px 0", marginTop: "8px" }}>
                   <div className="landing-bottom">
                     <span>Births</span><span>✦</span><span>Events</span><span>✦</span>
@@ -416,7 +302,6 @@ export default function Home() {
                   </div>
                 </div>
               </div>
-
               <div className="paper-footer">
                 Nornlore is published on enchanted parchment · Owl subscriptions welcome · Back issues by Floo request only<br />
                 © Since Time Immemorial · All tales verified by the Department of Historical Sorcery
@@ -425,89 +310,193 @@ export default function Home() {
           </motion.div>
         ) : (
           <motion.div
-            key={`prophet-${currentIndex}`}
-            initial={{ x: directionRef.current * 60, opacity: 0 }}
-            animate={{ x: 0, opacity: 1 }}
-            exit={{ x: directionRef.current * -60, opacity: 0 }}
-            transition={{ duration: 0.25, ease: "easeOut" }}
-            drag="x"
-            dragConstraints={{ left: 0, right: 0 }}
-            dragElastic={0.12}
-            onDragEnd={handleDragEnd}
+            key="prophet-all"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.35, ease: "easeOut" }}
           >
             <div className="paper">
-              {/* MASTHEAD */}
+              {/* ════ MASTHEAD ════ */}
               <div className="masthead">
                 <div className="masthead-top">
-                  <span style={{ cursor: "pointer" }} onClick={goBack}>← BACK TO FRONT PAGE</span>
-                  <span style={{ cursor: "pointer" }} onClick={handleShare}>SHARE THIS EDITION</span>
+                  <span className="masthead-link" onClick={goBack}>← BACK TO FRONT PAGE</span>
+                  <span className="masthead-link" onClick={handleShare}>SHARE THIS EDITION</span>
                 </div>
+                <div className="masthead-decor-left">bewitch · beguile</div>
+                <div className="masthead-decor-right">spellbind · conjure · enchant</div>
                 <div className="masthead-logo">Nornlore</div>
-                <div className="masthead-tagline">The Enchanted Chronicle</div>
+                <div className="masthead-tagline">The Enchanted Chronicle of Historical Record</div>
                 <hr className="masthead-rule" />
-                <div className="edition-bar">
-                  <span>{headerDateStr.toUpperCase()} EDITION</span>
-                  <span>⚡ ENCHANTED BROADSHEET ⚡</span>
-                  <span>PAGE {currentIndex + 1} OF {facts.length}</span>
+              </div>
+
+              {/* ════ INFO BAR (like Daily Prophet sub-masthead) ════ */}
+              <div className="info-bar">
+                <div className="info-cell info-cell-border">
+                  <strong>NATIONAL WEATHER</strong><br />
+                  {WEATHER[w1]}
+                </div>
+                <div className="info-cell info-cell-border">
+                  <strong>ZODIAC ★ ASPECTS</strong><br />
+                  ☽ · ♍ virgo · ☿ · ☉ luna app.
+                </div>
+                <div className="info-cell">
+                  <strong>FIRST-SECOND EDITION</strong><br />
+                  N° {stableIndex(s, 99999)} · {headerDateStr.toUpperCase()}<br />
+                  <em style={{ fontSize: "0.55rem" }}>Letters to the Editor by owl to Nornlore, Diagon Alley</em>
                 </div>
               </div>
 
-              {/* SUB-MASTHEAD BAR */}
-              <div className="prophet-subbar">
-                <span>National Weather</span>
-                <span>Zodiacs</span>
-                <span>Exports</span>
-                <span>Quidditch</span>
-                <span>Obituaries</span>
-                <span>Classifieds</span>
-              </div>
+              {facts.length > 0 ? (
+                <div className="prophet-body">
 
-              {currentFact ? (
-                <div className="prophet-page">
-                  {/* FILLER: top strip + sidebar + bottom */}
-                  <ProphetFiller fact={currentFact} facts={facts} currentIndex={currentIndex} />
+                  {/* ════ EXCLUSIVE STAMP + HERO HEADLINE ════ */}
+                  <div className="hero-zone">
+                    <div className="exclusive-stamp">★ EXCLUSIVE ★</div>
 
-                  {/* MAIN HEADLINE AREA */}
-                  <div className="prophet-headline-area">
-                    <span className="prophet-exclusive">⚡ {TYPE_LABELS[currentFact.type]}</span>
-                    <h1 className="prophet-headline">{currentFact.title.toUpperCase()}</h1>
-                    <div className="prophet-subheadline">
-                      {SUBHEADLINES[currentFact.type]?.[stableIndex(currentFact.title, SUBHEADLINES[currentFact.type].length)]}
-                    </div>
-                    <div className="prophet-byline">
-                      By the Nornlore Press Corps · Verified by the Dept. of Historical Sorcery · {currentFact.year}
+                    {/* Right sidebar column with secondary story teaser */}
+                    {secondary.length > 0 && (
+                      <div className="hero-sidebar">
+                        <div className="sidebar-exclusive">
+                          <span className="sidebar-exclusive-label">ALSO THIS DAY</span>
+                          <h3 className="sidebar-hl">{secondary[0].title.toUpperCase()}</h3>
+                          <div className="sidebar-type">{TYPE_LABELS[secondary[0].type]} · {secondary[0].year}</div>
+                          <p className="sidebar-text"><SmallText fact={secondary[0]} maxLen={200} /></p>
+                          {secondary[0].wikipediaSlug && (
+                            <a className="sidebar-more" href={`https://en.wikipedia.org/wiki/${secondary[0].wikipediaSlug}`} target="_blank" rel="noopener noreferrer">Full Report →</a>
+                          )}
+                        </div>
+                        {secondary.length > 1 && (
+                          <div className="sidebar-exclusive sidebar-exclusive-2">
+                            <h3 className="sidebar-hl-sm">{secondary[1].title.toUpperCase()}</h3>
+                            <div className="sidebar-type">{TYPE_LABELS[secondary[1].type]} · {secondary[1].year}</div>
+                            <p className="sidebar-text"><SmallText fact={secondary[1]} maxLen={120} /></p>
+                          </div>
+                        )}
+                        {/* Ad box in sidebar */}
+                        <div className="sidebar-ad">
+                          <div className="ad-label">ADVERTISEMENT</div>
+                          {MAGICAL_ADS[ad1]}
+                        </div>
+                      </div>
+                    )}
+
+                    {/* Main hero content */}
+                    <div className="hero-main">
+                      <div className="hero-kicker">{TYPE_LABELS[hero.type]} · {hero.year}</div>
+                      <h1 className="hero-headline">{hero.title.toUpperCase()}</h1>
+                      <div className="hero-sub">
+                        {SUBHEADLINES[hero.type]?.[stableIndex(hero.title, SUBHEADLINES[hero.type].length)]}
+                      </div>
+
+                      <div className="hero-content">
+                        {hero.wikipediaSlug && (
+                          <WikiPhoto slug={hero.wikipediaSlug} title={hero.title} />
+                        )}
+                        <p className="hero-text">
+                          <ArticleText fact={hero} maxLen={1400} />
+                        </p>
+                      </div>
                     </div>
                   </div>
 
-                  {/* MAIN STORY — photo + article */}
-                  <ProphetArticle fact={currentFact} />
+                  {/* ════ MID-SECTION: remaining stories + filler ════ */}
+                  {remaining.length > 0 && (
+                    <div className="stories-grid">
+                      {remaining.map((fact, i) => {
+                        const hasSideFiller = i === 0;
+                        return (
+                          <div key={fact.title + i} className={`story-cell ${hasSideFiller ? "story-cell-wide" : ""}`}>
+                            {/* Small filler headline above some stories */}
+                            {i % 2 === 0 && (
+                              <div className="cell-mini-hl">{MINI_HEADLINES[stableIndex(s + "cm" + i, MINI_HEADLINES.length)]}</div>
+                            )}
+                            <h2 className="story-headline">{fact.title.toUpperCase()}</h2>
+                            <div className="story-kicker">{TYPE_LABELS[fact.type]} · {fact.year}</div>
+                            <div className="story-body">
+                              {fact.wikipediaSlug && (
+                                <WikiPhoto slug={fact.wikipediaSlug} title={fact.title} />
+                              )}
+                              <p className="story-text">
+                                <span className="drop-cap-sm">{fact.description.charAt(0)}</span>
+                                <SmallText fact={fact} maxLen={400} />
+                                {fact.wikipediaSlug && (
+                                  <span className="read-more">
+                                    {" "}<a href={`https://en.wikipedia.org/wiki/${fact.wikipediaSlug}`} target="_blank" rel="noopener noreferrer">Full Report →</a>
+                                  </span>
+                                )}
+                              </p>
+                            </div>
+                          </div>
+                        );
+                      })}
+
+                      {/* Filler cells to fill gaps */}
+                      <div className="filler-cell">
+                        <div className="filler-hl">{MINI_HEADLINES[m5]}</div>
+                        <p className="filler-text">{NOTICES[n1]}</p>
+                      </div>
+                      <div className="filler-cell">
+                        <div className="filler-hl">{MINI_HEADLINES[m6]}</div>
+                        <p className="filler-text">{NOTICES[n2]}</p>
+                      </div>
+                    </div>
+                  )}
+
+                  {/* ════ BOTTOM DENSE ZONE ════ */}
+                  <div className="bottom-zone">
+                    {/* Left: notices & weather */}
+                    <div className="bottom-col bottom-col-notices">
+                      <div className="bottom-section-label">WEATHER OUTLOOK</div>
+                      <p className="bottom-tiny">{WEATHER[w1]}</p>
+                      <div className="bottom-section-label">NOTICES &amp; CLASSIFIEDS</div>
+                      <p className="bottom-tiny">{NOTICES[n1]}</p>
+                      <p className="bottom-tiny">{NOTICES[n2]}</p>
+                      <p className="bottom-tiny">{NOTICES[n3]}</p>
+                    </div>
+
+                    {/* Center: mini headlines stack */}
+                    <div className="bottom-col bottom-col-headlines">
+                      <div className="bottom-mini-hl">{MINI_HEADLINES[m1]}</div>
+                      <div className="bottom-mini-hl">{MINI_HEADLINES[m2]}</div>
+                      <div className="bottom-mini-hl">{MINI_HEADLINES[m3]}</div>
+                      <div className="bottom-mini-hl">{MINI_HEADLINES[m4]}</div>
+                      <div className="bottom-mini-hl">{MINI_HEADLINES[m7]}</div>
+                      <div className="bottom-mini-hl">{MINI_HEADLINES[m8]}</div>
+                    </div>
+
+                    {/* Right: ad boxes */}
+                    <div className="bottom-col bottom-col-ads">
+                      <div className="bottom-ad">
+                        <div className="ad-label">ADVERTISEMENT</div>
+                        {MAGICAL_ADS[ad2]}
+                      </div>
+                      <div className="bottom-ad">
+                        <div className="ad-label">ADVERTISEMENT</div>
+                        {MAGICAL_ADS[ad3]}
+                      </div>
+                    </div>
+                  </div>
+
                 </div>
               ) : (
                 <div className="no-data">The presses have no record for this date.<br /><em>Perhaps the archives have been bewitched.</em></div>
               )}
 
-              {/* BOTTOM TICKER */}
+              {/* ════ BOTTOM TICKER ════ */}
               <div className="prophet-ticker">
-                <span className="ticker-text">{tickerStr}</span>
+                <span className="ticker-scores">
+                  — e.limus <strong>{stableIndex(s + "t1", 10)}</strong>
+                  {" "}— jobs <strong>{stableIndex(s + "t2", 12)}</strong>
+                  {" "}.{" "}heath <strong>{stableIndex(s + "t3", 15)}</strong>
+                  {" "}— MINISTRY AFFAIRS <strong>{stableIndex(s + "t4", 20)}</strong>
+                  {" "}— sports <strong>{stableIndex(s + "t5", 18)}</strong>
+                </span>
               </div>
-
-              {/* NAV ARROWS */}
-              <button
-                className={`prophet-nav prophet-nav-prev ${currentIndex === 0 ? "prophet-nav-disabled" : ""}`}
-                onClick={goPrev}
-                disabled={currentIndex === 0}
-                aria-label="Previous event"
-              >◄</button>
-              <button
-                className={`prophet-nav prophet-nav-next ${currentIndex === facts.length - 1 ? "prophet-nav-disabled" : ""}`}
-                onClick={goNext}
-                disabled={currentIndex === facts.length - 1}
-                aria-label="Next event"
-              >►</button>
 
               <div className="paper-footer">
                 Nornlore is published on enchanted parchment · Owl subscriptions welcome<br />
-                All tales verified by the Department of Historical Sorcery · &quot;Nobody Wastes the Daily Prophet&quot;
+                All tales verified by the Department of Historical Sorcery
               </div>
             </div>
           </motion.div>
