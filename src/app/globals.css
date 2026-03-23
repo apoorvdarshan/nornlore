@@ -96,6 +96,21 @@ body {
   gap: 4px;
 }
 
+/* ============ SUB-MASTHEAD BAR ============ */
+.prophet-subbar {
+  background: var(--ink);
+  color: var(--parchment);
+  font-family: 'IM Fell English', serif;
+  font-size: 0.65rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 4px 28px;
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
 /* ============ TICKER ============ */
 .ticker-banner {
   background: var(--ink);
@@ -108,6 +123,17 @@ body {
   text-transform: uppercase;
   overflow: hidden;
   position: relative;
+}
+
+.prophet-ticker {
+  background: var(--ink);
+  color: var(--parchment);
+  font-family: 'IM Fell English', serif;
+  font-size: 0.7rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  padding: 5px 12px;
+  overflow: hidden;
 }
 
 .ticker-text {
@@ -126,194 +152,272 @@ body {
   padding: 0 28px 28px;
 }
 
-/* ============ HERO (full-width, no grid) ============ */
-.hero-main {
+/* ============ DAILY PROPHET PAGE ============ */
+.prophet-page {
+  display: grid;
+  grid-template-columns: 1fr 220px;
+  grid-template-rows: auto auto auto auto;
+  grid-template-areas:
+    "topstrip topstrip"
+    "headline sidebar"
+    "story    sidebar"
+    "bottom-l bottom-r";
+  gap: 0;
+  padding: 0 28px 8px;
+}
+
+/* TOP STRIP — mini filler stories */
+.prophet-top-strip {
+  grid-area: topstrip;
+  display: flex;
   border-bottom: 3px double var(--rule);
-  padding: 14px 0 16px;
+  border-top: 1px solid rgba(58,26,0,0.15);
 }
 
-.hero-main .photo-box {
-  float: left;
-  width: 22%;
-  margin: 0 14px 8px 0;
-  shape-outside: margin-box;
+.mini-story {
+  flex: 1;
+  padding: 6px 10px;
+  border-right: 1px solid rgba(58,26,0,0.2);
 }
+.mini-story-last { border-right: none; }
 
-.sidebar-headline-big {
+.mini-headline {
   font-family: 'IM Fell English', serif;
-  font-size: 1.8rem;
-  line-height: 1.1;
-  color: var(--ink);
-  margin-bottom: 4px;
-}
-
-.sidebar-headline-sm {
-  font-family: 'IM Fell English', serif;
-  font-size: 1.15rem;
-  line-height: 1.15;
-  color: var(--ink);
-  margin-bottom: 4px;
-}
-
-.hero-kicker {
-  font-family: 'IM Fell English', serif;
-  font-style: italic;
-  font-size: 0.9rem;
-  letter-spacing: 2px;
+  font-size: 0.72rem;
+  font-weight: 700;
   text-transform: uppercase;
-  color: var(--accent);
+  letter-spacing: 1px;
+  color: var(--ink);
+  margin-bottom: 2px;
+}
+
+.mini-text {
+  font-size: 0.65rem;
+  color: var(--faded);
+  line-height: 1.4;
+  font-style: italic;
+}
+
+/* HEADLINE AREA */
+.prophet-headline-area {
+  grid-area: headline;
+  padding: 14px 14px 10px 0;
+  border-bottom: 1px solid rgba(58,26,0,0.15);
+}
+
+.prophet-exclusive {
+  display: inline-block;
+  background: var(--ink);
+  color: var(--parchment);
+  padding: 2px 10px;
+  font-family: 'IM Fell English', serif;
+  font-size: 0.68rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  transform: rotate(-1.5deg);
+  margin-bottom: 6px;
+}
+
+.prophet-headline {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2.2rem, 5.5vw, 4rem);
+  font-weight: 900;
+  line-height: 0.92;
+  color: var(--ink);
+  letter-spacing: -0.5px;
+  margin-bottom: 6px;
+}
+
+.prophet-subheadline {
+  font-family: 'IM Fell DW Pica', serif;
+  font-style: italic;
+  font-size: 1.05rem;
+  color: var(--faded);
   margin-bottom: 4px;
 }
 
-.hero-headline {
-  font-family: 'IM Fell English', serif;
-  font-size: clamp(2.5rem, 5.5vw, 4rem);
-  line-height: 1.05;
-  color: var(--ink);
-  margin-bottom: 8px;
-}
-
-.byline {
-  font-size: 0.82rem;
+.prophet-byline {
+  font-size: 0.72rem;
   color: var(--faded);
   font-style: italic;
-  margin-bottom: 10px;
+  font-family: 'IM Fell English', serif;
   border-top: 1px solid var(--rule);
   border-bottom: 1px solid var(--rule);
   padding: 3px 0;
-  font-family: 'IM Fell English', serif;
 }
 
-.article-text {
-  font-size: 1.02rem;
-  line-height: 1.7;
-  color: var(--ink);
-  text-align: justify;
-  hyphens: auto;
+/* MAIN STORY */
+.prophet-story {
+  grid-area: story;
+  padding: 10px 14px 10px 0;
 }
 
-.hero-main .article-text {
-  column-count: 2;
-  column-gap: 20px;
-  column-rule: 1px solid rgba(58,26,0,0.2);
-}
-
-.col-headline-lg {
-  font-family: 'IM Fell English', serif;
-  font-size: 1.7rem;
-  line-height: 1.1;
-  margin-bottom: 4px;
-  color: var(--ink);
-}
-
-/* ============ MASONRY GRID ============ */
-/* ============ DAILY PROPHET FIXED LAYOUT ============ */
-.prophet-layout {
-  display: grid;
-  grid-template-columns: 1.6fr 1fr 1fr;
-  grid-template-rows: auto auto auto auto;
-  grid-template-areas:
-    "a a b"
-    "c d b"
-    "e f g"
-    "h h h";
-  gap: 0;
-}
-
-.slot {
-  padding: 12px 14px;
-  border-bottom: 1px solid rgba(58,26,0,0.15);
-  position: relative;
-}
-
-/* Vertical dividers between columns */
-.slot-b, .slot-d, .slot-g {
-  border-left: 1px solid rgba(58,26,0,0.2);
-}
-.slot-c {
-  border-right: 1px solid rgba(58,26,0,0.2);
-}
-
-.slot-a { grid-area: a; border-bottom: 3px double var(--rule); }
-.slot-b { grid-area: b; border-bottom: 3px double var(--rule); }
-.slot-c { grid-area: c; }
-.slot-d { grid-area: d; }
-.slot-e { grid-area: e; border-top: 1px solid rgba(58,26,0,0.2); }
-.slot-f { grid-area: f; border-top: 1px solid rgba(58,26,0,0.2); }
-.slot-g { grid-area: g; border-top: 1px solid rgba(58,26,0,0.2); }
-.slot-h {
-  grid-area: h;
-  border-top: 3px double var(--rule);
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 0;
-}
-
-.slot-h .extra-story {
-  padding: 10px 14px;
-  border-right: 1px solid rgba(58,26,0,0.15);
-}
-.slot-h .extra-story:last-child { border-right: none; }
-
-/* SLOT A: Hero — big photo, big headline */
-.slot-a .photo-box {
-  width: 100%;
-  margin: 8px 0;
-}
-.slot-a .hero-headline {
-  font-size: 2.8rem;
-  line-height: 0.95;
-}
-
-/* SLOT B: Tall sidebar — text heavy, vertical feel */
-.slot-b-headline {
-  font-family: 'IM Fell English', serif;
-  font-size: 1.6rem;
-  line-height: 1.05;
-  color: var(--ink);
-  margin-bottom: 6px;
-  letter-spacing: -0.5px;
-}
-
-/* SLOT C: Medium story — photo floats right */
-.slot-c .photo-box.float-right {
-  width: 45%;
-  margin: 2px 0 6px 10px;
-}
-
-/* SLOT D: Small story — photo floats left */
-.slot-d .photo-box {
+.prophet-story .photo-box {
   float: left;
-  width: 40%;
-  margin: 2px 10px 6px 0;
+  width: 35%;
+  margin: 4px 14px 8px 0;
   shape-outside: margin-box;
 }
 
-/* SLOT F: Bottom center — full width photo */
-.slot-f .photo-box {
-  width: 100%;
-  margin: 6px 0;
+.prophet-text {
+  font-size: 0.92rem;
+  line-height: 1.62;
+  color: var(--ink);
+  text-align: justify;
+  hyphens: auto;
+  -webkit-hyphens: auto;
 }
 
-/* All photo images: natural ratio */
-.slot .photo-box img {
-  width: 100%;
-  height: auto;
+.prophet-text p {
+  margin-bottom: 8px;
 }
 
-.article-text p + p {
-  margin-top: 10px;
+.prophet-continued {
+  margin-top: 6px;
+  font-style: italic;
+  font-size: 0.75rem;
 }
 
-/* Drop cap */
-.drop-cap-letter {
+.prophet-continued a {
+  color: var(--accent);
+  text-decoration: none;
+}
+.prophet-continued a:hover {
+  text-decoration: underline;
+}
+
+/* DROP CAP */
+.drop-cap {
   font-family: 'UnifrakturMaguntia', cursive;
-  font-size: 4.2rem;
+  font-size: 4rem;
   float: left;
   line-height: 0.72;
   padding-right: 8px;
   padding-top: 4px;
   color: var(--accent);
+}
+
+/* ============ SIDEBAR ============ */
+.prophet-sidebar {
+  grid-area: sidebar;
+  border-left: 2px solid var(--rule);
+  padding: 10px 0 10px 12px;
+  font-size: 0.78rem;
+}
+
+.sidebar-label {
+  font-family: 'IM Fell English', serif;
+  font-size: 0.62rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--accent);
+  border-bottom: 1px solid var(--rule);
+  padding-bottom: 3px;
+  margin-bottom: 8px;
+}
+
+.sidebar-teaser {
+  margin-bottom: 10px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid rgba(58,26,0,0.15);
+}
+
+.sidebar-teaser h3 {
+  font-family: 'IM Fell English', serif;
+  font-size: 0.95rem;
+  line-height: 1.15;
+  color: var(--ink);
+  margin-bottom: 2px;
+}
+
+.sidebar-teaser-type {
+  font-size: 0.62rem;
+  color: var(--accent);
+  font-style: italic;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 3px;
+}
+
+.sidebar-teaser p {
+  font-size: 0.72rem;
+  line-height: 1.45;
+  color: var(--faded);
+}
+
+.sidebar-divider {
+  border-top: 1px solid var(--rule);
+  margin: 8px 0;
+}
+
+.sidebar-fillers {
+  margin-bottom: 8px;
+}
+
+.sidebar-mini-hl {
+  font-family: 'IM Fell English', serif;
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--ink);
+  margin-bottom: 4px;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+/* ============ AD/NOTICE BOXES ============ */
+.prophet-ad-box {
+  border: 2px solid var(--rule);
+  padding: 8px;
+  font-size: 0.72rem;
+  text-align: center;
+  font-family: 'IM Fell English', serif;
+  font-style: italic;
+  line-height: 1.4;
+  margin-top: 8px;
+}
+
+.ad-label {
+  font-size: 0.55rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--faded);
+  font-style: normal;
+  margin-bottom: 3px;
+}
+
+.prophet-bottom-left {
+  grid-area: bottom-l;
+  padding: 8px 14px 8px 0;
+  border-top: 2px solid var(--rule);
+}
+
+.prophet-bottom-right {
+  grid-area: bottom-r;
+  padding: 8px 0 8px 12px;
+  border-top: 2px solid var(--rule);
+  border-left: 1px solid rgba(58,26,0,0.2);
+}
+
+.prophet-notices-box {
+  font-size: 0.72rem;
+  line-height: 1.5;
+  color: var(--faded);
+}
+
+.notices-label {
+  font-family: 'IM Fell English', serif;
+  font-size: 0.6rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 3px;
+  font-style: normal;
+}
+
+.prophet-notices-box p {
+  margin-bottom: 4px;
+  font-style: italic;
 }
 
 /* ============ PHOTO BOX ============ */
@@ -328,6 +432,7 @@ body {
 
 .photo-box img {
   width: 100%;
+  height: auto;
   display: block;
   filter: sepia(0.3) contrast(1.12) brightness(0.88);
   transition: filter 0.3s;
@@ -337,14 +442,28 @@ body {
   filter: sepia(0.1) contrast(1.05) brightness(0.95);
 }
 
+/* Halftone overlay on photos */
+.photo-box::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle, rgba(0,0,0,0.05) 1px, transparent 1px);
+  background-size: 3px 3px;
+  z-index: 2;
+  pointer-events: none;
+  mix-blend-mode: multiply;
+}
+
 .photo-caption {
   background: rgba(10,5,0,0.85);
   color: var(--parchment-dark);
   font-style: italic;
-  font-size: 0.72rem;
-  padding: 5px 10px;
+  font-size: 0.65rem;
+  padding: 4px 8px;
   text-align: center;
   font-family: 'IM Fell English', serif;
+  letter-spacing: 1px;
+  text-transform: uppercase;
 }
 
 /* Moving photograph (GIF) — Daily Prophet style */
@@ -367,50 +486,40 @@ body {
   filter: sepia(0.15) contrast(1.08) brightness(0.92) !important;
 }
 
-/* ============ COLUMNS ROW (legacy) ============ */
-
-.col-headline {
-  font-family: 'IM Fell English', serif;
-  font-size: 1.3rem;
-  line-height: 1.18;
-  margin-bottom: 4px;
-  color: var(--ink);
-}
-
-.col-text {
+/* ============ NAV ARROWS ============ */
+.prophet-nav {
+  position: fixed;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(242,232,201,0.92);
+  border: 2px solid var(--rule);
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  cursor: pointer;
   font-size: 1rem;
-  line-height: 1.68;
+  z-index: 50;
+  font-family: serif;
   color: var(--ink);
-  text-align: justify;
-  hyphens: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.15s;
+  box-shadow: 2px 2px 0 rgba(58,26,0,0.1);
 }
 
-/* Column story image */
-.col-story .photo-box {
-  margin: 8px 0;
+.prophet-nav:hover:not(:disabled) {
+  background: var(--parchment-dark);
+  box-shadow: 3px 3px 0 rgba(58,26,0,0.2);
 }
 
-.photo-box.float-right {
-  float: right;
-  width: 35%;
-  margin: 2px 0 6px 12px;
-  shape-outside: margin-box;
-}
+.prophet-nav-prev { left: 10px; }
+.prophet-nav-next { right: 10px; }
 
-
-
-
-/* ============ SECTION LABEL ============ */
-.section-label {
-  font-family: 'IM Fell English', serif;
-  font-size: 0.75rem;
-  letter-spacing: 3px;
-  text-transform: uppercase;
-  color: var(--accent);
-  border-top: 2px solid var(--rule);
-  border-bottom: 1px solid var(--rule);
-  padding: 3px 0;
-  margin-bottom: 8px;
+.prophet-nav-disabled {
+  opacity: 0.25;
+  cursor: default;
+  pointer-events: none;
 }
 
 /* ============ FOOTER ============ */
@@ -553,7 +662,6 @@ body {
 .reveal-btn:hover:not(:disabled) { background: var(--accent); }
 .reveal-btn:disabled { opacity: 0.3; cursor: not-allowed; }
 
-/* Landing bottom */
 .landing-bottom {
   display: flex;
   justify-content: center;
@@ -566,34 +674,6 @@ body {
   flex-wrap: wrap;
   padding: 8px 0;
 }
-
-/* ============ FILTER BAR ============ */
-.filter-bar {
-  display: flex;
-  gap: 0;
-  justify-content: center;
-  flex-wrap: wrap;
-  background: var(--ink);
-  padding: 0;
-}
-
-.filter-pill {
-  font-family: 'IM Fell DW Pica', serif;
-  font-size: 0.82rem;
-  letter-spacing: 3px;
-  text-transform: uppercase;
-  padding: 6px 16px;
-  border: none;
-  border-right: 1px solid rgba(242,232,201,0.2);
-  background: transparent;
-  color: var(--parchment-dark);
-  cursor: pointer;
-  transition: all 0.12s;
-  white-space: nowrap;
-}
-.filter-pill:last-child { border-right: none; }
-.filter-pill:hover { background: rgba(242,232,201,0.1); }
-.filter-pill.active { background: var(--accent); color: var(--parchment); }
 
 /* ============ TOAST ============ */
 .toast {
@@ -628,16 +708,52 @@ body {
   .masthead { padding: 12px 14px 8px; }
   .masthead-top { flex-direction: column; gap: 2px; text-align: center; }
   .newspaper-body { padding: 0 14px 14px; }
-  .hero-main .photo-box { float: none; width: 100%; margin: 8px 0; }
-  .hero-main .article-text { column-count: 1; }
-  .prophet-layout {
-    grid-template-columns: 1fr !important;
-    grid-template-areas:
-      "a" "b" "c" "d" "e" "f" "g" "h" !important;
-  }
-  .slot { border-left: none !important; border-right: none !important; }
-  .slot-c .photo-box.float-right,
-  .slot-d .photo-box { float: none; width: 100%; margin: 6px 0; }
   .edition-bar { flex-direction: column; text-align: center; }
-  .photo-box.float-right { float: none; width: 100%; margin: 8px 0; }
+  .prophet-subbar { justify-content: center; padding: 4px 14px; }
+
+  .prophet-page {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "topstrip"
+      "headline"
+      "story"
+      "sidebar"
+      "bottom-l"
+      "bottom-r";
+    padding: 0 14px 8px;
+  }
+
+  .prophet-top-strip { flex-direction: column; }
+  .mini-story { border-right: none; border-bottom: 1px solid rgba(58,26,0,0.15); }
+  .mini-story-last { border-bottom: none; }
+
+  .prophet-headline-area { padding: 10px 0; }
+  .prophet-headline { font-size: clamp(1.8rem, 7vw, 2.5rem); }
+
+  .prophet-story { padding: 10px 0; }
+  .prophet-story .photo-box {
+    float: none;
+    width: 100%;
+    margin: 6px 0;
+  }
+
+  .prophet-sidebar {
+    border-left: none;
+    border-top: 2px solid var(--rule);
+    padding: 10px 0;
+  }
+
+  .prophet-bottom-left { padding: 8px 0; }
+  .prophet-bottom-right {
+    border-left: none;
+    border-top: 1px solid rgba(58,26,0,0.15);
+    padding: 8px 0;
+  }
+
+  .prophet-nav {
+    top: auto;
+    bottom: 16px;
+  }
+  .prophet-nav-prev { left: 16px; }
+  .prophet-nav-next { right: 16px; }
 }

@@ -3,6 +3,15 @@
 import { useState, useEffect, useRef, useCallback, useMemo } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import birthdayData from "@/data/birthdays.json";
+import {
+  stableIndex,
+  MAGICAL_ADS,
+  NOTICES,
+  WEATHER,
+  MINI_HEADLINES,
+  TICKER_ITEMS,
+  SUBHEADLINES,
+} from "@/data/fillerContent";
 
 const data = birthdayData as Record<string, Fact[]>;
 
@@ -72,7 +81,7 @@ function NpSelect({ value, onChange, placeholder, options }: {
   );
 }
 
-// Cache for Wikipedia extracts to avoid refetching
+// Cache for Wikipedia extracts
 const wikiExtractCache: Record<string, string> = {};
 
 function useWikiExtract(slug: string | null): string {
@@ -80,7 +89,6 @@ function useWikiExtract(slug: string | null): string {
   useEffect(() => {
     if (!slug) return;
     if (wikiExtractCache[slug]) { setExtract(wikiExtractCache[slug]); return; }
-    // Use MediaWiki action API for extended article text
     const title = decodeURIComponent(slug);
     fetch(`https://en.wikipedia.org/w/api.php?action=query&titles=${encodeURIComponent(title)}&prop=extracts&explaintext=true&exchars=3000&format=json&origin=*`)
       .then((r) => r.json())
@@ -88,7 +96,6 @@ function useWikiExtract(slug: string | null): string {
         const pages = d.query?.pages;
         if (!pages) return;
         const page = Object.values(pages)[0] as { extract?: string };
-        // Clean up Wikipedia section headers (== Header ==) and extra whitespace
         const text = (page?.extract || "").replace(/={2,}[^=]+=+/g, "").replace(/\n{2,}/g, " ").trim();
         wikiExtractCache[slug] = text;
         setExtract(text);
@@ -98,17 +105,15 @@ function useWikiExtract(slug: string | null): string {
   return extract;
 }
 
-function WikiPhoto({ slug, title, floatRight }: { slug: string; title: string; floatRight?: boolean }) {
+function WikiPhoto({ slug, title }: { slug: string; title: string }) {
   const [src, setSrc] = useState<string | null>(null);
   const [isGif, setIsGif] = useState(false);
 
   useEffect(() => {
-    // Try local GIF first, then fall back to Wikipedia
     const gifPath = `/gifs/${slug}.gif`;
     const img = new Image();
     img.onload = () => { setSrc(gifPath); setIsGif(true); };
     img.onerror = () => {
-      // Fallback to Wikipedia
       fetch(`https://en.wikipedia.org/api/rest_v1/page/summary/${slug}`)
         .then((r) => r.json())
         .then((d) => {
@@ -121,8 +126,9 @@ function WikiPhoto({ slug, title, floatRight }: { slug: string; title: string; f
 
   if (!src) return null;
   return (
-    <div className={`photo-box ${isGif ? "photo-moving" : ""} ${floatRight ? "float-right" : ""}`}>
+    <div className={`photo-box ${isGif ? "photo-moving" : ""}`}>
       <img src={src} alt={title} loading="lazy" />
+      {isGif && <div className="photo-caption">Moving Photograph</div>}
       {!isGif && <div className="photo-caption">{title}</div>}
     </div>
   );
@@ -132,54 +138,137 @@ function truncateAtSentence(text: string, maxLen: number): string {
   if (text.length <= maxLen) return text;
   const cut = text.slice(0, maxLen);
   const lastPeriod = cut.lastIndexOf(". ");
-  return lastPeriod > maxLen * 0.4 ? cut.slice(0, lastPeriod + 1) + ".." : cut.slice(0, cut.lastIndexOf(" ")) + "...";
+  return lastPeriod > maxLen * 0.4 ? cut.slice(0, lastPeriod + 1) : cut.slice(0, cut.lastIndexOf(" ")) + "...";
 }
 
-function StoryText({ fact, maxLength = 600 }: { fact: Fact; maxLength?: number }) {
+function ProphetArticle({ fact }: { fact: Fact }) {
   const wikiText = useWikiExtract(fact.wikipediaSlug);
   const desc = fact.description;
   const extra = wikiText && !wikiText.startsWith(desc.slice(0, 40))
     ? ` ${wikiText}`
     : wikiText.length > desc.length ? ` ${wikiText.slice(desc.length)}` : "";
-  const full = desc + extra;
-  return <>{truncateAtSentence(full, maxLength)}</>;
-}
+  const fullText = truncateAtSentence(desc + extra, 1800);
 
-function HeroArticleText({ fact, showPhoto }: { fact: Fact; showPhoto?: boolean }) {
-  const wikiText = useWikiExtract(fact.wikipediaSlug);
-  const desc = fact.description;
-  const extra = wikiText && !wikiText.startsWith(desc.slice(0, 40))
-    ? ` ${wikiText}`
-    : wikiText.length > desc.length ? ` ${wikiText.slice(desc.length)}` : "";
-  const fullText = truncateAtSentence(desc + extra, 1200);
   return (
-    <div className="article-text">
-      {showPhoto && fact.wikipediaSlug && (
+    <div className="prophet-story">
+      {fact.wikipediaSlug && (
         <WikiPhoto slug={fact.wikipediaSlug} title={fact.title} />
       )}
-      <p>
-        <span className="drop-cap-letter">{fullText.charAt(0)}</span>
-        {fullText.slice(1)}
-      </p>
-      {fact.wikipediaSlug && (
-        <p style={{ marginTop: "8px", fontStyle: "italic", fontSize: "0.75rem", color: "var(--faded)" }}>
-          <a href={`https://en.wikipedia.org/wiki/${fact.wikipediaSlug}`} target="_blank" rel="noopener noreferrer" style={{ color: "var(--accent)", textDecoration: "none" }}>
-            Full report continues on page 4 →
-          </a>
+      <div className="prophet-text">
+        <p>
+          <span className="drop-cap">{fullText.charAt(0)}</span>
+          {fullText.slice(1)}
         </p>
-      )}
+        {fact.wikipediaSlug && (
+          <p className="prophet-continued">
+            <a href={`https://en.wikipedia.org/wiki/${fact.wikipediaSlug}`} target="_blank" rel="noopener noreferrer">
+              Full report continues on page 4 →
+            </a>
+          </p>
+        )}
+      </div>
     </div>
   );
 }
 
+function ProphetFiller({ fact, facts, currentIndex }: { fact: Fact; facts: Fact[]; currentIndex: number }) {
+  const seed = fact.title;
+  const adIdx = stableIndex(seed, MAGICAL_ADS.length);
+  const ad2Idx = stableIndex(seed + "2", MAGICAL_ADS.length);
+  const noticeIdx = stableIndex(seed, NOTICES.length);
+  const notice2Idx = stableIndex(seed + "x", NOTICES.length);
+  const weatherIdx = stableIndex(seed, WEATHER.length);
+  const mini1 = stableIndex(seed, MINI_HEADLINES.length);
+  const mini2 = stableIndex(seed + "b", MINI_HEADLINES.length);
+  const mini3 = stableIndex(seed + "c", MINI_HEADLINES.length);
+  const mini4 = stableIndex(seed + "d", MINI_HEADLINES.length);
+  const mini5 = stableIndex(seed + "e", MINI_HEADLINES.length);
+
+  // Teaser for next story
+  const nextIdx = (currentIndex + 1) % facts.length;
+  const nextFact = facts[nextIdx];
+  const prevIdx = (currentIndex - 1 + facts.length) % facts.length;
+  const prevFact = facts[prevIdx];
+
+  return (
+    <>
+      {/* TOP STRIP — mini stories */}
+      <div className="prophet-top-strip">
+        <div className="mini-story">
+          <div className="mini-headline">{MINI_HEADLINES[mini1]}</div>
+          <div className="mini-text">{NOTICES[noticeIdx]}</div>
+        </div>
+        <div className="mini-story">
+          <div className="mini-headline">{MINI_HEADLINES[mini2]}</div>
+          <div className="mini-text">{WEATHER[weatherIdx]}</div>
+        </div>
+        <div className="mini-story mini-story-last">
+          <div className="mini-headline">{MINI_HEADLINES[mini3]}</div>
+          <div className="mini-text">Full Report Pg. {stableIndex(seed, 12) + 2}</div>
+        </div>
+      </div>
+
+      {/* SIDEBAR */}
+      <div className="prophet-sidebar">
+        <div className="sidebar-section">
+          <div className="sidebar-label">ALSO IN THIS EDITION</div>
+          <div className="sidebar-teaser">
+            <h3>{nextFact.title.toUpperCase()}</h3>
+            <div className="sidebar-teaser-type">{TYPE_LABELS[nextFact.type]} · {nextFact.year}</div>
+            <p>{truncateAtSentence(nextFact.description, 120)}</p>
+          </div>
+          {facts.length > 2 && (
+            <div className="sidebar-teaser">
+              <h3>{prevFact.title}</h3>
+              <div className="sidebar-teaser-type">{TYPE_LABELS[prevFact.type]} · {prevFact.year}</div>
+              <p>{truncateAtSentence(prevFact.description, 80)}</p>
+            </div>
+          )}
+        </div>
+        <div className="sidebar-divider" />
+        <div className="sidebar-fillers">
+          <div className="sidebar-mini-hl">{MINI_HEADLINES[mini4]}</div>
+          <div className="sidebar-mini-hl">{MINI_HEADLINES[mini5]}</div>
+        </div>
+        <div className="prophet-ad-box">
+          <div className="ad-label">ADVERTISEMENT</div>
+          {MAGICAL_ADS[adIdx]}
+        </div>
+      </div>
+
+      {/* BOTTOM ROW */}
+      <div className="prophet-bottom-left">
+        <div className="prophet-notices-box">
+          <div className="notices-label">WEATHER OUTLOOK</div>
+          <p>{WEATHER[weatherIdx]}</p>
+          <div className="notices-label" style={{ marginTop: "8px" }}>NOTICES &amp; CLASSIFIEDS</div>
+          <p>{NOTICES[noticeIdx]}</p>
+          <p>{NOTICES[notice2Idx]}</p>
+        </div>
+      </div>
+      <div className="prophet-bottom-right">
+        <div className="prophet-ad-box">
+          <div className="ad-label">ADVERTISEMENT</div>
+          {MAGICAL_ADS[ad2Idx]}
+        </div>
+        <div className="prophet-ad-box" style={{ marginTop: "8px" }}>
+          <div className="ad-label">ADVERTISEMENT</div>
+          {MAGICAL_ADS[(ad2Idx + 3) % MAGICAL_ADS.length]}
+        </div>
+      </div>
+    </>
+  );
+}
+
 export default function Home() {
-  const [view, setView] = useState<"landing" | "cards">("landing");
+  const [view, setView] = useState<"landing" | "prophet">("landing");
   const [month, setMonth] = useState("");
   const [day, setDay] = useState("");
   const [dateKey, setDateKey] = useState("");
-  const [filter, setFilter] = useState("all");
   const [facts, setFacts] = useState<Fact[]>([]);
+  const [currentIndex, setCurrentIndex] = useState(0);
   const [toastMsg, setToastMsg] = useState("");
+  const directionRef = useRef(1);
 
   useEffect(() => {
     const p = new URLSearchParams(window.location.search);
@@ -190,16 +279,57 @@ export default function Home() {
   }, []);
 
   const navigateToDate = useCallback((key: string) => {
-    setDateKey(key); setFacts(shuffle(data[key] || [])); setFilter("all"); setView("cards");
-    const url = new URL(window.location.href); url.searchParams.set("date", key); history.pushState(null, "", url);
+    setDateKey(key);
+    setFacts(shuffle(data[key] || []));
+    setCurrentIndex(0);
+    setView("prophet");
+    const url = new URL(window.location.href);
+    url.searchParams.set("date", key);
+    history.pushState(null, "", url);
   }, []);
 
   const goBack = useCallback(() => {
     setView("landing");
-    const url = new URL(window.location.href); url.searchParams.delete("date"); history.pushState(null, "", url);
+    const url = new URL(window.location.href);
+    url.searchParams.delete("date");
+    history.pushState(null, "", url);
   }, []);
 
-  const filtered = useMemo(() => filter === "all" ? facts : facts.filter((f) => f.type === filter), [facts, filter]);
+  const goNext = useCallback(() => {
+    if (currentIndex < facts.length - 1) {
+      directionRef.current = 1;
+      setCurrentIndex((i) => i + 1);
+    }
+  }, [currentIndex, facts.length]);
+
+  const goPrev = useCallback(() => {
+    if (currentIndex > 0) {
+      directionRef.current = -1;
+      setCurrentIndex((i) => i - 1);
+    }
+  }, [currentIndex]);
+
+  // Keyboard navigation
+  useEffect(() => {
+    if (view !== "prophet") return;
+    const handler = (e: KeyboardEvent) => {
+      if (e.key === "ArrowRight") goNext();
+      if (e.key === "ArrowLeft") goPrev();
+    };
+    window.addEventListener("keydown", handler);
+    return () => window.removeEventListener("keydown", handler);
+  }, [view, goNext, goPrev]);
+
+  useEffect(() => {
+    const h = () => {
+      const p = new URLSearchParams(window.location.search);
+      const d = p.get("date");
+      if (d && /^\d{2}-\d{2}$/.test(d)) navigateToDate(d);
+      else setView("landing");
+    };
+    window.addEventListener("popstate", h);
+    return () => window.removeEventListener("popstate", h);
+  }, [navigateToDate]);
 
   const headerDateStr = useMemo(() => {
     if (!dateKey) return "";
@@ -208,30 +338,30 @@ export default function Home() {
   }, [dateKey]);
 
   const handleSubmit = (e: React.FormEvent) => { e.preventDefault(); if (month && day) navigateToDate(`${month}-${day}`); };
-
   const handleShare = () => {
     navigator.clipboard.writeText(`${window.location.origin}${window.location.pathname}?date=${dateKey}`).then(() => showToast("Link copied!"));
   };
-
   const showToast = (msg: string) => { setToastMsg(msg); setTimeout(() => setToastMsg(""), 2500); };
-
-  useEffect(() => {
-    const h = () => { const p = new URLSearchParams(window.location.search); const d = p.get("date");
-      if (d && /^\d{2}-\d{2}$/.test(d)) navigateToDate(d); else setView("landing"); };
-    window.addEventListener("popstate", h); return () => window.removeEventListener("popstate", h);
-  }, [navigateToDate]);
-
-  const filters = [
-    { key: "all", label: "All" }, { key: "person", label: "Births" },
-    { key: "event", label: "World Affairs" }, { key: "music", label: "Music" }, { key: "movie", label: "Pictures" },
-  ];
-
-  // Split stories: hero at full width, everything else in masonry
-  const hero = filtered[0];
-  const stories = filtered.slice(1); // all non-hero stories go into masonry
 
   const today = new Date();
   const dateStr = today.toLocaleDateString("en-GB", { weekday: "long", day: "numeric", month: "long", year: "numeric" }).toUpperCase();
+
+  const currentFact = facts[currentIndex];
+
+  // Ticker content — deterministic per date
+  const tickerStr = useMemo(() => {
+    const items: string[] = [];
+    for (let i = 0; i < TICKER_ITEMS.length; i++) {
+      items.push(TICKER_ITEMS[i]);
+    }
+    return items.join("  ·  ");
+  }, []);
+
+  // Swipe handling
+  const handleDragEnd = useCallback((_: unknown, info: { offset: { x: number } }) => {
+    if (info.offset.x > 80) goPrev();
+    else if (info.offset.x < -80) goNext();
+  }, [goNext, goPrev]);
 
   return (
     <>
@@ -286,7 +416,6 @@ export default function Home() {
                     <span>366 Dates</span><span>✦</span><span>2,594 Tales</span>
                   </div>
                 </div>
-
               </div>
 
               <div className="paper-footer">
@@ -296,9 +425,19 @@ export default function Home() {
             </div>
           </motion.div>
         ) : (
-          <motion.div key="app" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.3 }}>
+          <motion.div
+            key={`prophet-${currentIndex}`}
+            initial={{ x: directionRef.current * 60, opacity: 0 }}
+            animate={{ x: 0, opacity: 1 }}
+            exit={{ x: directionRef.current * -60, opacity: 0 }}
+            transition={{ duration: 0.25, ease: "easeOut" }}
+            drag="x"
+            dragConstraints={{ left: 0, right: 0 }}
+            dragElastic={0.12}
+            onDragEnd={handleDragEnd}
+          >
             <div className="paper">
-              {/* Masthead */}
+              {/* MASTHEAD */}
               <div className="masthead">
                 <div className="masthead-top">
                   <span style={{ cursor: "pointer" }} onClick={goBack}>← BACK TO FRONT PAGE</span>
@@ -310,126 +449,62 @@ export default function Home() {
                 <div className="edition-bar">
                   <span>{headerDateStr.toUpperCase()} EDITION</span>
                   <span>⚡ ENCHANTED BROADSHEET ⚡</span>
-                  <span>{filtered.length} {filtered.length === 1 ? "TALE" : "TALES"} RECORDED</span>
+                  <span>PAGE {currentIndex + 1} OF {facts.length}</span>
                 </div>
               </div>
 
-              {/* Filter as ticker-style bar */}
-              <div className="filter-bar">
-                {filters.map((f) => (
-                  <button key={f.key} className={`filter-pill ${filter === f.key ? "active" : ""}`} onClick={() => setFilter(f.key)}>
-                    {f.label}
-                  </button>
-                ))}
+              {/* SUB-MASTHEAD BAR */}
+              <div className="prophet-subbar">
+                <span>National Weather</span>
+                <span>Zodiacs</span>
+                <span>Exports</span>
+                <span>Quidditch</span>
+                <span>Obituaries</span>
+                <span>Classifieds</span>
               </div>
 
-              <div className="newspaper-body">
-                {filtered.length === 0 ? (
-                  <div className="no-data">The presses have no record for this date.<br /><em>Perhaps the archives have been bewitched.</em></div>
-                ) : (
-                  <div className="prophet-layout">
-                    {/* SLOT A: Hero — spans 2 cols, big photo + big headline */}
-                    {filtered[0] && (
-                      <div className="slot slot-a">
-                        <div className="hero-kicker">⚡ {TYPE_LABELS[filtered[0].type]} · {filtered[0].year}</div>
-                        <h1 className="hero-headline">{filtered[0].title.toUpperCase()}</h1>
-                        <div className="byline">By the Nornlore Press Corps</div>
-                        {(filtered[0].type === "person" || filtered[0].type === "event") && filtered[0].wikipediaSlug && (
-                          <WikiPhoto slug={filtered[0].wikipediaSlug} title={filtered[0].title} />
-                        )}
-                        <HeroArticleText fact={filtered[0]} showPhoto={false} />
-                      </div>
-                    )}
+              {currentFact ? (
+                <div className="prophet-page">
+                  {/* FILLER: top strip + sidebar + bottom */}
+                  <ProphetFiller fact={currentFact} facts={facts} currentIndex={currentIndex} />
 
-                    {/* SLOT B: Sidebar tall — right col, no photo, text-heavy */}
-                    {filtered[1] && (
-                      <div className="slot slot-b">
-                        <div className="hero-kicker">{TYPE_LABELS[filtered[1].type]}</div>
-                        <h2 className="slot-b-headline">{filtered[1].title.toUpperCase()}</h2>
-                        <div className="byline">{filtered[1].year}</div>
-                        <div className="col-text"><StoryText fact={filtered[1]} maxLength={500} /></div>
-                      </div>
-                    )}
-
-                    {/* SLOT C: Mid-left — medium photo float right */}
-                    {filtered[2] && (
-                      <div className="slot slot-c">
-                        <div className="hero-kicker">{TYPE_LABELS[filtered[2].type]}</div>
-                        <h2 className="col-headline-lg">{filtered[2].title.toUpperCase()}</h2>
-                        <div className="byline">{filtered[2].year}</div>
-                        <div className="col-text">
-                          {(filtered[2].type === "person" || filtered[2].type === "event") && filtered[2].wikipediaSlug && (
-                            <WikiPhoto slug={filtered[2].wikipediaSlug} title={filtered[2].title} floatRight />
-                          )}
-                          <StoryText fact={filtered[2]} maxLength={450} />
-                        </div>
-                      </div>
-                    )}
-
-                    {/* SLOT D: Mid-right — small photo float left */}
-                    {filtered[3] && (
-                      <div className="slot slot-d">
-                        <div className="hero-kicker">{TYPE_LABELS[filtered[3].type]}</div>
-                        <h2 className="col-headline">{filtered[3].title}</h2>
-                        <div className="byline">{filtered[3].year}</div>
-                        <div className="col-text">
-                          {(filtered[3].type === "person" || filtered[3].type === "event") && filtered[3].wikipediaSlug && (
-                            <WikiPhoto slug={filtered[3].wikipediaSlug} title={filtered[3].title} />
-                          )}
-                          <StoryText fact={filtered[3]} maxLength={350} />
-                        </div>
-                      </div>
-                    )}
-
-                    {/* SLOT E: Bottom-left — text only, small */}
-                    {filtered[4] && (
-                      <div className="slot slot-e">
-                        <div className="hero-kicker">{TYPE_LABELS[filtered[4].type]}</div>
-                        <h2 className="col-headline">{filtered[4].title}</h2>
-                        <div className="byline">{filtered[4].year}</div>
-                        <div className="col-text"><StoryText fact={filtered[4]} maxLength={250} /></div>
-                      </div>
-                    )}
-
-                    {/* SLOT F: Bottom-center — medium with photo */}
-                    {filtered[5] && (
-                      <div className="slot slot-f">
-                        <div className="hero-kicker">{TYPE_LABELS[filtered[5].type]}</div>
-                        <h2 className="col-headline-lg">{filtered[5].title.toUpperCase()}</h2>
-                        <div className="byline">{filtered[5].year}</div>
-                        {(filtered[5].type === "person" || filtered[5].type === "event") && filtered[5].wikipediaSlug && (
-                          <WikiPhoto slug={filtered[5].wikipediaSlug} title={filtered[5].title} />
-                        )}
-                        <div className="col-text"><StoryText fact={filtered[5]} maxLength={350} /></div>
-                      </div>
-                    )}
-
-                    {/* SLOT G: Bottom-right — small text only */}
-                    {filtered[6] && (
-                      <div className="slot slot-g">
-                        <div className="hero-kicker">{TYPE_LABELS[filtered[6].type]}</div>
-                        <h2 className="col-headline">{filtered[6].title}</h2>
-                        <div className="byline">{filtered[6].year}</div>
-                        <div className="col-text"><StoryText fact={filtered[6]} maxLength={250} /></div>
-                      </div>
-                    )}
-
-                    {/* SLOT H: Extra row — any remaining stories */}
-                    {filtered.length > 7 && (
-                      <div className="slot slot-h">
-                        {filtered.slice(7).map((fact, i) => (
-                          <div className="extra-story" key={`extra-${i}`}>
-                            <span className="hero-kicker">{TYPE_LABELS[fact.type]}</span>
-                            <h2 className="col-headline">{fact.title}</h2>
-                            <span className="byline">{fact.year}</span>
-                            <div className="col-text"><StoryText fact={fact} maxLength={200} /></div>
-                          </div>
-                        ))}
-                      </div>
-                    )}
+                  {/* MAIN HEADLINE AREA */}
+                  <div className="prophet-headline-area">
+                    <span className="prophet-exclusive">⚡ {TYPE_LABELS[currentFact.type]}</span>
+                    <h1 className="prophet-headline">{currentFact.title.toUpperCase()}</h1>
+                    <div className="prophet-subheadline">
+                      {SUBHEADLINES[currentFact.type]?.[stableIndex(currentFact.title, SUBHEADLINES[currentFact.type].length)]}
+                    </div>
+                    <div className="prophet-byline">
+                      By the Nornlore Press Corps · Verified by the Dept. of Historical Sorcery · {currentFact.year}
+                    </div>
                   </div>
-                )}
+
+                  {/* MAIN STORY — photo + article */}
+                  <ProphetArticle fact={currentFact} />
+                </div>
+              ) : (
+                <div className="no-data">The presses have no record for this date.<br /><em>Perhaps the archives have been bewitched.</em></div>
+              )}
+
+              {/* BOTTOM TICKER */}
+              <div className="prophet-ticker">
+                <span className="ticker-text">{tickerStr}</span>
               </div>
+
+              {/* NAV ARROWS */}
+              <button
+                className={`prophet-nav prophet-nav-prev ${currentIndex === 0 ? "prophet-nav-disabled" : ""}`}
+                onClick={goPrev}
+                disabled={currentIndex === 0}
+                aria-label="Previous event"
+              >◄</button>
+              <button
+                className={`prophet-nav prophet-nav-next ${currentIndex === facts.length - 1 ? "prophet-nav-disabled" : ""}`}
+                onClick={goNext}
+                disabled={currentIndex === facts.length - 1}
+                aria-label="Next event"
+              >►</button>
 
               <div className="paper-footer">
                 Nornlore is published on enchanted parchment · Owl subscriptions welcome<br />
