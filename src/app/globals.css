@@ -253,12 +253,12 @@ body {
 
 .prophet-headline {
   font-family: 'Playfair Display', serif;
-  font-size: clamp(3rem, 8vw, 6rem);
+  font-size: clamp(3.5rem, 10vw, 7.5rem);
   font-weight: 900;
-  line-height: 0.85;
+  line-height: 0.8;
   color: var(--ink);
-  letter-spacing: -3px;
-  margin-bottom: 15px;
+  letter-spacing: -4px;
+  margin-bottom: 20px;
   text-transform: uppercase;
   text-align: left;
 }
@@ -288,24 +288,24 @@ body {
   grid-area: story;
   padding: 20px 20px 20px 0;
   display: block;
-  column-count: 2; /* Split story into two internal columns */
-  column-gap: 20px;
-  column-rule: 1px solid rgba(0,0,0,0.1);
+  /* Removed column-count for natural flow around floated photo */
 }
 
 .prophet-story .photo-box {
-  column-span: all; /* Photo spans both text columns */
-  width: 100%;
-  margin-bottom: 20px;
+  float: left;
+  width: 30%;
+  margin-right: 20px;
+  margin-bottom: 15px;
+  shape-outside: margin-box;
 }
 
 .prophet-text {
-  font-size: 1rem;
-  line-height: 1.2;
+  font-size: 1.05rem;
+  line-height: 1.35;
   color: var(--ink);
   text-align: justify;
   font-weight: 500;
-  letter-spacing: -0.2px;
+  letter-spacing: -0.4px;
 }
 
 .prophet-text p {
@@ -314,7 +314,7 @@ body {
 }
 
 .prophet-continued {
-  column-span: all;
+  clear: both;
   margin-top: 15px;
   font-weight: 900;
   font-size: 0.9rem;
@@ -763,6 +763,7 @@ body {
   }
   .prophet-story { column-count: 1; }
   .prophet-page::before { display: none; }
+  .prophet-story .photo-box { width: 40%; }
 }
 
 @media (max-width: 600px) {
@@ -781,4 +782,5 @@ body {
   .masthead-logo::before, .masthead-logo::after { display: none; }
   .prophet-bottom-left { grid-template-columns: 1fr; }
   .prophet-bottom-right { border-left: none; }
+  .prophet-story .photo-box { width: 100%; float: none; margin-right: 0; }
 }
