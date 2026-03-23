@@ -148,8 +148,8 @@ body {
 
 .hero-main .photo-box {
   float: left;
-  width: 30%;
-  margin: 0 16px 10px 0;
+  width: 22%;
+  margin: 0 14px 8px 0;
   shape-outside: margin-box;
 }
 
@@ -181,8 +181,10 @@ body {
 }
 
 .sidebar-story .photo-box {
-  width: 55%;
-  margin: 8px 0;
+  float: left;
+  width: 38%;
+  margin: 4px 12px 6px 0;
+  shape-outside: margin-box;
 }
 
 
@@ -266,8 +268,10 @@ body {
 }
 
 .triple-story .photo-box {
-  width: 70%;
-  margin: 8px 0;
+  float: left;
+  width: 40%;
+  margin: 4px 12px 6px 0;
+  shape-outside: margin-box;
 }
 
 
@@ -335,8 +339,8 @@ body {
 
 .dual-story-0 .photo-box {
   float: left;
-  width: 45%;
-  margin: 4px 14px 8px 0;
+  width: 35%;
+  margin: 4px 12px 6px 0;
   shape-outside: margin-box;
 }
 
@@ -463,8 +467,8 @@ body {
 
 .photo-box.float-right {
   float: right;
-  width: 45%;
-  margin: 2px 0 8px 14px;
+  width: 35%;
+  margin: 2px 0 6px 12px;
   shape-outside: margin-box;
 }
 
