@@ -156,11 +156,13 @@ export default function Home() {
     { key: "event", label: "World Affairs" }, { key: "music", label: "Music" }, { key: "movie", label: "Pictures" },
   ];
 
-  // Split stories for layout
+  // Split stories for irregular newspaper layout
   const hero = filtered[0];
-  const secondRow = filtered.slice(1, 4); // 3 column stories
-  const thirdRow = filtered.slice(4, 6);  // wide + sidebar
-  const restRows = filtered.slice(6);     // bottom stories
+  const sidebar = filtered.slice(1, 3);   // sidebar stories next to hero
+  const midBanner = filtered[3];          // wide mid-banner story
+  const tripleRow = filtered.slice(4, 7); // 3 uneven columns
+  const dualRow = filtered.slice(7, 9);   // 2-col split
+  const restRows = filtered.slice(9);     // remaining stories in masonry
 
   const today = new Date();
   const dateStr = today.toLocaleDateString("en-GB", { weekday: "long", day: "numeric", month: "long", year: "numeric" }).toUpperCase();
@@ -260,13 +262,16 @@ export default function Home() {
                   <div className="no-data">The presses have no record for this date.<br /><em>Perhaps the archives have been bewitched.</em></div>
                 ) : (
                   <>
-                    {/* HERO STORY */}
-                    {hero && (
-                      <div className="hero">
-                        <div>
+                    {/* TOP SECTION: Hero + sidebar stacked stories */}
+                    <div className="top-spread">
+                      {hero && (
+                        <div className="hero-main">
                           <div className="hero-kicker">⚡ {TYPE_LABELS[hero.type]} · {hero.year}</div>
                           <h1 className="hero-headline">{hero.title.toUpperCase()}</h1>
                           <div className="byline">By the Nornlore Press Corps &nbsp;|&nbsp; Verified by the Dept. of Historical Sorcery</div>
+                          {(hero.type === "person" || hero.type === "event") && hero.wikipediaSlug && (
+                            <WikiPhoto slug={hero.wikipediaSlug} title={hero.title} />
+                          )}
                           <div className="article-text">
                             <p>
                               <span className="drop-cap-letter">{hero.description.charAt(0)}</span>
@@ -282,24 +287,50 @@ export default function Home() {
                             )}
                           </div>
                         </div>
-                        {(hero.type === "person" || hero.type === "event") && hero.wikipediaSlug && (
-                          <div>
-                            <WikiPhoto slug={hero.wikipediaSlug} title={hero.title} />
+                      )}
+                      {sidebar.length > 0 && (
+                        <div className="sidebar-stack">
+                          {sidebar.map((fact, i) => (
+                            <div className="sidebar-story" key={`side-${i}`}>
+                              <div className="hero-kicker">{TYPE_LABELS[fact.type]}</div>
+                              <h2 className={i === 0 ? "sidebar-headline-big" : "sidebar-headline-sm"}>{fact.title.toUpperCase()}</h2>
+                              <div className="byline">{fact.year}</div>
+                              {(fact.type === "person" || fact.type === "event") && fact.wikipediaSlug && (
+                                <WikiPhoto slug={fact.wikipediaSlug} title={fact.title} />
+                              )}
+                              <p className="col-text">{fact.description}</p>
+                            </div>
+                          ))}
+                        </div>
+                      )}
+                    </div>
+
+                    {/* MID BANNER — wide story across full width */}
+                    {midBanner && (
+                      <div className="mid-banner">
+                        <div className="mid-banner-text">
+                          <div className="hero-kicker">{TYPE_LABELS[midBanner.type]} · {midBanner.year}</div>
+                          <h2 className="mid-banner-headline">{midBanner.title.toUpperCase()}</h2>
+                          <p className="col-text">{midBanner.description}</p>
+                        </div>
+                        {(midBanner.type === "person" || midBanner.type === "event") && midBanner.wikipediaSlug && (
+                          <div className="mid-banner-img">
+                            <WikiPhoto slug={midBanner.wikipediaSlug} title={midBanner.title} />
                           </div>
                         )}
                       </div>
                     )}
 
-                    {/* THREE COLUMN STORIES */}
-                    {secondRow.length > 0 && (
-                      <div className="columns-row">
-                        {secondRow.map((fact, i) => (
-                          <div className="col-story" key={`sec-${i}`}>
+                    {/* TRIPLE ROW — uneven 3 columns */}
+                    {tripleRow.length > 0 && (
+                      <div className="triple-uneven">
+                        {tripleRow.map((fact, i) => (
+                          <div className={`triple-story triple-story-${i}`} key={`tri-${i}`}>
                             <div className="hero-kicker">{TYPE_LABELS[fact.type]}</div>
-                            <h2 className="col-headline">{fact.title}</h2>
+                            <h2 className={i === 1 ? "col-headline-lg" : "col-headline"}>{i === 1 ? fact.title.toUpperCase() : fact.title}</h2>
                             <div className="byline">{fact.year}</div>
                             {(fact.type === "person" || fact.type === "event") && fact.wikipediaSlug && (
-                              <WikiPhoto slug={fact.wikipediaSlug} title={fact.title} floatRight />
+                              <WikiPhoto slug={fact.wikipediaSlug} title={fact.title} floatRight={i !== 1} />
                             )}
                             <p className="col-text">{fact.description}</p>
                           </div>
@@ -307,16 +338,33 @@ export default function Home() {
                       </div>
                     )}
 
-                    {/* REMAINING STORIES — same 3-col grid */}
-                    {thirdRow.length > 0 && (
-                      <div className="columns-row">
-                        {[...thirdRow, ...restRows].map((fact, i) => (
-                          <div className="col-story" key={`rest-${i}`}>
+                    {/* DUAL ROW — 2 unequal columns */}
+                    {dualRow.length > 0 && (
+                      <div className="dual-split">
+                        {dualRow.map((fact, i) => (
+                          <div className={`dual-story dual-story-${i}`} key={`dual-${i}`}>
                             <div className="hero-kicker">{TYPE_LABELS[fact.type]}</div>
-                            <h2 className="col-headline">{fact.title}</h2>
+                            <h2 className={i === 0 ? "col-headline-lg" : "col-headline"}>{fact.title}</h2>
                             <div className="byline">{fact.year}</div>
                             {(fact.type === "person" || fact.type === "event") && fact.wikipediaSlug && (
-                              <WikiPhoto slug={fact.wikipediaSlug} title={fact.title} floatRight />
+                              <WikiPhoto slug={fact.wikipediaSlug} title={fact.title} floatRight={i === 1} />
+                            )}
+                            <p className="col-text">{fact.description}</p>
+                          </div>
+                        ))}
+                      </div>
+                    )}
+
+                    {/* REMAINING — masonry-style irregular grid */}
+                    {restRows.length > 0 && (
+                      <div className="masonry-grid">
+                        {restRows.map((fact, i) => (
+                          <div className={`masonry-item masonry-item-${i % 5}`} key={`rest-${i}`}>
+                            <div className="hero-kicker">{TYPE_LABELS[fact.type]}</div>
+                            <h2 className={i % 3 === 0 ? "col-headline-lg" : "col-headline"}>{i % 3 === 0 ? fact.title.toUpperCase() : fact.title}</h2>
+                            <div className="byline">{fact.year}</div>
+                            {(fact.type === "person" || fact.type === "event") && fact.wikipediaSlug && (
+                              <WikiPhoto slug={fact.wikipediaSlug} title={fact.title} floatRight={i % 2 === 0} />
                             )}
                             <p className="col-text">{fact.description}</p>
                           </div>
