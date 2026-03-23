@@ -106,13 +106,11 @@ function WikiImage({ slug, title, large }: { slug: string; title: string; large?
   const [src, setSrc] = useState<string | null>(null);
 
   useEffect(() => {
-    const width = large ? 800 : 400;
+    const width = large ? 600 : 300;
     fetch(`https://en.wikipedia.org/api/rest_v1/page/summary/${slug}`)
       .then((r) => r.json())
       .then((d) => {
-        if (d.originalimage?.source && large) {
-          setSrc(d.originalimage.source);
-        } else if (d.thumbnail?.source) {
+        if (d.thumbnail?.source) {
           const url = d.thumbnail.source.replace(/\/\d+px-/, `/${width}px-`);
           setSrc(url);
         }
@@ -123,66 +121,75 @@ function WikiImage({ slug, title, large }: { slug: string; title: string; large?
   if (!src) return null;
 
   return (
-    <div className={`article-image ${large ? "article-image-large" : ""}`}>
+    <div className={`article-image`}>
       <img src={src} alt={title} loading="lazy" />
       <div className="article-image-caption">{title}</div>
     </div>
   );
 }
 
-// ---------- Lead Story (first article, big) ----------
-function LeadStory({ fact, index }: { fact: Fact; index: number }) {
+// ---------- Lead Story ----------
+function LeadStory({ fact }: { fact: Fact }) {
   const hasImage = (fact.type === "person" || fact.type === "event") && fact.wikipediaSlug;
   return (
     <motion.article
       className="lead-story"
-      initial={{ opacity: 0, y: 40 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.7, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.6, delay: 0.1 }}
     >
-      <div className="lead-kicker">{TYPE_LABELS[fact.type] || fact.type} · {fact.year} · Exclusive Report</div>
+      <div className="lead-kicker">
+        <span className="exclusive-badge">Exclusive</span>
+        {TYPE_LABELS[fact.type] || fact.type} · {fact.year}
+      </div>
       <h2 className="lead-headline">{fact.title}</h2>
-      <div className="lead-subhead">A chronicle of events most extraordinary, as recorded by the enchanted quills of the Nornlore press corps</div>
-      <div className="lead-rule" />
+      <div className="lead-subhead">
+        A chronicle of events most extraordinary, as recorded by the enchanted quills of the Nornlore press corps
+      </div>
       <div className="lead-content">
         {hasImage && (
-          <WikiImage slug={fact.wikipediaSlug!} title={fact.title} large />
+          <div className="article-image-wrap">
+            <WikiImage slug={fact.wikipediaSlug!} title={fact.title} large />
+          </div>
         )}
-        <div className="lead-text">
-          <p className="lead-desc">
-            <span className="drop-cap">{fact.description.charAt(0)}</span>
-            {fact.description.slice(1)}
-          </p>
-          {fact.wikipediaSlug && (
-            <a
-              className="article-read-more"
-              href={`https://en.wikipedia.org/wiki/${fact.wikipediaSlug}`}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Turn to page 4 for full report →
-            </a>
+        <p className="lead-desc">
+          <span className="drop-cap">{fact.description.charAt(0)}</span>
+          {fact.description.slice(1)}
+          {/* Pad short descriptions with newspaper filler */}
+          {fact.description.length < 200 && (
+            <> The full account of these remarkable circumstances, as pieced together by our most diligent correspondents, reveals a tapestry of events that would astound even the most seasoned chronicler of historical curiosities. Witnesses to these proceedings have described scenes of such import that the very fabric of the age was altered irrevocably. Our reporters continue to investigate the deeper implications.</>
           )}
-        </div>
+        </p>
+        {fact.wikipediaSlug && (
+          <a
+            className="article-read-more"
+            href={`https://en.wikipedia.org/wiki/${fact.wikipediaSlug}`}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Full Report p.4 →
+          </a>
+        )}
       </div>
     </motion.article>
   );
 }
 
-// ---------- Column Story (secondary articles) ----------
+// ---------- Column Story ----------
 function ColumnStory({ fact, index }: { fact: Fact; index: number }) {
+  const hasImage = (fact.type === "person" || fact.type === "event") && fact.wikipediaSlug;
   return (
     <motion.article
       className="col-story"
-      initial={{ opacity: 0, y: 30 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5, delay: 0.1 + index * 0.06, ease: [0.22, 1, 0.36, 1] }}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.4, delay: 0.05 + index * 0.04 }}
     >
       <div className="col-kicker">{TYPE_LABELS[fact.type] || fact.type}</div>
       <h3 className="col-headline">{fact.title}</h3>
       <div className="col-year">{fact.year}</div>
-      {(fact.type === "person" || fact.type === "event") && fact.wikipediaSlug && (
-        <WikiImage slug={fact.wikipediaSlug} title={fact.title} />
+      {hasImage && (
+        <WikiImage slug={fact.wikipediaSlug!} title={fact.title} />
       )}
       <p className="col-desc">{fact.description}</p>
       {fact.wikipediaSlug && (
@@ -192,14 +199,14 @@ function ColumnStory({ fact, index }: { fact: Fact; index: number }) {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Continue on page {index + 2} →
+          p.{index + 2} →
         </a>
       )}
     </motion.article>
   );
 }
 
-// ---------- Main Page ----------
+// ---------- Main ----------
 export default function Home() {
   const [view, setView] = useState<"landing" | "cards">("landing");
   const [month, setMonth] = useState("");
@@ -280,11 +287,11 @@ export default function Home() {
   }, [navigateToDate]);
 
   const filters = [
-    { key: "all", label: "All" },
-    { key: "person", label: "Notable Births" },
+    { key: "all", label: "All Chronicles" },
+    { key: "person", label: "Births" },
     { key: "event", label: "World Affairs" },
     { key: "music", label: "Music" },
-    { key: "movie", label: "Moving Pictures" },
+    { key: "movie", label: "Pictures" },
   ];
 
   const leadStory = filtered[0];
@@ -299,86 +306,55 @@ export default function Home() {
             className="landing"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            exit={{ opacity: 0, scale: 0.97 }}
-            transition={{ duration: 0.5 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.4 }}
           >
             <div className="newspaper-page">
-              {/* Top rule */}
-              <motion.div
-                className="masthead-rule-top"
-                initial={{ scaleX: 0 }}
-                animate={{ scaleX: 1 }}
-                transition={{ delay: 0.1, duration: 0.6 }}
-              />
+              {/* Heavy top rule */}
+              <motion.div className="rule-heavy" initial={{ scaleX: 0 }} animate={{ scaleX: 1 }} transition={{ delay: 0.05, duration: 0.5 }} style={{ transformOrigin: "center" }} />
 
-              <motion.div
-                className="masthead-tagline"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 0.25, duration: 0.6 }}
-              >
-                ★ The Wizarding World&apos;s Most Beguiling Broadsheet of Historical Record ★
+              <motion.div className="masthead-corner-row" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.15, duration: 0.4 }}>
+                <div className="masthead-corner">bewitch · beguile<br />conjure · enchant</div>
+                <div className="masthead-corner" style={{ textAlign: "right" }}>spellbind · divine<br />foretell · charm</div>
               </motion.div>
 
-              {/* Banner image */}
-              <motion.div
-                className="masthead-banner"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 0.7 }}
-                transition={{ delay: 0.3, duration: 0.8 }}
-              >
+              <motion.div className="masthead-tagline" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.2, duration: 0.4 }}>
+                ★ The Wizard World&apos;s Most Beguiling Broadsheet of Historical Record ★
+              </motion.div>
+
+              <motion.div className="masthead-banner" initial={{ opacity: 0 }} animate={{ opacity: 0.55 }} transition={{ delay: 0.25, duration: 0.6 }}>
                 <img src="/newspaper-header.png" alt="" aria-hidden="true" />
               </motion.div>
 
-              <motion.h1
-                className="masthead-title"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.35, duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-              >
+              <motion.h1 className="masthead-title" initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3, duration: 0.6 }}>
                 Nornlore
               </motion.h1>
 
-              <motion.div
-                className="masthead-rule-bottom"
-                initial={{ scaleX: 0 }}
-                animate={{ scaleX: 1 }}
-                transition={{ delay: 0.5, duration: 0.6 }}
-              />
+              <motion.div className="masthead-subtitle" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.4, duration: 0.4 }}>
+                The Enchanted Chronicle
+              </motion.div>
 
-              <motion.div
-                className="masthead-info-bar"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 0.6, duration: 0.5 }}
-              >
+              <motion.div className="rule-double-inv" initial={{ scaleX: 0 }} animate={{ scaleX: 1 }} transition={{ delay: 0.45, duration: 0.5 }} style={{ transformOrigin: "center" }} />
+
+              <motion.div className="masthead-info-bar" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.5, duration: 0.4 }}>
                 <span>Est. Since Time Immemorial</span>
-                <span>❖</span>
+                <span>★</span>
                 <span>Price: 5 Knuts</span>
-                <span>❖</span>
+                <span>★</span>
+                <span>Editor: Barnabas Cuffe</span>
+                <span>★</span>
                 <span>Enchanted Edition</span>
               </motion.div>
 
-              <motion.div
-                className="masthead-thin-rule"
-                initial={{ scaleX: 0 }}
-                animate={{ scaleX: 1 }}
-                transition={{ delay: 0.7, duration: 0.5 }}
-              />
+              <motion.div className="rule-thin" initial={{ scaleX: 0 }} animate={{ scaleX: 1 }} transition={{ delay: 0.55, duration: 0.4 }} style={{ transformOrigin: "center" }} />
 
-              {/* Main call to action */}
-              <motion.div
-                className="landing-cta"
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.8, duration: 0.7 }}
-              >
+              {/* CTA */}
+              <motion.div className="landing-cta" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.65, duration: 0.6 }}>
                 <h2 className="cta-headline">What History Shares<br />Your Birthday?</h2>
                 <p className="cta-subtitle">
                   Enter your date of birth below to reveal the extraordinary events,
                   legendary figures, and enchanted tales woven into your day.
                 </p>
-
                 <form className="date-form" onSubmit={handleSubmit}>
                   <div className="date-inputs">
                     <NpSelect
@@ -401,31 +377,21 @@ export default function Home() {
                       }))}
                     />
                   </div>
-                  <motion.button
-                    type="submit"
-                    className="reveal-btn"
-                    disabled={!month || !day}
-                    whileHover={{ scale: 1.02 }}
-                    whileTap={{ scale: 0.98 }}
-                  >
+                  <motion.button type="submit" className="reveal-btn" disabled={!month || !day} whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
                     Read the Chronicle
                   </motion.button>
                 </form>
               </motion.div>
 
-              {/* Bottom bar */}
-              <motion.div
-                className="landing-bottom-bar"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 0.5 }}
-                transition={{ delay: 1.2, duration: 0.8 }}
-              >
-                <span>births</span>
-                <span>events</span>
-                <span>music</span>
-                <span>movies</span>
-                <span>366 dates</span>
-                <span>2,594 tales</span>
+              <motion.div className="rule-double" initial={{ scaleX: 0 }} animate={{ scaleX: 1 }} transition={{ delay: 0.9, duration: 0.4 }} style={{ transformOrigin: "center" }} />
+
+              <motion.div className="landing-bottom-bar" initial={{ opacity: 0 }} animate={{ opacity: 0.7 }} transition={{ delay: 1.0, duration: 0.5 }}>
+                <span>Births</span><span>★</span>
+                <span>Events</span><span>★</span>
+                <span>Music</span><span>★</span>
+                <span>Pictures</span><span>★</span>
+                <span>366 Dates</span><span>★</span>
+                <span>2,594 Tales</span>
               </motion.div>
             </div>
           </motion.div>
@@ -436,18 +402,12 @@ export default function Home() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.4 }}
+            transition={{ duration: 0.3 }}
           >
-            {/* Newspaper page wrapper */}
             <div className="newspaper-page">
-              {/* Masthead */}
-              <motion.div
-                className="paper-masthead"
-                initial={{ opacity: 0, y: -20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5 }}
-              >
-                <div className="masthead-rule-top" />
+              {/* Compact masthead */}
+              <motion.div initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4 }}>
+                <div className="rule-heavy" />
                 <div className="paper-masthead-row">
                   <button className="back-btn" onClick={goBack}>← Back</button>
                   <div className="paper-masthead-center">
@@ -456,24 +416,19 @@ export default function Home() {
                   </div>
                   <button className="share-btn" onClick={handleShare}>Share</button>
                 </div>
-                <div className="masthead-rule-bottom" />
+                <div className="rule-double-inv" />
                 <div className="masthead-info-bar">
                   <span>{headerDateStr}</span>
-                  <span>❖</span>
+                  <span>★</span>
                   <span>Enchanted Edition</span>
-                  <span>❖</span>
-                  <span>{filtered.length} {filtered.length === 1 ? "tale" : "tales"} recorded</span>
+                  <span>★</span>
+                  <span>{filtered.length} {filtered.length === 1 ? "tale" : "tales"}</span>
                 </div>
-                <div className="masthead-thin-rule" />
+                <div className="rule-thin" />
               </motion.div>
 
-              {/* Filter */}
-              <motion.div
-                className="filter-bar"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 0.15, duration: 0.4 }}
-              >
+              {/* Filter nav */}
+              <motion.div className="filter-bar" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.1, duration: 0.3 }}>
                 {filters.map((f) => (
                   <button
                     key={f.key}
@@ -488,17 +443,14 @@ export default function Home() {
               {/* Articles */}
               {filtered.length > 0 ? (
                 <div className="articles-layout" key={filter}>
-                  {/* Lead story */}
-                  {leadStory && <LeadStory fact={leadStory} index={0} />}
+                  {leadStory && <LeadStory fact={leadStory} />}
 
-                  {/* Column rule */}
                   {columnStories.length > 0 && (
                     <div className="section-rule">
-                      <span className="section-rule-text">More Chronicles From This Date</span>
+                      <span className="section-rule-text">More Chronicles</span>
                     </div>
                   )}
 
-                  {/* Grid of secondary stories */}
                   {columnStories.length > 0 && (
                     <div className="columns-grid">
                       {columnStories.map((fact, i) => (
@@ -508,12 +460,7 @@ export default function Home() {
                   )}
                 </div>
               ) : (
-                <motion.div
-                  className="no-data"
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ delay: 0.2 }}
-                >
+                <motion.div className="no-data" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.2 }}>
                   <div className="no-data-text">
                     The presses have no record for this date.<br />
                     <em>Perhaps the archives have been bewitched.</em>
@@ -521,11 +468,19 @@ export default function Home() {
                 </motion.div>
               )}
 
-              {/* Footer rule */}
+              {/* Footer */}
               <div className="paper-footer">
-                <div className="masthead-thin-rule" />
+                <div className="rule-double" />
+                <div className="paper-footer-bar">
+                  <span>Potions 3</span><span>★</span>
+                  <span>Spells 5</span><span>★</span>
+                  <span>Hocus-Pocus 7</span><span>★</span>
+                  <span>Ministry Affairs 11</span><span>★</span>
+                  <span>Games 7</span>
+                </div>
+                <div className="rule-thin" />
                 <div className="paper-footer-text">
-                  Nornlore — The Enchanted Chronicle — All tales verified by the Department of Historical Sorcery
+                  Nornlore — All tales verified by the Department of Historical Sorcery — &quot;Nobody Wastes the Daily Prophet&quot;
                 </div>
               </div>
             </div>
