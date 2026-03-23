@@ -254,6 +254,7 @@ body::after {
 .doodle-select {
   position: relative;
   user-select: none;
+  z-index: 50;
 }
 
 .doodle-select-trigger {
@@ -391,6 +392,7 @@ body::after {
   cursor: pointer;
   transition: all 0.3s;
   position: relative;
+  z-index: 1;
   letter-spacing: 0.05em;
   /* Slightly rotated for hand-placed feel */
   transform: rotate(0.5deg);
