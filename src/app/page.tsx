@@ -21,7 +21,7 @@ const MONTHS = [
   "July", "August", "September", "October", "November", "December",
 ];
 
-const DOODLE_CHARS = "·✦·○·◇·✧·△·".split("");
+const DOODLE_CHARS = "❧✦✧❦❖✣".split("");
 
 function shuffle<T>(arr: T[]): T[] {
   const a = [...arr];
@@ -215,7 +215,7 @@ function FactCard({ fact, index }: { fact: Fact; index: number }) {
             target="_blank"
             rel="noopener noreferrer"
           >
-            Read more →
+            Continue reading →
           </a>
         )}
       </div>
@@ -352,39 +352,14 @@ export default function Home() {
             exit={{ opacity: 0, scale: 0.95 }}
             transition={{ duration: 0.5 }}
           >
-            <div className="landing-bg-glow" />
-
-            {/* Coffee ring stains */}
+            {/* Newspaper masthead decorative lines */}
             <motion.div
-              className="coffee-ring coffee-ring-1"
+              style={{ width: "min(90%, 600px)", position: "relative", zIndex: 1 }}
               initial={{ opacity: 0 }}
-              animate={{ opacity: 0.06 }}
-              transition={{ delay: 1.2, duration: 1.5 }}
-            />
-            <motion.div
-              className="coffee-ring coffee-ring-2"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 0.04 }}
-              transition={{ delay: 1.8, duration: 1.5 }}
-            />
-
-            {/* Subtle compass rose background */}
-            <motion.div
-              className="occult-circle"
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 0.04, scale: 1 }}
-              transition={{ delay: 0.1, duration: 2, ease: "easeOut" }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.1, duration: 0.6 }}
             >
-              <svg width="500" height="500" viewBox="0 0 500 500" fill="none">
-                <circle cx="250" cy="250" r="200" stroke="#b0a090" strokeWidth="0.8" />
-                <circle cx="250" cy="250" r="160" stroke="#b0a090" strokeWidth="0.5" strokeDasharray="4 8" />
-                <circle cx="250" cy="250" r="100" stroke="#b0a090" strokeWidth="0.6" />
-                {/* Compass points */}
-                <line x1="250" y1="45" x2="250" y2="455" stroke="#b0a090" strokeWidth="0.4" />
-                <line x1="45" y1="250" x2="455" y2="250" stroke="#b0a090" strokeWidth="0.4" />
-                <line x1="105" y1="105" x2="395" y2="395" stroke="#b0a090" strokeWidth="0.3" />
-                <line x1="395" y1="105" x2="105" y2="395" stroke="#b0a090" strokeWidth="0.3" />
-              </svg>
+              <div style={{ borderTop: "3px solid #1a1008", borderBottom: "1px solid #1a1008", height: "5px", marginBottom: "12px" }} />
             </motion.div>
 
             <motion.div
@@ -393,7 +368,7 @@ export default function Home() {
               animate={{ opacity: 0.8, y: 0 }}
               transition={{ delay: 0.3, duration: 0.8 }}
             >
-              ~ what happened on your birthday? ~
+              The Enchanted Chronicle
             </motion.div>
 
             <motion.h1
@@ -405,29 +380,38 @@ export default function Home() {
               Nornlore
             </motion.h1>
 
+            {/* Bottom double rule */}
+            <motion.div
+              style={{ width: "min(90%, 600px)", position: "relative", zIndex: 1, marginBottom: "1rem" }}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.5, duration: 0.6 }}
+            >
+              <div style={{ borderTop: "1px solid #1a1008", borderBottom: "3px solid #1a1008", height: "5px" }} />
+            </motion.div>
+
             <motion.p
               className="landing-subtitle"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.65, duration: 0.7 }}
             >
-              Discover the history woven into your birthday
+              Enter your date of birth to reveal the extraordinary events, legendary figures, and enchanted tales that share your day in history.
             </motion.p>
 
-            {/* Elegant ornamental divider */}
-            <motion.svg
+            {/* Newspaper ornamental rule */}
+            <motion.div
               className="hand-divider"
-              viewBox="0 0 320 24"
-              fill="none"
               initial={{ opacity: 0, scaleX: 0 }}
-              animate={{ opacity: 0.3, scaleX: 1 }}
-              transition={{ delay: 0.8, duration: 1, ease: [0.22, 1, 0.36, 1] }}
+              animate={{ opacity: 0.7, scaleX: 1 }}
+              transition={{ delay: 0.8, duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
             >
-              <line x1="0" y1="12" x2="140" y2="12" stroke="#b0a090" strokeWidth="0.8" />
-              <circle cx="160" cy="12" r="4" stroke="#b0a090" strokeWidth="0.8" fill="none" />
-              <circle cx="160" cy="12" r="1.5" fill="#c05a3c" opacity="0.5" />
-              <line x1="180" y1="12" x2="320" y2="12" stroke="#b0a090" strokeWidth="0.8" />
-            </motion.svg>
+              <svg viewBox="0 0 500 12" fill="none" style={{ width: "100%", height: "12px" }}>
+                <line x1="0" y1="4" x2="220" y2="4" stroke="#1a1008" strokeWidth="0.5" />
+                <text x="250" y="9" textAnchor="middle" fill="#1a1008" fontSize="10" fontFamily="serif">❧</text>
+                <line x1="280" y1="4" x2="500" y2="4" stroke="#1a1008" strokeWidth="0.5" />
+              </svg>
+            </motion.div>
 
             <motion.form
               className="date-form"
@@ -437,12 +421,12 @@ export default function Home() {
               transition={{ delay: 0.8, duration: 0.7 }}
             >
               <div className="form-frame">
-                {/* Corner flourishes */}
+                {/* Newspaper corner ornaments */}
                 {(["tl", "tr", "bl", "br"] as const).map((pos) => (
                   <svg key={pos} className={`form-corner ${pos}`} width="18" height="18" viewBox="0 0 18 18" fill="none">
                     <path
-                      d={pos === "tl" ? "M2 14 Q2 2 14 2" : pos === "tr" ? "M4 2 Q16 2 16 14" : pos === "bl" ? "M2 4 Q2 16 14 16" : "M4 16 Q16 16 16 4"}
-                      stroke="#b0a090" strokeWidth="1" fill="none"
+                      d={pos === "tl" ? "M1 12 L1 1 L12 1" : pos === "tr" ? "M6 1 L17 1 L17 12" : pos === "bl" ? "M1 6 L1 17 L12 17" : "M6 17 L17 17 L17 6"}
+                      stroke="#1a1008" strokeWidth="1.5" fill="none" strokeLinecap="square"
                     />
                   </svg>
                 ))}
@@ -475,7 +459,7 @@ export default function Home() {
                 whileHover={{ scale: 1.03 }}
                 whileTap={{ scale: 0.97 }}
               >
-                Show me! →
+                Read the Chronicle
               </motion.button>
             </motion.form>
           </motion.div>
@@ -495,11 +479,11 @@ export default function Home() {
               transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
             >
               <button className="back-btn" onClick={goBack}>
-                ← New Date
+                ← Back
               </button>
               <span className="header-date">{headerDateStr}</span>
               <button className="share-btn" onClick={handleShare}>
-                Share
+                Share Link
               </button>
             </motion.header>
 
