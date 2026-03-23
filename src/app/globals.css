@@ -129,7 +129,7 @@ body {
   border-bottom: 2px solid var(--rule);
   padding: 16px 0 14px;
   display: grid;
-  grid-template-columns: 1fr 240px;
+  grid-template-columns: 1fr 320px;
   gap: 20px;
   align-items: start;
 }
@@ -137,7 +137,7 @@ body {
 .hero-kicker {
   font-family: 'IM Fell English', serif;
   font-style: italic;
-  font-size: 0.72rem;
+  font-size: 0.85rem;
   letter-spacing: 2px;
   text-transform: uppercase;
   color: var(--accent);
@@ -146,14 +146,14 @@ body {
 
 .hero-headline {
   font-family: 'IM Fell English', serif;
-  font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+  font-size: clamp(2rem, 4.5vw, 3.2rem);
   line-height: 1.1;
   color: var(--ink);
   margin-bottom: 8px;
 }
 
 .byline {
-  font-size: 0.72rem;
+  font-size: 0.85rem;
   color: var(--faded);
   font-style: italic;
   margin-bottom: 8px;
@@ -164,8 +164,8 @@ body {
 }
 
 .article-text {
-  font-size: 0.88rem;
-  line-height: 1.65;
+  font-size: 1rem;
+  line-height: 1.7;
   color: var(--ink);
   text-align: justify;
   hyphens: auto;
@@ -246,15 +246,15 @@ body {
 
 .col-headline {
   font-family: 'IM Fell English', serif;
-  font-size: 1.05rem;
+  font-size: 1.25rem;
   line-height: 1.2;
   margin-bottom: 6px;
   color: var(--ink);
 }
 
 .col-text {
-  font-size: 0.8rem;
-  line-height: 1.6;
+  font-size: 0.95rem;
+  line-height: 1.65;
   color: var(--ink);
   text-align: justify;
   hyphens: auto;
@@ -267,8 +267,8 @@ body {
 
 .col-story .photo-box.float-right {
   float: right;
-  width: 45%;
-  margin: 0 0 6px 10px;
+  width: 55%;
+  margin: 0 0 8px 12px;
   shape-outside: margin-box;
 }
 
