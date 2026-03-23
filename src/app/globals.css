@@ -28,7 +28,7 @@ html { scroll-behavior: smooth; }
 
 body {
   font-family: var(--font-body);
-  background: #1a150d;
+  background: var(--parch);
   color: var(--ink);
   min-height: 100vh;
   overflow-x: hidden;
@@ -39,19 +39,15 @@ body {
 
 /* ============ THE NEWSPAPER SHEET ============ */
 .newspaper-page {
-  max-width: 960px;
-  margin: 0 auto;
+  max-width: 100%;
+  margin: 0;
   background: var(--parch);
   background-image: url("/paper-texture.png");
-  background-size: 100% auto;
+  background-size: cover;
   background-blend-mode: multiply;
   min-height: 100vh;
-  padding: 12px 20px 24px;
+  padding: 12px 3vw 24px;
   position: relative;
-  box-shadow:
-    0 0 60px rgba(0, 0, 0, 0.5),
-    0 0 120px rgba(0, 0, 0, 0.25),
-    inset 0 0 80px rgba(20, 15, 5, 0.06);
 }
 
 /* Aged edge vignette on the paper */
