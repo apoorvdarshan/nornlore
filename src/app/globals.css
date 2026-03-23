@@ -328,19 +328,37 @@ body {
 
 
 .masonry-item .photo-box {
-  float: none;
-  width: 100%;
-  margin: 8px 0;
-  display: block;
-  max-height: 180px;
+  margin: 6px 0;
+  max-height: 160px;
   overflow: hidden;
+  shape-outside: margin-box;
 }
 
 .masonry-item .photo-box img {
   width: 100%;
-  height: 180px;
+  height: 160px;
   object-fit: cover;
   object-position: top center;
+}
+
+/* Zigzag: odd float left small, even float right medium, every 3rd centered */
+.masonry-item:nth-child(3n+1) .photo-box {
+  float: left;
+  width: 40%;
+  margin-right: 10px;
+}
+
+.masonry-item:nth-child(3n+2) .photo-box {
+  float: right;
+  width: 50%;
+  margin-left: 10px;
+}
+
+.masonry-item:nth-child(3n) .photo-box {
+  float: none;
+  width: 70%;
+  margin: 8px auto;
+  display: block;
 }
 
 
