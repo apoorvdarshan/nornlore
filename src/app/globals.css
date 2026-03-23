@@ -244,33 +244,139 @@ body::after {
   align-items: center;
 }
 
-.date-inputs select {
-  font-family: var(--font-hand);
-  font-size: 1.2rem;
-  padding: 0.6rem 2.2rem 0.6rem 0.9rem;
-  background: rgba(255, 255, 255, 0.6);
-  color: var(--ink);
-  border: none;
-  border-bottom: 2px solid var(--pencil);
-  border-radius: 0;
-  cursor: pointer;
-  appearance: none;
-  -webkit-appearance: none;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6' fill='%236b6b6b'/%3E%3C/svg%3E");
-  background-repeat: no-repeat;
-  background-position: right 0.7rem center;
-  transition: border-color 0.2s;
-}
-
-.date-inputs select:focus {
-  outline: none;
-  border-bottom-color: var(--blue-pen);
-}
-
 .date-separator {
   font-family: var(--font-hand);
   font-size: 2rem;
   color: var(--pencil-light);
+}
+
+/* ============ DOODLE SELECT ============ */
+.doodle-select {
+  position: relative;
+  user-select: none;
+}
+
+.doodle-select-trigger {
+  font-family: var(--font-hand);
+  font-size: 1.25rem;
+  font-weight: 600;
+  padding: 0.55rem 2.2rem 0.55rem 1rem;
+  background: rgba(255, 255, 255, 0.65);
+  color: var(--ink);
+  border: none;
+  border-bottom: 2.5px solid var(--pencil);
+  border-radius: 0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  position: relative;
+  transition: border-color 0.2s, background 0.2s;
+  min-width: 110px;
+  text-align: left;
+  white-space: nowrap;
+}
+
+.doodle-select-trigger .placeholder {
+  color: var(--pencil-light);
+}
+
+.doodle-select-trigger:hover {
+  border-bottom-color: var(--blue-pen);
+  background: rgba(255, 255, 255, 0.85);
+}
+
+.doodle-select.open .doodle-select-trigger {
+  border-bottom-color: var(--blue-pen);
+  background: rgba(255, 255, 255, 0.9);
+}
+
+.doodle-select-arrow {
+  position: absolute;
+  right: 0.6rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--pencil);
+  transition: transform 0.25s;
+}
+
+.doodle-select.open .doodle-select-arrow {
+  transform: translateY(-50%) rotate(180deg);
+  color: var(--blue-pen);
+}
+
+.doodle-select-dropdown {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: -4px;
+  right: -4px;
+  background: var(--paper);
+  border: 1.5px dashed var(--pencil-light);
+  border-radius: 4px;
+  z-index: 200;
+  max-height: 240px;
+  overflow-y: auto;
+  transform-origin: top center;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.1), 0 2px 6px rgba(0,0,0,0.06);
+  /* Notebook lines inside dropdown */
+  background-image:
+    repeating-linear-gradient(
+      transparent,
+      transparent 31px,
+      var(--paper-line) 31px,
+      var(--paper-line) 32px
+    );
+  background-size: 100% 32px;
+  background-position: 0 4px;
+  padding: 4px 0;
+}
+
+.doodle-select-dropdown::-webkit-scrollbar {
+  width: 6px;
+}
+
+.doodle-select-dropdown::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.doodle-select-dropdown::-webkit-scrollbar-thumb {
+  background: var(--pencil-light);
+  border-radius: 3px;
+}
+
+.doodle-select-option {
+  font-family: var(--font-hand);
+  font-size: 1.15rem;
+  font-weight: 500;
+  padding: 0.45rem 1rem;
+  background: none;
+  border: none;
+  color: var(--ink-mid);
+  cursor: pointer;
+  width: 100%;
+  text-align: left;
+  transition: all 0.15s;
+  display: block;
+  position: relative;
+}
+
+.doodle-select-option:hover {
+  background: var(--highlight-yellow);
+  color: var(--ink);
+}
+
+.doodle-select-option.selected {
+  color: var(--blue-pen);
+  font-weight: 700;
+}
+
+/* Checkmark doodle for selected */
+.doodle-select-option.selected::before {
+  content: "✓";
+  position: absolute;
+  left: 0.3rem;
+  font-size: 0.8rem;
+  color: var(--blue-pen);
 }
 
 .reveal-btn {
@@ -719,7 +825,7 @@ body::after {
   .landing { padding: 1.5rem; }
   .landing-bg-glow { width: 280px; height: 280px; }
   .form-frame { padding: 1.25rem; }
-  .date-inputs select { font-size: 1.1rem; padding: 0.55rem 1.8rem 0.55rem 0.7rem; }
+  .doodle-select-trigger { font-size: 1.1rem; min-width: 95px; padding: 0.5rem 1.8rem 0.5rem 0.8rem; }
   .reveal-btn { font-size: 1.15rem; padding: 0.7rem 2rem; }
 
   .card-deck {

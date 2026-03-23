@@ -49,6 +49,73 @@ function BadgeIcon({ type }: { type: string }) {
   }
 }
 
+// ---------- Custom Doodle Select ----------
+function DoodleSelect({
+  value,
+  onChange,
+  placeholder,
+  options,
+}: {
+  value: string;
+  onChange: (val: string) => void;
+  placeholder: string;
+  options: { value: string; label: string }[];
+}) {
+  const [open, setOpen] = useState(false);
+  const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const handler = (e: MouseEvent) => {
+      if (ref.current && !ref.current.contains(e.target as Node)) setOpen(false);
+    };
+    document.addEventListener("mousedown", handler);
+    return () => document.removeEventListener("mousedown", handler);
+  }, []);
+
+  const selectedLabel = options.find((o) => o.value === value)?.label || placeholder;
+
+  return (
+    <div className={`doodle-select ${open ? "open" : ""}`} ref={ref}>
+      <button
+        type="button"
+        className="doodle-select-trigger"
+        onClick={() => setOpen(!open)}
+        aria-label={placeholder}
+      >
+        <span className={value ? "" : "placeholder"}>{selectedLabel}</span>
+        <svg width="14" height="14" viewBox="0 0 20 20" fill="none" className="doodle-select-arrow">
+          <path d="M5 8 L10 13 L15 8" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+        </svg>
+      </button>
+      <AnimatePresence>
+        {open && (
+          <motion.div
+            className="doodle-select-dropdown"
+            initial={{ opacity: 0, y: -8, scaleY: 0.9 }}
+            animate={{ opacity: 1, y: 0, scaleY: 1 }}
+            exit={{ opacity: 0, y: -8, scaleY: 0.9 }}
+            transition={{ duration: 0.2, ease: [0.22, 1, 0.36, 1] }}
+          >
+            {options.map((opt) => (
+              <button
+                key={opt.value}
+                type="button"
+                className={`doodle-select-option ${opt.value === value ? "selected" : ""}`}
+                onClick={() => {
+                  onChange(opt.value);
+                  setOpen(false);
+                }}
+              >
+                {opt.label}
+              </button>
+            ))}
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
+  );
+}
+
 // ---------- Floating Runes ----------
 function FloatingRunes() {
   const [runes, setRunes] = useState<{ id: number; char: string; left: number; size: number; dur: number; delay: number }[]>([]);
@@ -370,38 +437,25 @@ export default function Home() {
                   </svg>
                 ))}
                 <div className="date-inputs">
-                  <select
+                  <DoodleSelect
                     value={month}
-                    onChange={(e) => setMonth(e.target.value)}
-                    aria-label="Month"
-                  >
-                    <option value="" disabled>
-                      Month
-                    </option>
-                    {MONTHS.map((m, i) => (
-                      <option key={m} value={String(i + 1).padStart(2, "0")}>
-                        {m}
-                      </option>
-                    ))}
-                  </select>
+                    onChange={setMonth}
+                    placeholder="Month"
+                    options={MONTHS.map((m, i) => ({
+                      value: String(i + 1).padStart(2, "0"),
+                      label: m,
+                    }))}
+                  />
                   <span className="date-separator">·</span>
-                  <select
+                  <DoodleSelect
                     value={day}
-                    onChange={(e) => setDay(e.target.value)}
-                    aria-label="Day"
-                  >
-                    <option value="" disabled>
-                      Day
-                    </option>
-                    {Array.from({ length: 31 }, (_, i) => {
-                      const v = String(i + 1).padStart(2, "0");
-                      return (
-                        <option key={v} value={v}>
-                          {i + 1}
-                        </option>
-                      );
-                    })}
-                  </select>
+                    onChange={setDay}
+                    placeholder="Day"
+                    options={Array.from({ length: 31 }, (_, i) => ({
+                      value: String(i + 1).padStart(2, "0"),
+                      label: String(i + 1),
+                    }))}
+                  />
                 </div>
               </div>
               <motion.button
