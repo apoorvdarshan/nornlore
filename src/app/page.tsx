@@ -80,9 +80,9 @@ function useWikiExtract(slug: string | null): string {
   useEffect(() => {
     if (!slug) return;
     if (wikiExtractCache[slug]) { setExtract(wikiExtractCache[slug]); return; }
-    // Use MediaWiki action API for full intro section (much longer than REST summary)
+    // Use MediaWiki action API for extended article text
     const title = decodeURIComponent(slug);
-    fetch(`https://en.wikipedia.org/w/api.php?action=query&titles=${encodeURIComponent(title)}&prop=extracts&exintro=true&explaintext=true&format=json&origin=*`)
+    fetch(`https://en.wikipedia.org/w/api.php?action=query&titles=${encodeURIComponent(title)}&prop=extracts&explaintext=true&exchars=5000&format=json&origin=*`)
       .then((r) => r.json())
       .then((d) => {
         const pages = d.query?.pages;
