@@ -72,7 +72,7 @@ function NpSelect({ value, onChange, placeholder, options }: {
   );
 }
 
-function WikiPhoto({ slug, title }: { slug: string; title: string }) {
+function WikiPhoto({ slug, title, floatRight }: { slug: string; title: string; floatRight?: boolean }) {
   const [src, setSrc] = useState<string | null>(null);
   const [isGif, setIsGif] = useState(false);
 
@@ -95,7 +95,7 @@ function WikiPhoto({ slug, title }: { slug: string; title: string }) {
 
   if (!src) return null;
   return (
-    <div className={`photo-box ${isGif ? "photo-moving" : ""}`}>
+    <div className={`photo-box ${isGif ? "photo-moving" : ""} ${floatRight ? "float-right" : ""}`}>
       <img src={src} alt={title} loading="lazy" />
       {!isGif && <div className="photo-caption">{title}</div>}
     </div>
@@ -314,9 +314,7 @@ export default function Home() {
                             <h2 className="col-headline">{fact.title}</h2>
                             <div className="byline">{fact.year}</div>
                             {(fact.type === "person" || fact.type === "event") && fact.wikipediaSlug && (
-                              <div className="photo-box float-right">
-                                <WikiPhoto slug={fact.wikipediaSlug} title={fact.title} />
-                              </div>
+                              <WikiPhoto slug={fact.wikipediaSlug} title={fact.title} floatRight />
                             )}
                             <p className="col-text">{fact.description}</p>
                           </div>
