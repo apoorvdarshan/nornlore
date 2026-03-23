@@ -143,8 +143,6 @@ body {
 .hero-main .photo-box {
   float: left;
   width: 40%;
-  max-height: 220px;
-  overflow: hidden;
   margin: 0 16px 10px 0;
   shape-outside: margin-box;
 }
@@ -166,8 +164,6 @@ body {
 
 .sidebar-story .photo-box {
   width: 100%;
-  max-height: 180px;
-  overflow: hidden;
   margin: 8px 0;
 }
 
@@ -247,8 +243,6 @@ body {
 
 .mid-banner-img .photo-box {
   width: 100%;
-  max-height: 180px;
-  overflow: hidden;
 }
 
 /* ============ TRIPLE UNEVEN ============ */
@@ -270,8 +264,6 @@ body {
 
 .triple-story-1 .photo-box {
   width: 100%;
-  max-height: 180px;
-  overflow: hidden;
   margin: 8px 0;
 }
 
@@ -347,12 +339,28 @@ body {
   position: relative;
   overflow: hidden;
   box-shadow: 4px 4px 0 rgba(58,26,0,0.15);
+  border-radius: 3px 12px 4px 15px;
 }
+
+/* Irregular border shapes for different positions */
+.hero-main .photo-box { border-radius: 4px 18px 6px 14px; }
+.sidebar-story:first-child .photo-box { border-radius: 12px 3px 16px 5px; }
+.sidebar-story:last-child .photo-box { border-radius: 5px 14px 3px 18px; }
+.mid-banner-img .photo-box { border-radius: 15px 4px 12px 6px; }
+.triple-story-0 .photo-box { border-radius: 3px 16px 8px 4px; }
+.triple-story-1 .photo-box { border-radius: 14px 5px 3px 12px; }
+.triple-story-2 .photo-box { border-radius: 6px 3px 18px 8px; }
+.dual-story-0 .photo-box { border-radius: 8px 14px 4px 16px; }
+.dual-story-1 .photo-box { border-radius: 16px 6px 12px 3px; }
+.masonry-item:nth-child(5n) .photo-box { border-radius: 4px 16px 6px 12px; }
+.masonry-item:nth-child(5n+1) .photo-box { border-radius: 14px 4px 18px 6px; }
+.masonry-item:nth-child(5n+2) .photo-box { border-radius: 6px 12px 3px 16px; }
+.masonry-item:nth-child(5n+3) .photo-box { border-radius: 18px 6px 14px 4px; }
+.masonry-item:nth-child(5n+4) .photo-box { border-radius: 3px 18px 8px 14px; }
 
 .photo-box img {
   width: 100%;
   display: block;
-  object-fit: cover;
   filter: sepia(0.3) contrast(1.12) brightness(0.88);
   transition: filter 0.3s;
 }
@@ -417,15 +425,11 @@ body {
 .photo-box.float-right {
   float: right;
   width: 45%;
-  max-height: 160px;
-  overflow: hidden;
   margin: 2px 0 8px 14px;
   shape-outside: margin-box;
 }
 
 .masonry-item .photo-box {
-  max-height: 160px;
-  overflow: hidden;
   margin: 6px 0;
 }
 
