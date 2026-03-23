@@ -139,34 +139,36 @@ function FactCard({ fact, index }: { fact: Fact; index: number }) {
         <div className="card-year">{fact.year}</div>
         <div className="card-title">{fact.title}</div>
         <p className="card-desc">{fact.description}</p>
+      </div>
 
-        {(fact.type === "person" || fact.type === "event") && fact.wikipediaSlug && (
-          <WikiImage slug={fact.wikipediaSlug} title={fact.title} />
-        )}
+      {(fact.type === "person" || fact.type === "event") && fact.wikipediaSlug && (
+        <WikiImage slug={fact.wikipediaSlug} title={fact.title} />
+      )}
 
-        {fact.type === "music" && fact.spotifyTrackId && (
-          <div className="card-embed">
-            <iframe
-              src={`https://open.spotify.com/embed/track/${fact.spotifyTrackId}?theme=0`}
-              height="152"
-              allow="encrypted-media"
-              loading="lazy"
-            />
-          </div>
-        )}
+      {fact.type === "music" && fact.spotifyTrackId && (
+        <div className="card-embed">
+          <iframe
+            src={`https://open.spotify.com/embed/track/${fact.spotifyTrackId}?theme=0`}
+            height="152"
+            allow="encrypted-media"
+            loading="lazy"
+          />
+        </div>
+      )}
 
-        {(fact.type === "movie" || fact.type === "event") && fact.youtubeId && (
-          <div className="card-embed">
-            <iframe
-              src={`https://www.youtube-nocookie.com/embed/${fact.youtubeId}`}
-              height="200"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
-              loading="lazy"
-            />
-          </div>
-        )}
+      {(fact.type === "movie" || fact.type === "event") && fact.youtubeId && (
+        <div className="card-embed">
+          <iframe
+            src={`https://www.youtube-nocookie.com/embed/${fact.youtubeId}`}
+            height="200"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowFullScreen
+            loading="lazy"
+          />
+        </div>
+      )}
 
+      <div className="card-body card-footer">
         {fact.wikipediaSlug && (
           <a
             className="card-link"
