@@ -142,9 +142,14 @@ body {
 
 .hero-main .photo-box {
   float: left;
-  width: 40%;
+  width: 35%;
   margin: 0 16px 10px 0;
   shape-outside: margin-box;
+}
+
+.hero-main .photo-box img {
+  max-height: 200px;
+  object-fit: cover;
 }
 
 .sidebar-stack {
@@ -165,6 +170,11 @@ body {
 .sidebar-story .photo-box {
   width: 100%;
   margin: 8px 0;
+}
+
+.sidebar-story .photo-box img {
+  max-height: 180px;
+  object-fit: cover;
 }
 
 .sidebar-headline-big {
@@ -245,6 +255,11 @@ body {
   width: 100%;
 }
 
+.mid-banner-img .photo-box img {
+  max-height: 180px;
+  object-fit: cover;
+}
+
 /* ============ TRIPLE UNEVEN ============ */
 .triple-uneven {
   display: grid;
@@ -300,6 +315,11 @@ body {
   width: 45%;
   margin: 4px 14px 8px 0;
   shape-outside: margin-box;
+}
+
+.dual-story .photo-box img {
+  max-height: 180px;
+  object-fit: cover;
 }
 
 /* ============ MASONRY GRID ============ */
@@ -424,13 +444,23 @@ body {
 
 .photo-box.float-right {
   float: right;
-  width: 45%;
+  width: 55%;
   margin: 2px 0 8px 14px;
   shape-outside: margin-box;
 }
 
+.photo-box.float-right img {
+  max-height: 180px;
+  object-fit: cover;
+}
+
 .masonry-item .photo-box {
   margin: 6px 0;
+}
+
+.masonry-item .photo-box img {
+  max-height: 160px;
+  object-fit: cover;
 }
 
 /* ============ SECTION LABEL ============ */
