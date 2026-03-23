@@ -21,7 +21,7 @@ const MONTHS = [
   "July", "August", "September", "October", "November", "December",
 ];
 
-const DOODLE_CHARS = "★☆♪♫✿❀✎✏⚡☁△▽○●◇◆♠♣♥♦".split("");
+const DOODLE_CHARS = "·✦·○·◇·✧·△·".split("");
 
 function shuffle<T>(arr: T[]): T[] {
   const a = [...arr];
@@ -354,30 +354,36 @@ export default function Home() {
           >
             <div className="landing-bg-glow" />
 
-            {/* Doodle spiral/sun background */}
+            {/* Coffee ring stains */}
+            <motion.div
+              className="coffee-ring coffee-ring-1"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 0.06 }}
+              transition={{ delay: 1.2, duration: 1.5 }}
+            />
+            <motion.div
+              className="coffee-ring coffee-ring-2"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 0.04 }}
+              transition={{ delay: 1.8, duration: 1.5 }}
+            />
+
+            {/* Subtle compass rose background */}
             <motion.div
               className="occult-circle"
-              initial={{ opacity: 0, scale: 0.8, rotate: -30 }}
-              animate={{ opacity: 0.08, scale: 1, rotate: 0 }}
-              transition={{ delay: 0.1, duration: 1.5, ease: "easeOut" }}
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 0.04, scale: 1 }}
+              transition={{ delay: 0.1, duration: 2, ease: "easeOut" }}
             >
               <svg width="500" height="500" viewBox="0 0 500 500" fill="none">
-                {/* Scribble circles */}
-                <circle cx="250" cy="250" r="200" stroke="#6b6b6b" strokeWidth="1.2" strokeDasharray="12 8 4 8" />
-                <circle cx="250" cy="250" r="160" stroke="#6b6b6b" strokeWidth="0.8" />
-                <circle cx="250" cy="250" r="120" stroke="#6b6b6b" strokeWidth="1" strokeDasharray="6 10" />
-                {/* Spiral doodle */}
-                <path d="M250 170 Q310 170 310 230 Q310 290 250 290 Q190 290 190 230 Q190 190 230 180" stroke="#6b6b6b" strokeWidth="0.8" fill="none" />
-                {/* Little stars */}
-                <text x="250" y="65" textAnchor="middle" fill="#6b6b6b" fontSize="18" fontFamily="Caveat">★</text>
-                <text x="250" y="448" textAnchor="middle" fill="#6b6b6b" fontSize="18" fontFamily="Caveat">☆</text>
-                <text x="60" y="255" textAnchor="middle" fill="#6b6b6b" fontSize="18" fontFamily="Caveat">✿</text>
-                <text x="440" y="255" textAnchor="middle" fill="#6b6b6b" fontSize="18" fontFamily="Caveat">❀</text>
-                {/* Arrow doodles */}
-                <path d="M250 80 L250 100 M245 95 L250 100 L255 95" stroke="#6b6b6b" strokeWidth="1" strokeLinecap="round" />
-                <path d="M250 400 L250 420 M245 415 L250 420 L255 415" stroke="#6b6b6b" strokeWidth="1" strokeLinecap="round" />
-                <path d="M80 250 L100 250 M95 245 L100 250 L95 255" stroke="#6b6b6b" strokeWidth="1" strokeLinecap="round" />
-                <path d="M400 250 L420 250 M415 245 L420 250 L415 255" stroke="#6b6b6b" strokeWidth="1" strokeLinecap="round" />
+                <circle cx="250" cy="250" r="200" stroke="#b0a090" strokeWidth="0.8" />
+                <circle cx="250" cy="250" r="160" stroke="#b0a090" strokeWidth="0.5" strokeDasharray="4 8" />
+                <circle cx="250" cy="250" r="100" stroke="#b0a090" strokeWidth="0.6" />
+                {/* Compass points */}
+                <line x1="250" y1="45" x2="250" y2="455" stroke="#b0a090" strokeWidth="0.4" />
+                <line x1="45" y1="250" x2="455" y2="250" stroke="#b0a090" strokeWidth="0.4" />
+                <line x1="105" y1="105" x2="395" y2="395" stroke="#b0a090" strokeWidth="0.3" />
+                <line x1="395" y1="105" x2="105" y2="395" stroke="#b0a090" strokeWidth="0.3" />
               </svg>
             </motion.div>
 
@@ -408,18 +414,19 @@ export default function Home() {
               Discover the history woven into your birthday
             </motion.p>
 
-            {/* Sketchy scribble divider */}
+            {/* Elegant ornamental divider */}
             <motion.svg
               className="hand-divider"
-              viewBox="0 0 400 30"
+              viewBox="0 0 320 24"
               fill="none"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 0.5 }}
-              transition={{ delay: 0.8, duration: 0.8 }}
+              initial={{ opacity: 0, scaleX: 0 }}
+              animate={{ opacity: 0.3, scaleX: 1 }}
+              transition={{ delay: 0.8, duration: 1, ease: [0.22, 1, 0.36, 1] }}
             >
-              <path d="M30 15 C50 8, 70 22, 90 15 C110 8, 130 22, 150 14 C170 6, 190 24, 210 15 C230 6, 250 24, 270 15 C290 6, 310 22, 330 14 C350 6, 370 22, 380 15" stroke="#6b6b6b" strokeWidth="1.5" fill="none" strokeLinecap="round" />
-              <text x="10" y="19" fill="#6b6b6b" fontSize="12" fontFamily="Caveat">✎</text>
-              <text x="195" y="10" fill="#c0392b" fontSize="8" fontFamily="Caveat" opacity="0.4">★</text>
+              <line x1="0" y1="12" x2="140" y2="12" stroke="#b0a090" strokeWidth="0.8" />
+              <circle cx="160" cy="12" r="4" stroke="#b0a090" strokeWidth="0.8" fill="none" />
+              <circle cx="160" cy="12" r="1.5" fill="#c05a3c" opacity="0.5" />
+              <line x1="180" y1="12" x2="320" y2="12" stroke="#b0a090" strokeWidth="0.8" />
             </motion.svg>
 
             <motion.form
@@ -430,10 +437,13 @@ export default function Home() {
               transition={{ delay: 0.8, duration: 0.7 }}
             >
               <div className="form-frame">
-                {/* Doodle corner marks */}
-                {["tl", "tr", "bl", "br"].map((pos) => (
-                  <svg key={pos} className={`form-corner ${pos}`} width="20" height="20" viewBox="0 0 20 20" fill="none">
-                    <circle cx="10" cy="10" r="5" stroke="#6b6b6b" strokeWidth="1.2" strokeDasharray="3 3" />
+                {/* Corner flourishes */}
+                {(["tl", "tr", "bl", "br"] as const).map((pos) => (
+                  <svg key={pos} className={`form-corner ${pos}`} width="18" height="18" viewBox="0 0 18 18" fill="none">
+                    <path
+                      d={pos === "tl" ? "M2 14 Q2 2 14 2" : pos === "tr" ? "M4 2 Q16 2 16 14" : pos === "bl" ? "M2 4 Q2 16 14 16" : "M4 16 Q16 16 16 4"}
+                      stroke="#b0a090" strokeWidth="1" fill="none"
+                    />
                   </svg>
                 ))}
                 <div className="date-inputs">
