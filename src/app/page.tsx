@@ -74,19 +74,30 @@ function NpSelect({ value, onChange, placeholder, options }: {
 
 function WikiPhoto({ slug, title }: { slug: string; title: string }) {
   const [src, setSrc] = useState<string | null>(null);
+  const [isGif, setIsGif] = useState(false);
+
   useEffect(() => {
-    fetch(`https://en.wikipedia.org/api/rest_v1/page/summary/${slug}`)
-      .then((r) => r.json())
-      .then((d) => {
-        if (d.thumbnail?.source) setSrc(d.thumbnail.source.replace(/\/\d+px-/, `/500px-`));
-      })
-      .catch(() => {});
+    // Try local GIF first, then fall back to Wikipedia
+    const gifPath = `/gifs/${slug}.gif`;
+    const img = new Image();
+    img.onload = () => { setSrc(gifPath); setIsGif(true); };
+    img.onerror = () => {
+      // Fallback to Wikipedia
+      fetch(`https://en.wikipedia.org/api/rest_v1/page/summary/${slug}`)
+        .then((r) => r.json())
+        .then((d) => {
+          if (d.thumbnail?.source) setSrc(d.thumbnail.source.replace(/\/\d+px-/, `/500px-`));
+        })
+        .catch(() => {});
+    };
+    img.src = gifPath;
   }, [slug]);
+
   if (!src) return null;
   return (
-    <div className="photo-box">
+    <div className={`photo-box ${isGif ? "photo-moving" : ""}`}>
       <img src={src} alt={title} loading="lazy" />
-      <div className="photo-caption">{title}</div>
+      <div className="photo-caption">{title} {isGif && <span style={{ fontSize: "0.55rem" }}>· image moving as per wizarding custom</span>}</div>
     </div>
   );
 }

@@ -20,3 +20,6 @@ npm-debug.log*
 
 # macOS
 .DS_Store
+
+# Downloaded GIFs (too large for git)
+public/gifs/
