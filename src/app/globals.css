@@ -147,6 +147,10 @@ body {
   shape-outside: margin-box;
 }
 
+.hero-main .photo-box img {
+  max-height: 200px;
+}
+
 
 .sidebar-stack {
   padding-left: 18px;
@@ -166,6 +170,10 @@ body {
 .sidebar-story .photo-box {
   width: 100%;
   margin: 8px 0;
+}
+
+.sidebar-story .photo-box img {
+  max-height: 220px;
 }
 
 
@@ -364,6 +372,8 @@ body {
 
 .photo-box img {
   width: 100%;
+  max-height: 260px;
+  object-fit: contain;
   display: block;
   filter: sepia(0.3) contrast(1.12) brightness(0.88);
   transition: filter 0.3s;
