@@ -338,24 +338,54 @@ export default function Home() {
                       </div>
                     )}
 
-                    {/* ALL STORIES — masonry flow, no rigid grids */}
-                    {stories.length > 0 && (
-                      <div className="masonry-grid">
-                        {stories.map((fact, i) => (
-                          <div className={`masonry-item masonry-item-${i % 5}`} key={`story-${i}`}>
-                            <div className="hero-kicker">{TYPE_LABELS[fact.type]}</div>
-                            <h2 className={i < 2 ? "col-headline-lg" : "col-headline"}>{i < 2 ? fact.title.toUpperCase() : fact.title}</h2>
-                            <div className="byline">{fact.year}</div>
-                            {(fact.type === "person" || fact.type === "event") && fact.wikipediaSlug && (
-                              <WikiPhoto slug={fact.wikipediaSlug} title={fact.title} />
-                            )}
-                            <div className="col-text">
-                              <StoryText fact={fact} maxLength={i < 3 ? 500 : 350} />
-                            </div>
-                          </div>
-                        ))}
-                      </div>
-                    )}
+                    {/* FIXED NEWSPAPER LAYOUT */}
+                    {stories.length > 0 && (() => {
+                      // Fixed layout slots — repeating pattern for any number of stories
+                      // Each slot: [gridArea, photoSize, headlineSize, textLength]
+                      const LAYOUT: Array<{ area: string; photo: "big" | "med" | "small" | "none"; hl: "lg" | "sm"; text: number }> = [
+                        { area: "a", photo: "big",   hl: "lg", text: 500 },
+                        { area: "b", photo: "small", hl: "sm", text: 350 },
+                        { area: "c", photo: "none",  hl: "sm", text: 300 },
+                        { area: "d", photo: "med",   hl: "lg", text: 450 },
+                        { area: "e", photo: "none",  hl: "sm", text: 300 },
+                        { area: "f", photo: "small", hl: "sm", text: 350 },
+                        { area: "g", photo: "big",   hl: "lg", text: 500 },
+                        { area: "h", photo: "none",  hl: "sm", text: 300 },
+                      ];
+
+                      // Split stories into rows of 3
+                      const rows: Array<typeof stories> = [];
+                      for (let i = 0; i < stories.length; i += 3) {
+                        rows.push(stories.slice(i, i + 3));
+                      }
+
+                      return rows.map((row, rowIdx) => (
+                        <div className={`story-row row-layout-${rowIdx % 3}`} key={`row-${rowIdx}`}>
+                          {row.map((fact, colIdx) => {
+                            const slotIdx = (rowIdx * 3 + colIdx) % LAYOUT.length;
+                            const slot = LAYOUT[slotIdx];
+                            const hasPhoto = slot.photo !== "none" && (fact.type === "person" || fact.type === "event") && !!fact.wikipediaSlug;
+                            return (
+                              <div className={`story-cell cell-${slot.photo}`} key={`story-${rowIdx}-${colIdx}`}>
+                                <div className="hero-kicker">{TYPE_LABELS[fact.type]}</div>
+                                <h2 className={slot.hl === "lg" ? "col-headline-lg" : "col-headline"}>
+                                  {slot.hl === "lg" ? fact.title.toUpperCase() : fact.title}
+                                </h2>
+                                <div className="byline">{fact.year}</div>
+                                {hasPhoto && (
+                                  <div className={`photo-slot photo-${slot.photo}`}>
+                                    <WikiPhoto slug={fact.wikipediaSlug} title={fact.title} />
+                                  </div>
+                                )}
+                                <div className="col-text">
+                                  <StoryText fact={fact} maxLength={slot.text} />
+                                </div>
+                              </div>
+                            );
+                          })}
+                        </div>
+                      ));
+                    })()}
                   </>
                 )}
               </div>
