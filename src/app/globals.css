@@ -512,8 +512,8 @@ body::after {
 
 .lead-content .article-image-large {
   float: right;
-  width: 45%;
-  max-width: 400px;
+  width: 30%;
+  max-width: 260px;
   margin: 0 0 1rem 1.5rem;
   shape-outside: margin-box;
 }
@@ -653,10 +653,12 @@ body::after {
 
 .col-story .article-image {
   margin: 0.5rem 0;
+  max-width: 70%;
 }
 
 .col-story .article-image img {
   object-fit: contain;
+  width: 100%;
 }
 
 .col-desc {
