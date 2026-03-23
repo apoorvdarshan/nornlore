@@ -327,66 +327,107 @@ export default function Home() {
                 {filtered.length === 0 ? (
                   <div className="no-data">The presses have no record for this date.<br /><em>Perhaps the archives have been bewitched.</em></div>
                 ) : (
-                  <>
-                    {/* HERO — full-width lead story */}
-                    {hero && (
-                      <div className="hero-main">
-                        <div className="hero-kicker">⚡ {TYPE_LABELS[hero.type]} · {hero.year}</div>
-                        <h1 className="hero-headline">{hero.title.toUpperCase()}</h1>
-                        <div className="byline">By the Nornlore Press Corps &nbsp;|&nbsp; Verified by the Dept. of Historical Sorcery</div>
-                        <HeroArticleText fact={hero} showPhoto={(hero.type === "person" || hero.type === "event") && !!hero.wikipediaSlug} />
+                  <div className="prophet-layout">
+                    {/* SLOT A: Hero — spans 2 cols, big photo + big headline */}
+                    {filtered[0] && (
+                      <div className="slot slot-a">
+                        <div className="hero-kicker">⚡ {TYPE_LABELS[filtered[0].type]} · {filtered[0].year}</div>
+                        <h1 className="hero-headline">{filtered[0].title.toUpperCase()}</h1>
+                        <div className="byline">By the Nornlore Press Corps</div>
+                        {(filtered[0].type === "person" || filtered[0].type === "event") && filtered[0].wikipediaSlug && (
+                          <WikiPhoto slug={filtered[0].wikipediaSlug} title={filtered[0].title} />
+                        )}
+                        <HeroArticleText fact={filtered[0]} showPhoto={false} />
                       </div>
                     )}
 
-                    {/* FIXED NEWSPAPER LAYOUT */}
-                    {stories.length > 0 && (() => {
-                      // Fixed layout slots — repeating pattern for any number of stories
-                      // Each slot: [gridArea, photoSize, headlineSize, textLength]
-                      const LAYOUT: Array<{ area: string; photo: "big" | "med" | "small" | "none"; hl: "lg" | "sm"; text: number }> = [
-                        { area: "a", photo: "big",   hl: "lg", text: 500 },
-                        { area: "b", photo: "small", hl: "sm", text: 350 },
-                        { area: "c", photo: "none",  hl: "sm", text: 300 },
-                        { area: "d", photo: "med",   hl: "lg", text: 450 },
-                        { area: "e", photo: "none",  hl: "sm", text: 300 },
-                        { area: "f", photo: "small", hl: "sm", text: 350 },
-                        { area: "g", photo: "big",   hl: "lg", text: 500 },
-                        { area: "h", photo: "none",  hl: "sm", text: 300 },
-                      ];
+                    {/* SLOT B: Sidebar tall — right col, no photo, text-heavy */}
+                    {filtered[1] && (
+                      <div className="slot slot-b">
+                        <div className="hero-kicker">{TYPE_LABELS[filtered[1].type]}</div>
+                        <h2 className="slot-b-headline">{filtered[1].title.toUpperCase()}</h2>
+                        <div className="byline">{filtered[1].year}</div>
+                        <div className="col-text"><StoryText fact={filtered[1]} maxLength={500} /></div>
+                      </div>
+                    )}
 
-                      // Split stories into rows of 3
-                      const rows: Array<typeof stories> = [];
-                      for (let i = 0; i < stories.length; i += 3) {
-                        rows.push(stories.slice(i, i + 3));
-                      }
-
-                      return rows.map((row, rowIdx) => (
-                        <div className={`story-row row-layout-${rowIdx % 3}`} key={`row-${rowIdx}`}>
-                          {row.map((fact, colIdx) => {
-                            const slotIdx = (rowIdx * 3 + colIdx) % LAYOUT.length;
-                            const slot = LAYOUT[slotIdx];
-                            const hasPhoto = slot.photo !== "none" && (fact.type === "person" || fact.type === "event") && !!fact.wikipediaSlug;
-                            return (
-                              <div className={`story-cell cell-${slot.photo}`} key={`story-${rowIdx}-${colIdx}`}>
-                                <div className="hero-kicker">{TYPE_LABELS[fact.type]}</div>
-                                <h2 className={slot.hl === "lg" ? "col-headline-lg" : "col-headline"}>
-                                  {slot.hl === "lg" ? fact.title.toUpperCase() : fact.title}
-                                </h2>
-                                <div className="byline">{fact.year}</div>
-                                {hasPhoto && (
-                                  <div className={`photo-slot photo-${slot.photo}`}>
-                                    <WikiPhoto slug={fact.wikipediaSlug} title={fact.title} />
-                                  </div>
-                                )}
-                                <div className="col-text">
-                                  <StoryText fact={fact} maxLength={slot.text} />
-                                </div>
-                              </div>
-                            );
-                          })}
+                    {/* SLOT C: Mid-left — medium photo float right */}
+                    {filtered[2] && (
+                      <div className="slot slot-c">
+                        <div className="hero-kicker">{TYPE_LABELS[filtered[2].type]}</div>
+                        <h2 className="col-headline-lg">{filtered[2].title.toUpperCase()}</h2>
+                        <div className="byline">{filtered[2].year}</div>
+                        <div className="col-text">
+                          {(filtered[2].type === "person" || filtered[2].type === "event") && filtered[2].wikipediaSlug && (
+                            <WikiPhoto slug={filtered[2].wikipediaSlug} title={filtered[2].title} floatRight />
+                          )}
+                          <StoryText fact={filtered[2]} maxLength={450} />
                         </div>
-                      ));
-                    })()}
-                  </>
+                      </div>
+                    )}
+
+                    {/* SLOT D: Mid-right — small photo float left */}
+                    {filtered[3] && (
+                      <div className="slot slot-d">
+                        <div className="hero-kicker">{TYPE_LABELS[filtered[3].type]}</div>
+                        <h2 className="col-headline">{filtered[3].title}</h2>
+                        <div className="byline">{filtered[3].year}</div>
+                        <div className="col-text">
+                          {(filtered[3].type === "person" || filtered[3].type === "event") && filtered[3].wikipediaSlug && (
+                            <WikiPhoto slug={filtered[3].wikipediaSlug} title={filtered[3].title} />
+                          )}
+                          <StoryText fact={filtered[3]} maxLength={350} />
+                        </div>
+                      </div>
+                    )}
+
+                    {/* SLOT E: Bottom-left — text only, small */}
+                    {filtered[4] && (
+                      <div className="slot slot-e">
+                        <div className="hero-kicker">{TYPE_LABELS[filtered[4].type]}</div>
+                        <h2 className="col-headline">{filtered[4].title}</h2>
+                        <div className="byline">{filtered[4].year}</div>
+                        <div className="col-text"><StoryText fact={filtered[4]} maxLength={250} /></div>
+                      </div>
+                    )}
+
+                    {/* SLOT F: Bottom-center — medium with photo */}
+                    {filtered[5] && (
+                      <div className="slot slot-f">
+                        <div className="hero-kicker">{TYPE_LABELS[filtered[5].type]}</div>
+                        <h2 className="col-headline-lg">{filtered[5].title.toUpperCase()}</h2>
+                        <div className="byline">{filtered[5].year}</div>
+                        {(filtered[5].type === "person" || filtered[5].type === "event") && filtered[5].wikipediaSlug && (
+                          <WikiPhoto slug={filtered[5].wikipediaSlug} title={filtered[5].title} />
+                        )}
+                        <div className="col-text"><StoryText fact={filtered[5]} maxLength={350} /></div>
+                      </div>
+                    )}
+
+                    {/* SLOT G: Bottom-right — small text only */}
+                    {filtered[6] && (
+                      <div className="slot slot-g">
+                        <div className="hero-kicker">{TYPE_LABELS[filtered[6].type]}</div>
+                        <h2 className="col-headline">{filtered[6].title}</h2>
+                        <div className="byline">{filtered[6].year}</div>
+                        <div className="col-text"><StoryText fact={filtered[6]} maxLength={250} /></div>
+                      </div>
+                    )}
+
+                    {/* SLOT H: Extra row — any remaining stories */}
+                    {filtered.length > 7 && (
+                      <div className="slot slot-h">
+                        {filtered.slice(7).map((fact, i) => (
+                          <div className="extra-story" key={`extra-${i}`}>
+                            <span className="hero-kicker">{TYPE_LABELS[fact.type]}</span>
+                            <h2 className="col-headline">{fact.title}</h2>
+                            <span className="byline">{fact.year}</span>
+                            <div className="col-text"><StoryText fact={fact} maxLength={200} /></div>
+                          </div>
+                        ))}
+                      </div>
+                    )}
+                  </div>
                 )}
               </div>
 

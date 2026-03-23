@@ -207,62 +207,96 @@ body {
 }
 
 /* ============ MASONRY GRID ============ */
-/* ============ FIXED NEWSPAPER GRID ============ */
-.story-row {
+/* ============ DAILY PROPHET FIXED LAYOUT ============ */
+.prophet-layout {
   display: grid;
+  grid-template-columns: 1.6fr 1fr 1fr;
+  grid-template-rows: auto auto auto auto;
+  grid-template-areas:
+    "a a b"
+    "c d b"
+    "e f g"
+    "h h h";
   gap: 0;
-  border-bottom: 2px solid var(--rule);
 }
 
-/* Row layout 0: big left, two stacked right */
-.row-layout-0 {
-  grid-template-columns: 1.4fr 1fr 0.8fr;
-}
-
-/* Row layout 1: small left, big center, small right */
-.row-layout-1 {
-  grid-template-columns: 0.8fr 1.4fr 1fr;
-}
-
-/* Row layout 2: even three */
-.row-layout-2 {
-  grid-template-columns: 1fr 1fr 1fr;
-}
-
-.story-cell {
-  padding: 10px 14px;
-  border-right: 1px solid rgba(58,26,0,0.2);
+.slot {
+  padding: 12px 14px;
+  border-bottom: 1px solid rgba(58,26,0,0.15);
   position: relative;
 }
 
-.story-cell:last-child {
-  border-right: none;
+/* Vertical dividers between columns */
+.slot-b, .slot-d, .slot-g {
+  border-left: 1px solid rgba(58,26,0,0.2);
+}
+.slot-c {
+  border-right: 1px solid rgba(58,26,0,0.2);
 }
 
-/* Photo sizing per slot type */
-.photo-slot {
+.slot-a { grid-area: a; border-bottom: 3px double var(--rule); }
+.slot-b { grid-area: b; border-bottom: 3px double var(--rule); }
+.slot-c { grid-area: c; }
+.slot-d { grid-area: d; }
+.slot-e { grid-area: e; border-top: 1px solid rgba(58,26,0,0.2); }
+.slot-f { grid-area: f; border-top: 1px solid rgba(58,26,0,0.2); }
+.slot-g { grid-area: g; border-top: 1px solid rgba(58,26,0,0.2); }
+.slot-h {
+  grid-area: h;
+  border-top: 3px double var(--rule);
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 0;
+}
+
+.slot-h .extra-story {
+  padding: 10px 14px;
+  border-right: 1px solid rgba(58,26,0,0.15);
+}
+.slot-h .extra-story:last-child { border-right: none; }
+
+/* SLOT A: Hero — big photo, big headline */
+.slot-a .photo-box {
+  width: 100%;
+  margin: 8px 0;
+}
+.slot-a .hero-headline {
+  font-size: 2.8rem;
+  line-height: 0.95;
+}
+
+/* SLOT B: Tall sidebar — text heavy, vertical feel */
+.slot-b-headline {
+  font-family: 'IM Fell English', serif;
+  font-size: 1.6rem;
+  line-height: 1.05;
+  color: var(--ink);
+  margin-bottom: 6px;
+  letter-spacing: -0.5px;
+}
+
+/* SLOT C: Medium story — photo floats right */
+.slot-c .photo-box.float-right {
+  width: 45%;
+  margin: 2px 0 6px 10px;
+}
+
+/* SLOT D: Small story — photo floats left */
+.slot-d .photo-box {
+  float: left;
+  width: 40%;
+  margin: 2px 10px 6px 0;
+  shape-outside: margin-box;
+}
+
+/* SLOT F: Bottom center — full width photo */
+.slot-f .photo-box {
+  width: 100%;
   margin: 6px 0;
 }
 
-.photo-slot.photo-big .photo-box {
-  width: 100%;
-}
-
-.photo-slot.photo-med .photo-box {
-  width: 65%;
-  float: right;
-  margin: 0 0 6px 10px;
-  shape-outside: margin-box;
-}
-
-.photo-slot.photo-small .photo-box {
-  width: 40%;
-  float: left;
-  margin: 0 10px 6px 0;
-  shape-outside: margin-box;
-}
-
-.photo-slot .photo-box img {
+/* All photo images: natural ratio */
+.slot .photo-box img {
   width: 100%;
   height: auto;
 }
@@ -596,10 +630,14 @@ body {
   .newspaper-body { padding: 0 14px 14px; }
   .hero-main .photo-box { float: none; width: 100%; margin: 8px 0; }
   .hero-main .article-text { column-count: 1; }
-  .story-row { grid-template-columns: 1fr !important; }
-  .story-cell { border-right: none; border-bottom: 1px solid rgba(58,26,0,0.2); }
-  .photo-slot.photo-med .photo-box,
-  .photo-slot.photo-small .photo-box { float: none; width: 100%; margin: 6px 0; }
+  .prophet-layout {
+    grid-template-columns: 1fr !important;
+    grid-template-areas:
+      "a" "b" "c" "d" "e" "f" "g" "h" !important;
+  }
+  .slot { border-left: none !important; border-right: none !important; }
+  .slot-c .photo-box.float-right,
+  .slot-d .photo-box { float: none; width: 100%; margin: 6px 0; }
   .edition-bar { flex-direction: column; text-align: center; }
   .photo-box.float-right { float: none; width: 100%; margin: 8px 0; }
 }
