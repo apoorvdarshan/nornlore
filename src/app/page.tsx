@@ -341,10 +341,12 @@ export default function Home() {
                               <div className="hero-kicker">{TYPE_LABELS[fact.type]}</div>
                               <h2 className={i === 0 ? "sidebar-headline-big" : "sidebar-headline-sm"}>{fact.title.toUpperCase()}</h2>
                               <div className="byline">{fact.year}</div>
-                              {(fact.type === "person" || fact.type === "event") && fact.wikipediaSlug && (
-                                <WikiPhoto slug={fact.wikipediaSlug} title={fact.title} />
-                              )}
-                              <p className="col-text"><StoryText fact={fact} /></p>
+                                <div className="col-text">
+                                {(fact.type === "person" || fact.type === "event") && fact.wikipediaSlug && (
+                                  <WikiPhoto slug={fact.wikipediaSlug} title={fact.title} />
+                                )}
+                                <StoryText fact={fact} />
+                              </div>
                             </div>
                           ))}
                         </div>
@@ -357,7 +359,7 @@ export default function Home() {
                         <div className="mid-banner-text">
                           <div className="hero-kicker">{TYPE_LABELS[midBanner.type]} · {midBanner.year}</div>
                           <h2 className="mid-banner-headline">{midBanner.title.toUpperCase()}</h2>
-                          <p className="col-text"><StoryText fact={midBanner} /></p>
+                          <div className="col-text"><StoryText fact={midBanner} /></div>
                         </div>
                         {(midBanner.type === "person" || midBanner.type === "event") && midBanner.wikipediaSlug && (
                           <div className="mid-banner-img">
@@ -375,10 +377,12 @@ export default function Home() {
                             <div className="hero-kicker">{TYPE_LABELS[fact.type]}</div>
                             <h2 className={i === 1 ? "col-headline-lg" : "col-headline"}>{i === 1 ? fact.title.toUpperCase() : fact.title}</h2>
                             <div className="byline">{fact.year}</div>
-                            {(fact.type === "person" || fact.type === "event") && fact.wikipediaSlug && (
-                              <WikiPhoto slug={fact.wikipediaSlug} title={fact.title} floatRight={i !== 1} />
-                            )}
-                            <p className="col-text"><StoryText fact={fact} /></p>
+                            <div className="col-text">
+                              {(fact.type === "person" || fact.type === "event") && fact.wikipediaSlug && (
+                                <WikiPhoto slug={fact.wikipediaSlug} title={fact.title} floatRight={i !== 1} />
+                              )}
+                              <StoryText fact={fact} />
+                            </div>
                           </div>
                         ))}
                       </div>
@@ -392,10 +396,12 @@ export default function Home() {
                             <div className="hero-kicker">{TYPE_LABELS[fact.type]}</div>
                             <h2 className={i === 0 ? "col-headline-lg" : "col-headline"}>{fact.title}</h2>
                             <div className="byline">{fact.year}</div>
-                            {(fact.type === "person" || fact.type === "event") && fact.wikipediaSlug && (
-                              <WikiPhoto slug={fact.wikipediaSlug} title={fact.title} floatRight={i === 1} />
-                            )}
-                            <p className="col-text"><StoryText fact={fact} /></p>
+                            <div className="col-text">
+                              {(fact.type === "person" || fact.type === "event") && fact.wikipediaSlug && (
+                                <WikiPhoto slug={fact.wikipediaSlug} title={fact.title} floatRight={i === 1} />
+                              )}
+                              <StoryText fact={fact} />
+                            </div>
                           </div>
                         ))}
                       </div>
@@ -409,10 +415,12 @@ export default function Home() {
                             <div className="hero-kicker">{TYPE_LABELS[fact.type]}</div>
                             <h2 className={i % 3 === 0 ? "col-headline-lg" : "col-headline"}>{i % 3 === 0 ? fact.title.toUpperCase() : fact.title}</h2>
                             <div className="byline">{fact.year}</div>
-                            {(fact.type === "person" || fact.type === "event") && fact.wikipediaSlug && (
-                              <WikiPhoto slug={fact.wikipediaSlug} title={fact.title} floatRight={i % 2 === 0} />
-                            )}
-                            <p className="col-text"><StoryText fact={fact} /></p>
+                            <div className="col-text">
+                              {(fact.type === "person" || fact.type === "event") && fact.wikipediaSlug && (
+                                <WikiPhoto slug={fact.wikipediaSlug} title={fact.title} floatRight={i % 2 === 0} />
+                              )}
+                              <StoryText fact={fact} />
+                            </div>
                           </div>
                         ))}
                       </div>
