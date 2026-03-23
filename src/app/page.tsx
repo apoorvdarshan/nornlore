@@ -132,6 +132,7 @@ function WikiImage({ slug, title, large }: { slug: string; title: string; large?
 
 // ---------- Lead Story (first article, big) ----------
 function LeadStory({ fact, index }: { fact: Fact; index: number }) {
+  const hasImage = (fact.type === "person" || fact.type === "event") && fact.wikipediaSlug;
   return (
     <motion.article
       className="lead-story"
@@ -139,10 +140,14 @@ function LeadStory({ fact, index }: { fact: Fact; index: number }) {
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.7, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
     >
-      <div className="lead-kicker">{TYPE_LABELS[fact.type] || fact.type} — {fact.year}</div>
+      <div className="lead-kicker">{TYPE_LABELS[fact.type] || fact.type} · {fact.year} · Exclusive Report</div>
       <h2 className="lead-headline">{fact.title}</h2>
+      <div className="lead-subhead">A chronicle of events most extraordinary, as recorded by the enchanted quills of the Nornlore press corps</div>
       <div className="lead-rule" />
       <div className="lead-content">
+        {hasImage && (
+          <WikiImage slug={fact.wikipediaSlug!} title={fact.title} large />
+        )}
         <div className="lead-text">
           <p className="lead-desc">
             <span className="drop-cap">{fact.description.charAt(0)}</span>
@@ -159,9 +164,6 @@ function LeadStory({ fact, index }: { fact: Fact; index: number }) {
             </a>
           )}
         </div>
-        {(fact.type === "person" || fact.type === "event") && fact.wikipediaSlug && (
-          <WikiImage slug={fact.wikipediaSlug} title={fact.title} large />
-        )}
       </div>
     </motion.article>
   );
@@ -316,6 +318,16 @@ export default function Home() {
                 transition={{ delay: 0.25, duration: 0.6 }}
               >
                 ★ The Wizarding World&apos;s Most Beguiling Broadsheet of Historical Record ★
+              </motion.div>
+
+              {/* Banner image */}
+              <motion.div
+                className="masthead-banner"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 0.7 }}
+                transition={{ delay: 0.3, duration: 0.8 }}
+              >
+                <img src="/newspaper-header.png" alt="" aria-hidden="true" />
               </motion.div>
 
               <motion.h1
