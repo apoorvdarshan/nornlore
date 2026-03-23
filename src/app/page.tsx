@@ -354,7 +354,25 @@ export default function Home() {
                   <div className="hero-zone">
                     <div className="exclusive-stamp">★ EXCLUSIVE ★</div>
 
-                    {/* Right sidebar column with secondary story teaser */}
+                    {/* Main hero content — LEFT (wide) */}
+                    <div className="hero-main">
+                      <div className="hero-kicker">{TYPE_LABELS[hero.type]} · {hero.year}</div>
+                      <h1 className="hero-headline">{hero.title.toUpperCase()}</h1>
+                      <div className="hero-sub">
+                        {SUBHEADLINES[hero.type]?.[stableIndex(hero.title, SUBHEADLINES[hero.type].length)]}
+                      </div>
+
+                      <div className="hero-content">
+                        {hero.wikipediaSlug && (
+                          <WikiPhoto slug={hero.wikipediaSlug} title={hero.title} />
+                        )}
+                        <p className="hero-text">
+                          <ArticleText fact={hero} maxLen={1400} />
+                        </p>
+                      </div>
+                    </div>
+
+                    {/* Sidebar — RIGHT (narrow) */}
                     {secondary.length > 0 && (
                       <div className="hero-sidebar">
                         <div className="sidebar-exclusive">
@@ -373,31 +391,12 @@ export default function Home() {
                             <p className="sidebar-text"><SmallText fact={secondary[1]} maxLen={120} /></p>
                           </div>
                         )}
-                        {/* Ad box in sidebar */}
                         <div className="sidebar-ad">
                           <div className="ad-label">ADVERTISEMENT</div>
                           {MAGICAL_ADS[ad1]}
                         </div>
                       </div>
                     )}
-
-                    {/* Main hero content */}
-                    <div className="hero-main">
-                      <div className="hero-kicker">{TYPE_LABELS[hero.type]} · {hero.year}</div>
-                      <h1 className="hero-headline">{hero.title.toUpperCase()}</h1>
-                      <div className="hero-sub">
-                        {SUBHEADLINES[hero.type]?.[stableIndex(hero.title, SUBHEADLINES[hero.type].length)]}
-                      </div>
-
-                      <div className="hero-content">
-                        {hero.wikipediaSlug && (
-                          <WikiPhoto slug={hero.wikipediaSlug} title={hero.title} />
-                        )}
-                        <p className="hero-text">
-                          <ArticleText fact={hero} maxLen={1400} />
-                        </p>
-                      </div>
-                    </div>
                   </div>
 
                   {/* ════ MID-SECTION: remaining stories + filler ════ */}
