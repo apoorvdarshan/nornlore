@@ -80,10 +80,15 @@ function useWikiExtract(slug: string | null): string {
   useEffect(() => {
     if (!slug) return;
     if (wikiExtractCache[slug]) { setExtract(wikiExtractCache[slug]); return; }
-    fetch(`https://en.wikipedia.org/api/rest_v1/page/summary/${slug}`)
+    // Use MediaWiki action API for full intro section (much longer than REST summary)
+    const title = decodeURIComponent(slug);
+    fetch(`https://en.wikipedia.org/w/api.php?action=query&titles=${encodeURIComponent(title)}&prop=extracts&exintro=true&explaintext=true&format=json&origin=*`)
       .then((r) => r.json())
       .then((d) => {
-        const text = d.extract || "";
+        const pages = d.query?.pages;
+        if (!pages) return;
+        const page = Object.values(pages)[0] as { extract?: string };
+        const text = page?.extract || "";
         wikiExtractCache[slug] = text;
         setExtract(text);
       })
