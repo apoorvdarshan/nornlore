@@ -331,6 +331,7 @@ body {
   margin: 6px 0;
   overflow: hidden;
   shape-outside: margin-box;
+  max-height: 150px;
 }
 
 .masonry-item .photo-box img {
@@ -338,22 +339,22 @@ body {
   height: auto;
 }
 
-/* Zigzag: odd float left small, even float right medium, every 3rd centered */
+/* Zigzag: alternating left/right/center, small sizes */
 .masonry-item:nth-child(3n+1) .photo-box {
   float: left;
-  width: 40%;
+  width: 30%;
   margin-right: 10px;
 }
 
 .masonry-item:nth-child(3n+2) .photo-box {
   float: right;
-  width: 50%;
+  width: 35%;
   margin-left: 10px;
 }
 
 .masonry-item:nth-child(3n) .photo-box {
   float: none;
-  width: 70%;
+  width: 45%;
   margin: 8px auto;
   display: block;
 }
