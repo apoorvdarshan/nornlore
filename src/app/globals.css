@@ -327,19 +327,10 @@ body {
 
 
 .masonry-item .photo-box {
-  width: 35%;
-  margin: 4px 0 6px;
-  shape-outside: margin-box;
-}
-
-.masonry-item:nth-child(odd) .photo-box {
-  float: left;
-  margin-right: 10px;
-}
-
-.masonry-item:nth-child(even) .photo-box {
-  float: right;
-  margin-left: 10px;
+  float: none;
+  width: 100%;
+  margin: 8px 0;
+  display: block;
 }
 
 

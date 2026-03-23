@@ -346,10 +346,10 @@ export default function Home() {
                             <div className="hero-kicker">{TYPE_LABELS[fact.type]}</div>
                             <h2 className={i < 2 ? "col-headline-lg" : "col-headline"}>{i < 2 ? fact.title.toUpperCase() : fact.title}</h2>
                             <div className="byline">{fact.year}</div>
+                            {(fact.type === "person" || fact.type === "event") && fact.wikipediaSlug && (
+                              <WikiPhoto slug={fact.wikipediaSlug} title={fact.title} />
+                            )}
                             <div className="col-text">
-                              {(fact.type === "person" || fact.type === "event") && fact.wikipediaSlug && (
-                                <WikiPhoto slug={fact.wikipediaSlug} title={fact.title} floatRight={i % 2 === 0} />
-                              )}
                               <StoryText fact={fact} maxLength={i < 3 ? 500 : 350} />
                             </div>
                           </div>
