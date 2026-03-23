@@ -838,8 +838,8 @@ body::after {
   }
 
   .card-image {
-    width: 90px;
-    min-width: 90px;
+    width: 130px;
+    min-width: 130px;
   }
 
   .card-body { padding: 0.75rem 0.9rem; }
