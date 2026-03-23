@@ -165,7 +165,6 @@ body {
 }
 
 .sidebar-story .photo-box {
-  width: 65%;
   margin: 8px 0;
 }
 
@@ -246,8 +245,6 @@ body {
 }
 
 .mid-banner-img .photo-box {
-  width: 100%;
-  max-width: 240px;
 }
 
 
@@ -347,6 +344,7 @@ body {
   overflow: hidden;
   box-shadow: 4px 4px 0 rgba(58,26,0,0.15);
   border-radius: 3px 12px 4px 15px;
+  display: inline-block;
 }
 
 /* Irregular border shapes for different positions */
@@ -366,7 +364,10 @@ body {
 .masonry-item:nth-child(5n+4) .photo-box { border-radius: 3px 18px 8px 14px; }
 
 .photo-box img {
-  width: 100%;
+  max-width: 100%;
+  max-height: 280px;
+  width: auto;
+  height: auto;
   display: block;
   filter: sepia(0.3) contrast(1.12) brightness(0.88);
   transition: filter 0.3s;
