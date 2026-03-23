@@ -82,13 +82,14 @@ function useWikiExtract(slug: string | null): string {
     if (wikiExtractCache[slug]) { setExtract(wikiExtractCache[slug]); return; }
     // Use MediaWiki action API for extended article text
     const title = decodeURIComponent(slug);
-    fetch(`https://en.wikipedia.org/w/api.php?action=query&titles=${encodeURIComponent(title)}&prop=extracts&explaintext=true&exchars=5000&format=json&origin=*`)
+    fetch(`https://en.wikipedia.org/w/api.php?action=query&titles=${encodeURIComponent(title)}&prop=extracts&explaintext=true&exchars=3000&format=json&origin=*`)
       .then((r) => r.json())
       .then((d) => {
         const pages = d.query?.pages;
         if (!pages) return;
         const page = Object.values(pages)[0] as { extract?: string };
-        const text = page?.extract || "";
+        // Clean up Wikipedia section headers (== Header ==) and extra whitespace
+        const text = (page?.extract || "").replace(/={2,}[^=]+=+/g, "").replace(/\n{2,}/g, " ").trim();
         wikiExtractCache[slug] = text;
         setExtract(text);
       })
@@ -127,25 +128,35 @@ function WikiPhoto({ slug, title, floatRight }: { slug: string; title: string; f
   );
 }
 
-function StoryText({ fact }: { fact: Fact }) {
-  const wikiText = useWikiExtract(fact.wikipediaSlug);
-  const desc = fact.description;
-  // Use wiki extract if it's longer and different from description
-  const extra = wikiText && !wikiText.startsWith(desc.slice(0, 40))
-    ? ` ${wikiText}`
-    : wikiText.length > desc.length ? ` ${wikiText.slice(desc.length)}` : "";
-  return <>{desc}{extra}</>;
+function truncateAtSentence(text: string, maxLen: number): string {
+  if (text.length <= maxLen) return text;
+  const cut = text.slice(0, maxLen);
+  const lastPeriod = cut.lastIndexOf(". ");
+  return lastPeriod > maxLen * 0.4 ? cut.slice(0, lastPeriod + 1) + ".." : cut.slice(0, cut.lastIndexOf(" ")) + "...";
 }
 
-function HeroArticleText({ fact }: { fact: Fact }) {
+function StoryText({ fact, maxLength = 600 }: { fact: Fact; maxLength?: number }) {
   const wikiText = useWikiExtract(fact.wikipediaSlug);
   const desc = fact.description;
   const extra = wikiText && !wikiText.startsWith(desc.slice(0, 40))
     ? ` ${wikiText}`
     : wikiText.length > desc.length ? ` ${wikiText.slice(desc.length)}` : "";
-  const fullText = desc + extra;
+  const full = desc + extra;
+  return <>{truncateAtSentence(full, maxLength)}</>;
+}
+
+function HeroArticleText({ fact, showPhoto }: { fact: Fact; showPhoto?: boolean }) {
+  const wikiText = useWikiExtract(fact.wikipediaSlug);
+  const desc = fact.description;
+  const extra = wikiText && !wikiText.startsWith(desc.slice(0, 40))
+    ? ` ${wikiText}`
+    : wikiText.length > desc.length ? ` ${wikiText.slice(desc.length)}` : "";
+  const fullText = truncateAtSentence(desc + extra, 1200);
   return (
     <div className="article-text">
+      {showPhoto && fact.wikipediaSlug && (
+        <WikiPhoto slug={fact.wikipediaSlug} title={fact.title} />
+      )}
       <p>
         <span className="drop-cap-letter">{fullText.charAt(0)}</span>
         {fullText.slice(1)}
@@ -328,10 +339,7 @@ export default function Home() {
                           <div className="hero-kicker">⚡ {TYPE_LABELS[hero.type]} · {hero.year}</div>
                           <h1 className="hero-headline">{hero.title.toUpperCase()}</h1>
                           <div className="byline">By the Nornlore Press Corps &nbsp;|&nbsp; Verified by the Dept. of Historical Sorcery</div>
-                          {(hero.type === "person" || hero.type === "event") && hero.wikipediaSlug && (
-                            <WikiPhoto slug={hero.wikipediaSlug} title={hero.title} />
-                          )}
-                          <HeroArticleText fact={hero} />
+                          <HeroArticleText fact={hero} showPhoto={(hero.type === "person" || hero.type === "event") && !!hero.wikipediaSlug} />
                         </div>
                       )}
                       {sidebar.length > 0 && (
@@ -345,7 +353,7 @@ export default function Home() {
                                 {(fact.type === "person" || fact.type === "event") && fact.wikipediaSlug && (
                                   <WikiPhoto slug={fact.wikipediaSlug} title={fact.title} />
                                 )}
-                                <StoryText fact={fact} />
+                                <StoryText fact={fact} maxLength={400} />
                               </div>
                             </div>
                           ))}
@@ -359,7 +367,7 @@ export default function Home() {
                         <div className="mid-banner-text">
                           <div className="hero-kicker">{TYPE_LABELS[midBanner.type]} · {midBanner.year}</div>
                           <h2 className="mid-banner-headline">{midBanner.title.toUpperCase()}</h2>
-                          <div className="col-text"><StoryText fact={midBanner} /></div>
+                          <div className="col-text"><StoryText fact={midBanner} maxLength={500} /></div>
                         </div>
                         {(midBanner.type === "person" || midBanner.type === "event") && midBanner.wikipediaSlug && (
                           <div className="mid-banner-img">
@@ -381,7 +389,7 @@ export default function Home() {
                               {(fact.type === "person" || fact.type === "event") && fact.wikipediaSlug && (
                                 <WikiPhoto slug={fact.wikipediaSlug} title={fact.title} floatRight={i !== 1} />
                               )}
-                              <StoryText fact={fact} />
+                              <StoryText fact={fact} maxLength={400} />
                             </div>
                           </div>
                         ))}
@@ -400,7 +408,7 @@ export default function Home() {
                               {(fact.type === "person" || fact.type === "event") && fact.wikipediaSlug && (
                                 <WikiPhoto slug={fact.wikipediaSlug} title={fact.title} floatRight={i === 1} />
                               )}
-                              <StoryText fact={fact} />
+                              <StoryText fact={fact} maxLength={450} />
                             </div>
                           </div>
                         ))}
@@ -419,7 +427,7 @@ export default function Home() {
                               {(fact.type === "person" || fact.type === "event") && fact.wikipediaSlug && (
                                 <WikiPhoto slug={fact.wikipediaSlug} title={fact.title} floatRight={i % 2 === 0} />
                               )}
-                              <StoryText fact={fact} />
+                              <StoryText fact={fact} maxLength={350} />
                             </div>
                           </div>
                         ))}
