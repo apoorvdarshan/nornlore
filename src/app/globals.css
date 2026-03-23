@@ -12,7 +12,7 @@
 
 body {
   background: var(--parchment);
-  font-family: 'IM Fell DW Pica', Georgia, serif;
+  font-family: 'IM Fell English', Georgia, serif;
   min-height: 100vh;
   color: var(--ink);
 }
@@ -66,13 +66,13 @@ body {
 }
 
 .masthead-tagline {
-  font-family: 'IM Fell DW Pica', serif;
+  font-family: 'IM Fell English', serif;
   font-style: italic;
-  font-size: 0.95rem;
+  font-size: 0.85rem;
   color: var(--accent);
-  letter-spacing: 4px;
+  letter-spacing: 5px;
   text-transform: uppercase;
-  margin-top: 4px;
+  margin-top: 6px;
 }
 
 .masthead-rule {
@@ -86,7 +86,7 @@ body {
   justify-content: space-between;
   font-size: 0.75rem;
   color: var(--faded);
-  font-family: 'IM Fell DW Pica', serif;
+  font-family: 'IM Fell English', serif;
   font-style: italic;
   padding: 4px 0;
   border-top: 1px solid var(--rule);
@@ -320,7 +320,7 @@ body {
 .np-select.open { z-index: 100; }
 
 .np-select-trigger {
-  font-family: 'IM Fell DW Pica', serif;
+  font-family: 'IM Fell English', serif;
   font-size: 1.05rem;
   padding: 0.45rem 1.8rem 0.45rem 0.7rem;
   background: var(--parchment);
@@ -364,7 +364,7 @@ body {
 .np-select-dropdown::-webkit-scrollbar-thumb { background: var(--faded); }
 
 .np-select-option {
-  font-family: 'IM Fell DW Pica', serif;
+  font-family: 'IM Fell English', serif;
   font-size: 0.95rem;
   padding: 0.35rem 0.6rem 0.35rem 1.1rem;
   background: none; border: none;
@@ -399,7 +399,7 @@ body {
 }
 
 .cta-subtitle {
-  font-family: 'IM Fell DW Pica', serif;
+  font-family: 'IM Fell English', serif;
   font-size: 1rem;
   color: var(--faded);
   max-width: 460px;
@@ -466,7 +466,7 @@ body {
 }
 
 .filter-pill {
-  font-family: 'IM Fell DW Pica', serif;
+  font-family: 'IM Fell English', serif;
   font-size: 0.82rem;
   letter-spacing: 3px;
   text-transform: uppercase;
