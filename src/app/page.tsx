@@ -21,7 +21,7 @@ const MONTHS = [
   "July", "August", "September", "October", "November", "December",
 ];
 
-const RUNE_CHARS = "ᚠᚢᚦᚨᛒᛗᛉᛊᛏᛞᛟᛝ".split("");
+const RUNE_CHARS = "᛭☽✦⛧☾᛫✧⊕⊗△▽⏣".split("");
 
 function shuffle<T>(arr: T[]): T[] {
   const a = [...arr];
@@ -309,20 +309,44 @@ export default function Home() {
           >
             <div className="landing-bg-glow" />
 
+            {/* Occult circle doodle */}
+            <motion.div
+              className="occult-circle"
+              initial={{ opacity: 0, scale: 0.8, rotate: -30 }}
+              animate={{ opacity: 0.06, scale: 1, rotate: 0 }}
+              transition={{ delay: 0.1, duration: 1.5, ease: "easeOut" }}
+            >
+              <svg width="500" height="500" viewBox="0 0 500 500" fill="none">
+                <circle cx="250" cy="250" r="220" stroke="#8b2020" strokeWidth="1.5" strokeDasharray="8 6" />
+                <circle cx="250" cy="250" r="180" stroke="#8b2020" strokeWidth="1" />
+                <circle cx="250" cy="250" r="140" stroke="#8b2020" strokeWidth="0.8" strokeDasharray="3 8" />
+                {/* Pentacle lines */}
+                <path d="M250 30 L400 340 L100 160 L400 160 L100 340 Z" stroke="#8b2020" strokeWidth="0.7" />
+                {/* Cardinal runes */}
+                <text x="250" y="55" textAnchor="middle" fill="#8b2020" fontSize="14" fontFamily="serif">᛭</text>
+                <text x="250" y="460" textAnchor="middle" fill="#8b2020" fontSize="14" fontFamily="serif">⛧</text>
+                <text x="40" y="255" textAnchor="middle" fill="#8b2020" fontSize="14" fontFamily="serif">☽</text>
+                <text x="460" y="255" textAnchor="middle" fill="#8b2020" fontSize="14" fontFamily="serif">☾</text>
+                {/* Inner decorative arcs */}
+                <path d="M180 180 Q250 120 320 180" stroke="#8b2020" strokeWidth="0.6" fill="none" />
+                <path d="M180 320 Q250 380 320 320" stroke="#8b2020" strokeWidth="0.6" fill="none" />
+              </svg>
+            </motion.div>
+
             <motion.div
               className="landing-tagline"
               initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 0.7, y: 0 }}
-              transition={{ delay: 0.2, duration: 0.8 }}
+              animate={{ opacity: 0.8, y: 0 }}
+              transition={{ delay: 0.3, duration: 0.8 }}
             >
-              The Threads of Fate
+              ✧ The Threads of Fate ✧
             </motion.div>
 
             <motion.h1
               className="landing-title"
               initial={{ opacity: 0, y: 30, scale: 0.9 }}
               animate={{ opacity: 1, y: 0, scale: 1 }}
-              transition={{ delay: 0.35, duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+              transition={{ delay: 0.45, duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
             >
               Nornlore
             </motion.h1>
@@ -331,29 +355,26 @@ export default function Home() {
               className="landing-subtitle"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.55, duration: 0.7 }}
+              transition={{ delay: 0.65, duration: 0.7 }}
             >
               Discover the history woven into your birthday
             </motion.p>
 
+            {/* Hand-drawn ink divider */}
             <motion.svg
-              className="knot-divider"
-              viewBox="0 0 500 20"
+              className="hand-divider"
+              viewBox="0 0 400 30"
               fill="none"
-              initial={{ opacity: 0, scaleX: 0 }}
-              animate={{ opacity: 0.3, scaleX: 1 }}
-              transition={{ delay: 0.7, duration: 0.8 }}
+              initial={{ opacity: 0, pathLength: 0 }}
+              animate={{ opacity: 0.4 }}
+              transition={{ delay: 0.8, duration: 0.8 }}
             >
-              <path
-                d="M0 10 Q25 0, 50 10 Q75 20, 100 10 Q125 0, 150 10 Q175 20, 200 10 Q225 0, 250 10 Q275 20, 300 10 Q325 0, 350 10 Q375 20, 400 10 Q425 0, 450 10 Q475 20, 500 10"
-                stroke="#d4a843"
-                strokeWidth="1.5"
-              />
-              <path
-                d="M0 10 Q25 20, 50 10 Q75 0, 100 10 Q125 20, 150 10 Q175 0, 200 10 Q225 20, 250 10 Q275 0, 300 10 Q325 20, 350 10 Q375 0, 400 10 Q425 20, 450 10 Q475 0, 500 10"
-                stroke="#d4a843"
-                strokeWidth="1.5"
-              />
+              <path d="M20 15 C60 5, 80 25, 120 15 C160 5, 180 25, 200 15 C220 5, 240 25, 280 15 C320 5, 340 25, 380 15" stroke="#8b2020" strokeWidth="1.5" fill="none" strokeLinecap="round" />
+              <circle cx="10" cy="15" r="3" fill="#8b2020" opacity="0.4" />
+              <circle cx="390" cy="15" r="3" fill="#8b2020" opacity="0.4" />
+              <circle cx="200" cy="15" r="2" fill="#8b2020" opacity="0.3" />
+              <path d="M170 8 L200 2 L230 8" stroke="#8b2020" strokeWidth="0.8" fill="none" opacity="0.3" />
+              <path d="M170 22 L200 28 L230 22" stroke="#8b2020" strokeWidth="0.8" fill="none" opacity="0.3" />
             </motion.svg>
 
             <motion.form
@@ -364,10 +385,12 @@ export default function Home() {
               transition={{ delay: 0.8, duration: 0.7 }}
             >
               <div className="form-frame">
-                <span className="form-corner tl" />
-                <span className="form-corner tr" />
-                <span className="form-corner bl" />
-                <span className="form-corner br" />
+                {/* Hand-drawn corner crosses */}
+                {["tl", "tr", "bl", "br"].map((pos) => (
+                  <svg key={pos} className={`form-corner ${pos}`} width="20" height="20" viewBox="0 0 20 20" fill="none">
+                    <path d="M4 4 L16 16 M16 4 L4 16" stroke="#3d3028" strokeWidth="1.5" strokeLinecap="round" />
+                  </svg>
+                ))}
                 <div className="date-inputs">
                   <select
                     value={month}
