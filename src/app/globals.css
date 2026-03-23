@@ -10,10 +10,7 @@
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
 body {
-  background: #2a1a0a;
-  display: flex;
-  justify-content: center;
-  padding: 20px;
+  background: var(--parchment);
   font-family: 'IM Fell DW Pica', Georgia, serif;
   min-height: 100vh;
   color: var(--ink);
@@ -22,12 +19,12 @@ body {
 /* ============ THE PAPER ============ */
 .paper {
   background: var(--parchment);
-  max-width: 960px;
+  max-width: 100%;
   width: 100%;
   position: relative;
-  box-shadow: 0 0 60px rgba(0,0,0,0.8), inset 0 0 80px rgba(180,140,60,0.15);
   background-image:
     url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E");
+  min-height: 100vh;
 }
 
 .paper::before {
@@ -573,7 +570,6 @@ body {
 /* ============ RESPONSIVE ============ */
 @media (max-width: 700px) {
   body { padding: 0; }
-  .paper { box-shadow: none; }
   .masthead { padding: 12px 14px 8px; }
   .masthead-top { flex-direction: column; gap: 2px; text-align: center; }
   .newspaper-body { padding: 0 14px 14px; }
