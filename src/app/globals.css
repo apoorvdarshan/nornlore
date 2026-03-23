@@ -142,15 +142,11 @@ body {
 
 .hero-main .photo-box {
   float: left;
-  width: 35%;
+  width: 30%;
   margin: 0 16px 10px 0;
   shape-outside: margin-box;
 }
 
-.hero-main .photo-box img {
-  max-height: 200px;
-  object-fit: cover;
-}
 
 .sidebar-stack {
   padding-left: 18px;
@@ -172,10 +168,6 @@ body {
   margin: 8px 0;
 }
 
-.sidebar-story .photo-box img {
-  max-height: 180px;
-  object-fit: cover;
-}
 
 .sidebar-headline-big {
   font-family: 'IM Fell English', serif;
@@ -255,10 +247,6 @@ body {
   width: 100%;
 }
 
-.mid-banner-img .photo-box img {
-  max-height: 180px;
-  object-fit: cover;
-}
 
 /* ============ TRIPLE UNEVEN ============ */
 .triple-uneven {
@@ -317,10 +305,6 @@ body {
   shape-outside: margin-box;
 }
 
-.dual-story .photo-box img {
-  max-height: 180px;
-  object-fit: cover;
-}
 
 /* ============ MASONRY GRID ============ */
 .masonry-grid {
@@ -444,24 +428,16 @@ body {
 
 .photo-box.float-right {
   float: right;
-  width: 55%;
+  width: 45%;
   margin: 2px 0 8px 14px;
   shape-outside: margin-box;
 }
 
-.photo-box.float-right img {
-  max-height: 180px;
-  object-fit: cover;
-}
 
 .masonry-item .photo-box {
   margin: 6px 0;
 }
 
-.masonry-item .photo-box img {
-  max-height: 160px;
-  object-fit: cover;
-}
 
 /* ============ SECTION LABEL ============ */
 .section-label {
