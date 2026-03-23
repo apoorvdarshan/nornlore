@@ -147,7 +147,7 @@ function ProphetArticle({ fact }: { fact: Fact }) {
   const extra = wikiText && !wikiText.startsWith(desc.slice(0, 40))
     ? ` ${wikiText}`
     : wikiText.length > desc.length ? ` ${wikiText.slice(desc.length)}` : "";
-  const fullText = truncateAtSentence(desc + extra, 1800);
+  const fullText = truncateAtSentence(desc + extra, 800);
 
   return (
     <div className="prophet-story">
