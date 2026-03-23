@@ -142,7 +142,7 @@ body {
 
 .hero-main .photo-box {
   float: left;
-  width: 25%;
+  width: 30%;
   margin: 0 16px 10px 0;
   shape-outside: margin-box;
 }
@@ -165,6 +165,7 @@ body {
 }
 
 .sidebar-story .photo-box {
+  width: 100%;
   margin: 8px 0;
 }
 
@@ -245,6 +246,7 @@ body {
 }
 
 .mid-banner-img .photo-box {
+  width: 100%;
 }
 
 
@@ -344,7 +346,6 @@ body {
   overflow: hidden;
   box-shadow: 4px 4px 0 rgba(58,26,0,0.15);
   border-radius: 3px 12px 4px 15px;
-  display: inline-block;
 }
 
 /* Irregular border shapes for different positions */
@@ -364,10 +365,9 @@ body {
 .masonry-item:nth-child(5n+4) .photo-box { border-radius: 3px 18px 8px 14px; }
 
 .photo-box img {
-  max-width: 100%;
-  max-height: 280px;
-  width: auto;
-  height: auto;
+  width: 100%;
+  max-height: 300px;
+  object-fit: cover;
   display: block;
   filter: sepia(0.3) contrast(1.12) brightness(0.88);
   transition: filter 0.3s;
@@ -432,7 +432,7 @@ body {
 
 .photo-box.float-right {
   float: right;
-  width: 35%;
+  width: 45%;
   margin: 2px 0 8px 14px;
   shape-outside: margin-box;
 }
