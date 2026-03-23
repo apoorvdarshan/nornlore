@@ -219,21 +219,6 @@ export default function Home() {
                   </div>
                 </div>
 
-                {/* Ad box */}
-                <div style={{ marginTop: "14px" }}>
-                  <div className="ad-box">
-                    <div className="ad-title">Nornlore</div>
-                    <div className="ad-icon">🦉</div>
-                    <div className="ad-body">
-                      <em>&quot;Every Date Has a Story&quot;</em><br /><br />
-                      Discover famous people born on your day.<br />
-                      World events that shaped history.<br />
-                      Music & films released on your birthday.<br /><br />
-                      <strong>All tales verified by enchanted quills.</strong><br />
-                      The Department of Historical Sorcery approves.
-                    </div>
-                  </div>
-                </div>
               </div>
 
               <div className="paper-footer">
@@ -322,68 +307,20 @@ export default function Home() {
                       </div>
                     )}
 
-                    {/* WIDE STORY + AD */}
+                    {/* REMAINING STORIES — same 3-col grid */}
                     {thirdRow.length > 0 && (
-                      <div className="wide-row">
-                        <div>
-                          <div className="hero-kicker">{TYPE_LABELS[thirdRow[0].type]} · {thirdRow[0].year}</div>
-                          <h2 className="col-headline" style={{ fontSize: "1.2rem", marginBottom: "8px" }}>{thirdRow[0].title.toUpperCase()}</h2>
-                          <div className="byline">By the Nornlore Press Corps</div>
-                          <p className="col-text" style={{ columnCount: 2, columnGap: "16px", columnRule: "1px solid rgba(58,26,0,0.2)" }}>
-                            {thirdRow[0].description}
-                            {thirdRow[0].description.length < 180 && " Further details emerged as our correspondents continued their investigation into the deeper ramifications of these events, consulting with experts across multiple fields of study."}
-                          </p>
-                        </div>
-                        {thirdRow[1] ? (
-                          <div className="ad-box">
-                            <div className="ad-title" style={{ fontSize: "1.1rem" }}>{thirdRow[1].title}</div>
-                            <div className="ad-icon">📜</div>
-                            <div className="ad-body">
-                              <em>{TYPE_LABELS[thirdRow[1].type]} · {thirdRow[1].year}</em><br /><br />
-                              {thirdRow[1].description}
-                              {thirdRow[1].wikipediaSlug && (
-                                <>
-                                  <br /><br />
-                                  <a href={`https://en.wikipedia.org/wiki/${thirdRow[1].wikipediaSlug}`} target="_blank" rel="noopener noreferrer" style={{ color: "var(--accent)", textDecoration: "none", fontSize: "0.7rem" }}>
-                                    Read more →
-                                  </a>
-                                </>
-                              )}
-                            </div>
+                      <div className="columns-row">
+                        {[...thirdRow, ...restRows].map((fact, i) => (
+                          <div className="col-story" key={`rest-${i}`}>
+                            <div className="hero-kicker">{TYPE_LABELS[fact.type]}</div>
+                            <h2 className="col-headline">{fact.title}</h2>
+                            <div className="byline">{fact.year}</div>
+                            {(fact.type === "person" || fact.type === "event") && fact.wikipediaSlug && (
+                              <WikiPhoto slug={fact.wikipediaSlug} title={fact.title} floatRight />
+                            )}
+                            <p className="col-text">{fact.description}</p>
                           </div>
-                        ) : (
-                          <div className="ad-box">
-                            <div className="ad-title">Nornlore</div>
-                            <div className="ad-icon">🦉</div>
-                            <div className="ad-body"><em>&quot;Every Date Has a Story&quot;</em><br /><br />Discover what history shares your birthday.</div>
-                          </div>
-                        )}
-                      </div>
-                    )}
-
-                    {/* BOTTOM STORIES */}
-                    {restRows.length > 0 && (
-                      <div className="bottom-row">
-                        <div className="bottom-col">
-                          <div className="section-label">More Chronicles</div>
-                          {restRows.filter((_, i) => i % 2 === 0).map((fact, i) => (
-                            <div key={`bl-${i}`} style={{ marginBottom: "12px" }}>
-                              <div className="hero-kicker">{TYPE_LABELS[fact.type]} · {fact.year}</div>
-                              <h3 className="col-headline">{fact.title}</h3>
-                              <p className="col-text">{fact.description}</p>
-                            </div>
-                          ))}
-                        </div>
-                        <div className="bottom-col">
-                          <div className="section-label">Continued</div>
-                          {restRows.filter((_, i) => i % 2 === 1).map((fact, i) => (
-                            <div key={`br-${i}`} style={{ marginBottom: "12px" }}>
-                              <div className="hero-kicker">{TYPE_LABELS[fact.type]} · {fact.year}</div>
-                              <h3 className="col-headline">{fact.title}</h3>
-                              <p className="col-text">{fact.description}</p>
-                            </div>
-                          ))}
-                        </div>
+                        ))}
                       </div>
                     )}
                   </>
