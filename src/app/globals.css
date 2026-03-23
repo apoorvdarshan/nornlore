@@ -402,7 +402,7 @@ body::after {
 }
 
 .card {
-  flex: 0 0 min(84vw, 400px);
+  flex: 0 0 min(72vw, 320px);
   scroll-snap-align: center;
   background: var(--parch);
   border: 2px solid var(--ink-mid);
