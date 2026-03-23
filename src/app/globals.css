@@ -667,9 +667,14 @@ body {
 }
 
 .cta-headline {
-  font-family: 'UnifrakturMaguntia', cursive;
-  font-size: 4rem;
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2.2rem, 6vw, 3.5rem);
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: -2px;
+  line-height: 0.95;
   margin-bottom: 20px;
+  color: var(--ink);
 }
 
 .cta-subtitle {
