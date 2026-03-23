@@ -329,16 +329,13 @@ body {
 
 .masonry-item .photo-box {
   margin: 6px 0;
-  max-height: 160px;
   overflow: hidden;
   shape-outside: margin-box;
 }
 
 .masonry-item .photo-box img {
   width: 100%;
-  height: 160px;
-  object-fit: cover;
-  object-position: top center;
+  height: auto;
 }
 
 /* Zigzag: odd float left small, even float right medium, every 3rd centered */
