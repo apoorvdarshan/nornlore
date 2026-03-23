@@ -21,7 +21,7 @@ const MONTHS = [
   "July", "August", "September", "October", "November", "December",
 ];
 
-const RUNE_CHARS = "᛭☽✦⛧☾᛫✧⊕⊗△▽⏣".split("");
+const DOODLE_CHARS = "★☆♪♫✿❀✎✏⚡☁△▽○●◇◆♠♣♥♦".split("");
 
 function shuffle<T>(arr: T[]): T[] {
   const a = [...arr];
@@ -56,7 +56,7 @@ function FloatingRunes() {
   useEffect(() => {
     const initial = Array.from({ length: 12 }, (_, i) => ({
       id: i,
-      char: RUNE_CHARS[Math.floor(Math.random() * RUNE_CHARS.length)],
+      char: DOODLE_CHARS[Math.floor(Math.random() * DOODLE_CHARS.length)],
       left: Math.random() * 100,
       size: 1 + Math.random() * 2,
       dur: 20 + Math.random() * 25,
@@ -287,27 +287,30 @@ export default function Home() {
           >
             <div className="landing-bg-glow" />
 
-            {/* Occult circle doodle */}
+            {/* Doodle spiral/sun background */}
             <motion.div
               className="occult-circle"
               initial={{ opacity: 0, scale: 0.8, rotate: -30 }}
-              animate={{ opacity: 0.06, scale: 1, rotate: 0 }}
+              animate={{ opacity: 0.08, scale: 1, rotate: 0 }}
               transition={{ delay: 0.1, duration: 1.5, ease: "easeOut" }}
             >
               <svg width="500" height="500" viewBox="0 0 500 500" fill="none">
-                <circle cx="250" cy="250" r="220" stroke="#8b2020" strokeWidth="1.5" strokeDasharray="8 6" />
-                <circle cx="250" cy="250" r="180" stroke="#8b2020" strokeWidth="1" />
-                <circle cx="250" cy="250" r="140" stroke="#8b2020" strokeWidth="0.8" strokeDasharray="3 8" />
-                {/* Pentacle lines */}
-                <path d="M250 30 L400 340 L100 160 L400 160 L100 340 Z" stroke="#8b2020" strokeWidth="0.7" />
-                {/* Cardinal runes */}
-                <text x="250" y="55" textAnchor="middle" fill="#8b2020" fontSize="14" fontFamily="serif">᛭</text>
-                <text x="250" y="460" textAnchor="middle" fill="#8b2020" fontSize="14" fontFamily="serif">⛧</text>
-                <text x="40" y="255" textAnchor="middle" fill="#8b2020" fontSize="14" fontFamily="serif">☽</text>
-                <text x="460" y="255" textAnchor="middle" fill="#8b2020" fontSize="14" fontFamily="serif">☾</text>
-                {/* Inner decorative arcs */}
-                <path d="M180 180 Q250 120 320 180" stroke="#8b2020" strokeWidth="0.6" fill="none" />
-                <path d="M180 320 Q250 380 320 320" stroke="#8b2020" strokeWidth="0.6" fill="none" />
+                {/* Scribble circles */}
+                <circle cx="250" cy="250" r="200" stroke="#6b6b6b" strokeWidth="1.2" strokeDasharray="12 8 4 8" />
+                <circle cx="250" cy="250" r="160" stroke="#6b6b6b" strokeWidth="0.8" />
+                <circle cx="250" cy="250" r="120" stroke="#6b6b6b" strokeWidth="1" strokeDasharray="6 10" />
+                {/* Spiral doodle */}
+                <path d="M250 170 Q310 170 310 230 Q310 290 250 290 Q190 290 190 230 Q190 190 230 180" stroke="#6b6b6b" strokeWidth="0.8" fill="none" />
+                {/* Little stars */}
+                <text x="250" y="65" textAnchor="middle" fill="#6b6b6b" fontSize="18" fontFamily="Caveat">★</text>
+                <text x="250" y="448" textAnchor="middle" fill="#6b6b6b" fontSize="18" fontFamily="Caveat">☆</text>
+                <text x="60" y="255" textAnchor="middle" fill="#6b6b6b" fontSize="18" fontFamily="Caveat">✿</text>
+                <text x="440" y="255" textAnchor="middle" fill="#6b6b6b" fontSize="18" fontFamily="Caveat">❀</text>
+                {/* Arrow doodles */}
+                <path d="M250 80 L250 100 M245 95 L250 100 L255 95" stroke="#6b6b6b" strokeWidth="1" strokeLinecap="round" />
+                <path d="M250 400 L250 420 M245 415 L250 420 L255 415" stroke="#6b6b6b" strokeWidth="1" strokeLinecap="round" />
+                <path d="M80 250 L100 250 M95 245 L100 250 L95 255" stroke="#6b6b6b" strokeWidth="1" strokeLinecap="round" />
+                <path d="M400 250 L420 250 M415 245 L420 250 L415 255" stroke="#6b6b6b" strokeWidth="1" strokeLinecap="round" />
               </svg>
             </motion.div>
 
@@ -317,7 +320,7 @@ export default function Home() {
               animate={{ opacity: 0.8, y: 0 }}
               transition={{ delay: 0.3, duration: 0.8 }}
             >
-              ✧ The Threads of Fate ✧
+              ~ what happened on your birthday? ~
             </motion.div>
 
             <motion.h1
@@ -338,21 +341,18 @@ export default function Home() {
               Discover the history woven into your birthday
             </motion.p>
 
-            {/* Hand-drawn ink divider */}
+            {/* Sketchy scribble divider */}
             <motion.svg
               className="hand-divider"
               viewBox="0 0 400 30"
               fill="none"
-              initial={{ opacity: 0, pathLength: 0 }}
-              animate={{ opacity: 0.4 }}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 0.5 }}
               transition={{ delay: 0.8, duration: 0.8 }}
             >
-              <path d="M20 15 C60 5, 80 25, 120 15 C160 5, 180 25, 200 15 C220 5, 240 25, 280 15 C320 5, 340 25, 380 15" stroke="#8b2020" strokeWidth="1.5" fill="none" strokeLinecap="round" />
-              <circle cx="10" cy="15" r="3" fill="#8b2020" opacity="0.4" />
-              <circle cx="390" cy="15" r="3" fill="#8b2020" opacity="0.4" />
-              <circle cx="200" cy="15" r="2" fill="#8b2020" opacity="0.3" />
-              <path d="M170 8 L200 2 L230 8" stroke="#8b2020" strokeWidth="0.8" fill="none" opacity="0.3" />
-              <path d="M170 22 L200 28 L230 22" stroke="#8b2020" strokeWidth="0.8" fill="none" opacity="0.3" />
+              <path d="M30 15 C50 8, 70 22, 90 15 C110 8, 130 22, 150 14 C170 6, 190 24, 210 15 C230 6, 250 24, 270 15 C290 6, 310 22, 330 14 C350 6, 370 22, 380 15" stroke="#6b6b6b" strokeWidth="1.5" fill="none" strokeLinecap="round" />
+              <text x="10" y="19" fill="#6b6b6b" fontSize="12" fontFamily="Caveat">✎</text>
+              <text x="195" y="10" fill="#c0392b" fontSize="8" fontFamily="Caveat" opacity="0.4">★</text>
             </motion.svg>
 
             <motion.form
@@ -363,10 +363,10 @@ export default function Home() {
               transition={{ delay: 0.8, duration: 0.7 }}
             >
               <div className="form-frame">
-                {/* Hand-drawn corner crosses */}
+                {/* Doodle corner marks */}
                 {["tl", "tr", "bl", "br"].map((pos) => (
                   <svg key={pos} className={`form-corner ${pos}`} width="20" height="20" viewBox="0 0 20 20" fill="none">
-                    <path d="M4 4 L16 16 M16 4 L4 16" stroke="#3d3028" strokeWidth="1.5" strokeLinecap="round" />
+                    <circle cx="10" cy="10" r="5" stroke="#6b6b6b" strokeWidth="1.2" strokeDasharray="3 3" />
                   </svg>
                 ))}
                 <div className="date-inputs">
@@ -411,7 +411,7 @@ export default function Home() {
                 whileHover={{ scale: 1.03 }}
                 whileTap={{ scale: 0.97 }}
               >
-                Reveal Your Fate
+                Show me! →
               </motion.button>
             </motion.form>
           </motion.div>
