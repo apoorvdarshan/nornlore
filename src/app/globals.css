@@ -500,12 +500,13 @@ body::after {
 }
 
 .card-image {
-  width: 100%;
+  width: calc(100% - 3rem);
   height: 180px;
   overflow: hidden;
   background: var(--parch-dark);
-  border-top: 1px solid var(--parch-deep);
-  border-bottom: 1px solid var(--parch-deep);
+  border: 1px solid var(--parch-deep);
+  margin: 0 1.5rem;
+  border-radius: 0;
 }
 
 .card-image img {
