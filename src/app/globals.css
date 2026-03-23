@@ -534,8 +534,10 @@ body::after {
 .article-image img {
   width: 100%;
   display: block;
+  object-fit: contain;
   filter: sepia(0.3) contrast(1.1) brightness(0.92);
   transition: filter 0.4s;
+  background: var(--np-dark);
 }
 
 .article-image img:hover {
@@ -654,8 +656,7 @@ body::after {
 }
 
 .col-story .article-image img {
-  max-height: 200px;
-  object-fit: cover;
+  object-fit: contain;
 }
 
 .col-desc {
