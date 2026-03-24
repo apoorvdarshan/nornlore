@@ -295,6 +295,36 @@ export default function Home() {
                     </motion.button>
                   </form>
                 </div>
+                {/* SHOWCASE — iconic GIFs */}
+                <div className="showcase">
+                  <div className="showcase-label">MOVING PHOTOGRAPHS FROM THE ARCHIVES</div>
+                  <div className="showcase-grid">
+                    {[
+                      { gif: "Apollo_11.gif", caption: "Apollo 11", date: "07-20" },
+                      { gif: "Marilyn_Monroe.gif", caption: "Marilyn Monroe", date: "06-01" },
+                      { gif: "Fall_of_the_Berlin_Wall.gif", caption: "Fall of the Berlin Wall", date: "11-09" },
+                      { gif: "Michael_Jackson.gif", caption: "Michael Jackson", date: "08-29" },
+                      { gif: "Woodstock.gif", caption: "Woodstock", date: "08-15" },
+                      { gif: "Nelson_Mandela.gif", caption: "Nelson Mandela", date: "07-18" },
+                      { gif: "Elvis_Presley.gif", caption: "Elvis Presley", date: "01-08" },
+                      { gif: "Sinking_of_the_RMS_Titanic.gif", caption: "RMS Titanic", date: "04-15" },
+                    ].map((item) => (
+                      <div
+                        key={item.gif}
+                        className="showcase-item"
+                        onClick={() => navigateToDate(item.date)}
+                        role="button"
+                        tabIndex={0}
+                      >
+                        <div className="photo-box photo-moving">
+                          <img src={`/gifs/${item.gif}`} alt={item.caption} loading="lazy" />
+                        </div>
+                        <div className="showcase-caption">{item.caption}</div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
                 <div style={{ borderTop: "2px solid var(--rule)", borderBottom: "1px solid var(--rule)", padding: "6px 0", marginTop: "8px" }}>
                   <div className="landing-bottom">
                     <span>Births</span><span>✦</span><span>Events</span><span>✦</span>
