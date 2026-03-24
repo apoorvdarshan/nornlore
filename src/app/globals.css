@@ -661,18 +661,23 @@ body {
 }
 
 .footer-flavor {
+  font-family: 'IM Fell English', serif;
+  font-style: italic;
   margin-bottom: 8px;
+  font-size: 0.75rem;
+  letter-spacing: 1px;
 }
 
 .footer-disclaimer {
-  font-family: 'IM Fell DW Pica', serif;
-  font-size: 0.65rem;
+  font-family: 'IM Fell English', serif;
+  font-style: italic;
+  font-size: 0.7rem;
   text-transform: none;
-  letter-spacing: 0.5px;
+  letter-spacing: 0.3px;
   color: var(--faded);
   max-width: 600px;
   margin: 0 auto 10px;
-  line-height: 1.4;
+  line-height: 1.45;
   border-top: 1px solid rgba(42,16,0,0.2);
   border-bottom: 1px solid rgba(42,16,0,0.2);
   padding: 6px 0;
@@ -683,7 +688,9 @@ body {
   display: flex;
   justify-content: center;
   gap: 6px;
-  font-size: 0.6rem;
+  font-family: 'IM Fell English', serif;
+  font-size: 0.7rem;
+  letter-spacing: 1px;
 }
 
 .footer-links a {
@@ -696,8 +703,8 @@ body {
 }
 
 .footer-credit {
-  font-family: 'IM Fell DW Pica', serif;
-  font-size: 0.7rem;
+  font-family: 'IM Fell English', serif;
+  font-size: 0.78rem;
   text-transform: none;
   letter-spacing: 0.5px;
   margin-bottom: 4px;
@@ -717,7 +724,9 @@ body {
   display: flex;
   justify-content: center;
   gap: 6px;
-  font-size: 0.58rem;
+  font-family: 'IM Fell English', serif;
+  font-size: 0.68rem;
+  letter-spacing: 1px;
   margin-top: 2px;
 }
 

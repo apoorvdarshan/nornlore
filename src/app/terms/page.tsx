@@ -16,7 +16,7 @@ export default function Terms() {
       <div style={{ padding: "30px 40px 50px", maxWidth: 700, margin: "0 auto" }}>
         <h1 style={{
           fontFamily: "'Playfair Display', serif",
-          fontSize: "2.2rem",
+          fontSize: "2.5rem",
           fontWeight: 900,
           textTransform: "uppercase",
           letterSpacing: "-1px",
@@ -26,45 +26,45 @@ export default function Terms() {
         }}>Terms of Use</h1>
 
         <div style={{
-          fontFamily: "'IM Fell DW Pica', serif",
-          fontSize: "0.95rem",
-          lineHeight: 1.6,
+          fontFamily: "'IM Fell English', serif",
+          fontSize: "1rem",
+          lineHeight: 1.65,
           color: "var(--ink)",
         }}>
-          <p style={{ marginBottom: 16 }}>
-            <strong>Last updated:</strong> March 2026
+          <p style={{ marginBottom: 16, fontStyle: "italic" }}>
+            Last updated: March 2026
           </p>
 
-          <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: "1.2rem", fontWeight: 900, margin: "24px 0 8px", textTransform: "uppercase" }}>
-            1. Acceptance
+          <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: "1.3rem", fontWeight: 900, margin: "28px 0 8px", textTransform: "uppercase", borderBottom: "1px solid var(--rule)", paddingBottom: 4 }}>
+            I. Acceptance
           </h2>
           <p style={{ marginBottom: 16 }}>
             By using Nornlore, you agree to these terms. If you disagree, please do not use the site.
           </p>
 
-          <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: "1.2rem", fontWeight: 900, margin: "24px 0 8px", textTransform: "uppercase" }}>
-            2. Nature of Content
+          <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: "1.3rem", fontWeight: 900, margin: "28px 0 8px", textTransform: "uppercase", borderBottom: "1px solid var(--rule)", paddingBottom: 4 }}>
+            II. Nature of Content
           </h2>
           <p style={{ marginBottom: 16 }}>
             Nornlore is a fun, entertainment project. The historical facts presented (births, events, music releases, movie releases) are real and sourced from publicly available data including Wikipedia. However, all magical theming, wizarding references, fictional advertisements, weather reports, notices, and newspaper styling are purely satirical and for entertainment purposes only. No affiliation with any fictional or real wizarding institutions is claimed or implied.
           </p>
 
-          <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: "1.2rem", fontWeight: 900, margin: "24px 0 8px", textTransform: "uppercase" }}>
-            3. Accuracy
+          <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: "1.3rem", fontWeight: 900, margin: "28px 0 8px", textTransform: "uppercase", borderBottom: "1px solid var(--rule)", paddingBottom: 4 }}>
+            III. Accuracy
           </h2>
           <p style={{ marginBottom: 16 }}>
             While we strive for accuracy, historical data is provided &ldquo;as is&rdquo; without warranty. We source information from Wikipedia and other public sources. Errors may exist. Do not rely on Nornlore as a primary historical reference.
           </p>
 
-          <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: "1.2rem", fontWeight: 900, margin: "24px 0 8px", textTransform: "uppercase" }}>
-            4. Intellectual Property
+          <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: "1.3rem", fontWeight: 900, margin: "28px 0 8px", textTransform: "uppercase", borderBottom: "1px solid var(--rule)", paddingBottom: 4 }}>
+            IV. Intellectual Property
           </h2>
           <p style={{ marginBottom: 16 }}>
             The Nornlore name, design, and original code are the property of Apoorv Darshan. Historical facts are in the public domain. Wikipedia content is used under the Creative Commons Attribution-ShareAlike license. Images are fetched from Wikipedia at runtime and remain the property of their respective copyright holders.
           </p>
 
-          <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: "1.2rem", fontWeight: 900, margin: "24px 0 8px", textTransform: "uppercase" }}>
-            5. Open Source
+          <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: "1.3rem", fontWeight: 900, margin: "28px 0 8px", textTransform: "uppercase", borderBottom: "1px solid var(--rule)", paddingBottom: 4 }}>
+            V. Open Source
           </h2>
           <p style={{ marginBottom: 16 }}>
             The source code for Nornlore is open source and available on{" "}
@@ -72,23 +72,23 @@ export default function Terms() {
             Contributions are welcome.
           </p>
 
-          <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: "1.2rem", fontWeight: 900, margin: "24px 0 8px", textTransform: "uppercase" }}>
-            6. Limitation of Liability
+          <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: "1.3rem", fontWeight: 900, margin: "28px 0 8px", textTransform: "uppercase", borderBottom: "1px solid var(--rule)", paddingBottom: 4 }}>
+            VI. Limitation of Liability
           </h2>
           <p style={{ marginBottom: 16 }}>
             Nornlore is provided free of charge, as is, without any warranties. We are not liable for any damages arising from the use of this site.
           </p>
 
-          <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: "1.2rem", fontWeight: 900, margin: "24px 0 8px", textTransform: "uppercase" }}>
-            7. Changes
+          <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: "1.3rem", fontWeight: 900, margin: "28px 0 8px", textTransform: "uppercase", borderBottom: "1px solid var(--rule)", paddingBottom: 4 }}>
+            VII. Changes
           </h2>
           <p style={{ marginBottom: 16 }}>
             We may update these terms at any time. Continued use of the site constitutes acceptance of updated terms.
           </p>
 
-          <div style={{ borderTop: "2px solid var(--ink)", marginTop: 30, paddingTop: 15, textAlign: "center" }}>
-            <Link href="/" style={{ color: "var(--accent)", fontWeight: 700, textDecoration: "none", textTransform: "uppercase", letterSpacing: 2, fontSize: "0.85rem" }}>
-              ← Back to Nornlore
+          <div style={{ borderTop: "3px double var(--ink)", marginTop: 30, paddingTop: 15, textAlign: "center" }}>
+            <Link href="/" style={{ color: "var(--accent)", fontFamily: "'IM Fell English', serif", fontWeight: 700, textDecoration: "none", textTransform: "uppercase", letterSpacing: 2, fontSize: "0.9rem" }}>
+              ← Return to the Front Page
             </Link>
           </div>
         </div>
