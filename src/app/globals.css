@@ -990,6 +990,115 @@ body {
 }
 .toast.show { transform: translateX(-50%) translateY(0); }
 
+/* ═══════════════ LEGAL PAGES ═══════════════ */
+.legal-page {
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.legal-header {
+  text-align: center;
+  padding: 15px 20px 8px;
+  border-bottom: 3px solid var(--ink);
+}
+
+.legal-header .masthead-logo {
+  font-size: 3.5rem;
+  margin: 6px 0;
+}
+
+.legal-home-link {
+  text-decoration: none;
+  color: var(--ink);
+}
+
+.legal-body {
+  padding: 30px 40px 50px;
+  max-width: 700px;
+  margin: 0 auto;
+  font-family: 'IM Fell English', serif;
+  font-size: 1rem;
+  line-height: 1.65;
+  color: var(--ink);
+}
+
+.legal-title {
+  font-family: 'UnifrakturMaguntia', cursive;
+  font-size: 3rem;
+  font-weight: 400;
+  margin-bottom: 20px;
+  border-bottom: 3px double var(--ink);
+  padding-bottom: 12px;
+  color: var(--ink);
+}
+
+.legal-date {
+  font-style: italic;
+  margin-bottom: 20px;
+  color: var(--faded);
+}
+
+.legal-heading {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.2rem;
+  font-weight: 900;
+  margin: 28px 0 8px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border-bottom: 1px solid var(--rule);
+  padding-bottom: 4px;
+  color: var(--ink);
+}
+
+.legal-body p {
+  margin-bottom: 14px;
+}
+
+.legal-body ul {
+  margin-bottom: 14px;
+  padding-left: 24px;
+  list-style-type: disc;
+}
+
+.legal-body li {
+  margin-bottom: 8px;
+}
+
+.legal-body a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.legal-body a:hover {
+  text-decoration: underline;
+}
+
+.legal-back {
+  border-top: 3px double var(--ink);
+  margin-top: 30px;
+  padding-top: 15px;
+  text-align: center;
+}
+
+.legal-back a {
+  font-family: 'IM Fell English', serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 0.9rem;
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.legal-back a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 600px) {
+  .legal-body { padding: 20px 20px 40px; }
+  .legal-title { font-size: 2rem; }
+}
+
 .no-data {
   padding: 48px 20px;
   text-align: center;
