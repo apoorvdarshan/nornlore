@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="public/favicon.png" alt="Nornlore" width="80" />
+</p>
+
 # Nornlore
 
 **What history shares your birthday?** Enter your birth date and discover the famous people, world events, music releases, and movies tied to your exact day in history — presented as a magical Daily Prophet-style newspaper.
