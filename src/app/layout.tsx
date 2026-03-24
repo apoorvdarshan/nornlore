@@ -5,6 +5,10 @@ export const metadata: Metadata = {
   title: "Nornlore — What History Shares Your Birthday?",
   description:
     "Enter your birthday and discover the famous events, people, music, and movies that share your date in history.",
+  icons: {
+    icon: "/favicon.ico",
+    apple: "/apple-touch-icon.png",
+  },
 };
 
 export default function RootLayout({
