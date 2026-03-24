@@ -171,8 +171,28 @@ function SmallText({ fact, maxLen }: { fact: Fact; maxLen: number }) {
   return <>{truncate(desc + extra, maxLen)}</>;
 }
 
+function LoadingScreen({ dateStr }: { dateStr: string }) {
+  return (
+    <div className="paper loading-screen">
+      <div className="loading-inner">
+        <div className="loading-logo">Nornlore</div>
+        <div className="loading-rule" />
+        <div className="loading-date">{dateStr} Edition</div>
+        <div className="loading-quill">✦</div>
+        <div className="loading-text">The presses are rolling...</div>
+        <div className="loading-subtext">Summoning moving photographs from the archives</div>
+        <div className="loading-dots">
+          <span className="dot dot-1">.</span>
+          <span className="dot dot-2">.</span>
+          <span className="dot dot-3">.</span>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 export default function Home() {
-  const [view, setView] = useState<"landing" | "prophet">("landing");
+  const [view, setView] = useState<"landing" | "loading" | "prophet">("landing");
   const [month, setMonth] = useState("");
   const [day, setDay] = useState("");
   const [dateKey, setDateKey] = useState("");
@@ -188,12 +208,33 @@ export default function Home() {
   }, []);
 
   const navigateToDate = useCallback((key: string) => {
+    const shuffled = shuffle(data[key] || []);
     setDateKey(key);
-    setFacts(shuffle(data[key] || []));
-    setView("prophet");
+    setFacts(shuffled);
+    setView("loading");
     const url = new URL(window.location.href);
     url.searchParams.set("date", key);
     history.pushState(null, "", url);
+
+    // Preload GIF/images for all facts with wikipediaSlug
+    const slugs = shuffled.filter((f) => f.wikipediaSlug).map((f) => f.wikipediaSlug!);
+    let loaded = 0;
+    const total = slugs.length;
+    const done = () => { loaded++; if (loaded >= total) setView("prophet"); };
+    // Timeout fallback — show after 4s max regardless
+    const timeout = setTimeout(() => setView("prophet"), 4000);
+
+    if (total === 0) { clearTimeout(timeout); setView("prophet"); return; }
+
+    slugs.forEach((slug) => {
+      const gifPath = `/gifs/${slug}.gif`;
+      const img = new window.Image();
+      img.onload = done;
+      img.onerror = done; // count errors as loaded too
+      img.src = gifPath;
+    });
+
+    return () => clearTimeout(timeout);
   }, []);
 
   const goBack = useCallback(() => {
@@ -255,7 +296,11 @@ export default function Home() {
   return (
     <>
       <AnimatePresence mode="wait">
-        {view === "landing" ? (
+        {view === "loading" ? (
+          <motion.div key="loading" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.3 }}>
+            <LoadingScreen dateStr={headerDateStr} />
+          </motion.div>
+        ) : view === "landing" ? (
           <motion.div key="landing" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.4 }}>
             <div className="paper">
               <div className="masthead">
