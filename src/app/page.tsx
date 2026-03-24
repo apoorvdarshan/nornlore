@@ -327,7 +327,7 @@ export default function Home() {
                     ].map((item, i) => (
                       <div key={item.gif} className={`scatter-photo scatter-l${i}`} onClick={() => navigateToDate(item.date)} role="button" tabIndex={0}>
                         <div className="photo-box photo-moving">
-                          <img src={`/gifs/${item.gif}`} alt={item.alt || item.caption} loading="lazy" />
+                          <img src={`/showcase/${item.gif}`} alt={item.alt || item.caption} loading="lazy" />
                         </div>
                         <div className="scatter-caption">{item.caption}</div>
                       </div>
@@ -363,7 +363,7 @@ export default function Home() {
                     ].map((item, i) => (
                       <div key={item.gif} className={`scatter-photo scatter-r${i}`} onClick={() => navigateToDate(item.date)} role="button" tabIndex={0}>
                         <div className="photo-box photo-moving">
-                          <img src={`/gifs/${item.gif}`} alt={item.alt || item.caption} loading="lazy" />
+                          <img src={`/showcase/${item.gif}`} alt={item.alt || item.caption} loading="lazy" />
                         </div>
                         <div className="scatter-caption">{item.caption}</div>
                       </div>
