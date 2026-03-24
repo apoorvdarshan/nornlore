@@ -175,38 +175,18 @@ function LoadingScreen({ dateStr }: { dateStr: string }) {
   return (
     <div className="paper loading-screen">
       <div className="loading-inner">
-        {/* Masthead replica */}
-        <div className="loading-masthead-top">
-          <span>ENCHANTED EDITION</span>
-          <span>FLOO NETWORK CERTIFIED</span>
-        </div>
         <div className="loading-logo">Nornlore</div>
-        <div className="loading-tagline">★ The Enchanted Chronicle ★</div>
-        <div className="loading-rule-double" />
+        <div className="loading-rule-thick" />
+        <div className="loading-date">{dateStr} Edition</div>
+        <div className="loading-rule-thin" />
 
-        {/* Edition info */}
-        <div className="loading-edition">
-          <span>SPECIAL {dateStr.toUpperCase()} EDITION</span>
+        <div className="loading-inkwell">
+          <div className="inkwell-drop" />
         </div>
 
-        {/* Animated press */}
-        <div className="loading-press">
-          <div className="press-line press-1" />
-          <div className="press-line press-2" />
-          <div className="press-line press-3" />
-          <div className="press-line press-4" />
-          <div className="press-line press-5" />
-        </div>
-
-        <div className="loading-headline">EXTRA! EXTRA!</div>
-        <div className="loading-text">The presses are rolling...</div>
-        <div className="loading-subtext">Summoning enchanted tales &amp; moving photographs</div>
-
-        {/* Ink splatter decoration */}
-        <div className="loading-ornaments">
-          <span>❧</span>
-          <span className="loading-spinner">✦</span>
-          <span>❧</span>
+        <div className="loading-text">Inking the presses</div>
+        <div className="loading-progress">
+          <div className="loading-progress-bar" />
         </div>
       </div>
     </div>
