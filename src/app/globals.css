@@ -650,7 +650,7 @@ body {
 /* ═══════════════ FOOTER ═══════════════ */
 .paper-footer {
   text-align: center;
-  padding: 12px 20px 10px;
+  padding: 16px 20px 14px;
   border-top: 3px solid var(--ink);
   font-size: 0.6rem;
   font-weight: 700;
@@ -658,6 +658,76 @@ body {
   text-transform: uppercase;
   letter-spacing: 2px;
   line-height: 1.6;
+}
+
+.footer-flavor {
+  margin-bottom: 8px;
+}
+
+.footer-disclaimer {
+  font-family: 'IM Fell DW Pica', serif;
+  font-size: 0.65rem;
+  text-transform: none;
+  letter-spacing: 0.5px;
+  color: var(--faded);
+  max-width: 600px;
+  margin: 0 auto 10px;
+  line-height: 1.4;
+  border-top: 1px solid rgba(42,16,0,0.2);
+  border-bottom: 1px solid rgba(42,16,0,0.2);
+  padding: 6px 0;
+}
+
+.footer-links {
+  margin-bottom: 6px;
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+  font-size: 0.6rem;
+}
+
+.footer-links a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.footer-links a:hover {
+  text-decoration: underline;
+}
+
+.footer-credit {
+  font-family: 'IM Fell DW Pica', serif;
+  font-size: 0.7rem;
+  text-transform: none;
+  letter-spacing: 0.5px;
+  margin-bottom: 4px;
+}
+
+.footer-credit a {
+  color: var(--ink);
+  text-decoration: none;
+  font-weight: 900;
+}
+
+.footer-credit a:hover {
+  text-decoration: underline;
+}
+
+.footer-socials {
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+  font-size: 0.58rem;
+  margin-top: 2px;
+}
+
+.footer-socials a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.footer-socials a:hover {
+  text-decoration: underline;
 }
 
 /* ═══════════════ LANDING PAGE ═══════════════ */

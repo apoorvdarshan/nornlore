@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef, useCallback, useMemo } from "react";
 import { motion, AnimatePresence } from "motion/react";
+import Link from "next/link";
 import birthdayData from "@/data/birthdays.json";
 import {
   stableIndex,
@@ -303,8 +304,34 @@ export default function Home() {
                 </div>
               </div>
               <div className="paper-footer">
-                Nornlore is published on enchanted parchment · Owl subscriptions welcome · Back issues by Floo request only<br />
-                © Since Time Immemorial · All tales verified by the Department of Historical Sorcery
+                <div className="footer-flavor">
+                  Nornlore is published on enchanted parchment · Owl subscriptions welcome · Back issues by Floo request only
+                </div>
+                <div className="footer-disclaimer">
+                  DISCLAIMER: Historical facts are real and sourced from public records. All magical theming, wizarding references,
+                  fictional advertisements, and newspaper styling are satirical and for entertainment purposes only.
+                </div>
+                <div className="footer-links">
+                  <Link href="/terms">Terms</Link>
+                  <span>·</span>
+                  <Link href="/privacy">Privacy</Link>
+                  <span>·</span>
+                  <a href="https://github.com/apoorvdarshan/nornlore" target="_blank" rel="noopener noreferrer">Source Code</a>
+                  <span>·</span>
+                  <a href="#" target="_blank" rel="noopener noreferrer">Vote on Product Hunt</a>
+                </div>
+                <div className="footer-credit">
+                  Made by <a href="https://apoorvdarshan.com" target="_blank" rel="noopener noreferrer">Apoorv Darshan</a>
+                </div>
+                <div className="footer-socials">
+                  <a href="https://github.com/apoorvdarshan" target="_blank" rel="noopener noreferrer">GitHub</a>
+                  <span>·</span>
+                  <a href="https://linkedin.com/in/apoorvdarshan" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                  <span>·</span>
+                  <a href="https://x.com/apoorvdarshan" target="_blank" rel="noopener noreferrer">X</a>
+                  <span>·</span>
+                  <a href="https://apoorvdarshan.com" target="_blank" rel="noopener noreferrer">Blog</a>
+                </div>
               </div>
             </div>
           </motion.div>
@@ -494,8 +521,22 @@ export default function Home() {
               </div>
 
               <div className="paper-footer">
-                Nornlore is published on enchanted parchment · Owl subscriptions welcome<br />
-                All tales verified by the Department of Historical Sorcery
+                <div className="footer-flavor">
+                  Nornlore is published on enchanted parchment · Owl subscriptions welcome
+                </div>
+                <div className="footer-disclaimer">
+                  Historical facts are real. All magical theming is satirical and for entertainment.
+                </div>
+                <div className="footer-links">
+                  <Link href="/terms">Terms</Link>
+                  <span>·</span>
+                  <Link href="/privacy">Privacy</Link>
+                  <span>·</span>
+                  <a href="https://github.com/apoorvdarshan/nornlore" target="_blank" rel="noopener noreferrer">Source</a>
+                </div>
+                <div className="footer-credit">
+                  Made by <a href="https://apoorvdarshan.com" target="_blank" rel="noopener noreferrer">Apoorv Darshan</a>
+                </div>
               </div>
             </div>
           </motion.div>
