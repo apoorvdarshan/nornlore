@@ -278,54 +278,62 @@ export default function Home() {
                 </span>
               </div>
               <div className="newspaper-body">
-                <div className="landing-cta">
-                  <h2 className="cta-headline">WHAT HISTORY SHARES YOUR BIRTHDAY?</h2>
-                  <p className="cta-subtitle">
-                    Enter your date of birth below to reveal the extraordinary events,
-                    legendary figures, and enchanted tales woven into your day.
-                  </p>
-                  <form className="date-form" onSubmit={handleSubmit}>
-                    <div className="date-inputs">
-                      <NpSelect value={month} onChange={setMonth} placeholder="Month" options={MONTHS.map((m, i) => ({ value: String(i + 1).padStart(2, "0"), label: m }))} />
-                      <span className="date-separator">·</span>
-                      <NpSelect value={day} onChange={setDay} placeholder="Day" options={Array.from({ length: 31 }, (_, i) => ({ value: String(i + 1).padStart(2, "0"), label: String(i + 1) }))} />
-                    </div>
-                    <motion.button type="submit" className="reveal-btn" disabled={!month || !day} whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
-                      Read the Chronicle
-                    </motion.button>
-                  </form>
-                </div>
-                {/* SHOWCASE — iconic GIFs */}
-                <div className="showcase">
-                  <div className="showcase-label">MOVING PHOTOGRAPHS FROM THE ARCHIVES</div>
-                  <div className="showcase-grid">
+                <div className="landing-spread">
+                  {/* Left scattered photos */}
+                  <div className="scatter-col scatter-left">
                     {[
                       { gif: "Apollo_11.gif", caption: "Apollo 11", date: "07-20" },
                       { gif: "Marilyn_Monroe.gif", caption: "Marilyn Monroe", date: "06-01" },
-                      { gif: "Fall_of_the_Berlin_Wall.gif", caption: "Fall of the Berlin Wall", date: "11-09" },
-                      { gif: "Michael_Jackson.gif", caption: "Michael Jackson", date: "08-29" },
                       { gif: "Woodstock.gif", caption: "Woodstock", date: "08-15" },
-                      { gif: "Nelson_Mandela.gif", caption: "Nelson Mandela", date: "07-18" },
                       { gif: "Elvis_Presley.gif", caption: "Elvis Presley", date: "01-08" },
-                      { gif: "Sinking_of_the_RMS_Titanic.gif", caption: "RMS Titanic", date: "04-15" },
-                    ].map((item) => (
-                      <div
-                        key={item.gif}
-                        className="showcase-item"
-                        onClick={() => navigateToDate(item.date)}
-                        role="button"
-                        tabIndex={0}
-                      >
+                    ].map((item, i) => (
+                      <div key={item.gif} className={`scatter-photo scatter-l${i}`} onClick={() => navigateToDate(item.date)} role="button" tabIndex={0}>
                         <div className="photo-box photo-moving">
                           <img src={`/gifs/${item.gif}`} alt={item.caption} loading="lazy" />
                         </div>
-                        <div className="showcase-caption">{item.caption}</div>
+                        <div className="scatter-caption">{item.caption}</div>
+                      </div>
+                    ))}
+                  </div>
+
+                  {/* Center content */}
+                  <div className="landing-center">
+                    <h2 className="cta-headline">WHAT HISTORY SHARES YOUR BIRTHDAY?</h2>
+                    <p className="cta-subtitle">
+                      Enter your date of birth below to reveal the extraordinary events,
+                      legendary figures, and enchanted tales woven into your day.
+                    </p>
+                    <form className="date-form" onSubmit={handleSubmit}>
+                      <div className="date-inputs">
+                        <NpSelect value={month} onChange={setMonth} placeholder="Month" options={MONTHS.map((m, i) => ({ value: String(i + 1).padStart(2, "0"), label: m }))} />
+                        <span className="date-separator">·</span>
+                        <NpSelect value={day} onChange={setDay} placeholder="Day" options={Array.from({ length: 31 }, (_, i) => ({ value: String(i + 1).padStart(2, "0"), label: String(i + 1) }))} />
+                      </div>
+                      <motion.button type="submit" className="reveal-btn" disabled={!month || !day} whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
+                        Read the Chronicle
+                      </motion.button>
+                    </form>
+                  </div>
+
+                  {/* Right scattered photos */}
+                  <div className="scatter-col scatter-right">
+                    {[
+                      { gif: "Michael_Jackson.gif", caption: "Michael Jackson", date: "08-29" },
+                      { gif: "Fall_of_the_Berlin_Wall.gif", caption: "Berlin Wall Falls", date: "11-09" },
+                      { gif: "Nelson_Mandela.gif", caption: "Nelson Mandela", date: "07-18" },
+                      { gif: "Sinking_of_the_RMS_Titanic.gif", caption: "RMS Titanic", date: "04-15" },
+                    ].map((item, i) => (
+                      <div key={item.gif} className={`scatter-photo scatter-r${i}`} onClick={() => navigateToDate(item.date)} role="button" tabIndex={0}>
+                        <div className="photo-box photo-moving">
+                          <img src={`/gifs/${item.gif}`} alt={item.caption} loading="lazy" />
+                        </div>
+                        <div className="scatter-caption">{item.caption}</div>
                       </div>
                     ))}
                   </div>
                 </div>
 
-                <div style={{ borderTop: "2px solid var(--rule)", borderBottom: "1px solid var(--rule)", padding: "6px 0", marginTop: "8px" }}>
+                <div style={{ borderTop: "2px solid var(--rule)", borderBottom: "1px solid var(--rule)", padding: "6px 0" }}>
                   <div className="landing-bottom">
                     <span>Births</span><span>✦</span><span>Events</span><span>✦</span>
                     <span>Music</span><span>✦</span><span>Pictures</span><span>✦</span>
