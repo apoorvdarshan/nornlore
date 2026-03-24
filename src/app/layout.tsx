@@ -5,11 +5,11 @@ const SITE_URL = "https://nornlore.vercel.app";
 
 export const metadata: Metadata = {
   title: {
-    default: "Nornlore — What History Shares Your Birthday? | Daily Prophet Style Birthday Newspaper",
+    default: "Nornlore — What History Shares Your Birthday?",
     template: "%s — Nornlore",
   },
   description:
-    "Discover what famous events, legendary people, iconic music releases, and blockbuster movies share your exact birthday. Styled like the Daily Prophet magical newspaper — enter your date and explore 366 dates with 2,594 historical tales. Find out who was born on your birthday, what happened on this day in history, and which number one songs dropped on your date. A free, fun birthday history generator with moving photographs and enchanted chronicles.",
+    "Discover famous events, people, music, and movies that share your birthday. Daily Prophet style magical newspaper with 366 dates and 2,594 tales.",
   keywords: [
     // Core birthday queries
     "what happened on my birthday",
@@ -72,7 +72,7 @@ export const metadata: Metadata = {
     siteName: "Nornlore",
     title: "Nornlore — What History Shares Your Birthday?",
     description:
-      "Enter your birthday and discover the famous events, legendary people, music releases, and movies that share your exact date in history. Styled like the Daily Prophet magical newspaper. 366 dates, 2,594 tales. Free birthday history generator with moving photographs.",
+      "Enter your birthday and discover famous events, people, music, and movies that share your date. Daily Prophet style newspaper with 2,594 tales.",
     images: [
       {
         url: "/og-image.png",
@@ -86,7 +86,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Nornlore — What History Shares Your Birthday?",
     description:
-      "Discover the famous events, people, music, and movies that share your birthday. Daily Prophet style magical newspaper with 2,594 historical tales and moving photographs.",
+      "Discover famous events, people, music, and movies that share your birthday. Daily Prophet style newspaper. 366 dates, 2,594 tales.",
     images: ["/og-image.png"],
     creator: "@apoorvdarshan",
   },
