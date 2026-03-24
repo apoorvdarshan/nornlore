@@ -936,25 +936,50 @@ body {
 
 @media (max-width: 600px) {
   .landing-spread {
-    grid-template-columns: 1fr;
+    display: flex;
+    flex-direction: column;
     gap: 0;
   }
-  .scatter-col {
+  .landing-center { order: 1; padding: 15px 15px 10px; }
+  .scatter-left, .scatter-right {
     flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 8px;
-    padding: 10px 10px 0;
+    flex-wrap: nowrap;
+    gap: 0;
+    padding: 0;
+    overflow-x: auto;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
   }
-  .scatter-left { order: 2; }
-  .scatter-right { order: 3; }
-  .landing-center { order: 1; padding: 20px 10px 10px; }
-  .scatter-photo { width: calc(50% - 8px); }
+  .scatter-left::-webkit-scrollbar, .scatter-right::-webkit-scrollbar { display: none; }
+  .scatter-left { order: 2; border-top: 2px solid var(--ink); border-bottom: 1px solid var(--ink); }
+  .scatter-right { order: 3; border-bottom: 2px solid var(--ink); }
+  .scatter-photo {
+    min-width: 110px;
+    width: 110px;
+    flex-shrink: 0;
+    padding: 6px;
+    border-right: 1px solid rgba(42,16,0,0.2);
+  }
+  .scatter-photo:last-child { border-right: none; }
   .scatter-l0, .scatter-l1, .scatter-l2, .scatter-l3,
   .scatter-r0, .scatter-r1, .scatter-r2, .scatter-r3 {
     transform: none;
     margin: 0;
   }
+  .scatter-caption { font-size: 0.5rem; }
+  .cta-headline { font-size: 1.8rem; letter-spacing: 0; }
+  .cta-subtitle { font-size: 0.9rem; margin-bottom: 20px; }
+  .date-form { padding: 15px; border-width: 6px; box-shadow: 10px 10px 0 rgba(0,0,0,0.1); }
+  .np-select-trigger { padding: 10px 24px 10px 10px; font-size: 0.85rem; min-width: 110px; }
+  .newspaper-body { padding: 0 15px 15px; }
+  .masthead { padding: 6px 12px 5px; }
+  .masthead-top { font-size: 0.5rem; letter-spacing: 1px; }
+  .edition-bar { font-size: 0.55rem; }
+  .footer-flavor { font-size: 0.6rem; }
+  .footer-disclaimer { font-size: 0.55rem; }
+  .footer-links { font-size: 0.55rem; flex-wrap: wrap; }
+  .footer-socials { font-size: 0.55rem; flex-wrap: wrap; }
+  .paper-footer { padding: 10px 12px 8px; }
 }
 
 .landing-bottom {
