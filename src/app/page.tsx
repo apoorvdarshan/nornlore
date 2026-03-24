@@ -220,11 +220,21 @@ export default function Home() {
     const slugs = shuffled.filter((f) => f.wikipediaSlug).map((f) => f.wikipediaSlug!);
     let loaded = 0;
     const total = slugs.length;
-    const done = () => { loaded++; if (loaded >= total) setView("prophet"); };
-    // Timeout fallback — show after 4s max regardless
-    const timeout = setTimeout(() => setView("prophet"), 4000);
+    const minDelay = 2000; // minimum 2s so users see the loading screen
+    const startTime = Date.now();
+    const show = () => {
+      const elapsed = Date.now() - startTime;
+      if (elapsed < minDelay) {
+        setTimeout(() => setView("prophet"), minDelay - elapsed);
+      } else {
+        setView("prophet");
+      }
+    };
+    const done = () => { loaded++; if (loaded >= total) show(); };
+    // Timeout fallback — show after 5s max regardless
+    const timeout = setTimeout(() => setView("prophet"), 5000);
 
-    if (total === 0) { clearTimeout(timeout); setView("prophet"); return; }
+    if (total === 0) { clearTimeout(timeout); setTimeout(() => setView("prophet"), minDelay); return; }
 
     slugs.forEach((slug) => {
       const gifPath = `/gifs/${slug}.gif`;
