@@ -2,16 +2,21 @@
 
 **What history shares your birthday?** Enter your birth date and discover the famous people, world events, music releases, and movies tied to your exact day in history — presented as a magical Daily Prophet-style newspaper.
 
-A Next.js web app with a Dense Daily Prophet aesthetic. No backend, no paid APIs — fully offline data with runtime Wikipedia thumbnails and extracts.
+**Live:** [nornlore.vercel.app](https://nornlore.vercel.app)
 
 ## Features
 
-- All events for a date displayed on one dense newspaper page
-- Daily Prophet-inspired layout: giant headlines, drop caps, halftone photos, filler headlines, magical ads, weather, classifieds
-- GIF support for animated "moving photographs"
+- All events for a date on one dense Daily Prophet-style newspaper page
+- Giant headlines, drop caps, halftone photos, filler headlines, magical ads, weather, classifieds
+- 1,747 animated GIFs — "moving photographs" for historical events and famous people
 - Wikipedia extracts fetched at runtime for rich article content
-- Mobile responsive
+- Themed loading screen with printing press animation
+- Iconic GIFs scattered on landing page (Apollo 11, Marilyn Monroe, Elvis, etc.)
+- Mobile responsive with horizontal-scroll photo strips
 - Shareable date links (`?date=MM-DD`)
+- SEO optimized with Open Graph, Twitter Cards, JSON-LD structured data, sitemap
+- Vercel Analytics integration
+- Terms of Use and Privacy Policy pages
 
 ## Run Locally
 
@@ -66,7 +71,30 @@ All birthday data lives in `src/data/birthdays.json`. The file is keyed by `MM-D
 
 - [Next.js](https://nextjs.org) 15 (App Router)
 - [Motion](https://motion.dev) (animations)
+- [Vercel Analytics](https://vercel.com/analytics)
 - Google Fonts: UnifrakturMaguntia, IM Fell English, IM Fell DW Pica, Playfair Display, Cinzel Decorative
+
+## Project Structure
+
+```
+src/
+  app/
+    page.tsx          — Landing page + newspaper view
+    layout.tsx        — Root layout, SEO meta, analytics
+    globals.css       — All styles (newspaper theme)
+    terms/page.tsx    — Terms of Use
+    privacy/page.tsx  — Privacy Policy
+    robots.ts         — Search engine crawl rules
+    sitemap.ts        — XML sitemap
+  data/
+    birthdays.json    — All historical facts (keyed by MM-DD)
+    fillerContent.ts  — Magical ads, notices, weather, headlines
+public/
+  gifs/               — 1,747 animated GIFs
+  showcase/           — 8 iconic GIFs for landing page
+  favicon.ico         — Serif N favicon
+  og-image.png        — Open Graph social preview image
+```
 
 ## Disclaimer
 
