@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
+import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 
 const SITE_URL = "https://nornlore.vercel.app";
 
 export const metadata: Metadata = {
   title: {
-    default: "Nornlore — What History Shares Your Birthday?",
+    default: "Nornlore — What History Shares Your Birthday? | Born On This Day",
     template: "%s — Nornlore",
   },
   description:
@@ -163,7 +164,10 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body>{children}</body>
+      <body>
+        {children}
+        <Analytics />
+      </body>
     </html>
   );
 }
