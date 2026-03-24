@@ -5,26 +5,66 @@ const SITE_URL = "https://nornlore.vercel.app";
 
 export const metadata: Metadata = {
   title: {
-    default: "Nornlore — What History Shares Your Birthday?",
+    default: "Nornlore — What History Shares Your Birthday? | Daily Prophet Style Birthday Newspaper",
     template: "%s — Nornlore",
   },
   description:
-    "Enter your birthday and discover the famous events, legendary people, music releases, and movies that share your exact date in history. 366 dates, 2,594 tales.",
+    "Discover what famous events, legendary people, iconic music releases, and blockbuster movies share your exact birthday. Styled like the Daily Prophet magical newspaper — enter your date and explore 366 dates with 2,594 historical tales. Find out who was born on your birthday, what happened on this day in history, and which number one songs dropped on your date. A free, fun birthday history generator with moving photographs and enchanted chronicles.",
   keywords: [
-    "birthday history",
-    "this day in history",
-    "historical events by date",
-    "famous birthdays",
+    // Core birthday queries
     "what happened on my birthday",
+    "this day in history",
+    "today in history",
     "born on this day",
-    "history birthday lookup",
-    "on this day",
+    "famous birthdays",
+    "famous birthdays today",
+    "celebrity birthdays",
+    "celebrity birthdays today",
+    "who shares my birthday",
+    "who was born on my birthday",
+    "share your birthday with",
+    "birthday history",
+    "birthday history lookup",
+    "birthday history generator",
+    "historical events by date",
+    "historical events calendar",
+    "birthday facts",
+    "cool birthday facts",
+    "fun birthday history",
+    "what happened today in history",
+    "on this day in history",
+    "birthday newspaper",
+    // Music & movie
+    "songs released on my birthday",
+    "movies released on my birthday",
+    "number one song on my birthday",
+    "what movie came out on my birthday",
+    "what song was number one on my birthday",
+    "music released on this day",
+    // Harry Potter / Daily Prophet bait
     "daily prophet",
+    "daily prophet newspaper",
+    "daily prophet style",
+    "daily prophet template",
+    "daily prophet generator",
+    "wizarding newspaper",
+    "magical newspaper",
+    "harry potter newspaper",
+    "harry potter birthday",
+    "hogwarts daily prophet",
+    "enchanted newspaper",
+    "moving photographs",
+    "enchanted chronicles",
+    // Brand
     "nornlore",
   ],
   authors: [{ name: "Apoorv Darshan", url: "https://apoorvdarshan.com" }],
   creator: "Apoorv Darshan",
+  publisher: "Apoorv Darshan",
   metadataBase: new URL(SITE_URL),
+  alternates: {
+    canonical: SITE_URL,
+  },
   openGraph: {
     type: "website",
     locale: "en_US",
@@ -32,13 +72,13 @@ export const metadata: Metadata = {
     siteName: "Nornlore",
     title: "Nornlore — What History Shares Your Birthday?",
     description:
-      "Enter your birthday and discover the famous events, legendary people, music releases, and movies that share your exact date in history.",
+      "Enter your birthday and discover the famous events, legendary people, music releases, and movies that share your exact date in history. Styled like the Daily Prophet magical newspaper. 366 dates, 2,594 tales. Free birthday history generator with moving photographs.",
     images: [
       {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "Nornlore — What History Shares Your Birthday?",
+        alt: "Nornlore — What History Shares Your Birthday? Daily Prophet style birthday newspaper",
       },
     ],
   },
@@ -46,7 +86,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Nornlore — What History Shares Your Birthday?",
     description:
-      "Discover the famous events, people, music, and movies that share your exact date in history. 366 dates, 2,594 tales.",
+      "Discover the famous events, people, music, and movies that share your birthday. Daily Prophet style magical newspaper with 2,594 historical tales and moving photographs.",
     images: ["/og-image.png"],
     creator: "@apoorvdarshan",
   },
@@ -60,8 +100,12 @@ export const metadata: Metadata = {
     googleBot: {
       index: true,
       follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
     },
   },
+  category: "entertainment",
 };
 
 export default function RootLayout({
@@ -89,15 +133,26 @@ export default function RootLayout({
               "@context": "https://schema.org",
               "@type": "WebApplication",
               name: "Nornlore",
+              alternateName: "Nornlore Birthday History",
               url: SITE_URL,
               description:
-                "Enter your birthday and discover the famous events, legendary people, music releases, and movies that share your exact date in history.",
+                "Enter your birthday and discover the famous events, legendary people, music releases, and movies that share your exact date in history. Styled like the Daily Prophet magical newspaper with moving photographs and enchanted chronicles.",
               applicationCategory: "Entertainment",
               operatingSystem: "Any",
+              browserRequirements: "Requires JavaScript",
+              keywords:
+                "birthday history, this day in history, famous birthdays, daily prophet, wizarding newspaper, what happened on my birthday, born on this day, celebrity birthdays, birthday newspaper, moving photographs, enchanted chronicles, harry potter newspaper, birthday facts, songs released on my birthday, movies released on my birthday",
+              inLanguage: "en",
+              isAccessibleForFree: true,
               author: {
                 "@type": "Person",
                 name: "Apoorv Darshan",
                 url: "https://apoorvdarshan.com",
+                sameAs: [
+                  "https://github.com/apoorvdarshan",
+                  "https://linkedin.com/in/apoorvdarshan",
+                  "https://x.com/apoorvdarshan",
+                ],
               },
               offers: {
                 "@type": "Offer",

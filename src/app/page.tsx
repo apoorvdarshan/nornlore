@@ -277,19 +277,57 @@ export default function Home() {
                   ✦ DISCOVER what famous events share your birthday ✦ Notable births, world affairs, musical enchantments &amp; moving pictures ✦ Enter your date below to read the chronicle ✦ Over 2,594 historical tales verified by the Department of Historical Sorcery ✦
                 </span>
               </div>
+
+              {/* Hidden SEO content — crawlable but visually hidden */}
+              <section className="seo-block" aria-label="About Nornlore">
+                <h1>What Happened On My Birthday — Discover Your Birthday History</h1>
+                <p>
+                  Nornlore is a free birthday history generator that reveals what famous events, legendary people, iconic music releases, and blockbuster movies share your exact date in history. Styled like the Daily Prophet magical newspaper from the wizarding world, Nornlore presents 366 dates and 2,594 historical tales in an enchanted newspaper format complete with moving photographs, sepia-toned images, and magical filler content.
+                </p>
+
+                <h2>Famous Birthdays — Who Was Born On My Birthday?</h2>
+                <p>
+                  Discover which celebrities, historical figures, and legendary people share your birthday. From Albert Einstein to Marilyn Monroe, Elvis Presley to Nelson Mandela, Michael Jackson to Muhammad Ali — find out who was born on this day. Our celebrity birthdays database covers notable births across every day of the year. Whether you want to know famous birthdays today, celebrity birthdays by date, or simply who shares my birthday, Nornlore has the answer.
+                </p>
+
+                <h2>Historical Events — What Happened Today In History?</h2>
+                <p>
+                  Explore what happened on this day in history. From the Apollo 11 moon landing to the fall of the Berlin Wall, the sinking of the Titanic to Woodstock, the French Revolution to the first commercial flight of Concorde — discover the world events that share your date. This day in history, today in history, on this day — whatever you search, Nornlore covers every date with verified historical events and world affairs.
+                </p>
+
+                <h2>Music Released On My Birthday — Number One Songs By Date</h2>
+                <p>
+                  Find out what songs were released on your birthday. Discover the number one song on my birthday, what music dropped on this day, and which iconic albums share your date. From The Beatles to Bob Marley, from Thriller to Abbey Road, our music history archive covers the most iconic releases across every date of the year. Songs released on my birthday, what song was number one on my birthday, music released on this day.
+                </p>
+
+                <h2>Movies Released On My Birthday — What Movie Came Out On My Date?</h2>
+                <p>
+                  Discover what movies were released on your birthday. From classic cinema to modern blockbusters, find out which films premiered on your exact date. What movie came out on my birthday? Which blockbuster shares my date? Nornlore covers movie premieres, film releases, and cinema history across every day of the year.
+                </p>
+
+                <h2>Daily Prophet Style Magical Newspaper</h2>
+                <p>
+                  Nornlore is designed to look exactly like the Daily Prophet newspaper from the wizarding world of Harry Potter. Features include moving photographs (animated GIFs), enchanted newspaper layout, magical advertisements from Diagon Alley, wizarding weather forecasts, enchanted classifieds and notices, gothic blackletter masthead typography, aged parchment texture, sepia halftone photo effects, and a bottom ticker bar. The Daily Prophet style newspaper template brings your birthday history to life as an enchanted broadsheet. Harry Potter fans will love this magical newspaper generator — it looks just like the Hogwarts Daily Prophet with exclusive headlines, drop caps, and dense newspaper columns.
+                </p>
+
+                <h3>Birthday History Generator — Share Your Birthday Facts</h3>
+                <p>
+                  Use Nornlore as a birthday history generator to create a shareable newspaper page of your birthday facts. Cool birthday facts, fun birthday history, birthday trivia — share your birthday with famous people and historic events. Perfect for birthday parties, social media sharing, and discovering the extraordinary tales woven into your day. Birthday newspaper, birthday history lookup, birthday facts generator — all free, no sign-up required.
+                </p>
+              </section>
               <div className="newspaper-body">
                 <div className="landing-spread">
                   {/* Left scattered photos */}
                   <div className="scatter-col scatter-left">
                     {[
-                      { gif: "Apollo_11.gif", caption: "Apollo 11", date: "07-20" },
-                      { gif: "Marilyn_Monroe.gif", caption: "Marilyn Monroe", date: "06-01" },
-                      { gif: "Woodstock.gif", caption: "Woodstock", date: "08-15" },
-                      { gif: "Elvis_Presley.gif", caption: "Elvis Presley", date: "01-08" },
+                      { gif: "Apollo_11.gif", caption: "Apollo 11", date: "07-20", alt: "Apollo 11 moon landing — July 20 1969 — famous historical event on this day" },
+                      { gif: "Marilyn_Monroe.gif", caption: "Marilyn Monroe", date: "06-01", alt: "Marilyn Monroe — born June 1 1926 — famous celebrity birthday" },
+                      { gif: "Woodstock.gif", caption: "Woodstock", date: "08-15", alt: "Woodstock music festival — August 15 1969 — iconic music event on this day in history" },
+                      { gif: "Elvis_Presley.gif", caption: "Elvis Presley", date: "01-08", alt: "Elvis Presley — born January 8 1935 — famous birthday and music legend" },
                     ].map((item, i) => (
                       <div key={item.gif} className={`scatter-photo scatter-l${i}`} onClick={() => navigateToDate(item.date)} role="button" tabIndex={0}>
                         <div className="photo-box photo-moving">
-                          <img src={`/gifs/${item.gif}`} alt={item.caption} loading="lazy" />
+                          <img src={`/gifs/${item.gif}`} alt={item.alt || item.caption} loading="lazy" />
                         </div>
                         <div className="scatter-caption">{item.caption}</div>
                       </div>
@@ -318,14 +356,14 @@ export default function Home() {
                   {/* Right scattered photos */}
                   <div className="scatter-col scatter-right">
                     {[
-                      { gif: "Michael_Jackson.gif", caption: "Michael Jackson", date: "08-29" },
-                      { gif: "Fall_of_the_Berlin_Wall.gif", caption: "Berlin Wall Falls", date: "11-09" },
-                      { gif: "Nelson_Mandela.gif", caption: "Nelson Mandela", date: "07-18" },
-                      { gif: "Sinking_of_the_RMS_Titanic.gif", caption: "RMS Titanic", date: "04-15" },
+                      { gif: "Michael_Jackson.gif", caption: "Michael Jackson", date: "08-29", alt: "Michael Jackson — born August 29 1958 — celebrity birthday and music icon" },
+                      { gif: "Fall_of_the_Berlin_Wall.gif", caption: "Berlin Wall Falls", date: "11-09", alt: "Fall of the Berlin Wall — November 9 1989 — what happened on this day in history" },
+                      { gif: "Nelson_Mandela.gif", caption: "Nelson Mandela", date: "07-18", alt: "Nelson Mandela — born July 18 1918 — famous birthday and world leader" },
+                      { gif: "Sinking_of_the_RMS_Titanic.gif", caption: "RMS Titanic", date: "04-15", alt: "Sinking of the RMS Titanic — April 15 1912 — historical event on this day" },
                     ].map((item, i) => (
                       <div key={item.gif} className={`scatter-photo scatter-r${i}`} onClick={() => navigateToDate(item.date)} role="button" tabIndex={0}>
                         <div className="photo-box photo-moving">
-                          <img src={`/gifs/${item.gif}`} alt={item.caption} loading="lazy" />
+                          <img src={`/gifs/${item.gif}`} alt={item.alt || item.caption} loading="lazy" />
                         </div>
                         <div className="scatter-caption">{item.caption}</div>
                       </div>
