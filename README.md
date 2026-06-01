@@ -6,7 +6,7 @@
 
 **What history shares your birthday?** Enter your birth date and discover the famous people, world events, music releases, and movies tied to your exact day in history — presented as a magical Daily Prophet-style newspaper.
 
-**Live:** [nornlore.vercel.app](https://nornlore.vercel.app)
+**Live:** [nornlore.apoorvdarshan.com](https://nornlore.apoorvdarshan.com)
 
 ## Features
 

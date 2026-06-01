@@ -6,6 +6,6 @@ export default function robots(): MetadataRoute.Robots {
       userAgent: "*",
       allow: "/",
     },
-    sitemap: "https://nornlore.vercel.app/sitemap.xml",
+    sitemap: "https://nornlore.apoorvdarshan.com/sitemap.xml",
   };
 }
