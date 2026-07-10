@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 
 const SITE_URL = "https://nornlore.apoorvdarshan.com";
@@ -166,7 +165,6 @@ export default function RootLayout({
       </head>
       <body>
         {children}
-        <Analytics />
       </body>
     </html>
   );
