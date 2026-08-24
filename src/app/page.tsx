@@ -454,7 +454,7 @@ export default function Home() {
                   <a href="https://www.producthunt.com/products/nornlore" target="_blank" rel="noopener noreferrer">Vote on Product Hunt</a>
                 </div>
                 <div className="footer-credit">
-                  Made by <a href="https://apoorvdarshan.com" target="_blank" rel="noopener noreferrer">Apoorv Darshan</a>
+                  Made by <a href="https://aopv.dev" target="_blank" rel="noopener noreferrer">Apoorv Darshan</a>
                 </div>
                 <div className="footer-socials">
                   <a href="https://github.com/aopv" target="_blank" rel="noopener noreferrer">GitHub</a>
@@ -463,7 +463,7 @@ export default function Home() {
                   <span>·</span>
                   <a href="https://x.com/apoorvdarshan" target="_blank" rel="noopener noreferrer">X</a>
                   <span>·</span>
-                  <a href="https://apoorvdarshan.com" target="_blank" rel="noopener noreferrer">Blog</a>
+                  <a href="https://aopv.dev" target="_blank" rel="noopener noreferrer">Blog</a>
                 </div>
               </div>
             </div>
@@ -670,7 +670,7 @@ export default function Home() {
                   <a href="https://www.producthunt.com/products/nornlore" target="_blank" rel="noopener noreferrer">Product Hunt</a>
                 </div>
                 <div className="footer-credit">
-                  Made by <a href="https://apoorvdarshan.com" target="_blank" rel="noopener noreferrer">Apoorv Darshan</a>
+                  Made by <a href="https://aopv.dev" target="_blank" rel="noopener noreferrer">Apoorv Darshan</a>
                 </div>
               </div>
             </div>

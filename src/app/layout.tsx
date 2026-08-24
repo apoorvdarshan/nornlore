@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 
-const SITE_URL = "https://nornlore.apoorvdarshan.com";
+const SITE_URL = "https://nornlore.aopv.dev";
 
 export const metadata: Metadata = {
   title: {
@@ -58,7 +58,7 @@ export const metadata: Metadata = {
     // Brand
     "nornlore",
   ],
-  authors: [{ name: "Apoorv Darshan", url: "https://apoorvdarshan.com" }],
+  authors: [{ name: "Apoorv Darshan", url: "https://aopv.dev" }],
   creator: "Apoorv Darshan",
   publisher: "Apoorv Darshan",
   metadataBase: new URL(SITE_URL),
@@ -147,7 +147,7 @@ export default function RootLayout({
               author: {
                 "@type": "Person",
                 name: "Apoorv Darshan",
-                url: "https://apoorvdarshan.com",
+                url: "https://aopv.dev",
                 sameAs: [
                   "https://github.com/aopv",
                   "https://linkedin.com/in/apoorvdarshan",
