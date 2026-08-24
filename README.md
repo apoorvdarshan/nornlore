@@ -6,7 +6,7 @@
 
 **What history shares your birthday?** Enter your birth date and discover the famous people, world events, music releases, and movies tied to your exact day in history — presented as a magical Daily Prophet-style newspaper.
 
-**Live:** [nornlore.aopv.dev](https://nornlore.aopv.dev)
+**Live:** [nornlore.apoorvdarshan.com](https://nornlore.apoorvdarshan.com)
 
 ## Features
 
@@ -109,8 +109,8 @@ Historical facts presented are real and sourced from publicly available data. Al
 Made by [Apoorv Darshan](https://apoorvdarshan.com)
 
 - [GitHub](https://github.com/apoorvdarshan)
-- [LinkedIn](https://www.linkedin.com/in/aopv/)
-- [X / Twitter](https://x.com/aporvv)
+- [LinkedIn](https://www.linkedin.com/in/apoorvdarshan/)
+- [X / Twitter](https://x.com/apoorvdarshan)
 - [Blog](https://apoorvdarshan.com)
 
 ## License
