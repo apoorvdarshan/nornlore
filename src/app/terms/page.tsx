@@ -31,7 +31,7 @@ export default function Terms() {
         <p>The Nornlore name, design, and original code are the property of Apoorv Darshan. Historical facts are in the public domain. Wikipedia content is used under the Creative Commons Attribution-ShareAlike license. Images are fetched from Wikipedia at runtime and remain the property of their respective copyright holders.</p>
 
         <h2 className="legal-heading">V. Open Source</h2>
-        <p>The source code for Nornlore is open source and available on <a href="https://github.com/aopv/nornlore" target="_blank" rel="noopener noreferrer">GitHub</a>. Contributions are welcome.</p>
+        <p>The source code for Nornlore is open source and available on <a href="https://github.com/apoorvdarshan/nornlore" target="_blank" rel="noopener noreferrer">GitHub</a>. Contributions are welcome.</p>
 
         <h2 className="legal-heading">VI. Limitation of Liability</h2>
         <p>Nornlore is provided free of charge, as is, without any warranties. We are not liable for any damages arising from the use of this site.</p>

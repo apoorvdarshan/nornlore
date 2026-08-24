@@ -449,7 +449,7 @@ export default function Home() {
                   <span>·</span>
                   <Link href="/privacy">Privacy</Link>
                   <span>·</span>
-                  <a href="https://github.com/aopv/nornlore" target="_blank" rel="noopener noreferrer">Source Code</a>
+                  <a href="https://github.com/apoorvdarshan/nornlore" target="_blank" rel="noopener noreferrer">Source Code</a>
                   <span>·</span>
                   <a href="https://www.producthunt.com/products/nornlore" target="_blank" rel="noopener noreferrer">Vote on Product Hunt</a>
                 </div>
@@ -457,7 +457,7 @@ export default function Home() {
                   Made by <a href="https://apoorvdarshan.com" target="_blank" rel="noopener noreferrer">Apoorv Darshan</a>
                 </div>
                 <div className="footer-socials">
-                  <a href="https://github.com/aopv" target="_blank" rel="noopener noreferrer">GitHub</a>
+                  <a href="https://github.com/apoorvdarshan" target="_blank" rel="noopener noreferrer">GitHub</a>
                   <span>·</span>
                   <a href="https://linkedin.com/in/apoorvdarshan" target="_blank" rel="noopener noreferrer">LinkedIn</a>
                   <span>·</span>
@@ -665,7 +665,7 @@ export default function Home() {
                   <span>·</span>
                   <Link href="/privacy">Privacy</Link>
                   <span>·</span>
-                  <a href="https://github.com/aopv/nornlore" target="_blank" rel="noopener noreferrer">Source</a>
+                  <a href="https://github.com/apoorvdarshan/nornlore" target="_blank" rel="noopener noreferrer">Source</a>
                   <span>·</span>
                   <a href="https://www.producthunt.com/products/nornlore" target="_blank" rel="noopener noreferrer">Product Hunt</a>
                 </div>

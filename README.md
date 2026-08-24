@@ -108,7 +108,7 @@ Historical facts presented are real and sourced from publicly available data. Al
 
 Made by [Apoorv Darshan](https://apoorvdarshan.com)
 
-- [GitHub](https://github.com/aopv)
+- [GitHub](https://github.com/apoorvdarshan)
 - [LinkedIn](https://linkedin.com/in/apoorvdarshan)
 - [X / Twitter](https://x.com/apoorvdarshan)
 - [Blog](https://apoorvdarshan.com)

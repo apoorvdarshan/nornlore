@@ -149,7 +149,7 @@ export default function RootLayout({
                 name: "Apoorv Darshan",
                 url: "https://apoorvdarshan.com",
                 sameAs: [
-                  "https://github.com/aopv",
+                  "https://github.com/apoorvdarshan",
                   "https://linkedin.com/in/apoorvdarshan",
                   "https://x.com/apoorvdarshan",
                 ],
