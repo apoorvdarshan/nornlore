@@ -10,7 +10,7 @@
   },
   "routes": [
     {
-      "pattern": "nornlore.apoorvdarshan.com",
+      "pattern": "nornlore.aopv.dev",
       "custom_domain": true
     }
   ],

@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 
-const SITE_URL = "https://nornlore.apoorvdarshan.com";
+const SITE_URL = "https://nornlore.aopv.dev";
 
 export const metadata: Metadata = {
   title: {
@@ -88,7 +88,7 @@ export const metadata: Metadata = {
     description:
       "Discover famous events, people, music, and movies that share your birthday. Daily Prophet style newspaper. 366 dates, 2,594 tales.",
     images: ["/og-image.png"],
-    creator: "@apoorvdarshan",
+    creator: "@aporvv",
   },
   icons: {
     icon: "/favicon.ico",
@@ -150,8 +150,8 @@ export default function RootLayout({
                 url: "https://apoorvdarshan.com",
                 sameAs: [
                   "https://github.com/apoorvdarshan",
-                  "https://linkedin.com/in/apoorvdarshan",
-                  "https://x.com/apoorvdarshan",
+                  "https://www.linkedin.com/in/aopv/",
+                  "https://x.com/aporvv",
                 ],
               },
               offers: {

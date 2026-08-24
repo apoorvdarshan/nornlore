@@ -3,7 +3,7 @@ import type { MetadataRoute } from "next";
 export const dynamic = "force-static";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const base = "https://nornlore.apoorvdarshan.com";
+  const base = "https://nornlore.aopv.dev";
 
   const entries: MetadataRoute.Sitemap = [
     {
