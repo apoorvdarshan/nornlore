@@ -450,8 +450,6 @@ export default function Home() {
                   <Link href="/privacy">Privacy</Link>
                   <span>·</span>
                   <a href="https://github.com/apoorvdarshan/nornlore" target="_blank" rel="noopener noreferrer">Source Code</a>
-                  <span>·</span>
-                  <a href="https://www.producthunt.com/products/nornlore" target="_blank" rel="noopener noreferrer">Vote on Product Hunt</a>
                 </div>
                 <div className="footer-credit">
                   Made by <a href="https://apoorvdarshan.com" target="_blank" rel="noopener noreferrer">Apoorv Darshan</a>
@@ -666,8 +664,6 @@ export default function Home() {
                   <Link href="/privacy">Privacy</Link>
                   <span>·</span>
                   <a href="https://github.com/apoorvdarshan/nornlore" target="_blank" rel="noopener noreferrer">Source</a>
-                  <span>·</span>
-                  <a href="https://www.producthunt.com/products/nornlore" target="_blank" rel="noopener noreferrer">Product Hunt</a>
                 </div>
                 <div className="footer-credit">
                   Made by <a href="https://apoorvdarshan.com" target="_blank" rel="noopener noreferrer">Apoorv Darshan</a>
